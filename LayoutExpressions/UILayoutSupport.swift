@@ -8,8 +8,8 @@ import UIKit
 // into our expressions: Implicitly and Explicitly.
 //
 // Implicit: Just use the layout guide on the right hand side of a layout
-// expression. The right-hand-side attribute will match the left-hand-side
-// attribute, which is often desired:
+// expression. The right-hand-side attribute will be the 'opposite' of the
+// left-hand-side attribute, which is often desired:
 //
 //     view.lex_top == viewController.topLayoutGuide
 //
@@ -43,16 +43,35 @@ func rightEdgeOf(support: UILayoutSupport) -> ItemAttributeArgument {
 // MARK: Implicit Comparison Operators
 
 func ==(lhs: ItemAttributeArgument, support: UILayoutSupport) -> Expression {
-	let rhs = ItemAttributeArgument(item: support, attribute: lhs.attribute)
+	let rhs = ItemAttributeArgument(item: support, attribute: oppositeAttribute(lhs.attribute))
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
 func <=(lhs: ItemAttributeArgument, support: UILayoutSupport) -> Expression {
-	let rhs = ItemAttributeArgument(item: support, attribute: lhs.attribute)
+	let rhs = ItemAttributeArgument(item: support, attribute: oppositeAttribute(lhs.attribute))
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
 func >=(lhs: ItemAttributeArgument, support: UILayoutSupport) -> Expression {
-	let rhs = ItemAttributeArgument(item: support, attribute: lhs.attribute)
+	let rhs = ItemAttributeArgument(item: support, attribute: oppositeAttribute(lhs.attribute))
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
+}
+
+func oppositeAttribute(attribute: NSLayoutAttribute) -> NSLayoutAttribute {
+	switch attribute {
+		case .Leading:
+			return .Trailing
+		case .Trailing:
+			return .Leading
+		case .Top:
+			return .Bottom
+		case .Left:
+			return .Right
+		case .Bottom:
+			return .Top
+		case .Right:
+			return .Left
+		default:
+			return .NotAnAttribute
+	}
 }
