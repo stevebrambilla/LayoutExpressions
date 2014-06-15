@@ -4,7 +4,7 @@ import UIKit
 
 // MARK: Item Attributes Argument
 
-struct ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
+class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
 	let _item: AnyObject
 	let _attribute: NSLayoutAttribute
 	let _multiplier: CGFloat?

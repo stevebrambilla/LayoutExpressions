@@ -31,7 +31,7 @@ struct EdgeInsets {
 
 // MARK: Edges Argument
 
-struct ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
+class ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 	let _item: AnyObject
 	let _insets: EdgeInsets?
 

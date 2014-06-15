@@ -22,7 +22,7 @@ struct SizeOffset {
 
 // MARK: Size Arguments
 
-struct ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
+class ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
 	let _item: AnyObject
 	let _offset: SizeOffset?
 
@@ -62,7 +62,7 @@ struct ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
 
 // MARK: Fixed Size Argument
 
-struct FixedSizeArgument: RightHandSideArgument {
+class FixedSizeArgument: RightHandSideArgument {
 	let _size: CGSize
 
 	init(size: CGSize) {

@@ -2,7 +2,7 @@
 
 import UIKit
 
-struct ConstantArgument: DistinctRightHandSideArgument {
+class ConstantArgument: DistinctRightHandSideArgument {
 	let _constant: Float
 
 	init(constant: Float) {

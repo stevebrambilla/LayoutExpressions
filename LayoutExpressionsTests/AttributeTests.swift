@@ -50,27 +50,6 @@ class BasicTests: XCTestCase {
 		XCTAssertTrue(centerY.secondAttribute == .CenterY, "Not center Y")
 	}
 
-	func testSize() {
-		let heightArray = evaluateExpression(subview.lex_height() == 50.0)
-		let height = heightArray[0]
-		XCTAssertTrue(height.secondAttribute == .NotAnAttribute, "Wrong attribute")
-		XCTAssertTrue(height.multiplier == 1.0, "Wrong multiplier")
-		XCTAssertTrue(height.constant == 50.0, "Wrong constant")
-
-		let widthArray = evaluateExpression(subview.lex_width() == 320.0)
-		let width = widthArray[0]
-		XCTAssertTrue(width.secondAttribute == .NotAnAttribute, "Wrong attribute")
-		XCTAssertTrue(width.multiplier == 1.0, "Wrong multiplier")
-		XCTAssertTrue(width.constant == 320.0, "Wrong constant")
-
-		let equalHeightsArray = evaluateExpression(subview.lex_height() == container.lex_height())
-		let equalHeights = equalHeightsArray[0]
-		XCTAssertTrue(equalHeights.firstAttribute == .Height, "Wrong attribute")
-		XCTAssertTrue(equalHeights.secondAttribute == .Height, "Wrong attribute")
-		XCTAssertTrue(equalHeights.multiplier == 1.0, "Wrong multiplier")
-		XCTAssertTrue(equalHeights.constant == 0.0, "Wrong constant")
-	}
-
 	func testBaseline() {
 		let baselineArray = evaluateExpression(subview.lex_baseline() == container.lex_baseline())
 		let baseline = baselineArray[0]
@@ -89,12 +68,16 @@ class BasicTests: XCTestCase {
 	}
 
 	func testMultiplier() {
-		let constraintArray = evaluateExpression(subview.lex_top() == container.lex_top() * 2)
-		let constraint = constraintArray[0]
-		XCTAssertTrue(constraint.multiplier == 2.0, "Wrong multiplier")
+		let rhsArray = evaluateExpression(subview.lex_top() == container.lex_top() * 2)
+		let rhsConstraint = rhsArray[0]
+		XCTAssertTrue(rhsConstraint.multiplier == 2.0, "Wrong multiplier")
+
+		let lhsArray = evaluateExpression(subview.lex_top() == 2 * container.lex_top())
+		let lhsConstraint = lhsArray[0]
+		XCTAssertTrue(lhsConstraint.multiplier == 2.0, "Wrong multiplier")
 	}
 
-	func testBasicConstantAndMultiplier() {
+	func testConstantAndMultiplier() {
 		let constraintArray = evaluateExpression(subview.lex_top() == container.lex_top() * 2 + 15.0)
 		let constraint = constraintArray[0]
 		XCTAssertTrue(constraint.constant == 15.0, "Wrong constant")

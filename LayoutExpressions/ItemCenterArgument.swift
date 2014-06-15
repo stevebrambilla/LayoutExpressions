@@ -28,7 +28,7 @@ struct PointOffset {
 
 // MARK: Center Argument
 
-struct ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
+class ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
 	let _item: AnyObject
 	let _offset: PointOffset?
 
