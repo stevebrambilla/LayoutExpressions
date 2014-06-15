@@ -67,19 +67,25 @@ protocol DistinctRightHandSideArgument: RightHandSideArgument {
 // MARK: Evaluation Functions
 
 // TODO: Re-enable this once Generics is good to go:
-/// Evaluates a distinct layout expression into a single layout constraint.
+/// Evaluates a distinct layout expression into a single constraint.
+///
+/// Returns an evaluated NSLayoutConstraint
 //func evaluateExpression(expression: Expression<DistinctArgument, DistinctArgument>) -> NSLayoutConstraint {
 //	let constraints = expression.evaluate()
 //	assert(constraints.count == 1, "A distinct expression should never evaluate to more than 1 layout constraint.")
 //	return constraints[0]
 //}
 
-/// Evaluates a layout expression into an array of layout constraints.
+/// Evaluates a layout expression into constraints.
+///
+/// Returns an array of layout constraints.
 func evaluateExpression(expression: Expression) -> NSLayoutConstraint[] {
 	return evaluateExpressions([ expression ])
 }
 
-/// Evaluates an array of layout expressions into an array of layout constraints.
+/// Evaluates multiple layout expressions into constraints.
+///
+/// Returns an array of layout constraints.
 func evaluateExpressions(expressions: Expression[]) -> NSLayoutConstraint[] {
 	var constraints = NSLayoutConstraint[]()
 	for expr in expressions {
