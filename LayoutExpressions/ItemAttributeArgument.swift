@@ -57,6 +57,10 @@ struct ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSid
 	return lhs.updateMultiplier(multiplier)
 }
 
+@infix func *(multiplier: Float, rhs: ItemAttributeArgument) -> ItemAttributeArgument {
+	return rhs.updateMultiplier(multiplier)
+}
+
 @infix func +(lhs: ItemAttributeArgument, constant: Float) -> ItemAttributeArgument {
 	return lhs.updateConstant(constant)
 }
