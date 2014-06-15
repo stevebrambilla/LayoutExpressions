@@ -2,23 +2,41 @@
 
 import UIKit
 
-// UIViewControllers uses layout guides that conform to the UILayoutSupport
-// protocol. But we cannot extend the protocol with concrete methods, so we
-// have have two ways to bring the UILayoutSupport objects
-// into our expressions: Implicitly and Explicitly.
+// UIViewControllers has layout guides (objects that conform to the
+// UILayoutSupport protocol). But we cannot extend a protocol with concrete
+// methods, so we
+// have to bring the UILayoutSupport objects
+// into our expressions by converting them to ItemAttributeArguments.
 //
-// Implicit: Just use the layout guide on the right hand side of a layout
-// expression. The right-hand-side attribute will be the 'opposite' of the
-// left-hand-side attribute, which is often desired:
+// We provide two ways to do this: a UIViewController extension that adds
+// `lex_`-prefixed variants of the layoutGuide properties. These use the
+// 'opposite' edge as the argument's attribute.
 //
-//     view.lex_top == viewController.topLayoutGuide
+//     view.lex_top == viewController.lex_topLayoutGuide
 //
-// Explicit: Use one of the explicit functions to specify an edge. This is
-// the only way to add multipliers or constants to the expression:
+// Or use one of the UILayoutSupport functions, which allows you to explicitly
+// specify the edge attribute and return a ItemAttributeArgument.
 //
 //     view.lex_leading == leadingEdgeOf(viewController.leftLayoutGuide)
 
-// MARK: Explicit Functions
+// MARK: UIViewController Extensions
+
+extension UIViewController {
+	func lex_topLayoutGuide() -> ItemAttributeArgument {
+		return ItemAttributeArgument(item: self.topLayoutGuide, attribute: oppositeEdgeAttribute(.Top))
+	}
+	func lex_leftLayoutGuide() -> ItemAttributeArgument {
+		return ItemAttributeArgument(item: self.leftLayoutGuide, attribute: oppositeEdgeAttribute(.Left))
+	}
+	func lex_bottomLayoutGuide() -> ItemAttributeArgument {
+		return ItemAttributeArgument(item: self.bottomLayoutGuide, attribute: oppositeEdgeAttribute(.Bottom))
+	}
+	func lex_rightLayoutGuide() -> ItemAttributeArgument {
+		return ItemAttributeArgument(item: self.rightLayoutGuide, attribute: oppositeEdgeAttribute(.Right))
+	}
+}
+
+// MARK: UILayoutSupport Functions
 
 func leadingEdgeOf(support: UILayoutSupport) -> ItemAttributeArgument {
 	return ItemAttributeArgument(item: support, attribute: .Leading)
@@ -40,24 +58,7 @@ func rightEdgeOf(support: UILayoutSupport) -> ItemAttributeArgument {
 	return ItemAttributeArgument(item: support, attribute: .Right)
 }
 
-// MARK: Implicit Comparison Operators
-
-func ==(lhs: ItemAttributeArgument, support: UILayoutSupport) -> Expression {
-	let rhs = ItemAttributeArgument(item: support, attribute: oppositeAttribute(lhs.attribute))
-	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
-}
-
-func <=(lhs: ItemAttributeArgument, support: UILayoutSupport) -> Expression {
-	let rhs = ItemAttributeArgument(item: support, attribute: oppositeAttribute(lhs.attribute))
-	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
-}
-
-func >=(lhs: ItemAttributeArgument, support: UILayoutSupport) -> Expression {
-	let rhs = ItemAttributeArgument(item: support, attribute: oppositeAttribute(lhs.attribute))
-	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
-}
-
-func oppositeAttribute(attribute: NSLayoutAttribute) -> NSLayoutAttribute {
+func oppositeEdgeAttribute(attribute: NSLayoutAttribute) -> NSLayoutAttribute {
 	switch attribute {
 		case .Leading:
 			return .Trailing
