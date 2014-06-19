@@ -11,17 +11,17 @@ class ItemDimensionArgument: ItemAttributeArgument {
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemDimensionArgument, constant: Float) -> Expression {
+func ==(lhs: ItemDimensionArgument, constant: Float) -> Expression<ItemDimensionArgument, ConstantArgument> {
 	let rhs = ConstantArgument(constant: constant)
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemDimensionArgument, constant: Float) -> Expression {
+func <=(lhs: ItemDimensionArgument, constant: Float) -> Expression<ItemDimensionArgument, ConstantArgument> {
 	let rhs = ConstantArgument(constant: constant)
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemDimensionArgument, constant: Float) -> Expression {
+func >=(lhs: ItemDimensionArgument, constant: Float) -> Expression<ItemDimensionArgument, ConstantArgument> {
 	let rhs = ConstantArgument(constant: constant)
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

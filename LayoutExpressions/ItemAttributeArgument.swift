@@ -71,14 +71,14 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression {
+func ==(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression<ItemAttributeArgument, ItemAttributeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression {
+func <=(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression<ItemAttributeArgument, ItemAttributeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression {
+func >=(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression<ItemAttributeArgument, ItemAttributeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

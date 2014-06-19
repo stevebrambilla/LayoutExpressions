@@ -70,6 +70,6 @@ class ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemCenterArgument, rhs: ItemCenterArgument) -> Expression {
+func ==(lhs: ItemCenterArgument, rhs: ItemCenterArgument) -> Expression<ItemCenterArgument, ItemCenterArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }

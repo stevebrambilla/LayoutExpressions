@@ -5,13 +5,13 @@ import UIKit
 // TODO: Once compiler stops crashing with Generics, we can change this to a struct Expression<L: LeftHandSideArgument, R: RightHandSideArgument>
 // and use Expression<DistinctArgument, DistinctArgument> to test for distinction.
 
-class Expression {
-	let _lhs: LeftHandSideArgument
+class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
+	let _lhs: L
 	let _relation: NSLayoutRelation
-	let _rhs: RightHandSideArgument
+	let _rhs: R
 	let _priority: Priority?
 
-	init(lhs: LeftHandSideArgument, relation: NSLayoutRelation, rhs: RightHandSideArgument, priority: Priority? = nil) {
+	init(lhs: L, relation: NSLayoutRelation, rhs: R, priority: Priority? = nil) {
 		_lhs = lhs
 		_relation = relation
 		_rhs = rhs
@@ -66,27 +66,26 @@ protocol DistinctRightHandSideArgument: RightHandSideArgument {
 
 // MARK: Evaluation Functions
 
-// TODO: Re-enable this once Generics is good to go:
 /// Evaluates a distinct layout expression into a single constraint.
 ///
 /// Returns an evaluated NSLayoutConstraint
-//func evaluateExpression(expression: Expression<DistinctArgument, DistinctArgument>) -> NSLayoutConstraint {
-//	let constraints = expression.evaluate()
-//	assert(constraints.count == 1, "A distinct expression should never evaluate to more than 1 layout constraint.")
-//	return constraints[0]
-//}
+func evaluateExpression(expression: Expression<DistinctLeftHandSideArgument, DistinctRightHandSideArgument>) -> NSLayoutConstraint {
+	let constraints = expression.evaluate()
+	assert(constraints.count == 1, "A distinct expression should never evaluate to more than 1 layout constraint.")
+	return constraints[0]
+}
 
 /// Evaluates a layout expression into constraints.
 ///
 /// Returns an array of layout constraints.
-func evaluateExpression(expression: Expression) -> NSLayoutConstraint[] {
+func evaluateExpression(expression: Expression<LeftHandSideArgument, RightHandSideArgument>) -> NSLayoutConstraint[] {
 	return evaluateExpressions([ expression ])
 }
 
 /// Evaluates multiple layout expressions into constraints.
 ///
 /// Returns an array of layout constraints.
-func evaluateExpressions(expressions: Expression[]) -> NSLayoutConstraint[] {
+func evaluateExpressions(expressions: Expression<LeftHandSideArgument, RightHandSideArgument>[]) -> NSLayoutConstraint[] {
 	var constraints = NSLayoutConstraint[]()
 	for expr in expressions {
 		constraints += expr.evaluate()

@@ -20,10 +20,10 @@ operator infix <~ {
 
 // TODO: change these to "func <~ <T: Expression>(expression: T, priority: <type>) -> T" once Generics support is good to go
 
-@infix func <~(expression: Expression, priority: SystemPriority) -> Expression {
+@infix func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: SystemPriority) -> Expression<L, R> {
 	return expression.updatePriority(priority.toRaw())
 }
 
-@infix func <~(expression: Expression, priority: Priority) -> Expression {
+@infix func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: Priority) -> Expression<L, R> {
 	return expression.updatePriority(priority)
 }

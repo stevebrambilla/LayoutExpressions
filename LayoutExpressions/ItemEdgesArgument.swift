@@ -84,14 +84,14 @@ class ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression {
+func ==(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression<ItemEdgesArgument, ItemEdgesArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression {
+func <=(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression<ItemEdgesArgument, ItemEdgesArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression {
+func >=(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression<ItemEdgesArgument, ItemEdgesArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

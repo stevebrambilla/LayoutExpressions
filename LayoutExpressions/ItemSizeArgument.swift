@@ -84,29 +84,29 @@ class FixedSizeArgument: RightHandSideArgument {
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression {
+func ==(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression<ItemSizeArgument, ItemSizeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression {
+func <=(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression<ItemSizeArgument, ItemSizeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression {
+func >=(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression<ItemSizeArgument, ItemSizeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
 
-func ==(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression {
+func ==(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression<ItemSizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression {
+func <=(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression<ItemSizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression {
+func >=(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression<ItemSizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
