@@ -3,9 +3,9 @@
 import UIKit
 
 class ConstantArgument: DistinctRightHandSideArgument {
-	let _constant: Float
+	let _constant: CGFloat
 
-	init(constant: Float) {
+	init(constant: CGFloat) {
 		_constant = constant
 	}
 

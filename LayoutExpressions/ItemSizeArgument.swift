@@ -16,8 +16,8 @@ import UIKit
 //     subview.size == (width: 320.0, height: 480.0)
 
 struct SizeOffset {
-	var width: Float
-	var height: Float
+	var width: CGFloat
+	var height: CGFloat
 }
 
 // MARK: Size Arguments
@@ -45,13 +45,13 @@ class ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
 
 	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
-		case .Width:
-			return (_item, .Width, nil, _offset?.width)
-		case .Height:
-			return (_item, .Height, nil, _offset?.height)
-		default:
-			assert(false, "Called ItemSizeArgument with an invalid left attribute.")
-			return (_item, .NotAnAttribute, nil, nil)
+			case .Width:
+				return (_item, .Width, nil, _offset?.width)
+			case .Height:
+				return (_item, .Height, nil, _offset?.height)
+			default:
+				assert(false, "Called ItemSizeArgument with an invalid left attribute.")
+				return (_item, .NotAnAttribute, nil, nil)
 		}
 	}
 }
@@ -71,14 +71,14 @@ class FixedSizeArgument: RightHandSideArgument {
 
 	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
-		case .Width:
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: _size.width)
-		case .Height:
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: _size.height)
-		default:
-			assert(false, "Called ItemSizeArgument with an invalid left attribute.")
-			return (nil, .NotAnAttribute, nil, nil)
-		}
+			case .Width:
+				return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: _size.width)
+			case .Height:
+				return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: _size.height)
+			default:
+				assert(false, "Called ItemSizeArgument with an invalid left attribute.")
+				return (nil, .NotAnAttribute, nil, nil)
+			}
 	}
 }
 
