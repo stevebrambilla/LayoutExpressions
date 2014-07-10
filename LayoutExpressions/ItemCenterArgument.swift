@@ -9,8 +9,8 @@ import UIKit
 // 		subview.center == container.center + (horizontal: 0.0, vertical: -10.0)
 
 struct PointOffset {
-	var horizontal: Float
-	var vertical: Float
+	var horizontal: CGFloat
+	var vertical: CGFloat
 
 	init(horizontal: CGFloat, vertical: CGFloat) {
 		self.horizontal = horizontal
@@ -46,7 +46,7 @@ class ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
 		return _item
 	}
 
-	var attributes: NSLayoutAttribute[] {
+	var attributes: [NSLayoutAttribute] {
 		return [ .CenterX, .CenterY ]
 	}
 

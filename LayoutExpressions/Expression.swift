@@ -22,8 +22,8 @@ class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
 		return Expression(lhs: _lhs, relation: _relation, rhs: _rhs, priority: priority)
 	}
 
-	func evaluate() -> NSLayoutConstraint[] {
-		var constraints = NSLayoutConstraint[]()
+	func evaluate() -> [NSLayoutConstraint] {
+		var constraints = [NSLayoutConstraint]()
 
 		// Create the NSLayoutConstraints.
 		for leftAttribute in _lhs.attributes {
@@ -49,7 +49,7 @@ class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
 
 protocol LeftHandSideArgument {
 	var item: AnyObject { get }
-	var attributes: NSLayoutAttribute[] { get }
+	var attributes: [NSLayoutAttribute] { get }
 }
 
 protocol RightHandSideArgument {
@@ -78,15 +78,15 @@ func evaluateExpression(expression: Expression<DistinctLeftHandSideArgument, Dis
 /// Evaluates a layout expression into constraints.
 ///
 /// Returns an array of layout constraints.
-func evaluateExpression(expression: Expression<LeftHandSideArgument, RightHandSideArgument>) -> NSLayoutConstraint[] {
+func evaluateExpression(expression: Expression<LeftHandSideArgument, RightHandSideArgument>) -> [NSLayoutConstraint] {
 	return evaluateExpressions([ expression ])
 }
 
 /// Evaluates multiple layout expressions into constraints.
 ///
 /// Returns an array of layout constraints.
-func evaluateExpressions(expressions: Expression<LeftHandSideArgument, RightHandSideArgument>[]) -> NSLayoutConstraint[] {
-	var constraints = NSLayoutConstraint[]()
+func evaluateExpressions(expressions: [Expression<LeftHandSideArgument, RightHandSideArgument>]) -> [NSLayoutConstraint] {
+	var constraints = [NSLayoutConstraint]()
 	for expr in expressions {
 		constraints += expr.evaluate()
 	}

@@ -100,21 +100,21 @@ extension UIView {
 	/// Evaluates the expression and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpression(expression: Expression<LeftHandSideArgument, RightHandSideArgument>) -> NSLayoutConstraint[] {
+	func lex_addExpression(expression: Expression<LeftHandSideArgument, RightHandSideArgument>) -> [NSLayoutConstraint] {
 		return self.lex_addExpressions([ expression ])
 	}
 
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpressions(expressions: Expression<LeftHandSideArgument, RightHandSideArgument>...) -> NSLayoutConstraint[] {
+	func lex_addExpressions(expressions: Expression<LeftHandSideArgument, RightHandSideArgument>...) -> [NSLayoutConstraint] {
 		return self.lex_addExpressions(expressions)
 	}
 
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpressions(expressions: Expression<LeftHandSideArgument, RightHandSideArgument>[]) -> NSLayoutConstraint[] {
+	func lex_addExpressions(expressions: [Expression<LeftHandSideArgument, RightHandSideArgument>]) -> [NSLayoutConstraint] {
 		let constraints = evaluateExpressions(expressions)
 		self.addConstraints(constraints)
 		return constraints

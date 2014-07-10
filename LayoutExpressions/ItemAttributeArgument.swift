@@ -10,7 +10,7 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 	let _multiplier: CGFloat?
 	let _constant: CGFloat?
 
-	init(item: AnyObject, attribute: NSLayoutAttribute, multiplier: Float? = nil, constant: Float? = nil) {
+	init(item: AnyObject, attribute: NSLayoutAttribute, multiplier: CGFloat? = nil, constant: CGFloat? = nil) {
 		_item = item
 		_attribute = attribute
 		_multiplier = multiplier
@@ -30,7 +30,7 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 		return _item
 	}
 
-	var attributes: NSLayoutAttribute[] {
+	var attributes: [NSLayoutAttribute] {
 		return [ self.attribute ]
 	}
 
@@ -53,19 +53,19 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 // Note: Order of operations still matters if using a multiplier AND constant.
 // We _could_ use additional types to prevent multiple '*' / '+' / '-' operations...
 
-@infix func *(lhs: ItemAttributeArgument, multiplier: Float) -> ItemAttributeArgument {
+@infix func *(lhs: ItemAttributeArgument, multiplier: CGFloat) -> ItemAttributeArgument {
 	return lhs.updateMultiplier(multiplier)
 }
 
-@infix func *(multiplier: Float, rhs: ItemAttributeArgument) -> ItemAttributeArgument {
+@infix func *(multiplier: CGFloat, rhs: ItemAttributeArgument) -> ItemAttributeArgument {
 	return rhs.updateMultiplier(multiplier)
 }
 
-@infix func +(lhs: ItemAttributeArgument, constant: Float) -> ItemAttributeArgument {
+@infix func +(lhs: ItemAttributeArgument, constant: CGFloat) -> ItemAttributeArgument {
 	return lhs.updateConstant(constant)
 }
 
-@infix func -(lhs: ItemAttributeArgument, constant: Float) -> ItemAttributeArgument {
+@infix func -(lhs: ItemAttributeArgument, constant: CGFloat) -> ItemAttributeArgument {
 	return lhs.updateConstant(-constant)
 }
 
