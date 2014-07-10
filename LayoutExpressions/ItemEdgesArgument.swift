@@ -49,7 +49,7 @@ class ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 		return _item
 	}
 
-	var attributes: NSLayoutAttribute[] {
+	var attributes: [NSLayoutAttribute] {
 		return [ .Top, .Left, .Bottom, .Right ]
 	}
 

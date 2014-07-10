@@ -39,7 +39,7 @@ class ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
 		return _item
 	}
 
-	var attributes: NSLayoutAttribute[] {
+	var attributes: [NSLayoutAttribute] {
 		return [ .Width, .Height ]
 	}
 

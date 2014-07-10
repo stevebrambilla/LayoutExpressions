@@ -54,7 +54,7 @@ class CenterTests: XCTestCase {
 		validateConstraintConstants(constraints, x: 5.0, y: -10.0)
 	}
 
-	func validateConstraintConstants(constraints: NSLayoutConstraint[], x: CGFloat, y: CGFloat) {
+	func validateConstraintConstants(constraints: [NSLayoutConstraint], x: CGFloat, y: CGFloat) {
 		let centerXs = constraints.filter { $0.firstAttribute == NSLayoutAttribute.CenterX }
 		XCTAssertTrue(centerXs.count == 1, "Didn't find exactly one CenterX constraint.")
 		if centerXs.count == 1 {

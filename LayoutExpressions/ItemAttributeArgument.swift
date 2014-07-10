@@ -30,7 +30,7 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 		return _item
 	}
 
-	var attributes: NSLayoutAttribute[] {
+	var attributes: [NSLayoutAttribute] {
 		return [ self.attribute ]
 	}
 
