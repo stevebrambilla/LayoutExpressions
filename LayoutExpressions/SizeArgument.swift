@@ -22,7 +22,7 @@ struct SizeOffset {
 
 // MARK: Size Arguments
 
-class ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
+class SizeArgument: LeftHandSideArgument, RightHandSideArgument {
 	let _item: AnyObject
 	let _offset: SizeOffset?
 
@@ -31,8 +31,8 @@ class ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
 		_offset = offset
 	}
 
-	func updateOffset(offset: SizeOffset) -> ItemSizeArgument {
-		return ItemSizeArgument(item: _item, offset: offset)
+	func updateOffset(offset: SizeOffset) -> SizeArgument {
+		return SizeArgument(item: _item, offset: offset)
 	}
 
 	var item: AnyObject {
@@ -50,13 +50,13 @@ class ItemSizeArgument: LeftHandSideArgument, RightHandSideArgument {
 			case .Height:
 				return (_item, .Height, nil, _offset?.height)
 			default:
-				assert(false, "Called ItemSizeArgument with an invalid left attribute.")
+				assert(false, "Called SizeArgument with an invalid left attribute.")
 				return (_item, .NotAnAttribute, nil, nil)
 		}
 	}
 }
 
-@infix func +(lhs: ItemSizeArgument, offset: SizeOffset) -> ItemSizeArgument {
+@infix func +(lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
 	return lhs.updateOffset(offset)
 }
 
@@ -76,7 +76,7 @@ class FixedSizeArgument: RightHandSideArgument {
 			case .Height:
 				return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: _size.height)
 			default:
-				assert(false, "Called ItemSizeArgument with an invalid left attribute.")
+				assert(false, "Called SizeArgument with an invalid left attribute.")
 				return (nil, .NotAnAttribute, nil, nil)
 			}
 	}
@@ -84,29 +84,29 @@ class FixedSizeArgument: RightHandSideArgument {
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression<ItemSizeArgument, ItemSizeArgument> {
+func ==(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression<ItemSizeArgument, ItemSizeArgument> {
+func <=(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemSizeArgument, rhs: ItemSizeArgument) -> Expression<ItemSizeArgument, ItemSizeArgument> {
+func >=(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
 
-func ==(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression<ItemSizeArgument, FixedSizeArgument> {
+func ==(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression<ItemSizeArgument, FixedSizeArgument> {
+func <=(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemSizeArgument, rhsSize: CGSize) -> Expression<ItemSizeArgument, FixedSizeArgument> {
+func >=(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

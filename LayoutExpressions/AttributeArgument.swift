@@ -4,7 +4,7 @@ import UIKit
 
 // MARK: Item Attributes Argument
 
-class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
+class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
 	let _item: AnyObject
 	let _attribute: NSLayoutAttribute
 	let _multiplier: CGFloat?
@@ -17,12 +17,12 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 		_constant = constant
 	}
 
-	func updateMultiplier(multiplier: CGFloat) -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: _item, attribute: _attribute, multiplier: multiplier, constant: _constant)
+	func updateMultiplier(multiplier: CGFloat) -> AttributeArgument {
+		return AttributeArgument(item: _item, attribute: _attribute, multiplier: multiplier, constant: _constant)
 	}
 
-	func updateConstant(constant: CGFloat) -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: _item, attribute: _attribute, multiplier: _multiplier, constant: constant)
+	func updateConstant(constant: CGFloat) -> AttributeArgument {
+		return AttributeArgument(item: _item, attribute: _attribute, multiplier: _multiplier, constant: constant)
 	}
 
 	// LeftHandSideArgument
@@ -53,32 +53,32 @@ class ItemAttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSide
 // Note: Order of operations still matters if using a multiplier AND constant.
 // We _could_ use additional types to prevent multiple '*' / '+' / '-' operations...
 
-@infix func *(lhs: ItemAttributeArgument, multiplier: CGFloat) -> ItemAttributeArgument {
+@infix func *(lhs: AttributeArgument, multiplier: CGFloat) -> AttributeArgument {
 	return lhs.updateMultiplier(multiplier)
 }
 
-@infix func *(multiplier: CGFloat, rhs: ItemAttributeArgument) -> ItemAttributeArgument {
+@infix func *(multiplier: CGFloat, rhs: AttributeArgument) -> AttributeArgument {
 	return rhs.updateMultiplier(multiplier)
 }
 
-@infix func +(lhs: ItemAttributeArgument, constant: CGFloat) -> ItemAttributeArgument {
+@infix func +(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(constant)
 }
 
-@infix func -(lhs: ItemAttributeArgument, constant: CGFloat) -> ItemAttributeArgument {
+@infix func -(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(-constant)
 }
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression<ItemAttributeArgument, ItemAttributeArgument> {
+func ==(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression<ItemAttributeArgument, ItemAttributeArgument> {
+func <=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemAttributeArgument, rhs: ItemAttributeArgument) -> Expression<ItemAttributeArgument, ItemAttributeArgument> {
+func >=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

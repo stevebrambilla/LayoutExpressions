@@ -31,7 +31,7 @@ struct EdgeInsets {
 
 // MARK: Edges Argument
 
-class ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
+class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 	let _item: AnyObject
 	let _insets: EdgeInsets?
 
@@ -40,8 +40,8 @@ class ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 		_insets = insets
 	}
 
-	func updateInsets(insets: EdgeInsets) -> ItemEdgesArgument {
-		return ItemEdgesArgument(item: _item, insets: insets)
+	func updateInsets(insets: EdgeInsets) -> EdgesArgument {
+		return EdgesArgument(item: _item, insets: insets)
 	}
 
 	// LeftHandSideArgument
@@ -73,25 +73,25 @@ class ItemEdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 }
 
-@infix func -(lhs: ItemEdgesArgument, inset: CGFloat) -> ItemEdgesArgument {
+@infix func -(lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
 	let insets = EdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
 	return lhs.updateInsets(insets)
 }
 
-@infix func -(lhs: ItemEdgesArgument, insets: EdgeInsets) -> ItemEdgesArgument {
+@infix func -(lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
 	return lhs.updateInsets(insets)
 }
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression<ItemEdgesArgument, ItemEdgesArgument> {
+func ==(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression<ItemEdgesArgument, ItemEdgesArgument> {
+func <=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: ItemEdgesArgument, rhs: ItemEdgesArgument) -> Expression<ItemEdgesArgument, ItemEdgesArgument> {
+func >=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

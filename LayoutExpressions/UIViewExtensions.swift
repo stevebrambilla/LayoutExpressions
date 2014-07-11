@@ -5,82 +5,82 @@ import UIKit
 // TODO: Using functions as a workaround for a crashy compiler in beta 1. Will make these read-only properties in future update.
 extension UIView {
 	/// The distinct .Leading layout expression argument.
-	func lex_leading() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Leading)
+	func lex_leading() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Leading)
 	}
 
 	/// The distinct .Trailing layout expression argument.
-	func lex_trailing() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Trailing)
+	func lex_trailing() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Trailing)
 	}
 
 	/// The distinct .Top layout expression argument.
-	func lex_top() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Top)
+	func lex_top() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Top)
 	}
 
 	/// The distinct .Left layout expression argument.
-	func lex_left() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Left)
+	func lex_left() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Left)
 	}
 
 	/// The distinct .Bottom layout expression argument.
-	func lex_bottom() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Bottom)
+	func lex_bottom() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Bottom)
 	}
 
 	/// The distinct .Right layout expression argument.
-	func lex_right() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Right)
+	func lex_right() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Right)
 	}
 
 	/// The distinct .CenterX layout expression argument.
-	func lex_centerX() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .CenterX)
+	func lex_centerX() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .CenterX)
 	}
 
 	/// The distinct .CenterY layout expression argument.
-	func lex_centerY() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .CenterY)
+	func lex_centerY() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .CenterY)
 	}
 
 	/// The distinct .Width layout expression argument.
-	func lex_width() -> ItemDimensionArgument {
-		return ItemDimensionArgument(item: self, attribute: .Width)
+	func lex_width() -> DimensionArgument {
+		return DimensionArgument(item: self, attribute: .Width)
 	}
 
 	/// The distinct .Height layout expression argument.
-	func lex_height() -> ItemDimensionArgument {
-		return ItemDimensionArgument(item: self, attribute: .Height)
+	func lex_height() -> DimensionArgument {
+		return DimensionArgument(item: self, attribute: .Height)
 	}
 
 	/// The distinct .Baseline layout expression argument.
-	func lex_baseline() -> ItemAttributeArgument {
-		return ItemAttributeArgument(item: self, attribute: .Baseline)
+	func lex_baseline() -> AttributeArgument {
+		return AttributeArgument(item: self, attribute: .Baseline)
 	}
 }
 
 extension UIView {
 	/// The composite "edges" layout expression argument.
 	/// Evaluates to .Top, .Left, .Bottom, .Right constraints.
-	func lex_edges() -> ItemEdgesArgument {
-		return ItemEdgesArgument(item: self)
+	func lex_edges() -> EdgesArgument {
+		return EdgesArgument(item: self)
 	}
 }
 
 extension UIView {
 	/// The composite "center" layout expression argument.
 	/// Evaluates to .CenterX, .CenterY constraints.
-	func lex_center() -> ItemCenterArgument {
-		return ItemCenterArgument(item: self)
+	func lex_center() -> CenterArgument {
+		return CenterArgument(item: self)
 	}
 }
 
 extension UIView {
 	/// The composite "size" layout expression argument.
 	/// Evaluates to .Width, .Height constraints.
-	func lex_size() -> ItemSizeArgument {
-		return ItemSizeArgument(item: self)
+	func lex_size() -> SizeArgument {
+		return SizeArgument(item: self)
 	}
 }
 

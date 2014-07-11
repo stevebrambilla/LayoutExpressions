@@ -28,7 +28,7 @@ struct PointOffset {
 
 // MARK: Center Argument
 
-class ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
+class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
 	let _item: AnyObject
 	let _offset: PointOffset?
 
@@ -37,8 +37,8 @@ class ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
 		_offset = offset
 	}
 
-	func updateOffset(offset: PointOffset) -> ItemCenterArgument {
-		return ItemCenterArgument(item: _item, offset: offset)
+	func updateOffset(offset: PointOffset) -> CenterArgument {
+		return CenterArgument(item: _item, offset: offset)
 	}
 
 	// LeftHandSideArgument
@@ -58,18 +58,18 @@ class ItemCenterArgument: LeftHandSideArgument, RightHandSideArgument {
 		case .CenterY:
 			return (item: _item, attribute: .CenterY, multiplier: nil, constant: _offset?.vertical)
 		default:
-			assert(false, "Called ItemCenterArgument with an invalid left attribute.")
+			assert(false, "Called CenterArgument with an invalid left attribute.")
 			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: nil)
 		}
 	}
 }
 
-@infix func +(lhs: ItemCenterArgument, offset: PointOffset) -> ItemCenterArgument {
+@infix func +(lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
 	return lhs.updateOffset(offset)
 }
 
 // MARK: Comparison Operators
 
-func ==(lhs: ItemCenterArgument, rhs: ItemCenterArgument) -> Expression<ItemCenterArgument, ItemCenterArgument> {
+func ==(lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
