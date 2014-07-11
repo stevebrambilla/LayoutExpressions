@@ -164,9 +164,6 @@ Now just `@import LayoutExpressions` and you're all set.
 
 - The Swift compiler still has a few issues that are being worked around:
     - The UIView / UIViewController extension's "properties" are implemented as functions due to a crash in the Swift front-end. Once a new seed is available that fixes the issue, these will change to _actual_ properties.
-    - The `lex_addExpression() -> NSLayoutConstraint` function, which takes a _distinct_ expression and returns exactly _one_ `NSLayoutConstraint`, is commented out until the "unimplemented IRGen feature! non-fixed class layout" if resolved.
-        - Just use multiple-constraint functions for now: `lex_addExpression() -> NSLayoutConstraint[]` or `lex_addExpressions() -> NSLayoutConstraint[]`
-
 - Add support for OS X.
 
 ## Contact
