@@ -19,74 +19,61 @@ class BasicTests: XCTestCase {
 	}
 
 	func testEdges() {
-		// TODO: Once generics support is ready, eliminate this array (since evaluateExpression can return just one constraint):
-		let topAndBottomArray = evaluateExpression(subview.lex_top() == container.lex_bottom())
-		let topAndBottom = topAndBottomArray[0]
+		let topAndBottom = evaluateExpression(subview.lex_top() == container.lex_bottom())
 		XCTAssertTrue(topAndBottom.firstItem === subview, "Wrong firstItem")
 		XCTAssertTrue(topAndBottom.secondItem === container, "Wrong secondItem")
 		XCTAssertTrue(topAndBottom.firstAttribute == .Top, "Not top edge")
 		XCTAssertTrue(topAndBottom.secondAttribute == .Bottom, "Not bottom edge")
 
-		let leftAndRightArray = evaluateExpression(subview.lex_left() == container.lex_right())
-		let leftAndRight = leftAndRightArray[0]
+		let leftAndRight = evaluateExpression(subview.lex_left() == container.lex_right())
 		XCTAssertTrue(leftAndRight.firstAttribute == .Left, "Not left edge")
 		XCTAssertTrue(leftAndRight.secondAttribute == .Right, "Not right edge")
 
-		let leadingAndTrailingArray = evaluateExpression(subview.lex_leading() == container.lex_trailing())
-		let leadingAndTrailing = leadingAndTrailingArray[0]
+		let leadingAndTrailing = evaluateExpression(subview.lex_leading() == container.lex_trailing())
 		XCTAssertTrue(leadingAndTrailing.firstAttribute == .Leading, "Not leading edge")
 		XCTAssertTrue(leadingAndTrailing.secondAttribute == .Trailing, "Not trailing edge")
 	}
 
 	func testCenter() {
-		let centerXArray = evaluateExpression(subview.lex_centerX() == container.lex_centerX())
-		let centerX = centerXArray[0]
+		let centerX = evaluateExpression(subview.lex_centerX() == container.lex_centerX())
 		XCTAssertTrue(centerX.firstAttribute == .CenterX, "Not center X")
 		XCTAssertTrue(centerX.secondAttribute == .CenterX, "Not center X")
 
-		let centerYArray = evaluateExpression(subview.lex_centerY() == container.lex_centerY())
-		let centerY = centerYArray[0]
+		let centerY = evaluateExpression(subview.lex_centerY() == container.lex_centerY())
 		XCTAssertTrue(centerY.firstAttribute == .CenterY, "Not center Y")
 		XCTAssertTrue(centerY.secondAttribute == .CenterY, "Not center Y")
 	}
 
 	func testBaseline() {
-		let baselineArray = evaluateExpression(subview.lex_baseline() == container.lex_baseline())
-		let baseline = baselineArray[0]
+		let baseline = evaluateExpression(subview.lex_baseline() == container.lex_baseline())
 		XCTAssertTrue(baseline.firstAttribute == .Baseline, "Wrong attribute")
 		XCTAssertTrue(baseline.secondAttribute == .Baseline, "Wrong attribute")
 	}
 
 	func testConstant() {
-		let positiveArray = evaluateExpression(subview.lex_top() == container.lex_top() + 15.0)
-		let positive = positiveArray[0]
+		let positive = evaluateExpression(subview.lex_top() == container.lex_top() + 15.0)
 		XCTAssertTrue(positive.constant == 15.0, "Wrong constant")
 
-		let negativeArray = evaluateExpression(subview.lex_top() == container.lex_top() - 15.0)
-		let negative = negativeArray[0]
+		let negative = evaluateExpression(subview.lex_top() == container.lex_top() - 15.0)
 		XCTAssertTrue(negative.constant == -15.0, "Wrong constant")
 	}
 
 	func testMultiplier() {
-		let rhsArray = evaluateExpression(subview.lex_top() == container.lex_top() * 2)
-		let rhsConstraint = rhsArray[0]
+		let rhsConstraint = evaluateExpression(subview.lex_top() == container.lex_top() * 2)
 		XCTAssertTrue(rhsConstraint.multiplier == 2.0, "Wrong multiplier")
 
-		let lhsArray = evaluateExpression(subview.lex_top() == 2 * container.lex_top())
-		let lhsConstraint = lhsArray[0]
+		let lhsConstraint = evaluateExpression(subview.lex_top() == 2 * container.lex_top())
 		XCTAssertTrue(lhsConstraint.multiplier == 2.0, "Wrong multiplier")
 	}
 
 	func testConstantAndMultiplier() {
-		let constraintArray = evaluateExpression(subview.lex_top() == container.lex_top() * 2 + 15.0)
-		let constraint = constraintArray[0]
+		let constraint = evaluateExpression(subview.lex_top() == container.lex_top() * 2 + 15.0)
 		XCTAssertTrue(constraint.constant == 15.0, "Wrong constant")
 		XCTAssertTrue(constraint.multiplier == 2.0, "Wrong multiplier")
 	}
 
 	func testAddingSingleExpressionToView() {
-		let constraintArray = container.lex_addExpression(subview.lex_top() == container.lex_top())
-		let constraint = constraintArray[0]
+		let constraint = container.lex_addExpression(subview.lex_top() == container.lex_top())
 
 		let results = container.constraints().filter { $0 === constraint }
 		XCTAssertTrue(results.count == 1, "Constraint not added")

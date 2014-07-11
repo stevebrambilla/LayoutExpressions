@@ -87,36 +87,42 @@ extension UIView {
 // MARK: Adding to UIViews
 
 extension UIView {
-	// TODO: Re-enable this once Generics is good to go:
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.
-	//	func lex_addExpression(expression: Expression<DistinctArgument, DistinctArgument>) -> NSLayoutConstraint {
-	//		let constraint = evaluateExpression(expression)
-	//		self.addConstraint(constraint)
-	//		return constraint
-	//	}
+	func lex_addExpression<L: DistinctLeftHandSideArgument, R: DistinctRightHandSideArgument>(expression: Expression<L, R>) -> NSLayoutConstraint {
+		let constraint = evaluateExpression(expression)
+		self.addConstraint(constraint)
+		return constraint
+	}
 
 	/// Evaluates the expression and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpression(expression: Expression<LeftHandSideArgument, RightHandSideArgument>) -> [NSLayoutConstraint] {
-		return self.lex_addExpressions([ expression ])
+	func lex_addExpression<L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>) -> [NSLayoutConstraint] {
+		return self.lex_addExpressions(expression)
 	}
 
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpressions(expressions: Expression<LeftHandSideArgument, RightHandSideArgument>...) -> [NSLayoutConstraint] {
-		return self.lex_addExpressions(expressions)
+	func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: Expression<L, R>...) -> [NSLayoutConstraint] {
+		let constraints = evaluateExpressions(expressions)
+		self.addConstraints(constraints)
+		return constraints
+
+		//return self.lex_addExpressions(expressions)
 	}
 
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpressions(expressions: [Expression<LeftHandSideArgument, RightHandSideArgument>]) -> [NSLayoutConstraint] {
+	// TODO: This function strill crashes the Swift compiler as of b3
+	/*
+	func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: [Expression<L, R>]) -> [NSLayoutConstraint] {
 		let constraints = evaluateExpressions(expressions)
 		self.addConstraints(constraints)
 		return constraints
 	}
+	*/
 }

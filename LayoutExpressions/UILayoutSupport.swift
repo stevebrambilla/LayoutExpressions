@@ -2,10 +2,9 @@
 
 import UIKit
 
-// UIViewControllers has layout guides (objects that conform to the
+// UIViewControllers have layout guides (objects that conform to the
 // UILayoutSupport protocol). But we cannot extend a protocol with concrete
-// methods, so we
-// have to bring the UILayoutSupport objects
+// methods, so we have to bring the UILayoutSupport objects
 // into our expressions by converting them to ItemAttributeArguments.
 //
 // We provide two ways to do this: a UIViewController extension that adds

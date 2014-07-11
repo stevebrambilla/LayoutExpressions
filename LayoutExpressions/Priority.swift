@@ -18,8 +18,6 @@ operator infix <~ {
 	precedence 125 // Less than the Comparative operators (130)
 }
 
-// TODO: change these to "func <~ <T: Expression>(expression: T, priority: <type>) -> T" once Generics support is good to go
-
 @infix func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: SystemPriority) -> Expression<L, R> {
 	return expression.updatePriority(priority.toRaw())
 }
