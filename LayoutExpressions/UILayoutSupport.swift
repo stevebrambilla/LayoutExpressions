@@ -22,12 +22,12 @@ import UIKit
 
 extension UIViewController {
 	/// The layout expression argument for the .Bottom attribute of the view controller's topLayoutGuide.
-	public func lex_topLayoutGuide() -> AttributeArgument {
+	public var lex_topLayoutGuide: AttributeArgument {
 		return AttributeArgument(item: self.topLayoutGuide, attribute: .Bottom)
 	}
 
 	/// The layout expression argument for the .Top attribute of the view controller's topLayoutGuide.
-	public func lex_bottomLayoutGuide() -> AttributeArgument {
+	public var lex_bottomLayoutGuide: AttributeArgument {
 		return AttributeArgument(item: self.bottomLayoutGuide, attribute: .Top)
 	}
 }

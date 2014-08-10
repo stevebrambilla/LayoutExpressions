@@ -21,7 +21,7 @@ class SizeTests: XCTestCase {
 	}
 
 	func testSizeToView() {
-		let constraints = evaluateExpression(subview.lex_size() == container.lex_size())
+		let constraints = evaluateExpression(subview.lex_size == container.lex_size)
 
 		let widths = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Width }
 		XCTAssertTrue(widths.count == 1, "Didn't find exactly one Width constraint.")
@@ -43,7 +43,7 @@ class SizeTests: XCTestCase {
 	}
 
 	func testSizeToViewWithOffset() {
-		let constraints = evaluateExpression(subview.lex_size() == container.lex_size() + SizeOffset(width: -20.0, height: -10.0))
+		let constraints = evaluateExpression(subview.lex_size == container.lex_size + SizeOffset(width: -20.0, height: -10.0))
 
 		let widths = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Width }
 		XCTAssertTrue(widths.count == 1, "Didn't find exactly one Width constraint.")
@@ -64,7 +64,7 @@ class SizeTests: XCTestCase {
 
 	func testFixedSize() {
 		let fixedSize = CGSize(width: 320.0, height: 400.0)
-		let constraints = evaluateExpression(subview.lex_size() == fixedSize)
+		let constraints = evaluateExpression(subview.lex_size == fixedSize)
 
 		let widths = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Width }
 		XCTAssertTrue(widths.count == 1, "Didn't find exactly one Width constraint.")
@@ -84,17 +84,17 @@ class SizeTests: XCTestCase {
 	}
 
 	func testSizeOperators() {
-		let equalsConstraints = evaluateExpression(subview.lex_size() == container.lex_size())
+		let equalsConstraints = evaluateExpression(subview.lex_size == container.lex_size)
 		XCTAssertTrue(equalsConstraints.count == 2, "Didn't find exactly two constraints.")
 		XCTAssertTrue(equalsConstraints[0].relation == NSLayoutRelation.Equal, "Wrong relation[0].")
 		XCTAssertTrue(equalsConstraints[1].relation == NSLayoutRelation.Equal, "Wrong relation[1].")
 
-		let lessThanConstraints = evaluateExpression(subview.lex_size() <= container.lex_size())
+		let lessThanConstraints = evaluateExpression(subview.lex_size <= container.lex_size)
 		XCTAssertTrue(lessThanConstraints.count == 2, "Didn't find exactly two constraints.")
 		XCTAssertTrue(lessThanConstraints[0].relation == NSLayoutRelation.LessThanOrEqual, "Wrong relation[0].")
 		XCTAssertTrue(lessThanConstraints[1].relation == NSLayoutRelation.LessThanOrEqual, "Wrong relation[1].")
 
-		let greaterThanConstraints = evaluateExpression(subview.lex_size() >= container.lex_size())
+		let greaterThanConstraints = evaluateExpression(subview.lex_size >= container.lex_size)
 		XCTAssertTrue(greaterThanConstraints.count == 2, "Didn't find exactly two constraints.")
 		XCTAssertTrue(greaterThanConstraints[0].relation == NSLayoutRelation.GreaterThanOrEqual, "Wrong relation[0].")
 		XCTAssertTrue(greaterThanConstraints[1].relation == NSLayoutRelation.GreaterThanOrEqual, "Wrong relation[1].")
@@ -103,17 +103,17 @@ class SizeTests: XCTestCase {
 	func testFixedSizeOperators() {
 		let fixedSize = CGSize(width: 320.0, height: 400.0)
 
-		let equalsConstraints = evaluateExpression(subview.lex_size() == fixedSize)
+		let equalsConstraints = evaluateExpression(subview.lex_size == fixedSize)
 		XCTAssertTrue(equalsConstraints.count == 2, "Didn't find exactly two constraints.")
 		XCTAssertTrue(equalsConstraints[0].relation == NSLayoutRelation.Equal, "Wrong relation[0].")
 		XCTAssertTrue(equalsConstraints[1].relation == NSLayoutRelation.Equal, "Wrong relation[1].")
 
-		let lessThanConstraints = evaluateExpression(subview.lex_size() <= fixedSize)
+		let lessThanConstraints = evaluateExpression(subview.lex_size <= fixedSize)
 		XCTAssertTrue(lessThanConstraints.count == 2, "Didn't find exactly two constraints.")
 		XCTAssertTrue(lessThanConstraints[0].relation == NSLayoutRelation.LessThanOrEqual, "Wrong relation[0].")
 		XCTAssertTrue(lessThanConstraints[1].relation == NSLayoutRelation.LessThanOrEqual, "Wrong relation[1].")
 
-		let greaterThanConstraints = evaluateExpression(subview.lex_size() >= fixedSize)
+		let greaterThanConstraints = evaluateExpression(subview.lex_size >= fixedSize)
 		XCTAssertTrue(greaterThanConstraints.count == 2, "Didn't find exactly two constraints.")
 		XCTAssertTrue(greaterThanConstraints[0].relation == NSLayoutRelation.GreaterThanOrEqual, "Wrong relation[0].")
 		XCTAssertTrue(greaterThanConstraints[1].relation == NSLayoutRelation.GreaterThanOrEqual, "Wrong relation[1].")
