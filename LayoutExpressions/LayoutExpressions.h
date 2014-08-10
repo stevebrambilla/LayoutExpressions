@@ -9,5 +9,3 @@ FOUNDATION_EXPORT double LayoutExpressionsVersionNumber;
 FOUNDATION_EXPORT const unsigned char LayoutExpressionsVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <LayoutExpressions/PublicHeader.h>
-
-

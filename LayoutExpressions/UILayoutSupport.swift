@@ -18,6 +18,7 @@ import UIKit
 //
 //     view.lex_bottom == bottomEdgeOf(viewController.bottomLayoutGuide)
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - UIViewController
 
 extension UIViewController {
@@ -32,6 +33,7 @@ extension UIViewController {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - UILayoutSupport
 
 /// Creates a layout expression argument for the .Leading attribute of the `support` layout guide.

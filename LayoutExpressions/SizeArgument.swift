@@ -2,8 +2,6 @@
 
 import UIKit
 
-// MARK: Size
-
 // Supports constraining the size to another view:
 //     subview.size == sibling.size
 //     subview.size >= sibling.size
@@ -15,6 +13,7 @@ import UIKit
 // Supports constraining the size to a CGSize:
 //     subview.size == (width: 320.0, height: 480.0)
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct SizeOffset {
@@ -27,10 +26,11 @@ public struct SizeOffset {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Arguments
 
 public class SizeArgument: LeftHandSideArgument, RightHandSideArgument {
-	public let item: AnyObject
+	private let item: AnyObject
 	private let offset: SizeOffset?
 
 	init(item: AnyObject, offset: SizeOffset? = nil) {
@@ -42,19 +42,24 @@ public class SizeArgument: LeftHandSideArgument, RightHandSideArgument {
 		return SizeArgument(item: item, offset: offset)
 	}
 
-	public var attributes: [NSLayoutAttribute] {
+	// LeftHandSideArgument
+	public var leftHandSideItem: AnyObject {
+		return item
+	}
+	public var leftHandSideAttributes: [NSLayoutAttribute] {
 		return [ .Width, .Height ]
 	}
 
-	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	// RightHandSideArgument
+	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
-			case .Width:
-				return (item, .Width, nil, offset?.width)
-			case .Height:
-				return (item, .Height, nil, offset?.height)
-			default:
-				assert(false, "Called SizeArgument with an invalid left attribute.")
-				return (item, .NotAnAttribute, nil, nil)
+		case .Width:
+			return (item, .Width, nil, offset?.width)
+		case .Height:
+			return (item, .Height, nil, offset?.height)
+		default:
+			assert(false, "Called SizeArgument with an invalid left attribute.")
+			return (item, .NotAnAttribute, nil, nil)
 		}
 	}
 }
@@ -66,25 +71,28 @@ public class FixedSizeArgument: RightHandSideArgument {
 		self.size = size
 	}
 
-	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	// RightHandSideArgument
+	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
-			case .Width:
-				return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.width)
-			case .Height:
-				return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.height)
-			default:
-				assert(false, "Called SizeArgument with an invalid left attribute.")
-				return (nil, .NotAnAttribute, nil, nil)
-			}
+		case .Width:
+			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.width)
+		case .Height:
+			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.height)
+		default:
+			assert(false, "Called SizeArgument with an invalid left attribute.")
+			return (nil, .NotAnAttribute, nil, nil)
+		}
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func +(lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
 	return lhs.updateOffset(offset)
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func ==(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {

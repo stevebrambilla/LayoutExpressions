@@ -2,6 +2,7 @@
 
 import UIKit
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Expression
 
 public class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
@@ -17,17 +18,17 @@ public class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
 		self.priority = priority
 	}
 
-	func updatePriority(priority: Priority) -> Expression {
+	private func updatePriority(priority: Priority) -> Expression {
 		return Expression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	func evaluate() -> [NSLayoutConstraint] {
+	private func evaluate() -> [NSLayoutConstraint] {
 		var constraints = [NSLayoutConstraint]()
 
 		// Create the NSLayoutConstraints.
-		for leftAttribute in lhs.attributes {
-			let values = rhs.attributeValues(leftAttribute)
-			let c = NSLayoutConstraint(item: lhs.item,
+		for leftAttribute in lhs.leftHandSideAttributes {
+			let values = rhs.rightHandSideValues(leftAttribute)
+			let c = NSLayoutConstraint(item: lhs.leftHandSideItem,
 								  attribute: leftAttribute,
 			                      relatedBy: relation,
 			                         toItem: values.item,
@@ -47,25 +48,52 @@ public class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Argument Protocols
 
 public protocol LeftHandSideArgument {
-	var item: AnyObject { get }
-	var attributes: [NSLayoutAttribute] { get }
+	var leftHandSideItem: AnyObject { get }
+	var leftHandSideAttributes: [NSLayoutAttribute] { get }
 }
 
 public protocol RightHandSideArgument {
-	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?)
+	func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?)
 }
 
 public protocol DistinctLeftHandSideArgument: LeftHandSideArgument {
-	var attribute: NSLayoutAttribute { get }
+	var distinctLeftHandSideAttribute: NSLayoutAttribute { get }
 }
 
 public protocol DistinctRightHandSideArgument: RightHandSideArgument {
-	var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) { get }
+	var distinctRightHandSideValue: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) { get }
 }
 
+// ------------------------------------------------------------------------------------------------
+// MARK: - Priority
+
+public typealias Priority = Float
+
+public enum SystemPriority: Priority {
+	case Required = 1000
+	case DefaultHigh = 750
+	case DefaultLow = 250
+	case FittingSizeLevel = 50
+}
+
+infix operator  <~ {
+	associativity left
+	precedence 125 // Less than the Comparative operators (130)
+}
+
+public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: SystemPriority) -> Expression<L, R> {
+	return expression.updatePriority(priority.toRaw())
+}
+
+public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: Priority) -> Expression<L, R> {
+	return expression.updatePriority(priority)
+}
+
+// ------------------------------------------------------------------------------------------------
 // MARK: - Evaluation Functions
 
 /// Evaluates a distinct layout expression into a single constraint.

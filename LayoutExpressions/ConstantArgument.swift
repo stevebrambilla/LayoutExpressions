@@ -2,6 +2,7 @@
 
 import UIKit
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Argument
 
 public class ConstantArgument: DistinctRightHandSideArgument {
@@ -12,12 +13,12 @@ public class ConstantArgument: DistinctRightHandSideArgument {
 	}
 
 	// RightHandSideArgument
-	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		return self.attributeValues
+	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+		return self.distinctRightHandSideValue
 	}
 
 	// DistinctRightHandSideArgument
-	public var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public var distinctRightHandSideValue: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: constant)
 	}
 }

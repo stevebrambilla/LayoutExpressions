@@ -2,11 +2,12 @@
 
 import UIKit
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Argument
 
 public class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
-	public let item: AnyObject
-	public let attribute: NSLayoutAttribute
+	private let item: AnyObject
+	private let attribute: NSLayoutAttribute
 	private let multiplier: CGFloat?
 	private let constant: CGFloat?
 
@@ -26,22 +27,30 @@ public class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandS
 	}
 
 	// LeftHandSideArgument
+	public var leftHandSideItem: AnyObject {
+		return item
+	}
+	public var leftHandSideAttributes: [NSLayoutAttribute] {
+		return [ attribute ]
+	}
 
-	public var attributes: [NSLayoutAttribute] {
-		return [ self.attribute ]
+	// DistinctLeftHandSideArgument
+	public var distinctLeftHandSideAttribute: NSLayoutAttribute {
+		return attribute
 	}
 
 	// RightHandSideArgument
-	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		return self.attributeValues
+	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+		return self.distinctRightHandSideValue
 	}
 
 	// DistinctRightHandSideArgument
-	public var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public var distinctRightHandSideValue: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		return (item:item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 // Note: Order of operations still matters if using a multiplier AND constant.
@@ -63,6 +72,7 @@ public func -(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(-constant)
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func ==(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {

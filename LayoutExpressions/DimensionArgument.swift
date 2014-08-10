@@ -2,6 +2,7 @@
 
 import UIKit
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Argument
 
 public class DimensionArgument: AttributeArgument {
@@ -11,6 +12,7 @@ public class DimensionArgument: AttributeArgument {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func ==(lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {

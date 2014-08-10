@@ -11,6 +11,7 @@ import UIKit
 // Or inset all edges equally using '-' with a Double:
 // 		subview.allEdges == container.allEdges - 10.0
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct EdgeInsets {
@@ -31,10 +32,11 @@ public struct EdgeInsets {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Argument
 
 public class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
-	public let item: AnyObject
+	private let item: AnyObject
 	private let insets: EdgeInsets?
 
 	init(item: AnyObject, insets: EdgeInsets? = nil) {
@@ -47,12 +49,15 @@ public class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 
 	// LeftHandSideArgument
-	public var attributes: [NSLayoutAttribute] {
+	public var leftHandSideItem: AnyObject {
+		return item
+	}
+	public var leftHandSideAttributes: [NSLayoutAttribute] {
 		return [ .Top, .Left, .Bottom, .Right ]
 	}
 
 	// RightHandSideArgument
-	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
 		case .Top:
 			return (item: item, attribute: .Top, multiplier: nil, constant: insets?.top)
@@ -71,6 +76,7 @@ public class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func -(lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
@@ -82,6 +88,7 @@ public func -(lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
 	return lhs.updateInsets(insets)
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func ==(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {

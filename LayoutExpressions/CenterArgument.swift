@@ -8,6 +8,7 @@ import UIKit
 // With an optional offset:
 // 		subview.center == container.center + (horizontal: 0.0, vertical: -10.0)
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct PointOffset {
@@ -28,10 +29,11 @@ public struct PointOffset {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Arguments
 
 public class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
-	public let item: AnyObject
+	private let item: AnyObject
 	private let offset: PointOffset?
 
 	init(item: AnyObject, offset: PointOffset? = nil) {
@@ -44,12 +46,15 @@ public class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 
 	// LeftHandSideArgument
-	public var attributes: [NSLayoutAttribute] {
+	public var leftHandSideItem: AnyObject {
+		return item
+	}
+	public var leftHandSideAttributes: [NSLayoutAttribute] {
 		return [ .CenterX, .CenterY ]
 	}
 
 	// RightHandSideArgument
-	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
 		case .CenterX:
 			return (item: item, attribute: .CenterX, multiplier: nil, constant: offset?.horizontal)
@@ -62,12 +67,14 @@ public class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func +(lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
 	return lhs.updateOffset(offset)
 }
 
+// ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func ==(lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
