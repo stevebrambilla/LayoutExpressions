@@ -11,61 +11,59 @@ import UIKit
 // Or inset all edges equally using '-' with a Double:
 // 		subview.allEdges == container.allEdges - 10.0
 
-struct EdgeInsets {
+// MARK: - Shorthand Structs
+
+public struct EdgeInsets {
 	let top: CGFloat
 	let left: CGFloat
 	let bottom: CGFloat
 	let right: CGFloat
 
-	init(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
+	public init(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
 		self.top = top
 		self.left = left
 		self.bottom = bottom
 		self.right = right
 	}
 
-	init(_ insets: UIEdgeInsets) {
+	public init(_ insets: UIEdgeInsets) {
 		self.init(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
 	}
 }
 
-// MARK: Edges Argument
+// MARK: - Argument
 
-class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
-	let _item: AnyObject
-	let _insets: EdgeInsets?
+public class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
+	public let item: AnyObject
+	private let insets: EdgeInsets?
 
 	init(item: AnyObject, insets: EdgeInsets? = nil) {
-		_item = item
-		_insets = insets
+		self.item = item
+		self.insets = insets
 	}
 
 	func updateInsets(insets: EdgeInsets) -> EdgesArgument {
-		return EdgesArgument(item: _item, insets: insets)
+		return EdgesArgument(item: item, insets: insets)
 	}
 
 	// LeftHandSideArgument
-	var item: AnyObject {
-		return _item
-	}
-
-	var attributes: [NSLayoutAttribute] {
+	public var attributes: [NSLayoutAttribute] {
 		return [ .Top, .Left, .Bottom, .Right ]
 	}
 
 	// RightHandSideArgument
-	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
 		case .Top:
-			return (item: _item, attribute: .Top, multiplier: nil, constant: _insets?.top)
+			return (item: item, attribute: .Top, multiplier: nil, constant: insets?.top)
 		case .Left:
-			return (item: _item, attribute: .Left, multiplier: nil, constant: _insets?.left)
+			return (item: item, attribute: .Left, multiplier: nil, constant: insets?.left)
 		case .Bottom:
-			let bottomInset: CGFloat? = _insets ? -_insets!.bottom : nil
-			return (item: _item, attribute: .Bottom, multiplier: nil, constant: bottomInset)
+			let bottomInset: CGFloat? = (insets != nil ? -insets!.bottom : nil)
+			return (item: item, attribute: .Bottom, multiplier: nil, constant: bottomInset)
 		case .Right:
-			let rightInset: CGFloat? = _insets ? -_insets!.right : nil
-			return (item: _item, attribute: .Right, multiplier: nil, constant: rightInset)
+			let rightInset: CGFloat? = (insets != nil ? -insets!.right : nil)
+			return (item: item, attribute: .Right, multiplier: nil, constant: rightInset)
 		default:
 			assert(false, "Called EdgesArgument with an invalid left attribute.")
 			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: nil)
@@ -73,25 +71,27 @@ class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 }
 
-@infix func -(lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
+// MARK: - Arithmetic Operators
+
+public func -(lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
 	let insets = EdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
 	return lhs.updateInsets(insets)
 }
 
-@infix func -(lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
+public func -(lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
 	return lhs.updateInsets(insets)
 }
 
-// MARK: Comparison Operators
+// MARK: - Comparison Operators
 
-func ==(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
+public func ==(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
+public func <=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
+public func >=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

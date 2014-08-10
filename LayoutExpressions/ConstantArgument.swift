@@ -2,20 +2,22 @@
 
 import UIKit
 
-class ConstantArgument: DistinctRightHandSideArgument {
-	let _constant: CGFloat
+// MARK: - Argument
+
+public class ConstantArgument: DistinctRightHandSideArgument {
+	private let constant: CGFloat
 
 	init(constant: CGFloat) {
-		_constant = constant
+		self.constant = constant
 	}
 
 	// RightHandSideArgument
-	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		return self.attributeValues
 	}
 
 	// DistinctRightHandSideArgument
-	var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: _constant)
+	public var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+		return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: constant)
 	}
 }

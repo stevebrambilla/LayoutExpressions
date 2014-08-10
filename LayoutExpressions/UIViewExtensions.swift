@@ -2,60 +2,62 @@
 
 import UIKit
 
+// MARK: - Argument Accessors
+
 // TODO: Using functions as a workaround for a crashy compiler in beta 1. Will make these read-only properties in future update.
 extension UIView {
 	/// The distinct .Leading layout expression argument.
-	func lex_leading() -> AttributeArgument {
+	public func lex_leading() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Leading)
 	}
 
 	/// The distinct .Trailing layout expression argument.
-	func lex_trailing() -> AttributeArgument {
+	public func lex_trailing() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Trailing)
 	}
 
 	/// The distinct .Top layout expression argument.
-	func lex_top() -> AttributeArgument {
+	public func lex_top() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Top)
 	}
 
 	/// The distinct .Left layout expression argument.
-	func lex_left() -> AttributeArgument {
+	public func lex_left() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Left)
 	}
 
 	/// The distinct .Bottom layout expression argument.
-	func lex_bottom() -> AttributeArgument {
+	public func lex_bottom() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Bottom)
 	}
 
 	/// The distinct .Right layout expression argument.
-	func lex_right() -> AttributeArgument {
+	public func lex_right() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Right)
 	}
 
 	/// The distinct .CenterX layout expression argument.
-	func lex_centerX() -> AttributeArgument {
+	public func lex_centerX() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .CenterX)
 	}
 
 	/// The distinct .CenterY layout expression argument.
-	func lex_centerY() -> AttributeArgument {
+	public func lex_centerY() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .CenterY)
 	}
 
 	/// The distinct .Width layout expression argument.
-	func lex_width() -> DimensionArgument {
+	public func lex_width() -> DimensionArgument {
 		return DimensionArgument(item: self, attribute: .Width)
 	}
 
 	/// The distinct .Height layout expression argument.
-	func lex_height() -> DimensionArgument {
+	public func lex_height() -> DimensionArgument {
 		return DimensionArgument(item: self, attribute: .Height)
 	}
 
 	/// The distinct .Baseline layout expression argument.
-	func lex_baseline() -> AttributeArgument {
+	public func lex_baseline() -> AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Baseline)
 	}
 }
@@ -63,7 +65,7 @@ extension UIView {
 extension UIView {
 	/// The composite "edges" layout expression argument.
 	/// Evaluates to .Top, .Left, .Bottom, .Right constraints.
-	func lex_edges() -> EdgesArgument {
+	public func lex_edges() -> EdgesArgument {
 		return EdgesArgument(item: self)
 	}
 }
@@ -71,7 +73,7 @@ extension UIView {
 extension UIView {
 	/// The composite "center" layout expression argument.
 	/// Evaluates to .CenterX, .CenterY constraints.
-	func lex_center() -> CenterArgument {
+	public func lex_center() -> CenterArgument {
 		return CenterArgument(item: self)
 	}
 }
@@ -79,18 +81,18 @@ extension UIView {
 extension UIView {
 	/// The composite "size" layout expression argument.
 	/// Evaluates to .Width, .Height constraints.
-	func lex_size() -> SizeArgument {
+	public func lex_size() -> SizeArgument {
 		return SizeArgument(item: self)
 	}
 }
 
-// MARK: Adding to UIViews
+// MARK: - Adding to UIViews
 
 extension UIView {
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.
-	func lex_addExpression<L: DistinctLeftHandSideArgument, R: DistinctRightHandSideArgument>(expression: Expression<L, R>) -> NSLayoutConstraint {
+	public func lex_addExpression<L: DistinctLeftHandSideArgument, R: DistinctRightHandSideArgument>(expression: Expression<L, R>) -> NSLayoutConstraint {
 		let constraint = evaluateExpression(expression)
 		self.addConstraint(constraint)
 		return constraint
@@ -99,14 +101,14 @@ extension UIView {
 	/// Evaluates the expression and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpression<L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>) -> [NSLayoutConstraint] {
+	public func lex_addExpression<L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>) -> [NSLayoutConstraint] {
 		return self.lex_addExpressions(expression)
 	}
 
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: Expression<L, R>...) -> [NSLayoutConstraint] {
+	public func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: Expression<L, R>...) -> [NSLayoutConstraint] {
 		let constraints = evaluateExpressions(expressions)
 		self.addConstraints(constraints)
 		return constraints
@@ -117,9 +119,9 @@ extension UIView {
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	// TODO: This function strill crashes the Swift compiler as of b3
+	// TODO: This function strill crashes the Swift compiler as of b5
 	/*
-	func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: [Expression<L, R>]) -> [NSLayoutConstraint] {
+	public func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: [Expression<L, R>]) -> [NSLayoutConstraint] {
 		let constraints = evaluateExpressions(expressions)
 		self.addConstraints(constraints)
 		return constraints

@@ -2,83 +2,77 @@
 
 import UIKit
 
-// MARK: Item Attributes Argument
+// MARK: - Argument
 
-class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
-	let _item: AnyObject
-	let _attribute: NSLayoutAttribute
-	let _multiplier: CGFloat?
-	let _constant: CGFloat?
+public class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
+	public let item: AnyObject
+	public let attribute: NSLayoutAttribute
+	private let multiplier: CGFloat?
+	private let constant: CGFloat?
 
 	init(item: AnyObject, attribute: NSLayoutAttribute, multiplier: CGFloat? = nil, constant: CGFloat? = nil) {
-		_item = item
-		_attribute = attribute
-		_multiplier = multiplier
-		_constant = constant
+		self.item = item
+		self.attribute = attribute
+		self.multiplier = multiplier
+		self.constant = constant
 	}
 
 	func updateMultiplier(multiplier: CGFloat) -> AttributeArgument {
-		return AttributeArgument(item: _item, attribute: _attribute, multiplier: multiplier, constant: _constant)
+		return AttributeArgument(item: item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 
 	func updateConstant(constant: CGFloat) -> AttributeArgument {
-		return AttributeArgument(item: _item, attribute: _attribute, multiplier: _multiplier, constant: constant)
+		return AttributeArgument(item: item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 
 	// LeftHandSideArgument
-	var item: AnyObject {
-		return _item
-	}
 
-	var attributes: [NSLayoutAttribute] {
+	public var attributes: [NSLayoutAttribute] {
 		return [ self.attribute ]
 	}
 
-	// DistinctLeftHandSideArgument
-	var attribute: NSLayoutAttribute {
-		return _attribute
-	}
-
 	// RightHandSideArgument
-	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		return self.attributeValues
 	}
 
 	// DistinctRightHandSideArgument
-	var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		return (item:_item, attribute: _attribute, multiplier: _multiplier, constant: _constant)
+	public var attributeValues: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+		return (item:item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 }
+
+// MARK: - Arithmetic Operators
 
 // Note: Order of operations still matters if using a multiplier AND constant.
 // We _could_ use additional types to prevent multiple '*' / '+' / '-' operations...
 
-@infix func *(lhs: AttributeArgument, multiplier: CGFloat) -> AttributeArgument {
+public func *(lhs: AttributeArgument, multiplier: CGFloat) -> AttributeArgument {
 	return lhs.updateMultiplier(multiplier)
 }
 
-@infix func *(multiplier: CGFloat, rhs: AttributeArgument) -> AttributeArgument {
+public func *(multiplier: CGFloat, rhs: AttributeArgument) -> AttributeArgument {
 	return rhs.updateMultiplier(multiplier)
 }
 
-@infix func +(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
+public func +(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(constant)
 }
 
-@infix func -(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
+public func -(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(-constant)
 }
 
-// MARK: Comparison Operators
+// MARK: - Comparison Operators
 
-func ==(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
+public func ==(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-func <=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
+public func <=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-func >=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
+public func >=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

@@ -16,60 +16,50 @@ import UIKit
 // Or use one of the UILayoutSupport functions, which allows you to explicitly
 // specify the edge attribute and return a AttributeArgument.
 //
-//     view.lex_leading == leadingEdgeOf(viewController.leftLayoutGuide)
+//     view.lex_bottom == bottomEdgeOf(viewController.bottomLayoutGuide)
 
-// MARK: UIViewController Extensions
+// MARK: - UIViewController
 
 extension UIViewController {
 	/// The layout expression argument for the .Bottom attribute of the view controller's topLayoutGuide.
-	func lex_topLayoutGuide() -> AttributeArgument {
+	public func lex_topLayoutGuide() -> AttributeArgument {
 		return AttributeArgument(item: self.topLayoutGuide, attribute: .Bottom)
 	}
 
-	/// The layout expression argument for the .Right attribute of the view controller's leftLayoutGuide.
-	func lex_leftLayoutGuide() -> AttributeArgument {
-		return AttributeArgument(item: self.leftLayoutGuide, attribute: .Right)
-	}
-
 	/// The layout expression argument for the .Top attribute of the view controller's topLayoutGuide.
-	func lex_bottomLayoutGuide() -> AttributeArgument {
+	public func lex_bottomLayoutGuide() -> AttributeArgument {
 		return AttributeArgument(item: self.bottomLayoutGuide, attribute: .Top)
-	}
-
-	/// The layout expression argument for the .Left attribute of the view controller's rightLayoutGuide.
-	func lex_rightLayoutGuide() -> AttributeArgument {
-		return AttributeArgument(item: self.rightLayoutGuide, attribute: .Left)
 	}
 }
 
-// MARK: UILayoutSupport Functions
+// MARK: - UILayoutSupport
 
 /// Creates a layout expression argument for the .Leading attribute of the `support` layout guide.
-func leadingEdgeOf(support: UILayoutSupport) -> AttributeArgument {
+public func leadingEdgeOf(support: UILayoutSupport) -> AttributeArgument {
 	return AttributeArgument(item: support, attribute: .Leading)
 }
 
 /// Creates a layout expression argument for the .Trailing attribute of the `support` layout guide.
-func trailingEdgeOf(support: UILayoutSupport) -> AttributeArgument {
+public func trailingEdgeOf(support: UILayoutSupport) -> AttributeArgument {
 	return AttributeArgument(item: support, attribute: .Trailing)
 }
 
 /// Creates a layout expression argument for the .Top attribute of the `support` layout guide.
-func topEdgeOf(support: UILayoutSupport) -> AttributeArgument {
+public func topEdgeOf(support: UILayoutSupport) -> AttributeArgument {
 	return AttributeArgument(item: support, attribute: .Top)
 }
 
 /// Creates a layout expression argument for the .Left attribute of the `support` layout guide.
-func leftEdgeOf(support: UILayoutSupport) -> AttributeArgument {
+public func leftEdgeOf(support: UILayoutSupport) -> AttributeArgument {
 	return AttributeArgument(item: support, attribute: .Left)
 }
 
 /// Creates a layout expression argument for the .Bottom attribute of the `support` layout guide.
-func bottomEdgeOf(support: UILayoutSupport) -> AttributeArgument {
+public func bottomEdgeOf(support: UILayoutSupport) -> AttributeArgument {
 	return AttributeArgument(item: support, attribute: .Bottom)
 }
 
 /// Creates a layout expression argument for the .Right attribute of the `support` layout guide.
-func rightEdgeOf(support: UILayoutSupport) -> AttributeArgument {
+public func rightEdgeOf(support: UILayoutSupport) -> AttributeArgument {
 	return AttributeArgument(item: support, attribute: .Right)
 }

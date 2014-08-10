@@ -8,55 +8,53 @@ import UIKit
 // With an optional offset:
 // 		subview.center == container.center + (horizontal: 0.0, vertical: -10.0)
 
-struct PointOffset {
+// MARK: - Shorthand Structs
+
+public struct PointOffset {
 	var horizontal: CGFloat
 	var vertical: CGFloat
 
-	init(horizontal: CGFloat, vertical: CGFloat) {
+	public init(horizontal: CGFloat, vertical: CGFloat) {
 		self.horizontal = horizontal
 		self.vertical = vertical
 	}
 
-	init(_ offset: UIOffset) {
+	public init(_ offset: UIOffset) {
 		self.init(horizontal: offset.horizontal, vertical: offset.vertical)
 	}
 
-	init(_ point: CGPoint) {
+	public init(_ point: CGPoint) {
 		self.init(horizontal: point.x, vertical: point.y)
 	}
 }
 
-// MARK: Center Argument
+// MARK: - Arguments
 
-class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
-	let _item: AnyObject
-	let _offset: PointOffset?
+public class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
+	public let item: AnyObject
+	private let offset: PointOffset?
 
 	init(item: AnyObject, offset: PointOffset? = nil) {
-		_item = item
-		_offset = offset
+		self.item = item
+		self.offset = offset
 	}
 
 	func updateOffset(offset: PointOffset) -> CenterArgument {
-		return CenterArgument(item: _item, offset: offset)
+		return CenterArgument(item: item, offset: offset)
 	}
 
 	// LeftHandSideArgument
-	var item: AnyObject {
-		return _item
-	}
-
-	var attributes: [NSLayoutAttribute] {
+	public var attributes: [NSLayoutAttribute] {
 		return [ .CenterX, .CenterY ]
 	}
 
 	// RightHandSideArgument
-	func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
+	public func attributeValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
 		switch leftAttribute {
 		case .CenterX:
-			return (item: _item, attribute: .CenterX, multiplier: nil, constant: _offset?.horizontal)
+			return (item: item, attribute: .CenterX, multiplier: nil, constant: offset?.horizontal)
 		case .CenterY:
-			return (item: _item, attribute: .CenterY, multiplier: nil, constant: _offset?.vertical)
+			return (item: item, attribute: .CenterY, multiplier: nil, constant: offset?.vertical)
 		default:
 			assert(false, "Called CenterArgument with an invalid left attribute.")
 			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: nil)
@@ -64,12 +62,14 @@ class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
 	}
 }
 
-@infix func +(lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
+// MARK: - Arithmetic Operators
+
+public func +(lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
 	return lhs.updateOffset(offset)
 }
 
-// MARK: Comparison Operators
+// MARK: - Comparison Operators
 
-func ==(lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
+public func ==(lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }

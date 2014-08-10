@@ -12,26 +12,38 @@
 	<dict>
 		<key>631917BC-017E-46D9-BD87-C512FED3C48A</key>
 		<string>ssh://github.com/stevebrambilla/swift-autolayout-expressions.git</string>
+		<key>9FF151A8ECDE9F8DF84108064D94B27A85D6EC22</key>
+		<string>github.com:stevebrambilla/autolayout-expressions.git</string>
 		<key>E07D1088-D0FD-43FF-8E69-A21E3D66BBED</key>
 		<string>ssh://github.com/stevebrambilla/swift-autolayout-expressions.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LayoutExpressions.xcodeproj/project.xcworkspace</string>
+	<string>LayoutExpressions.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>631917BC-017E-46D9-BD87-C512FED3C48A</key>
+		<string>../../../LayoutExpressions</string>
+		<key>9FF151A8ECDE9F8DF84108064D94B27A85D6EC22</key>
 		<string>../..</string>
 		<key>E07D1088-D0FD-43FF-8E69-A21E3D66BBED</key>
 		<string>../../../layoutexpressions</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/stevebrambilla/swift-autolayout-expressions.git</string>
+	<string>github.com:stevebrambilla/autolayout-expressions.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>631917BC-017E-46D9-BD87-C512FED3C48A</string>
+	<string>9FF151A8ECDE9F8DF84108064D94B27A85D6EC22</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9FF151A8ECDE9F8DF84108064D94B27A85D6EC22</string>
+			<key>IDESourceControlWCCName</key>
+			<string>autolayout-expressions</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
