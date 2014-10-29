@@ -86,7 +86,7 @@ infix operator  <~ {
 }
 
 public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: SystemPriority) -> Expression<L, R> {
-	return expression.updatePriority(priority.toRaw())
+	return expression.updatePriority(priority.rawValue)
 }
 
 public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: Priority) -> Expression<L, R> {
