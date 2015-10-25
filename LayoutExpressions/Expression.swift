@@ -5,13 +5,13 @@ import UIKit
 // ------------------------------------------------------------------------------------------------
 // MARK: - Expression
 
-public class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
-	private let lhs: L
+public class Expression <Left: LeftHandSideArgument, Right: RightHandSideArgument> {
+	private let lhs: Left
 	private let relation: NSLayoutRelation
-	private let rhs: R
+	private let rhs: Right
 	private let priority: Priority?
 
-	init(lhs: L, relation: NSLayoutRelation, rhs: R, priority: Priority? = nil) {
+	init(lhs: Left, relation: NSLayoutRelation, rhs: Right, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.rhs = rhs
@@ -29,11 +29,11 @@ public class Expression <L: LeftHandSideArgument, R: RightHandSideArgument> {
 		for leftAttribute in lhs.leftHandSideAttributes {
 			let values = rhs.rightHandSideValues(leftAttribute)
 			let c = NSLayoutConstraint(item: lhs.leftHandSideItem,
-								  attribute: leftAttribute,
+			                      attribute: leftAttribute,
 			                      relatedBy: relation,
 			                         toItem: values.item,
 			                      attribute: values.attribute,
-								 multiplier: values.multiplier ?? 1.0,
+			                     multiplier: values.multiplier ?? 1.0,
 			                       constant: values.constant ?? 0.0)
 			constraints.append(c)
 		}
@@ -85,11 +85,11 @@ infix operator  <~ {
 	precedence 125 // Less than the Comparative operators (130)
 }
 
-public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: SystemPriority) -> Expression<L, R> {
+public func <~ <Left: LeftHandSideArgument, Right: RightHandSideArgument>(expression: Expression<Left, Right>, priority: SystemPriority) -> Expression<Left, Right> {
 	return expression.updatePriority(priority.rawValue)
 }
 
-public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>, priority: Priority) -> Expression<L, R> {
+public func <~ <Left: LeftHandSideArgument, Right: RightHandSideArgument>(expression: Expression<Left, Right>, priority: Priority) -> Expression<Left, Right> {
 	return expression.updatePriority(priority)
 }
 
@@ -99,7 +99,7 @@ public func <~ <L: LeftHandSideArgument, R: RightHandSideArgument>(expression: E
 /// Evaluates a distinct layout expression into a single constraint.
 ///
 /// Returns an evaluated NSLayoutConstraint
-public func evaluateExpression<L: DistinctLeftHandSideArgument, R: DistinctRightHandSideArgument>(expression: Expression<L, R>) -> NSLayoutConstraint {
+public func evaluateExpression<Left: DistinctLeftHandSideArgument, Right: DistinctRightHandSideArgument>(expression: Expression<Left, Right>) -> NSLayoutConstraint {
 	let constraints = expression.evaluate()
 	assert(constraints.count == 1, "A distinct expression should never evaluate to more than 1 layout constraint.")
 	return constraints[0]
@@ -108,14 +108,14 @@ public func evaluateExpression<L: DistinctLeftHandSideArgument, R: DistinctRight
 /// Evaluates a layout expression into constraints.
 ///
 /// Returns an array of layout constraints.
-public func evaluateExpression<L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>) -> [NSLayoutConstraint] {
+public func evaluateExpression<Left: LeftHandSideArgument, Right: RightHandSideArgument>(expression: Expression<Left, Right>) -> [NSLayoutConstraint] {
 	return evaluateExpressions([ expression ])
 }
 
 /// Evaluates multiple layout expressions into constraints.
 ///
 /// Returns an array of layout constraints.
-public func evaluateExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: [Expression<L, R>]) -> [NSLayoutConstraint] {
+public func evaluateExpressions<Left: LeftHandSideArgument, Right: RightHandSideArgument>(expressions: [Expression<Left, Right>]) -> [NSLayoutConstraint] {
 	var constraints = [NSLayoutConstraint]()
 	for expr in expressions {
 		constraints += expr.evaluate()
