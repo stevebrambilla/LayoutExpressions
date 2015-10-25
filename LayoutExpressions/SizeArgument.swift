@@ -88,36 +88,36 @@ public class FixedSizeArgument: RightHandSideArgument {
 // ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
-public func +(lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
+public func + (lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
 	return lhs.updateOffset(offset)
 }
 
 // ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func ==(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
+public func == (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
+public func <= (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
+public func >= (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
 
-public func ==(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
+public func == (lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
+public func <= (lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
+public func >= (lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

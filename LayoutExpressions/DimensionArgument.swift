@@ -15,17 +15,17 @@ public class DimensionArgument: AttributeArgument {
 // ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func ==(lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {
+public func == (lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {
 	let rhs = ConstantArgument(constant: constant)
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {
+public func <= (lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {
 	let rhs = ConstantArgument(constant: constant)
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {
+public func >= (lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {
 	let rhs = ConstantArgument(constant: constant)
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

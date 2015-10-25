@@ -79,26 +79,26 @@ public class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
 // ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
-public func -(lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
+public func - (lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
 	let insets = EdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
 	return lhs.updateInsets(insets)
 }
 
-public func -(lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
+public func - (lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
 	return lhs.updateInsets(insets)
 }
 
 // ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func ==(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
+public func == (lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
+public func <= (lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
+public func >= (lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }

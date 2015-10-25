@@ -70,13 +70,13 @@ public class CenterArgument: LeftHandSideArgument, RightHandSideArgument {
 // ------------------------------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
-public func +(lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
+public func + (lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
 	return lhs.updateOffset(offset)
 }
 
 // ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func ==(lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
+public func == (lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }

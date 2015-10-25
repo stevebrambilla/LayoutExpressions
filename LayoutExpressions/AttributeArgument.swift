@@ -56,33 +56,33 @@ public class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandS
 // Note: Order of operations still matters if using a multiplier AND constant.
 // We _could_ use additional types to prevent multiple '*' / '+' / '-' operations...
 
-public func *(lhs: AttributeArgument, multiplier: CGFloat) -> AttributeArgument {
+public func * (lhs: AttributeArgument, multiplier: CGFloat) -> AttributeArgument {
 	return lhs.updateMultiplier(multiplier)
 }
 
-public func *(multiplier: CGFloat, rhs: AttributeArgument) -> AttributeArgument {
+public func * (multiplier: CGFloat, rhs: AttributeArgument) -> AttributeArgument {
 	return rhs.updateMultiplier(multiplier)
 }
 
-public func +(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
+public func + (lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(constant)
 }
 
-public func -(lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
+public func - (lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(-constant)
 }
 
 // ------------------------------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func ==(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
+public func == (lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
+public func <= (lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
+public func >= (lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
