@@ -165,7 +165,7 @@ class EdgesTests: XCTestCase {
 		XCTAssertTrue(constraints.count == 4, "Didn't return exactly four constraints.")
 		
 		for c in constraints {
-			XCTAssertTrue((container.constraints() as NSArray).containsObject(c), "Constraint not added to subview")
+			XCTAssertTrue((container.constraints as NSArray).containsObject(c), "Constraint not added to subview")
 		}
 	}
 }

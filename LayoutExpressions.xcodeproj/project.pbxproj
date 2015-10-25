@@ -211,6 +211,8 @@
 		AACF91B0194008D300748874 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Steve Brambilla";
 				TargetAttributes = {

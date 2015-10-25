@@ -75,7 +75,7 @@ class BasicTests: XCTestCase {
 	func testAddingSingleExpressionToView() {
 		let constraint = container.lex_addExpression(subview.lex_top == container.lex_top)
 
-		let results = container.constraints().filter { $0 === constraint }
+		let results = container.constraints.filter { $0 === constraint }
 		XCTAssertTrue(results.count == 1, "Constraint not added")
 	}
 
@@ -86,7 +86,7 @@ class BasicTests: XCTestCase {
 			subview.lex_bottom == container.lex_bottom,
 			subview.lex_right == container.lex_right
 		)
-		XCTAssertTrue(container.constraints().count == 4, "Expected exactly 4 constraints")
+		XCTAssertTrue(container.constraints.count == 4, "Expected exactly 4 constraints")
 
 		let tops = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Top }
 		XCTAssertTrue(tops.count == 1, "Didn't find exactly one Top constraint.")
