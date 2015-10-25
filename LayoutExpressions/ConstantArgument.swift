@@ -9,7 +9,6 @@ public class ConstantArgument: DistinctRightArgument {
 		self.constant = constant
 	}
 
-	// DistinctRightHandSideArgument
 	public var distinctRightParameters: Parameters {
 		return Parameters(item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: constant)
 	}

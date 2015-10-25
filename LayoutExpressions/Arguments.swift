@@ -3,10 +3,10 @@
 import UIKit
 
 public struct Parameters {
-	let item: AnyObject?
-	let attribute: NSLayoutAttribute
-	let multiplier: CGFloat?
-	let constant: CGFloat?
+	internal let item: AnyObject?
+	internal let attribute: NSLayoutAttribute
+	internal let multiplier: CGFloat?
+	internal let constant: CGFloat?
 }
 
 public protocol LeftArgument {
@@ -30,7 +30,7 @@ public protocol DistinctRightArgument: RightArgument {
 // MARK: - Extensions
 
 extension Parameters {
-	internal static var noop: Parameters {
+	internal static var noOp: Parameters {
 		return Parameters(item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: nil)
 	}
 }

@@ -19,7 +19,7 @@ class EdgesTests: XCTestCase {
 	}
 
 	func testEdges() {
-		let constraints = lexEvaluate(subview.lexEdges == container.lexEdges)
+		let constraints = evaluateLayoutExpression(subview.lexEdges == container.lexEdges)
 
 		let tops = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Top }
 		XCTAssertTrue(tops.count == 1, "Didn't find exactly one Top constraint.")
@@ -60,7 +60,7 @@ class EdgesTests: XCTestCase {
 
 	func testVariableInsets() {
 		let insets = EdgeInsets(top: 1.0, left: 2.0, bottom: 3.0, right: 4.0)
-		let constraints = lexEvaluate(subview.lexEdges == container.lexEdges - insets)
+		let constraints = evaluateLayoutExpression(subview.lexEdges == container.lexEdges - insets)
 		
 		let tops = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Top }
 		XCTAssertTrue(tops.count == 1, "Didn't find exactly one Top constraint.")
@@ -96,7 +96,7 @@ class EdgesTests: XCTestCase {
 	}
 	
 	func testEqualInsets() {
-		let constraints = lexEvaluate(subview.lexEdges == container.lexEdges - 10.0)
+		let constraints = evaluateLayoutExpression(subview.lexEdges == container.lexEdges - 10.0)
 		
 		let tops = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Top }
 		XCTAssertTrue(tops.count == 1, "Didn't find exactly one Top constraint.")
@@ -133,7 +133,7 @@ class EdgesTests: XCTestCase {
 
 	func testInitializingInsetsFromUIEdgeInsets() {
 		let insets = UIEdgeInsets(top: 1.0, left: 2.0, bottom: 3.0, right: 4.0)
-		let constraints = lexEvaluate(subview.lexEdges == container.lexEdges - EdgeInsets(insets))
+		let constraints = evaluateLayoutExpression(subview.lexEdges == container.lexEdges - EdgeInsets(insets))
 
 		let tops = constraints.filter { $0.firstAttribute == NSLayoutAttribute.Top }
 		XCTAssertTrue(tops.count == 1, "Didn't find exactly one Top constraint.")

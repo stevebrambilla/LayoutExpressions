@@ -19,55 +19,55 @@ class BasicTests: XCTestCase {
 	}
 
 	func testEdges() {
-		let topAndBottom = lexEvaluate(subview.lexTop == container.lexBottom)
+		let topAndBottom = evaluateLayoutExpression(subview.lexTop == container.lexBottom)
 		XCTAssertTrue(topAndBottom.firstItem === subview, "Wrong firstItem")
 		XCTAssertTrue(topAndBottom.secondItem === container, "Wrong secondItem")
 		XCTAssertTrue(topAndBottom.firstAttribute == .Top, "Not top edge")
 		XCTAssertTrue(topAndBottom.secondAttribute == .Bottom, "Not bottom edge")
 
-		let leftAndRight = lexEvaluate(subview.lexLeft == container.lexRight)
+		let leftAndRight = evaluateLayoutExpression(subview.lexLeft == container.lexRight)
 		XCTAssertTrue(leftAndRight.firstAttribute == .Left, "Not left edge")
 		XCTAssertTrue(leftAndRight.secondAttribute == .Right, "Not right edge")
 
-		let leadingAndTrailing = lexEvaluate(subview.lexLeading == container.lexTrailing)
+		let leadingAndTrailing = evaluateLayoutExpression(subview.lexLeading == container.lexTrailing)
 		XCTAssertTrue(leadingAndTrailing.firstAttribute == .Leading, "Not leading edge")
 		XCTAssertTrue(leadingAndTrailing.secondAttribute == .Trailing, "Not trailing edge")
 	}
 
 	func testCenter() {
-		let centerX = lexEvaluate(subview.lexCenterX == container.lexCenterX)
+		let centerX = evaluateLayoutExpression(subview.lexCenterX == container.lexCenterX)
 		XCTAssertTrue(centerX.firstAttribute == .CenterX, "Not center X")
 		XCTAssertTrue(centerX.secondAttribute == .CenterX, "Not center X")
 
-		let centerY = lexEvaluate(subview.lexCenterY == container.lexCenterY)
+		let centerY = evaluateLayoutExpression(subview.lexCenterY == container.lexCenterY)
 		XCTAssertTrue(centerY.firstAttribute == .CenterY, "Not center Y")
 		XCTAssertTrue(centerY.secondAttribute == .CenterY, "Not center Y")
 	}
 
 	func testBaseline() {
-		let baseline = lexEvaluate(subview.lexBaseline == container.lexBaseline)
+		let baseline = evaluateLayoutExpression(subview.lexBaseline == container.lexBaseline)
 		XCTAssertTrue(baseline.firstAttribute == .Baseline, "Wrong attribute")
 		XCTAssertTrue(baseline.secondAttribute == .Baseline, "Wrong attribute")
 	}
 
 	func testConstant() {
-		let positive = lexEvaluate(subview.lexTop == container.lexTop + 15.0)
+		let positive = evaluateLayoutExpression(subview.lexTop == container.lexTop + 15.0)
 		XCTAssertTrue(positive.constant == 15.0, "Wrong constant")
 
-		let negative = lexEvaluate(subview.lexTop == container.lexTop - 15.0)
+		let negative = evaluateLayoutExpression(subview.lexTop == container.lexTop - 15.0)
 		XCTAssertTrue(negative.constant == -15.0, "Wrong constant")
 	}
 
 	func testMultiplier() {
-		let rhsConstraint = lexEvaluate(subview.lexTop == container.lexTop * 2)
+		let rhsConstraint = evaluateLayoutExpression(subview.lexTop == container.lexTop * 2)
 		XCTAssertTrue(rhsConstraint.multiplier == 2.0, "Wrong multiplier")
 
-		let lhsConstraint = lexEvaluate(subview.lexTop == 2 * container.lexTop)
+		let lhsConstraint = evaluateLayoutExpression(subview.lexTop == 2 * container.lexTop)
 		XCTAssertTrue(lhsConstraint.multiplier == 2.0, "Wrong multiplier")
 	}
 
 	func testConstantAndMultiplier() {
-		let constraint = lexEvaluate(subview.lexTop == container.lexTop * 2 + 15.0)
+		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop * 2 + 15.0)
 		XCTAssertTrue(constraint.constant == 15.0, "Wrong constant")
 		XCTAssertTrue(constraint.multiplier == 2.0, "Wrong multiplier")
 	}

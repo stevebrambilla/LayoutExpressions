@@ -39,7 +39,7 @@ public struct CenterArgument: LeftArgument, RightArgument {
 
 		default:
 			assert(false, "Called CenterArgument with an invalid attribute.")
-			return Parameters.noop
+			return Parameters.noOp
 		}
 	}
 }

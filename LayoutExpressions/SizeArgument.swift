@@ -44,7 +44,7 @@ public struct SizeArgument: LeftArgument, RightArgument {
 
 		default:
 			assert(false, "Called SizeArgument with an invalid attribute.")
-			return Parameters.noop
+			return Parameters.noOp
 		}
 	}
 }
@@ -66,7 +66,7 @@ public struct FixedSizeArgument: RightArgument {
 
 		default:
 			assert(false, "Called SizeArgument with an invalid attribute.")
-			return Parameters.noop
+			return Parameters.noOp
 		}
 	}
 }

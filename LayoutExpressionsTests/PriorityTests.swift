@@ -19,12 +19,12 @@ class PriorityTests: XCTestCase {
 	}
 
 	func testCustomPriority() {
-		let constraint = lexEvaluate(subview.lexTop == container.lexTop <~ 950)
+		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <~ 950)
 		XCTAssertTrue(constraint.priority == 950, "Wrong priority")
 	}
 
 	func testSystemPriority() {
-		let constraint = lexEvaluate(subview.lexTop == container.lexTop <~ .DefaultHigh)
+		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <~ .DefaultHigh)
 		XCTAssertTrue(constraint.priority == SystemPriority.DefaultHigh.rawValue, "Wrong priority")
 	}
 }

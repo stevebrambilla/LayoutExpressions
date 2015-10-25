@@ -46,7 +46,7 @@ public struct Expression<Left: LeftArgument, Right: RightArgument>: ExpressionTy
 	}
 }
 
-protocol ExpressionType {
+internal protocol ExpressionType {
 	func evaluate() -> [NSLayoutConstraint]
 }
 

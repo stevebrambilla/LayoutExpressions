@@ -50,7 +50,7 @@ public struct EdgesArgument: LeftArgument, RightArgument {
 
 		default:
 			assert(false, "Called EdgesArgument with an invalid attribute.")
-			return Parameters.noop
+			return Parameters.noOp
 		}
 	}
 }
