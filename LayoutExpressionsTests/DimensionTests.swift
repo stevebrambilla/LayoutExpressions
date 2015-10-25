@@ -19,14 +19,14 @@ class DimensionTests: XCTestCase {
 	}
 
 	func testFixedWidth() {
-		let width = evaluateExpression(subview.lex_width == 320.0)
+		let width = evaluateLayoutExpression(subview.lexWidth == 320.0)
 		XCTAssertTrue(width.secondAttribute == .NotAnAttribute, "Wrong attribute")
 		XCTAssertTrue(width.multiplier == 1.0, "Wrong multiplier")
 		XCTAssertTrue(width.constant == 320.0, "Wrong constant")
 	}
 
 	func testFixedHeight() {
-		let height = evaluateExpression(subview.lex_height == 50.0)
+		let height = evaluateLayoutExpression(subview.lexHeight == 50.0)
 		XCTAssertTrue(height.secondAttribute == .NotAnAttribute, "Wrong attribute")
 		XCTAssertTrue(height.multiplier == 1.0, "Wrong multiplier")
 		XCTAssertTrue(height.constant == 50.0, "Wrong constant")

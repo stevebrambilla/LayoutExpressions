@@ -13,12 +13,70 @@ import UIKit
 // Supports constraining the size to a CGSize:
 //     subview.size == (width: 320.0, height: 480.0)
 
-// ------------------------------------------------------------------------------------------------
+public struct SizeArgument: LeftArgument, RightArgument {
+	private let item: AnyObject
+	private let offset: SizeOffset?
+
+	internal init(item: AnyObject, offset: SizeOffset? = nil) {
+		self.item = item
+		self.offset = offset
+	}
+
+	private func updateOffset(offset: SizeOffset) -> SizeArgument {
+		return SizeArgument(item: item, offset: offset)
+	}
+
+	public var leftItem: AnyObject {
+		return item
+	}
+
+	public var leftAttributes: [NSLayoutAttribute] {
+		return [.Width, .Height]
+	}
+
+	public func rightParametersForAttribute(attribute: NSLayoutAttribute) -> Parameters {
+		switch attribute {
+		case .Width:
+			return Parameters(item: item, attribute: .Width, multiplier: nil, constant: offset?.width)
+
+		case .Height:
+			return Parameters(item: item, attribute: .Height, multiplier: nil, constant: offset?.height)
+
+		default:
+			assert(false, "Called SizeArgument with an invalid attribute.")
+			return Parameters.noOp
+		}
+	}
+}
+
+public struct FixedSizeArgument: RightArgument {
+	private let size: CGSize
+
+	private init(size: CGSize) {
+		self.size = size
+	}
+
+	public func rightParametersForAttribute(attribute: NSLayoutAttribute) -> Parameters {
+		switch attribute {
+		case .Width:
+			return Parameters(item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.width)
+
+		case .Height:
+			return Parameters(item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.height)
+
+		default:
+			assert(false, "Called SizeArgument with an invalid attribute.")
+			return Parameters.noOp
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct SizeOffset {
-	var width: CGFloat
-	var height: CGFloat
+	public var width: CGFloat
+	public var height: CGFloat
 
 	public init(width: CGFloat, height: CGFloat) {
 		self.width = width
@@ -26,98 +84,39 @@ public struct SizeOffset {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
-// MARK: - Arguments
-
-public class SizeArgument: LeftHandSideArgument, RightHandSideArgument {
-	private let item: AnyObject
-	private let offset: SizeOffset?
-
-	init(item: AnyObject, offset: SizeOffset? = nil) {
-		self.item = item
-		self.offset = offset
-	}
-
-	func updateOffset(offset: SizeOffset) -> SizeArgument {
-		return SizeArgument(item: item, offset: offset)
-	}
-
-	// LeftHandSideArgument
-	public var leftHandSideItem: AnyObject {
-		return item
-	}
-	public var leftHandSideAttributes: [NSLayoutAttribute] {
-		return [ .Width, .Height ]
-	}
-
-	// RightHandSideArgument
-	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		switch leftAttribute {
-		case .Width:
-			return (item, .Width, nil, offset?.width)
-		case .Height:
-			return (item, .Height, nil, offset?.height)
-		default:
-			assert(false, "Called SizeArgument with an invalid left attribute.")
-			return (item, .NotAnAttribute, nil, nil)
-		}
-	}
-}
-
-public class FixedSizeArgument: RightHandSideArgument {
-	private let size: CGSize
-
-	init(size: CGSize) {
-		self.size = size
-	}
-
-	// RightHandSideArgument
-	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		switch leftAttribute {
-		case .Width:
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.width)
-		case .Height:
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.height)
-		default:
-			assert(false, "Called SizeArgument with an invalid left attribute.")
-			return (nil, .NotAnAttribute, nil, nil)
-		}
-	}
-}
-
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
-public func +(lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
+public func + (lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
 	return lhs.updateOffset(offset)
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func ==(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
+public func == (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
+public func <= (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
+public func >= (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
 
-public func ==(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
+public func == (lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .Equal, rhs: rhs)
 }
 
-public func <=(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
+public func <= (lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
 }
 
-public func >=(lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
+public func >= (lhs: SizeArgument, rhsSize: CGSize) -> Expression<SizeArgument, FixedSizeArgument> {
 	let rhs = FixedSizeArgument(size: rhsSize)
 	return Expression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
 }
