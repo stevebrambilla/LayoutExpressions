@@ -2,13 +2,49 @@
 
 import UIKit
 
-// ------------------------------------------------------------------------------------------------
-// MARK: - Argument
+public struct DimensionArgument: DistinctLeftArgument, DistinctRightArgument {
+	internal enum Dimension {
+		case Width
+		case Height
 
-public class DimensionArgument: AttributeArgument {
-	override init(item: AnyObject, attribute: NSLayoutAttribute, multiplier: CGFloat? = nil, constant: CGFloat? = nil) {
-		assert(attribute == .Width || attribute == .Height)
-		super.init(item: item, attribute: attribute, multiplier: multiplier, constant: constant)
+		private var attribute: NSLayoutAttribute {
+			switch self {
+			case .Width: return .Width
+			case .Height: return .Height
+			}
+		}
+	}
+
+	private let item: AnyObject
+	private let dimension: Dimension
+	private let multiplier: CGFloat?
+	private let constant: CGFloat?
+
+	internal init(item: AnyObject, dimension: Dimension, multiplier: CGFloat? = nil, constant: CGFloat? = nil) {
+		self.item = item
+		self.dimension = dimension
+		self.multiplier = multiplier
+		self.constant = constant
+	}
+
+	internal func updateMultiplier(multiplier: CGFloat) -> DimensionArgument {
+		return DimensionArgument(item: item, dimension: dimension, multiplier: multiplier, constant: constant)
+	}
+
+	internal func updateConstant(constant: CGFloat) -> DimensionArgument {
+		return DimensionArgument(item: item, dimension: dimension, multiplier: multiplier, constant: constant)
+	}
+
+	public var leftItem: AnyObject {
+		return item
+	}
+
+	public var distinctLeftAttribute: NSLayoutAttribute {
+		return dimension.attribute
+	}
+
+	public var distinctRightParameters: Parameters {
+		return Parameters(item: item, attribute: dimension.attribute, multiplier: multiplier, constant: constant)
 	}
 }
 

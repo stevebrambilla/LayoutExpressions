@@ -45,12 +45,12 @@ extension UIView {
 
 	/// The distinct .Width layout expression argument.
 	public var lexWidth: DimensionArgument {
-		return DimensionArgument(item: self, attribute: .Width)
+		return DimensionArgument(item: self, dimension: .Width)
 	}
 
 	/// The distinct .Height layout expression argument.
 	public var lexHeight: DimensionArgument {
-		return DimensionArgument(item: self, attribute: .Height)
+		return DimensionArgument(item: self, dimension: .Height)
 	}
 
 	/// The distinct .Baseline layout expression argument.

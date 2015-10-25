@@ -13,75 +13,74 @@ import UIKit
 // Supports constraining the size to a CGSize:
 //     subview.size == (width: 320.0, height: 480.0)
 
-// ------------------------------------------------------------------------------------------------
-// MARK: - Shorthand Structs
-
-public struct SizeOffset {
-	var width: CGFloat
-	var height: CGFloat
-
-	public init(width: CGFloat, height: CGFloat) {
-		self.width = width
-		self.height = height
-	}
-}
-
-// ------------------------------------------------------------------------------------------------
-// MARK: - Arguments
-
-public class SizeArgument: LeftHandSideArgument, RightHandSideArgument {
+public struct SizeArgument: LeftArgument, RightArgument {
 	private let item: AnyObject
 	private let offset: SizeOffset?
 
-	init(item: AnyObject, offset: SizeOffset? = nil) {
+	internal init(item: AnyObject, offset: SizeOffset? = nil) {
 		self.item = item
 		self.offset = offset
 	}
 
-	func updateOffset(offset: SizeOffset) -> SizeArgument {
+	private func updateOffset(offset: SizeOffset) -> SizeArgument {
 		return SizeArgument(item: item, offset: offset)
 	}
 
-	// LeftHandSideArgument
-	public var leftHandSideItem: AnyObject {
+	public var leftItem: AnyObject {
 		return item
 	}
-	public var leftHandSideAttributes: [NSLayoutAttribute] {
-		return [ .Width, .Height ]
+
+	public var leftAttributes: [NSLayoutAttribute] {
+		return [.Width, .Height]
 	}
 
-	// RightHandSideArgument
-	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		switch leftAttribute {
+	public func rightParametersForAttribute(attribute: NSLayoutAttribute) -> Parameters {
+		switch attribute {
 		case .Width:
-			return (item, .Width, nil, offset?.width)
+			return Parameters(item: item, attribute: .Width, multiplier: nil, constant: offset?.width)
+
 		case .Height:
-			return (item, .Height, nil, offset?.height)
+			return Parameters(item: item, attribute: .Height, multiplier: nil, constant: offset?.height)
+
 		default:
-			assert(false, "Called SizeArgument with an invalid left attribute.")
-			return (item, .NotAnAttribute, nil, nil)
+			assert(false, "Called SizeArgument with an invalid attribute.")
+			return Parameters.noop
 		}
 	}
 }
 
-public class FixedSizeArgument: RightHandSideArgument {
+public struct FixedSizeArgument: RightArgument {
 	private let size: CGSize
 
-	init(size: CGSize) {
+	private init(size: CGSize) {
 		self.size = size
 	}
 
-	// RightHandSideArgument
-	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		switch leftAttribute {
+	public func rightParametersForAttribute(attribute: NSLayoutAttribute) -> Parameters {
+		switch attribute {
 		case .Width:
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.width)
+			return Parameters(item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.width)
+
 		case .Height:
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.height)
+			return Parameters(item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: size.height)
+
 		default:
-			assert(false, "Called SizeArgument with an invalid left attribute.")
-			return (nil, .NotAnAttribute, nil, nil)
+			assert(false, "Called SizeArgument with an invalid attribute.")
+			return Parameters.noop
 		}
+	}
+}
+
+// ------------------------------------------------------------------------------------------------
+// MARK: - Shorthand Structs
+
+public struct SizeOffset {
+	public var width: CGFloat
+	public var height: CGFloat
+
+	public init(width: CGFloat, height: CGFloat) {
+		self.width = width
+		self.height = height
 	}
 }
 

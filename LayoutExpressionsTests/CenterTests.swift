@@ -19,7 +19,7 @@ class CenterTests: XCTestCase {
 	}
 
 	func testCenterToView() {
-		let constraints = evaluateExpression(subview.lexCenter == container.lexCenter)
+		let constraints = lexEvaluate(subview.lexCenter == container.lexCenter)
 
 		let centerXs = constraints.filter { $0.firstAttribute == NSLayoutAttribute.CenterX }
 		XCTAssertTrue(centerXs.count == 1, "Didn't find exactly one CenterX constraint.")
@@ -42,14 +42,14 @@ class CenterTests: XCTestCase {
 
 	func testCenterToViewWithOffset() {
 		let offset = PointOffset(horizontal: 5.0, vertical: -10.0)
-		let constraints = evaluateExpression(subview.lexCenter == container.lexCenter + offset)
+		let constraints = lexEvaluate(subview.lexCenter == container.lexCenter + offset)
 
 		validateConstraintConstants(constraints, x: 5.0, y: -10.0)
 	}
 
 	func testCenterToViewWithOffsetFromUIOffset() {
 		let offset = UIOffset(horizontal: 5.0, vertical: -10.0)
-		let constraints = evaluateExpression(subview.lexCenter == container.lexCenter + PointOffset(offset))
+		let constraints = lexEvaluate(subview.lexCenter == container.lexCenter + PointOffset(offset))
 
 		validateConstraintConstants(constraints, x: 5.0, y: -10.0)
 	}

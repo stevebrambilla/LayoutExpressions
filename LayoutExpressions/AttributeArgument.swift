@@ -2,51 +2,37 @@
 
 import UIKit
 
-// ------------------------------------------------------------------------------------------------
-// MARK: - Argument
-
-public class AttributeArgument: DistinctLeftHandSideArgument, DistinctRightHandSideArgument {
+public struct AttributeArgument: DistinctLeftArgument, DistinctRightArgument {
 	private let item: AnyObject
 	private let attribute: NSLayoutAttribute
 	private let multiplier: CGFloat?
 	private let constant: CGFloat?
 
-	init(item: AnyObject, attribute: NSLayoutAttribute, multiplier: CGFloat? = nil, constant: CGFloat? = nil) {
+	internal init(item: AnyObject, attribute: NSLayoutAttribute, multiplier: CGFloat? = nil, constant: CGFloat? = nil) {
 		self.item = item
 		self.attribute = attribute
 		self.multiplier = multiplier
 		self.constant = constant
 	}
 
-	func updateMultiplier(multiplier: CGFloat) -> AttributeArgument {
+	private func updateMultiplier(multiplier: CGFloat) -> AttributeArgument {
 		return AttributeArgument(item: item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 
-	func updateConstant(constant: CGFloat) -> AttributeArgument {
+	private func updateConstant(constant: CGFloat) -> AttributeArgument {
 		return AttributeArgument(item: item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 
-	// LeftHandSideArgument
-	public var leftHandSideItem: AnyObject {
+	public var leftItem: AnyObject {
 		return item
 	}
-	public var leftHandSideAttributes: [NSLayoutAttribute] {
-		return [ attribute ]
-	}
 
-	// DistinctLeftHandSideArgument
-	public var distinctLeftHandSideAttribute: NSLayoutAttribute {
+	public var distinctLeftAttribute: NSLayoutAttribute {
 		return attribute
 	}
 
-	// RightHandSideArgument
-	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		return self.distinctRightHandSideValue
-	}
-
-	// DistinctRightHandSideArgument
-	public var distinctRightHandSideValue: (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		return (item:item, attribute: attribute, multiplier: multiplier, constant: constant)
+	public var distinctRightParameters: Parameters {
+		return Parameters(item: item, attribute: attribute, multiplier: multiplier, constant: constant)
 	}
 }
 

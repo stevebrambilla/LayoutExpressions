@@ -11,14 +11,58 @@ import UIKit
 // Or inset all edges equally using '-' with a Double:
 // 		subview.allEdges == container.allEdges - 10.0
 
+public struct EdgesArgument: LeftArgument, RightArgument {
+	private let item: AnyObject
+	private let insets: EdgeInsets?
+
+	internal init(item: AnyObject, insets: EdgeInsets? = nil) {
+		self.item = item
+		self.insets = insets
+	}
+
+	private func updateInsets(insets: EdgeInsets) -> EdgesArgument {
+		return EdgesArgument(item: item, insets: insets)
+	}
+
+	public var leftItem: AnyObject {
+		return item
+	}
+
+	public var leftAttributes: [NSLayoutAttribute] {
+		return [.Top, .Left, .Bottom, .Right]
+	}
+
+	public func rightParametersForAttribute(attribute: NSLayoutAttribute) -> Parameters {
+		switch attribute {
+		case .Top:
+			return Parameters(item: item, attribute: .Top, multiplier: nil, constant: insets?.top)
+
+		case .Left:
+			return Parameters(item: item, attribute: .Left, multiplier: nil, constant: insets?.left)
+
+		case .Bottom:
+			let bottomInset = insets.map { -$0.bottom }
+			return Parameters(item: item, attribute: .Bottom, multiplier: nil, constant: bottomInset)
+
+		case .Right:
+			let rightInset = insets.map { -$0.right }
+			return Parameters(item: item, attribute: .Right, multiplier: nil, constant: rightInset)
+
+		default:
+			assert(false, "Called EdgesArgument with an invalid attribute.")
+			return Parameters.noop
+		}
+	}
+}
+
 // ------------------------------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct EdgeInsets {
-	let top: CGFloat
-	let left: CGFloat
-	let bottom: CGFloat
-	let right: CGFloat
+	public let top: CGFloat
+	public let left: CGFloat
+	public let bottom: CGFloat
+	public let right: CGFloat
 
 	public init(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
 		self.top = top
@@ -29,50 +73,6 @@ public struct EdgeInsets {
 
 	public init(_ insets: UIEdgeInsets) {
 		self.init(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
-	}
-}
-
-// ------------------------------------------------------------------------------------------------
-// MARK: - Argument
-
-public class EdgesArgument: LeftHandSideArgument, RightHandSideArgument {
-	private let item: AnyObject
-	private let insets: EdgeInsets?
-
-	init(item: AnyObject, insets: EdgeInsets? = nil) {
-		self.item = item
-		self.insets = insets
-	}
-
-	func updateInsets(insets: EdgeInsets) -> EdgesArgument {
-		return EdgesArgument(item: item, insets: insets)
-	}
-
-	// LeftHandSideArgument
-	public var leftHandSideItem: AnyObject {
-		return item
-	}
-	public var leftHandSideAttributes: [NSLayoutAttribute] {
-		return [ .Top, .Left, .Bottom, .Right ]
-	}
-
-	// RightHandSideArgument
-	public func rightHandSideValues(leftAttribute: NSLayoutAttribute) -> (item: AnyObject?, attribute: NSLayoutAttribute, multiplier: CGFloat?, constant: CGFloat?) {
-		switch leftAttribute {
-		case .Top:
-			return (item: item, attribute: .Top, multiplier: nil, constant: insets?.top)
-		case .Left:
-			return (item: item, attribute: .Left, multiplier: nil, constant: insets?.left)
-		case .Bottom:
-			let bottomInset: CGFloat? = (insets != nil ? -insets!.bottom : nil)
-			return (item: item, attribute: .Bottom, multiplier: nil, constant: bottomInset)
-		case .Right:
-			let rightInset: CGFloat? = (insets != nil ? -insets!.right : nil)
-			return (item: item, attribute: .Right, multiplier: nil, constant: rightInset)
-		default:
-			assert(false, "Called EdgesArgument with an invalid left attribute.")
-			return (item: nil, attribute: .NotAnAttribute, multiplier: nil, constant: nil)
-		}
 	}
 }
 
