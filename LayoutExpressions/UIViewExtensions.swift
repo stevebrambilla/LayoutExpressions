@@ -7,57 +7,57 @@ import UIKit
 
 extension UIView {
 	/// The distinct .Leading layout expression argument.
-	public var lex_leading: AttributeArgument {
+	public var lexLeading: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Leading)
 	}
 
 	/// The distinct .Trailing layout expression argument.
-	public var lex_trailing: AttributeArgument {
+	public var lexTrailing: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Trailing)
 	}
 
 	/// The distinct .Top layout expression argument.
-	public var lex_top: AttributeArgument {
+	public var lexTop: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Top)
 	}
 
 	/// The distinct .Left layout expression argument.
-	public var lex_left: AttributeArgument {
+	public var lexLeft: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Left)
 	}
 
 	/// The distinct .Bottom layout expression argument.
-	public var lex_bottom: AttributeArgument {
+	public var lexBottom: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Bottom)
 	}
 
 	/// The distinct .Right layout expression argument.
-	public var lex_right: AttributeArgument {
+	public var lexRight: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Right)
 	}
 
 	/// The distinct .CenterX layout expression argument.
-	public var lex_centerX: AttributeArgument {
+	public var lexCenterX: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .CenterX)
 	}
 
 	/// The distinct .CenterY layout expression argument.
-	public var lex_centerY: AttributeArgument {
+	public var lexCenterY: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .CenterY)
 	}
 
 	/// The distinct .Width layout expression argument.
-	public var lex_width: DimensionArgument {
+	public var lexWidth: DimensionArgument {
 		return DimensionArgument(item: self, attribute: .Width)
 	}
 
 	/// The distinct .Height layout expression argument.
-	public var lex_height: DimensionArgument {
+	public var lexHeight: DimensionArgument {
 		return DimensionArgument(item: self, attribute: .Height)
 	}
 
 	/// The distinct .Baseline layout expression argument.
-	public var lex_baseline: AttributeArgument {
+	public var lexBaseline: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Baseline)
 	}
 }
@@ -65,7 +65,7 @@ extension UIView {
 extension UIView {
 	/// The composite "edges" layout expression argument.
 	/// Evaluates to .Top, .Left, .Bottom, .Right constraints.
-	public var lex_edges: EdgesArgument {
+	public var lexEdges: EdgesArgument {
 		return EdgesArgument(item: self)
 	}
 }
@@ -73,7 +73,7 @@ extension UIView {
 extension UIView {
 	/// The composite "center" layout expression argument.
 	/// Evaluates to .CenterX, .CenterY constraints.
-	public var lex_center: CenterArgument {
+	public var lexCenter: CenterArgument {
 		return CenterArgument(item: self)
 	}
 }
@@ -81,7 +81,7 @@ extension UIView {
 extension UIView {
 	/// The composite "size" layout expression argument.
 	/// Evaluates to .Width, .Height constraints.
-	public var lex_size: SizeArgument {
+	public var lexSize: SizeArgument {
 		return SizeArgument(item: self)
 	}
 }
@@ -93,39 +93,25 @@ extension UIView {
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.
-	public func lex_addExpression<L: DistinctLeftHandSideArgument, R: DistinctRightHandSideArgument>(expression: Expression<L, R>) -> NSLayoutConstraint {
+	public func addLayoutExpression<Left: DistinctLeftHandSideArgument, Right: DistinctRightHandSideArgument>(expression: Expression<Left, Right>) -> NSLayoutConstraint {
 		let constraint = evaluateExpression(expression)
-		self.addConstraint(constraint)
+		addConstraint(constraint)
 		return constraint
 	}
 
 	/// Evaluates the expression and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	public func lex_addExpression<L: LeftHandSideArgument, R: RightHandSideArgument>(expression: Expression<L, R>) -> [NSLayoutConstraint] {
-		return self.lex_addExpressions(expression)
+	public func addLayoutExpression<Left: LeftHandSideArgument, Right: RightHandSideArgument>(expression: Expression<Left, Right>) -> [NSLayoutConstraint] {
+		return addLayoutExpressions(expression)
 	}
 
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	public func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: Expression<L, R>...) -> [NSLayoutConstraint] {
+	public func addLayoutExpressions<Left: LeftHandSideArgument, Right: RightHandSideArgument>(expressions: Expression<Left, Right>...) -> [NSLayoutConstraint] {
 		let constraints = evaluateExpressions(expressions)
-		self.addConstraints(constraints)
-		return constraints
-
-		//return self.lex_addExpressions(expressions)
-	}
-
-	/// Evaluates the expressions and adds the constraints to the view.
-	///
-	/// Returns the layout constraints.
-	// TODO: This function strill crashes the Swift compiler as of b5
-	/*
-	public func lex_addExpressions<L: LeftHandSideArgument, R: RightHandSideArgument>(expressions: [Expression<L, R>]) -> [NSLayoutConstraint] {
-		let constraints = evaluateExpressions(expressions)
-		self.addConstraints(constraints)
+		addConstraints(constraints)
 		return constraints
 	}
-	*/
 }
