@@ -48,7 +48,7 @@ public struct DimensionArgument: DistinctLeftArgument, DistinctRightArgument {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == (lhs: DimensionArgument, constant: CGFloat) -> Expression<DimensionArgument, ConstantArgument> {

@@ -2,7 +2,7 @@
 
 import UIKit
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - UIViewController
 
 extension UIViewController {
@@ -17,37 +17,17 @@ extension UIViewController {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - UILayoutSupport
 
 extension UILayoutSupport {
-	/// The distinct .Leading layout expression argument.
-	public var lexLeading: AttributeArgument {
-		return AttributeArgument(item: self, attribute: .Leading)
-	}
-
-	/// The distinct .Trailing layout expression argument.
-	public var lexTrailing: AttributeArgument {
-		return AttributeArgument(item: self, attribute: .Trailing)
-	}
-
 	/// The distinct .Top layout expression argument.
 	public var lexTop: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Top)
 	}
 
-	/// The distinct .Left layout expression argument.
-	public var lexLeft: AttributeArgument {
-		return AttributeArgument(item: self, attribute: .Left)
-	}
-
 	/// The distinct .Bottom layout expression argument.
 	public var lexBottom: AttributeArgument {
 		return AttributeArgument(item: self, attribute: .Bottom)
-	}
-
-	/// The distinct .Right layout expression argument.
-	public var lexRight: AttributeArgument {
-		return AttributeArgument(item: self, attribute: .Right)
 	}
 }

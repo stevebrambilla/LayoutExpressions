@@ -36,11 +36,8 @@ public struct AttributeArgument: DistinctLeftArgument, DistinctRightArgument {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
-
-// Note: Order of operations still matters if using a multiplier AND constant.
-// We _could_ use additional types to prevent multiple '*' / '+' / '-' operations...
 
 public func * (lhs: AttributeArgument, multiplier: CGFloat) -> AttributeArgument {
 	return lhs.updateMultiplier(multiplier)
@@ -58,7 +55,7 @@ public func - (lhs: AttributeArgument, constant: CGFloat) -> AttributeArgument {
 	return lhs.updateConstant(-constant)
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == (lhs: AttributeArgument, rhs: AttributeArgument) -> Expression<AttributeArgument, AttributeArgument> {

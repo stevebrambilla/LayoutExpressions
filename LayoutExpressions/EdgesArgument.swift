@@ -55,7 +55,7 @@ public struct EdgesArgument: LeftArgument, RightArgument {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct EdgeInsets {
@@ -76,7 +76,7 @@ public struct EdgeInsets {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func - (lhs: EdgesArgument, inset: CGFloat) -> EdgesArgument {
@@ -88,7 +88,7 @@ public func - (lhs: EdgesArgument, insets: EdgeInsets) -> EdgesArgument {
 	return lhs.updateInsets(insets)
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == (lhs: EdgesArgument, rhs: EdgesArgument) -> Expression<EdgesArgument, EdgesArgument> {

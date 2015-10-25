@@ -71,7 +71,7 @@ public struct FixedSizeArgument: RightArgument {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct SizeOffset {
@@ -84,14 +84,14 @@ public struct SizeOffset {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func + (lhs: SizeArgument, offset: SizeOffset) -> SizeArgument {
 	return lhs.updateOffset(offset)
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == (lhs: SizeArgument, rhs: SizeArgument) -> Expression<SizeArgument, SizeArgument> {

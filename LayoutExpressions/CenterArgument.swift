@@ -44,7 +44,7 @@ public struct CenterArgument: LeftArgument, RightArgument {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Shorthand Structs
 
 public struct PointOffset {
@@ -65,14 +65,14 @@ public struct PointOffset {
 	}
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func + (lhs: CenterArgument, offset: PointOffset) -> CenterArgument {
 	return lhs.updateOffset(offset)
 }
 
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == (lhs: CenterArgument, rhs: CenterArgument) -> Expression<CenterArgument, CenterArgument> {
