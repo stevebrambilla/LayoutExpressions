@@ -16,10 +16,6 @@ infix operator  <~ {
 	precedence 125 // Less than the Comparative operators (130)
 }
 
-public func <~ <Left: LeftArgument, Right: RightArgument>(expression: Expression<Left, Right>, priority: SystemPriority) -> Expression<Left, Right> {
+public func <~ <Expression: ExpressionType>(expression: Expression, priority: SystemPriority) -> Expression {
 	return expression.updatePriority(priority.rawValue)
-}
-
-public func <~ <Left: LeftArgument, Right: RightArgument>(expression: Expression<Left, Right>, priority: Priority) -> Expression<Left, Right> {
-	return expression.updatePriority(priority)
 }

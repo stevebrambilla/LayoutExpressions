@@ -6,8 +6,8 @@ extension UIView {
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.
-	public func addLayoutExpression<Left: DistinctLeftArgument, Right: DistinctRightArgument>(expression: Expression<Left, Right>) -> NSLayoutConstraint {
-		let constraint = expression.evaluateDistinct()
+	public func addLayoutExpression(expression: DistinctExpressionType) -> NSLayoutConstraint {
+		let constraint = evaluateLayoutExpression(expression)
 		addConstraint(constraint)
 		return constraint
 	}
@@ -15,8 +15,8 @@ extension UIView {
 	/// Evaluates the expression and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	public func addLayoutExpression<Left: LeftArgument, Right: RightArgument>(expression: Expression<Left, Right>) -> [NSLayoutConstraint] {
-		let constraints = expression.evaluate()
+	public func addLayoutExpression(expression: ExpressionType) -> [NSLayoutConstraint] {
+		let constraints = evaluateLayoutExpression(expression)
 		addConstraints(constraints)
 		return constraints
 	}
@@ -24,8 +24,8 @@ extension UIView {
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
-	public func addLayoutExpressions<Left: LeftArgument, Right: RightArgument>(expressions: Expression<Left, Right>...) -> [NSLayoutConstraint] {
-		let constraints = expressions.evaluate()
+	public func addLayoutExpressions(expressions: ExpressionType...) -> [NSLayoutConstraint] {
+		let constraints = evaluateLayoutExpressions(expressions)
 		addConstraints(constraints)
 		return constraints
 	}
