@@ -1,10 +1,4 @@
-//
-//  Constants.swift
-//  LayoutExpressions
-//
-//  Created by Steve Brambilla on 2015-10-31.
-//  Copyright © 2015 Steve Brambilla. All rights reserved.
-//
+//  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
 import UIKit
 

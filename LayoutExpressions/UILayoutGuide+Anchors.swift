@@ -1,68 +1,61 @@
-//
-//  UILayoutGuide+LayoutExpressions.swift
-//  LayoutExpressions
-//
-//  Created by Steve Brambilla on 2015-11-01.
-//  Copyright © 2015 Steve Brambilla. All rights reserved.
-//
+//  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
 import UIKit
 
 extension UILayoutGuide {
-	/// The distinct .Leading layout expression argument.
+	/// A layout expression anchor representing the leading edge of the layout guide's frame.
 	public var lexLeading: XAxisAnchor<UndefinedConstant> {
 		return XAxisAnchor(anchor: leadingAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Trailing layout expression argument.
+	/// A layout expression anchor representing the trailing edge of the layout guide's frame.
 	public var lexTrailing: XAxisAnchor<UndefinedConstant> {
 		return XAxisAnchor(anchor: trailingAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Top layout expression argument.
+	/// A layout expression anchor representing the top edge of the layout guide's frame.
 	public var lexTop: YAxisAnchor<UndefinedConstant> {
 		return YAxisAnchor(anchor: topAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Left layout expression argument.
+	/// A layout expression anchor representing the left edge of the layout guide's frame.
 	public var lexLeft: XAxisAnchor<UndefinedConstant> {
 		return XAxisAnchor(anchor: leftAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Bottom layout expression argument.
+	/// A layout expression anchor representing the bottom edge of the layout guide's frame.
 	public var lexBottom: YAxisAnchor<UndefinedConstant> {
 		return YAxisAnchor(anchor: bottomAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Right layout expression argument.
+	/// A layout expression anchor representing the right edge of the layout guide's frame.
 	public var lexRight: XAxisAnchor<UndefinedConstant> {
 		return XAxisAnchor(anchor: rightAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .CenterX layout expression argument.
+	/// A layout expression anchor representing the horizontal center of the layout guide's frame.
 	public var lexCenterX: XAxisAnchor<UndefinedConstant> {
 		return XAxisAnchor(anchor: centerXAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .CenterY layout expression argument.
+	/// A layout expression anchor representing the vertical center of the layout guide's frame.
 	public var lexCenterY: YAxisAnchor<UndefinedConstant> {
 		return YAxisAnchor(anchor: centerYAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Width layout expression argument.
+	/// A layout expression anchor representing the width of the layout guide's frame.
 	public var lexWidth: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
 		return DimensionAnchor(dimension: widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
 	}
 
-	/// The distinct .Height layout expression argument.
+	/// A layout expression anchor representing the height of the layout guide's frame.
 	public var lexHeight: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
 		return DimensionAnchor(dimension: heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
 	}
 }
 
 extension UILayoutGuide {
-	/// The composite "edges" layout expression argument.
-	/// Evaluates to .Top, .Left, .Bottom, .Right constraints.
+	/// A composite layout expression anchor representing all four edges of the layout guide.
 	public var lexEdges: EdgesAnchor<UndefinedInsets> {
 		return EdgesAnchor(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: UndefinedInsets())
 	}
@@ -70,16 +63,14 @@ extension UILayoutGuide {
 
 
 extension UILayoutGuide {
-	/// The composite "center" layout expression argument.
-	/// Evaluates to .CenterX, .CenterY constraints.
+	/// A composite layout expression anchor representing the center of the view.
 	public var lexCenter: CenterAnchor<UndefinedOffset> {
 		return CenterAnchor(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: UndefinedOffset())
 	}
 }
 
 extension UILayoutGuide {
-	/// The composite "size" layout expression argument.
-	/// Evaluates to .Width, .Height constraints.
+	/// A composite layout expression anchor representing the size of the view.
 	public var lexSize: SizeAnchor<UndefinedSize> {
 		return SizeAnchor(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: UndefinedSize())
 	}

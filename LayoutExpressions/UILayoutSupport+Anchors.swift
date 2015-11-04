@@ -6,12 +6,12 @@ import UIKit
 // MARK: - UILayoutSupport
 
 extension UILayoutSupport {
-	/// The distinct .Top layout expression argument.
+	/// A layout expression anchor representing the top edge of the layout support's frame.
 	public var lexTop: YAxisAnchor<UndefinedConstant> {
 		return YAxisAnchor(anchor: topAnchor, constant: UndefinedConstant())
 	}
 
-	/// The distinct .Bottom layout expression argument.
+	/// A layout expression anchor representing the bottom edge of the layout support's frame.
 	public var lexBottom: YAxisAnchor<UndefinedConstant> {
 		return YAxisAnchor(anchor: bottomAnchor, constant: UndefinedConstant())
 	}
@@ -21,12 +21,12 @@ extension UILayoutSupport {
 // MARK: - UIViewController
 
 extension UIViewController {
-	/// The layout expression argument for the .Bottom attribute of the view controller's topLayoutGuide.
+	/// A layout expression anchor representing the bottom edge of the view controller's top layout guide.
 	public var lexTopLayoutGuide: YAxisAnchor<UndefinedConstant> {
 		return self.topLayoutGuide.lexBottom
 	}
 
-	/// The layout expression argument for the .Top attribute of the view controller's topLayoutGuide.
+	/// A layout expression anchor representing the top edge of the view controller's bottom layout guide.
 	public var lexBottomLayoutGuide: YAxisAnchor<UndefinedConstant> {
 		return self.bottomLayoutGuide.lexTop
 	}
