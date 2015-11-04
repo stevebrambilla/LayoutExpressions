@@ -34,7 +34,7 @@ public struct YAxisExpression<Constant: ConstantType>: DistinctExpressionType {
 		let rightAnchor = rhs.anchor
 		let constant = rhs.constant.value ?? 0
 
-		let constraint = constraintForRelation(relation, leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
+		let constraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
 
 		if let priority = priority {
 			constraint.priority = priority

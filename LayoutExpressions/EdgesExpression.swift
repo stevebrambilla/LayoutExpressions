@@ -44,10 +44,10 @@ public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
 	public func evaluateAll() -> [NSLayoutConstraint] {
 		let insets = rhs.insets.value ?? LayoutExpressions.Insets.zeroInsets
 
-		let topConstraint = constraintForRelation(relation, leftAnchor: lhs.topAnchor, rightAnchor: rhs.topAnchor, constant: insets.top)
-		let leftConstraint = constraintForRelation(relation, leftAnchor: lhs.leftAnchor, rightAnchor: rhs.leftAnchor, constant: insets.left)
-		let bottomConstraint = constraintForRelation(relation, leftAnchor: lhs.bottomAnchor, rightAnchor: rhs.bottomAnchor, constant: -insets.bottom)
-		let rightConstraint = constraintForRelation(relation, leftAnchor: lhs.rightAnchor, rightAnchor: rhs.rightAnchor, constant: -insets.right)
+		let topConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.topAnchor, rightAnchor: rhs.topAnchor, constant: insets.top)
+		let leftConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.leftAnchor, rightAnchor: rhs.leftAnchor, constant: insets.left)
+		let bottomConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.bottomAnchor, rightAnchor: rhs.bottomAnchor, constant: -insets.bottom)
+		let rightConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.rightAnchor, rightAnchor: rhs.rightAnchor, constant: -insets.right)
 
 		if let priority = priority {
 			topConstraint.priority = priority

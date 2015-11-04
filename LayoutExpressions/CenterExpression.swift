@@ -38,8 +38,8 @@ public struct CenterExpression<Offset: OffsetType>: ExpressionType {
 	public func evaluateAll() -> [NSLayoutConstraint] {
 		let offset = rhs.offset.value ?? LayoutExpressions.Offset.zeroOffset
 
-		let xConstraint = constraintForRelation(relation, leftAnchor: lhs.centerXAnchor, rightAnchor: rhs.centerXAnchor, constant: offset.horizontal)
-		let yConstraint = constraintForRelation(relation, leftAnchor: lhs.centerYAnchor, rightAnchor: rhs.centerYAnchor, constant: offset.vertical)
+		let xConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.centerXAnchor, rightAnchor: rhs.centerXAnchor, constant: offset.horizontal)
+		let yConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.centerYAnchor, rightAnchor: rhs.centerYAnchor, constant: offset.vertical)
 
 		if let priority = priority {
 			xConstraint.priority = priority
