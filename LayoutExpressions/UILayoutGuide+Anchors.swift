@@ -4,43 +4,43 @@ import UIKit
 
 extension UILayoutGuide {
 	/// A layout expression anchor representing the leading edge of the layout guide's frame.
-	public var lexLeading: XAxisAnchor<UndefinedConstant> {
-		return XAxisAnchor(anchor: leadingAnchor, constant: UndefinedConstant())
+	public var lexLeading: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: leadingAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the trailing edge of the layout guide's frame.
-	public var lexTrailing: XAxisAnchor<UndefinedConstant> {
-		return XAxisAnchor(anchor: trailingAnchor, constant: UndefinedConstant())
+	public var lexTrailing: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: trailingAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the top edge of the layout guide's frame.
-	public var lexTop: YAxisAnchor<UndefinedConstant> {
-		return YAxisAnchor(anchor: topAnchor, constant: UndefinedConstant())
+	public var lexTop: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: topAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the left edge of the layout guide's frame.
-	public var lexLeft: XAxisAnchor<UndefinedConstant> {
-		return XAxisAnchor(anchor: leftAnchor, constant: UndefinedConstant())
+	public var lexLeft: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: leftAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the bottom edge of the layout guide's frame.
-	public var lexBottom: YAxisAnchor<UndefinedConstant> {
-		return YAxisAnchor(anchor: bottomAnchor, constant: UndefinedConstant())
+	public var lexBottom: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: bottomAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the right edge of the layout guide's frame.
-	public var lexRight: XAxisAnchor<UndefinedConstant> {
-		return XAxisAnchor(anchor: rightAnchor, constant: UndefinedConstant())
+	public var lexRight: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: rightAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the horizontal center of the layout guide's frame.
-	public var lexCenterX: XAxisAnchor<UndefinedConstant> {
-		return XAxisAnchor(anchor: centerXAnchor, constant: UndefinedConstant())
+	public var lexCenterX: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: centerXAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the vertical center of the layout guide's frame.
-	public var lexCenterY: YAxisAnchor<UndefinedConstant> {
-		return YAxisAnchor(anchor: centerYAnchor, constant: UndefinedConstant())
+	public var lexCenterY: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: centerYAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the width of the layout guide's frame.

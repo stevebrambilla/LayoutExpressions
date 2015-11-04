@@ -7,13 +7,13 @@ import UIKit
 
 extension UILayoutSupport {
 	/// A layout expression anchor representing the top edge of the layout support's frame.
-	public var lexTop: YAxisAnchor<UndefinedConstant> {
-		return YAxisAnchor(anchor: topAnchor, constant: UndefinedConstant())
+	public var lexTop: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: topAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the bottom edge of the layout support's frame.
-	public var lexBottom: YAxisAnchor<UndefinedConstant> {
-		return YAxisAnchor(anchor: bottomAnchor, constant: UndefinedConstant())
+	public var lexBottom: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: bottomAnchor), constant: UndefinedConstant())
 	}
 }
 
@@ -22,12 +22,12 @@ extension UILayoutSupport {
 
 extension UIViewController {
 	/// A layout expression anchor representing the bottom edge of the view controller's top layout guide.
-	public var lexTopLayoutGuide: YAxisAnchor<UndefinedConstant> {
+	public var lexTopLayoutGuide: AxisAnchor<YAxis, UndefinedConstant> {
 		return self.topLayoutGuide.lexBottom
 	}
 
 	/// A layout expression anchor representing the top edge of the view controller's bottom layout guide.
-	public var lexBottomLayoutGuide: YAxisAnchor<UndefinedConstant> {
+	public var lexBottomLayoutGuide: AxisAnchor<YAxis, UndefinedConstant> {
 		return self.bottomLayoutGuide.lexTop
 	}
 }

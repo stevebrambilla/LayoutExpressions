@@ -20,8 +20,8 @@ class XAxisExpressionTests: XCTestCase {
 	}
 
 	func testXAxisExpressionWithoutConstant() {
-		let containerAnchor = XAxisAnchor(anchor: container.centerXAnchor, constant: UndefinedConstant())
-		let subviewAnchor = XAxisAnchor(anchor: subview.leftAnchor, constant: UndefinedConstant())
+		let containerAnchor = AxisAnchor(axis: XAxis(anchor: container.centerXAnchor), constant: UndefinedConstant())
+		let subviewAnchor = AxisAnchor(axis: XAxis(anchor: subview.leftAnchor), constant: UndefinedConstant())
 
 		let expression = (subviewAnchor == containerAnchor)
 		let constraint = expression.evaluateDistinct()
@@ -35,8 +35,8 @@ class XAxisExpressionTests: XCTestCase {
 	}
 
 	func testXAxisExpressionWithConstant() {
-		let containerAnchor = XAxisAnchor(anchor: container.centerXAnchor, constant: UndefinedConstant())
-		let subviewAnchor = XAxisAnchor(anchor: subview.leftAnchor, constant: UndefinedConstant())
+		let containerAnchor = AxisAnchor(axis: XAxis(anchor: container.centerXAnchor), constant: UndefinedConstant())
+		let subviewAnchor = AxisAnchor(axis: XAxis(anchor: subview.leftAnchor), constant: UndefinedConstant())
 
 		let expression = (subviewAnchor == containerAnchor + 10)
 		let constraint = expression.evaluateDistinct()
@@ -50,8 +50,8 @@ class XAxisExpressionTests: XCTestCase {
 	}
 
 	func testXAxisRelations() {
-		let containerAnchor = XAxisAnchor(anchor: container.centerXAnchor, constant: UndefinedConstant())
-		let subviewAnchor = XAxisAnchor(anchor: subview.leftAnchor, constant: UndefinedConstant())
+		let containerAnchor = AxisAnchor(axis: XAxis(anchor: container.centerXAnchor), constant: UndefinedConstant())
+		let subviewAnchor = AxisAnchor(axis: XAxis(anchor: subview.leftAnchor), constant: UndefinedConstant())
 
 		let ltExpression = (subviewAnchor <= containerAnchor + 10)
 		let ltConstraint = ltExpression.evaluateDistinct()

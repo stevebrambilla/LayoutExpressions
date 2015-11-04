@@ -19,9 +19,9 @@ class YAxisExpressionTests: XCTestCase {
 		container.addSubview(subview)
 	}
 
-	func testXAxisExpressionWithoutConstant() {
-		let containerAnchor = YAxisAnchor(anchor: container.centerYAnchor, constant: UndefinedConstant())
-		let subviewAnchor = YAxisAnchor(anchor: subview.topAnchor, constant: UndefinedConstant())
+	func testYAxisExpressionWithoutConstant() {
+		let containerAnchor = AxisAnchor(axis: YAxis(anchor: container.centerYAnchor), constant: UndefinedConstant())
+		let subviewAnchor = AxisAnchor(axis: YAxis(anchor: subview.topAnchor), constant: UndefinedConstant())
 
 		let expression = (subviewAnchor == containerAnchor)
 		let constraint = expression.evaluateDistinct()
@@ -34,9 +34,9 @@ class YAxisExpressionTests: XCTestCase {
 		XCTAssert(constraint.multiplier == 1)
 	}
 
-	func testXAxisExpressionWithConstant() {
-		let containerAnchor = YAxisAnchor(anchor: container.centerYAnchor, constant: UndefinedConstant())
-		let subviewAnchor = YAxisAnchor(anchor: subview.topAnchor, constant: UndefinedConstant())
+	func testYAxisExpressionWithConstant() {
+		let containerAnchor = AxisAnchor(axis: YAxis(anchor: container.centerYAnchor), constant: UndefinedConstant())
+		let subviewAnchor = AxisAnchor(axis: YAxis(anchor: subview.topAnchor), constant: UndefinedConstant())
 
 		let expression = (subviewAnchor == containerAnchor + 10)
 		let constraint = expression.evaluateDistinct()
@@ -49,9 +49,9 @@ class YAxisExpressionTests: XCTestCase {
 		XCTAssert(constraint.multiplier == 1)
 	}
 
-	func testXAxisRelations() {
-		let containerAnchor = YAxisAnchor(anchor: container.centerYAnchor, constant: UndefinedConstant())
-		let subviewAnchor = YAxisAnchor(anchor: subview.topAnchor, constant: UndefinedConstant())
+	func testYAxisRelations() {
+		let containerAnchor = AxisAnchor(axis: YAxis(anchor: container.centerYAnchor), constant: UndefinedConstant())
+		let subviewAnchor = AxisAnchor(axis: YAxis(anchor: subview.topAnchor), constant: UndefinedConstant())
 
 		let ltExpression = (subviewAnchor <= containerAnchor + 10)
 		let ltConstraint = ltExpression.evaluateDistinct()

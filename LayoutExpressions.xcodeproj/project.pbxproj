@@ -17,13 +17,11 @@
 		AA1BCDDC1BDD339F00AB6D1C /* UILayoutSupport+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17711947CEE100E91E41 /* UILayoutSupport+Anchors.swift */; };
 		AA1BCDEC1BE5502F00AB6D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */; };
 		AA1BCDED1BE5502F00AB6D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */; };
-		AA1BCDEF1BE663DC00AB6D1C /* XAxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* XAxisExpression.swift */; };
-		AA1BCDF01BE663DC00AB6D1C /* XAxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* XAxisExpression.swift */; };
+		AA1BCDEF1BE663DC00AB6D1C /* AxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */; };
+		AA1BCDF01BE663DC00AB6D1C /* AxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */; };
 		AA1BCDF21BE6686600AB6D1C /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF11BE6686600AB6D1C /* Constraints.swift */; };
 		AA1BCDF31BE6686600AB6D1C /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF11BE6686600AB6D1C /* Constraints.swift */; };
 		AA1BCDF51BE6725F00AB6D1C /* XAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */; };
-		AA1BCDF71BE6763600AB6D1C /* YAxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF61BE6763600AB6D1C /* YAxisExpression.swift */; };
-		AA1BCDF81BE6763600AB6D1C /* YAxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF61BE6763600AB6D1C /* YAxisExpression.swift */; };
 		AA1BCDFA1BE677F900AB6D1C /* YAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */; };
 		AA1BCDFC1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */; };
 		AA1BCDFD1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */; };
@@ -78,10 +76,9 @@
 		AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		AA1BCDC91BDD336400AB6D1C /* LayoutExpressions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutExpressions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		AA1BCDEE1BE663DC00AB6D1C /* XAxisExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisExpression.swift; sourceTree = "<group>"; };
+		AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxisExpression.swift; sourceTree = "<group>"; };
 		AA1BCDF11BE6686600AB6D1C /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisExpressionTests.swift; sourceTree = "<group>"; };
-		AA1BCDF61BE6763600AB6D1C /* YAxisExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YAxisExpression.swift; sourceTree = "<group>"; };
 		AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YAxisExpressionTests.swift; sourceTree = "<group>"; };
 		AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionExpression.swift; sourceTree = "<group>"; };
 		AA1BCDFE1BE6796200AB6D1C /* Multipliers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multipliers.swift; sourceTree = "<group>"; };
@@ -171,8 +168,7 @@
 		AA1BCE201BE6A14100AB6D1C /* Expressions */ = {
 			isa = PBXGroup;
 			children = (
-				AA1BCDEE1BE663DC00AB6D1C /* XAxisExpression.swift */,
-				AA1BCDF61BE6763600AB6D1C /* YAxisExpression.swift */,
+				AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */,
 				AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */,
 				AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */,
 				AA1BCE1D1BE6A13000AB6D1C /* CenterExpression.swift */,
@@ -417,7 +413,6 @@
 			files = (
 				AA1BCDDC1BDD339F00AB6D1C /* UILayoutSupport+Anchors.swift in Sources */,
 				AA1BCE271BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
-				AA1BCDF81BE6763600AB6D1C /* YAxisExpression.swift in Sources */,
 				AA1BCDF31BE6686600AB6D1C /* Constraints.swift in Sources */,
 				AA1BCE131BE692F800AB6D1C /* Relation.swift in Sources */,
 				AA1BCDED1BE5502F00AB6D1C /* Constants.swift in Sources */,
@@ -432,7 +427,7 @@
 				AA1BCDFD1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
 				AA1BCDD41BDD339700AB6D1C /* Evaluation.swift in Sources */,
 				AA1BCE2B1BE6FD2F00AB6D1C /* Size.swift in Sources */,
-				AA1BCDF01BE663DC00AB6D1C /* XAxisExpression.swift in Sources */,
+				AA1BCDF01BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
 				AA1BCE0F1BE68ADA00AB6D1C /* Insets.swift in Sources */,
 				AA1BCE001BE6796200AB6D1C /* Multipliers.swift in Sources */,
 			);
@@ -445,7 +440,6 @@
 				AA1BCDC31BDCA42600AB6D1C /* Evaluation.swift in Sources */,
 				AA1BCE261BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
 				AA4E17721947CEE100E91E41 /* UILayoutSupport+Anchors.swift in Sources */,
-				AA1BCDF71BE6763600AB6D1C /* YAxisExpression.swift in Sources */,
 				AA1BCDF21BE6686600AB6D1C /* Constraints.swift in Sources */,
 				AA2D55A619451F0800F41FCC /* UIView+Anchors.swift in Sources */,
 				AA1BCE121BE692F800AB6D1C /* Relation.swift in Sources */,
@@ -457,7 +451,7 @@
 				AA1BCE1E1BE6A13000AB6D1C /* CenterExpression.swift in Sources */,
 				AA1BCE1B1BE6971C00AB6D1C /* UIView+Expressions.swift in Sources */,
 				AA1BCDFC1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
-				AA1BCDEF1BE663DC00AB6D1C /* XAxisExpression.swift in Sources */,
+				AA1BCDEF1BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
 				AA1BCE2A1BE6FD2F00AB6D1C /* Size.swift in Sources */,
 				AA1BCE0E1BE68ADA00AB6D1C /* Insets.swift in Sources */,
 				AA1BCDFF1BE6796200AB6D1C /* Multipliers.swift in Sources */,
