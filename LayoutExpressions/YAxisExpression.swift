@@ -25,6 +25,7 @@ public struct YAxisExpression<Constant: ConstantType>: DistinctExpressionType {
 	}
 
 	public func updatePriority(priority: Priority) -> YAxisExpression {
+		assert(priority.isValid)
 		return YAxisExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 

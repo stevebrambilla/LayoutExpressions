@@ -25,6 +25,7 @@ public struct XAxisExpression<Constant: ConstantType>: DistinctExpressionType {
 	}
 
 	public func updatePriority(priority: Priority) -> XAxisExpression {
+		assert(priority.isValid)
 		return XAxisExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 

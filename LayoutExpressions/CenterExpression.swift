@@ -31,6 +31,7 @@ public struct CenterExpression<Offset: OffsetType>: ExpressionType {
 	}
 
 	public func updatePriority(priority: Priority) -> CenterExpression {
+		assert(priority.isValid)
 		return CenterExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 

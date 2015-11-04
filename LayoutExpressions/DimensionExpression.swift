@@ -25,6 +25,7 @@ public struct DimensionExpression<Multiplier: MultiplierType, Constant: Constant
 	}
 
 	public func updatePriority(priority: Priority) -> DimensionExpression {
+		assert(priority.isValid)
 		return DimensionExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
@@ -65,6 +66,7 @@ public struct ConstantDimensionExpression: DistinctExpressionType {
 	}
 
 	public func updatePriority(priority: Priority) -> ConstantDimensionExpression {
+		assert(priority.isValid)
 		return ConstantDimensionExpression(lhs: lhs, relation: relation, constant: constant, priority: priority)
 	}
 
@@ -126,6 +128,10 @@ public func - <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, 
 
 public func * <Constant>(lhs: DimensionAnchor<UndefinedMultiplier, Constant>, multiplier: CGFloat) -> DimensionAnchor<ValueMultiplier, Constant> {
 	return lhs.updateMultiplier(ValueMultiplier(value: multiplier))
+}
+
+public func * <Constant>(multiplier: CGFloat, rhs: DimensionAnchor<UndefinedMultiplier, Constant>) -> DimensionAnchor<ValueMultiplier, Constant> {
+	return rhs.updateMultiplier(ValueMultiplier(value: multiplier))
 }
 
 // ----------------------------------------------------------------------------
