@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode7.1
 script:
-	- open -b com.apple.iphonesimulator
-	- script/cibuild
+  - open -b com.apple.iphonesimulator # Workaround https://github.com/travis-ci/travis-ci/issues/3040
+  - ./script/cibuild
