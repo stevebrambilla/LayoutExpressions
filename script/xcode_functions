@@ -1,0 +1,53 @@
+
+xcaction () {
+	local action=$1
+	local project=$2
+	local scheme=$3
+	local sdk=$4
+
+	local xcode_command="set -o pipefail && "
+
+	# If installed use gstdbuf to work around xcodebuild's piped buffering.
+	if hash gstdbuf 2>/dev/null; then
+		xcode_command+="gstdbuf -o 0 "
+	fi
+
+	# The actual xcodebuild command.
+	xcode_command+="xcodebuild $action -project '$project' -scheme '$scheme' -sdk '$sdk'"
+
+	# If xcpretty is installed pipe the output through it.
+	if hash xcpretty 2>/dev/null; then
+		xcode_command+=" | xcpretty --color --simple"
+	fi
+
+	eval $xcode_command
+	local xcode_status=$?
+
+	if [[ "$xcode_status" -ne "0" ]]; then
+		exit $xcode_status
+	fi
+}
+
+xctest () {
+	local project=$1
+	local scheme=$2
+	local destination=$3
+	local sdk=$4
+
+	local test_command="set -o pipefail && "
+
+	# If installed use gstdbuf to work around xcodebuild's piped buffering.
+	if hash gstdbuf 2>/dev/null; then
+		test_command+="gstdbuf -o 0 "
+	fi
+
+	test_command+="xcodebuild test -project '$project' -scheme '$scheme' -destination '$destination' -sdk '$sdk'"
+
+	# If xcpretty is installed pipe the test output through it.
+	if hash xcpretty 2>/dev/null; then
+		test_command+=" | xcpretty --color --test"
+	fi
+
+	# Run the test test command.
+	eval $test_command
+}

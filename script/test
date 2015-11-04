@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.."
+
+source script/xcode_functions
+set -e
+
+PROJECT_DISPLAY_NAME="LayoutExpressions"
+XCODE_PROJECT="LayoutExpressions.xcodeproj"
+XCODE_SCHEME="LayoutExpressions-iOS"
+XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.1"
+XCODE_SDK="iphonesimulator"
+
+main () {
+	echo "--- [$PROJECT_DISPLAY_NAME] Cleaning and building $XCODE_SCHEME"
+	xcaction clean "$XCODE_PROJECT" "$XCODE_SCHEME" "$XCODE_SDK"
+	xcaction build "$XCODE_PROJECT" "$XCODE_SCHEME" "$XCODE_SDK"
+
+	echo "--- [$PROJECT_DISPLAY_NAME] Testing $XCODE_SCHEME"
+	xctest "$XCODE_PROJECT" "$XCODE_SCHEME" "$XCODE_DESTINATION" "$XCODE_SDK"
+}
+
+main
