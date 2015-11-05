@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA1BCDC81BDD336400AB6D1C"
-               BuildableName = "LayoutExpressions-tvOS.framework"
+               BuildableName = "LayoutExpressions.framework"
                BlueprintName = "LayoutExpressions-tvOS"
                ReferencedContainer = "container:LayoutExpressions.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA1BCDC81BDD336400AB6D1C"
-            BuildableName = "LayoutExpressions-tvOS.framework"
+            BuildableName = "LayoutExpressions.framework"
             BlueprintName = "LayoutExpressions-tvOS"
             ReferencedContainer = "container:LayoutExpressions.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA1BCDC81BDD336400AB6D1C"
-            BuildableName = "LayoutExpressions-tvOS.framework"
+            BuildableName = "LayoutExpressions.framework"
             BlueprintName = "LayoutExpressions-tvOS"
             ReferencedContainer = "container:LayoutExpressions.xcodeproj">
          </BuildableReference>

@@ -4,7 +4,7 @@ import XCTest
 
 import LayoutExpressions
 
-class LayoutSupportTests: XCTestCase {
+class UILayoutSupportTests: XCTestCase {
 
 	var viewController = UIViewController()
 	var subview = UIView()
@@ -20,25 +20,25 @@ class LayoutSupportTests: XCTestCase {
 
 	func testViewControllerExtensionLayoutGuides() {
 		let top = evaluateLayoutExpression(subview.lexTop == viewController.lexTopLayoutGuide)
-		XCTAssertTrue(top.firstItem === subview, "Wrong firstItem")
-		XCTAssertTrue(top.secondItem === viewController.topLayoutGuide, "Wrong secondItem")
-		XCTAssertTrue(top.firstAttribute == .Top, "Not top edge")
-		XCTAssertTrue(top.secondAttribute == .Bottom, "Not bottom edge")
+		XCTAssert(top.firstItem === subview)
+		XCTAssert(top.secondItem === viewController.topLayoutGuide)
+		XCTAssert(top.firstAttribute == .Top)
+		XCTAssert(top.secondAttribute == .Bottom)
 
 		let bottom = evaluateLayoutExpression(subview.lexBottom == viewController.lexBottomLayoutGuide)
-		XCTAssertTrue(bottom.firstAttribute == .Bottom, "Not bottom edge")
-		XCTAssertTrue(bottom.secondAttribute == .Top, "Not top edge")
+		XCTAssert(bottom.firstAttribute == .Bottom)
+		XCTAssert(bottom.secondAttribute == .Top)
 	}
 
 	func testLayoutSupportExtensionLayoutGuides() {
 		let top = evaluateLayoutExpression(subview.lexTop == viewController.topLayoutGuide.lexTop)
-		XCTAssertTrue(top.firstItem === subview, "Wrong firstItem")
-		XCTAssertTrue(top.secondItem === viewController.topLayoutGuide, "Wrong secondItem")
-		XCTAssertTrue(top.firstAttribute == .Top, "Not top edge")
-		XCTAssertTrue(top.secondAttribute == .Top, "Not top edge")
+		XCTAssert(top.firstItem === subview)
+		XCTAssert(top.secondItem === viewController.topLayoutGuide)
+		XCTAssert(top.firstAttribute == .Top)
+		XCTAssert(top.secondAttribute == .Top)
 
 		let bottom = evaluateLayoutExpression(subview.lexBottom == viewController.bottomLayoutGuide.lexBottom)
-		XCTAssertTrue(bottom.firstAttribute == .Bottom, "Not bottom edge")
-		XCTAssertTrue(bottom.secondAttribute == .Bottom, "Not bottom edge")
+		XCTAssert(bottom.firstAttribute == .Bottom)
+		XCTAssert(bottom.secondAttribute == .Bottom)
 	}
 }

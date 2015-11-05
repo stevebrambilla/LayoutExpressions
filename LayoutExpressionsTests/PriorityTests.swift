@@ -2,7 +2,7 @@
 
 import XCTest
 
-import LayoutExpressions
+@testable import LayoutExpressions
 
 class PriorityTests: XCTestCase {
 
@@ -18,13 +18,18 @@ class PriorityTests: XCTestCase {
 		container.addSubview(subview)
 	}
 
-	func testCustomPriority() {
+	func testCustomFloatPriority() {
 		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <~ 950)
-		XCTAssertTrue(constraint.priority == 950, "Wrong priority")
+		XCTAssert(constraint.priority == 950.0)
+	}
+
+	func testCustomIntPriority() {
+		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <~ 950)
+		XCTAssert(constraint.priority == 950)
 	}
 
 	func testSystemPriority() {
 		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <~ .DefaultHigh)
-		XCTAssertTrue(constraint.priority == SystemPriority.DefaultHigh.rawValue, "Wrong priority")
+		XCTAssert(constraint.priority == SystemPriority.DefaultHigh.rawValue, "Wrong priority")
 	}
 }

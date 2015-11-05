@@ -11,15 +11,25 @@ public enum SystemPriority: Priority {
 	case FittingSizeLevel = 50
 }
 
+extension Priority {
+	internal var isValid: Bool {
+		return self >= 0 && self <= 1000
+	}
+}
+
 infix operator  <~ {
 	associativity left
 	precedence 125 // Less than the Comparative operators (130)
 }
 
-public func <~ <Left: LeftArgument, Right: RightArgument>(expression: Expression<Left, Right>, priority: SystemPriority) -> Expression<Left, Right> {
-	return expression.updatePriority(priority.rawValue)
+public func <~ <Expression: ExpressionType>(expression: Expression, priority: Float) -> Expression {
+	return expression.updatePriority(priority)
 }
 
-public func <~ <Left: LeftArgument, Right: RightArgument>(expression: Expression<Left, Right>, priority: Priority) -> Expression<Left, Right> {
-	return expression.updatePriority(priority)
+public func <~ <Expression: ExpressionType>(expression: Expression, priority: Int) -> Expression {
+	return expression.updatePriority(Priority(priority))
+}
+
+public func <~ <Expression: ExpressionType>(expression: Expression, priority: SystemPriority) -> Expression {
+	return expression.updatePriority(priority.rawValue)
 }

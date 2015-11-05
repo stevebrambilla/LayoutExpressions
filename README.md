@@ -1,7 +1,7 @@
-# Layout Expressions [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+# Layout Expressions [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Travis CI](https://api.travis-ci.org/stevebrambilla/LayoutExpressions.svg?branch=master)](https://travis-ci.org/stevebrambilla/LayoutExpressions)
 
-LayoutExpressions is a lightweight and easy-to-use framework for Auto Layout, designed for Swift.
-Its DSL lets you describe Auto Layout constraints expressively, so you can write them like this:
+LayoutExpressions is a lightweight and easy-to-use library for Auto Layout, designed for Swift.
+It lets you describe Auto Layout constraints expressively and with type safety, so you can add layout constraints like this:
 
 ```swift
 view.addLayoutExpression( subviewB.lexLeft >= subviewA.lexRight + 10 )
@@ -22,18 +22,18 @@ view.addConstraint(constraint)
 
 ## Usage
 
-Add `NSLayoutConstraints` to your views by coding your constraints as `view1.attribute1 == multiplier × view2.attribute2 + constant`.
+Add `NSLayoutConstraints` to your views by coding your constraints as `view1.attribute1 == view2.attribute2 × multiplier + constant`.
 You can use any of `==`, `>=`, or `<=` as relations, and you can omit the multiplier and constant if they aren't needed (they default to `× 1.0` and `+ 0.0`):
 
 ```swift
-// A basic expression:
+// A basic layout expression for the y-axis:
 view.addLayoutExpression( subview.lexTop == container.lexTop )
 
 // With multiplier and constant:
-view.addLayoutExpression( subview2.lexWidth >= 2.0 * subview1.lexWidth + 10 )
+view.addLayoutExpression( subview2.lexWidth >= subview1.lexWidth * 2 + 10 )
 ```
 
-Multiple expressions can be grouped together in the same call. The `NSLayoutConstraints` are returned so you can keep a reference to them:
+Multiple expressions can be grouped together in the same function call. The `NSLayoutConstraints` are returned so you can keep a reference to them:
 
 ```swift
 self.constraints = container.addLayoutExpression(
@@ -44,27 +44,28 @@ self.constraints = container.addLayoutExpression(
 )
 ```
 
-Set priorities for your constraints by using the `<~` operator after your expression. Priorities can be `.Required`, `.DefaultHigh`, `.DefaultLow`, `.FittingSizeLevel`, or any integer `0...1000`:
+Set priorities for your constraints by using the `<~` operator after your expression. Priorities can be `.Required`, `.DefaultHigh`, `.DefaultLow`, `.FittingSizeLevel`, or any number `0...1000`:
 
 ```swift
 view.addLayoutExpression( subview1.lexWidth >= subview2.lexWidth <~ .DefaultHigh )
 ```
 
-LayoutExpressions provides the following `UIView` properties to use as arguments:
+LayoutExpressions provides the following UIKit extensions for layout anchors:
 
-`UIView` Property      | `NSLayoutAttribute`
------------------------|------------------
-`view.lexTop`          | `.Top`
-`view.lexLeft`         | `.Left`
-`view.lexBottom`       | `.Bottom`
-`view.lexRight`        | `.Right`
-`view.lexLeading`      | `.Leading`
-`view.lexTrailing`     | `.Trailing`
-`view.lexCenterX`      | `.CenterX`
-`view.lexCenterY`      | `.CenterY`
-`view.lexWidth`        | `.Width`
-`view.lexHeight`       | `.Height`
-`view.lexBaseline`     | `.Baseline`
+UIView Anchors            | UILayoutGuide   Anchors    | UILayoutSupport   Anchors   |
+--------------------------|----------------------------|-----------------------------|
+`view.lexTop`             | `guide.lexTop`             | `view.lexTop`               |
+`view.lexBottom`          | `guide.lexBottom`          | `view.lexBottom`            |
+`view.lexLeading`         | `guide.lexLeading`         |                             |
+`view.lexTrailing`        | `guide.lexTrailing`        |                             |
+`view.lexLeft`            | `guide.lexLeft`            |                             |
+`view.lexRight`           | `guide.lexRight`           |                             |
+`view.lexCenterX`         | `guide.lexCenterX`         |                             |
+`view.lexCenterY`         | `guide.lexCenterY`         |                             |
+`view.lexWidth`           | `guide.lexWidth`           |                             |
+`view.lexHeight`          | `guide.lexHeight`          |                             |
+`view.lexFirstBaseline`   |                            |                             |
+`view.lexLastBaseline`    |                            |                             |
 
 ### Composite Expressions
 
@@ -72,7 +73,15 @@ LayoutExpressions makes common layout patterns even easier with composite expres
 Composite expressions are expressions that evaluate to more than one `NSLayoutConstraint`.
 
 For example, `subview.lexEdges == container.lexEdges` will pin all edges of `subview` to `container`. 
-This expression evaluates to four distinct `NSLayoutConstraints`: one for each edge. Use them to make your code even more concise and clear.
+This expression evaluates to four distinct `NSLayoutConstraints`, one for each edge. Use them to make your code even more concise and clear.
+
+LayoutExpressions provides the following UIKit extensions for _composite_ layout anchors:
+
+UIView Anchors            | UILayoutGuide Anchors      |
+--------------------------|----------------------------|
+`view.lexEdges`           | `guide.lexEdges`           |
+`view.lexCenter`          | `guide.lexCenter`          |
+`view.lexSize`            | `guide.lexSize`            |
 
 #### Edges
 
@@ -83,7 +92,7 @@ This expression evaluates to four distinct `NSLayoutConstraints`: one for each e
 subview.lexEdges == container.lexEdges
 
 // Use the '-' operator to inset the top and bottom edges of subview by 10 pts, and the right and left edges by 20 pts.
-subview.lexEdges == container.lexEdges - EdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+subview.lexEdges == container.lexEdges - Insets(top: 10, left: 20, bottom: 10, right: 20)
 
 // Use the '-' operator to inset all edges of subview by 10 pts.
 subview.lexEdges == container.lexEdges - 10.0
@@ -98,10 +107,10 @@ subview.lexEdges == container.lexEdges - 10.0
 subview.lexSize == container.lexSize
 
 // Pin the size of subview to the size of container, with an offset.
-subview.lexSize == container.lexSize + SizeOffset(width: -20, height: -10)
+subview.lexSize == container.lexSize + Size(width: -20, height: -10)
 
 // Pin the size of subview to a fixed size.
-subview.lexSize == CGSize(width: 320, height: 200)
+subview.lexSize == Size(width: 320, height: 200)
 ```
 
 #### Center
@@ -113,44 +122,12 @@ subview.lexSize == CGSize(width: 320, height: 200)
 subview.lexCenter == container.lexCenter
 
 // Pin the center of subview to the center of container, with an offset.
-subview.lexCenter == container.lexCenter + PointOffset(horizontal: 0, vertical: -10)
+subview.lexCenter == container.lexCenter + POffset(horizontal: 0, vertical: -10)
 ```
-
-### Layout Guides
-
-`UIViewController` has layout guides for its top and bottom edges to assist with Auto Layout. Layout guides are objects that conform to the `UILayoutSupport` protocol.
-There are two ways to use layout guides in your expressions:
-
-#### UIViewController Extensions
-
-If you're using UIViewController's `topLayoutGuide` or `bottomLayoutGuide`, you can use the `lex`-prefixed equivalents in your expressions:
-
-```swift
-subview.lexTop == viewController.lexTopLayoutGuide
-```
-
-The expression will use the layout guide's _opposite_ attribute as the `NSLayoutConstraint`'s `secondAttribute`. This example would evaluate to `subview.top == topLayoutGuide.bottom`.
-
-The "_opposite_" attributes map to `NSLayoutAttributes` as follows:
-
-Layout Guide                | `secondAttribute`
-----------------------------|-----------------------------
-`.lexTopLayoutGuide`        | `.Bottom`
-`.lexBottomLayoutGuide`     | `.Top`
-
-#### UILayoutSupport Extensions
-
-Alternatively, you can use the `UILayoutSupport` arguments directly:
-
-`UILayoutSupport` Property  | NSLayoutAttribute
-----------------------------|------------------
-`layoutGuide.lexTop`        | `.Top`
-`layoutGuide.lexBottom`     | `.Bottom`
 
 ## Installation
 
-If you’re using [Carthage](https://github.com/Carthage/Carthage), simply add
-LayoutExpressions to your `Cartfile`:
+If you’re using [Carthage](https://github.com/Carthage/Carthage), simply add LayoutExpressions to your `Cartfile`:
 
 ```
 github "stevebrambilla/LayoutExpressions"
@@ -163,10 +140,6 @@ Otherwise, you can manually install it by following these steps:
 3. In the “General” tab of your application target’s settings, add `LayoutExpressions.framework` to the “Embedded Binaries” section.
 
 Now `import LayoutExpressions` and you're all set.
-
-## TODO
-
-- Add support for OS X.
 
 ## Contact
 
