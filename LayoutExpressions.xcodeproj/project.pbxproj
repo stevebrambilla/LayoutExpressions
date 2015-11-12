@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AA00F7BC1940ABE000F92B8B /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00F7BB1940ABE000F92B8B /* Expression.swift */; };
+		AA13D8C91BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */; };
+		AA13D8CA1BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */; };
 		AA1BCDBF1BDCA3C400AB6D1C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */; };
 		AA1BCDC31BDCA42600AB6D1C /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */; };
 		AA1BCDD11BDD339700AB6D1C /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00F7BB1940ABE000F92B8B /* Expression.swift */; };
@@ -72,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		AA00F7BB1940ABE000F92B8B /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Activation.swift"; sourceTree = "<group>"; };
 		AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		AA1BCDC91BDD336400AB6D1C /* LayoutExpressions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutExpressions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +154,7 @@
 				AA4E17711947CEE100E91E41 /* UILayoutSupport+Anchors.swift */,
 				AA1BCE141BE6963000AB6D1C /* UILayoutGuide+Anchors.swift */,
 				AA1BCE1A1BE6971C00AB6D1C /* UIView+Expressions.swift */,
+				AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +418,7 @@
 				AA1BCDDC1BDD339F00AB6D1C /* UILayoutSupport+Anchors.swift in Sources */,
 				AA1BCE271BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
 				AA1BCDF31BE6686600AB6D1C /* Constraints.swift in Sources */,
+				AA13D8CA1BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */,
 				AA1BCE131BE692F800AB6D1C /* Relation.swift in Sources */,
 				AA1BCDED1BE5502F00AB6D1C /* Constants.swift in Sources */,
 				AA1BCDD11BDD339700AB6D1C /* Expression.swift in Sources */,
@@ -440,6 +445,7 @@
 				AA1BCDC31BDCA42600AB6D1C /* Evaluation.swift in Sources */,
 				AA1BCE261BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
 				AA4E17721947CEE100E91E41 /* UILayoutSupport+Anchors.swift in Sources */,
+				AA13D8C91BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */,
 				AA1BCDF21BE6686600AB6D1C /* Constraints.swift in Sources */,
 				AA2D55A619451F0800F41FCC /* UIView+Anchors.swift in Sources */,
 				AA1BCE121BE692F800AB6D1C /* Relation.swift in Sources */,
