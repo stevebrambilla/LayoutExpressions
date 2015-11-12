@@ -137,7 +137,7 @@ public func + <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, 
 }
 
 public func - <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, constant: Int) -> DimensionAnchor<Multiplier, ValueConstant> {
-	return lhs - CGFloat(-constant)
+	return lhs - CGFloat(constant)
 }
 
 public func * <Constant>(lhs: DimensionAnchor<UndefinedMultiplier, Constant>, multiplier: Int) -> DimensionAnchor<ValueMultiplier, Constant> {
