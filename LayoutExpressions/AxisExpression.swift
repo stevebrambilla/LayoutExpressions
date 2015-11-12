@@ -91,12 +91,24 @@ public struct AxisAnchor<Axis: AxisType, Constant: ConstantType> {
 // ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
+// CGFloat Constants
+
 public func + <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: CGFloat) -> AxisAnchor<Axis, ValueConstant> {
 	return lhs.updateConstant(ValueConstant(value: constant))
 }
 
 public func - <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: CGFloat) -> AxisAnchor<Axis, ValueConstant> {
 	return lhs.updateConstant(ValueConstant(value: -constant))
+}
+
+// Int Constants
+
+public func + <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: Int) -> AxisAnchor<Axis, ValueConstant> {
+	return lhs + CGFloat(constant)
+}
+
+public func - <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: Int) -> AxisAnchor<Axis, ValueConstant> {
+	return lhs - CGFloat(-constant)
 }
 
 // ----------------------------------------------------------------------------

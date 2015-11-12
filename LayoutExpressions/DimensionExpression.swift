@@ -112,6 +112,8 @@ public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType
 // ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
+// CGFloat Constants and Multipliers
+
 public func + <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, constant: CGFloat) -> DimensionAnchor<Multiplier, ValueConstant> {
 	return lhs.updateConstant(ValueConstant(value: constant))
 }
@@ -126,6 +128,24 @@ public func * <Constant>(lhs: DimensionAnchor<UndefinedMultiplier, Constant>, mu
 
 public func * <Constant>(multiplier: CGFloat, rhs: DimensionAnchor<UndefinedMultiplier, Constant>) -> DimensionAnchor<ValueMultiplier, Constant> {
 	return rhs.updateMultiplier(ValueMultiplier(value: multiplier))
+}
+
+// Int Constants and Multipliers
+
+public func + <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, constant: Int) -> DimensionAnchor<Multiplier, ValueConstant> {
+	return lhs + CGFloat(constant)
+}
+
+public func - <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, constant: Int) -> DimensionAnchor<Multiplier, ValueConstant> {
+	return lhs - CGFloat(-constant)
+}
+
+public func * <Constant>(lhs: DimensionAnchor<UndefinedMultiplier, Constant>, multiplier: Int) -> DimensionAnchor<ValueMultiplier, Constant> {
+	return lhs * CGFloat(multiplier)
+}
+
+public func * <Constant>(multiplier: Int, rhs: DimensionAnchor<UndefinedMultiplier, Constant>) -> DimensionAnchor<ValueMultiplier, Constant> {
+	return CGFloat(multiplier) * rhs
 }
 
 // ----------------------------------------------------------------------------

@@ -84,18 +84,32 @@ public struct EdgesAnchor<Insets: InsetsType> {
 // ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
-public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: CGFloat) -> EdgesAnchor<ValueInsets> {
-	let insets = Insets(top: inset, left: inset, bottom: inset, right: inset)
+// Insets
+
+public func - (lhs: EdgesAnchor<UndefinedInsets>, insets: Insets) -> EdgesAnchor<ValueInsets> {
 	return lhs.updateInsets(ValueInsets(value: insets))
 }
 
-public func - (lhs: EdgesAnchor<UndefinedInsets>, insets: Insets) -> EdgesAnchor<ValueInsets> {
+// CGFloat Insets
+
+public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: CGFloat) -> EdgesAnchor<ValueInsets> {
+	let insets = Insets(top: inset, left: inset, bottom: inset, right: inset)
 	return lhs.updateInsets(ValueInsets(value: insets))
 }
 
 public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: CGFloat) -> EdgesAnchor<ValueInsets> {
 	let insets = Insets(top: -outset, left: -outset, bottom: -outset, right: -outset)
 	return lhs.updateInsets(ValueInsets(value: insets))
+}
+
+// Int Insets
+
+public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: Int) -> EdgesAnchor<ValueInsets> {
+	return lhs - CGFloat(inset)
+}
+
+public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: Int) -> EdgesAnchor<ValueInsets> {
+	return lhs + CGFloat(outset)
 }
 
 // ----------------------------------------------------------------------------
