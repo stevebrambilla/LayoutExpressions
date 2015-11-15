@@ -17,19 +17,19 @@ extension Priority {
 	}
 }
 
-infix operator  <~ {
+infix operator <<~ {
 	associativity left
 	precedence 125 // Less than the Comparative operators (130)
 }
 
-public func <~ <Expression: ExpressionType>(expression: Expression, priority: Float) -> Expression {
+public func <<~ <Expression: ExpressionType>(expression: Expression, priority: Float) -> Expression {
 	return expression.updatePriority(priority)
 }
 
-public func <~ <Expression: ExpressionType>(expression: Expression, priority: Int) -> Expression {
+public func <<~ <Expression: ExpressionType>(expression: Expression, priority: Int) -> Expression {
 	return expression.updatePriority(Priority(priority))
 }
 
-public func <~ <Expression: ExpressionType>(expression: Expression, priority: SystemPriority) -> Expression {
+public func <<~ <Expression: ExpressionType>(expression: Expression, priority: SystemPriority) -> Expression {
 	return expression.updatePriority(priority.rawValue)
 }

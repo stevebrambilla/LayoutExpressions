@@ -143,9 +143,9 @@ class UIViewTests: XCTestCase {
 
 	func testAddingMultiplePriorityExpressionsToView() {
 		container.addLayoutExpressions(
-			subview.lexTop == container.lexTop + 10 <~ .DefaultLow,
-			subview.lexWidth == container.lexWidth * 2 <~ .Required,
-			subview.lexCenter == container.lexCenter <~ .DefaultHigh
+			subview.lexTop == container.lexTop + 10 <<~ .DefaultLow,
+			subview.lexWidth == container.lexWidth * 2 <<~ .Required,
+			subview.lexCenter == container.lexCenter <<~ .DefaultHigh
 		)
 		XCTAssert(container.constraints.count == 4, "Expected exactly 4 constraints")
 	}
