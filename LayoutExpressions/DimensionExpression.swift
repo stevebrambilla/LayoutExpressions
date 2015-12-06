@@ -176,7 +176,7 @@ public func >= <Multiplier, Constant>(lhs: DimensionAnchor<NoMultiplier, NoConst
 }
 
 // ----------------------------------------------------------------------------
-// MARK: - Constant Comparison Operators
+// MARK: - CGFloat Constant Comparison Operators
 
 public func == (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
 	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .Equal, constant: ValueConstant(value: rhs))
@@ -200,4 +200,31 @@ public func >= (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rh
 
 public func >= (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
 	return ConstantDimensionExpression(lhs: lhs, relation: .GreaterThanOrEqual, constant: ValueConstant(value: rhs))
+}
+
+// ----------------------------------------------------------------------------
+// MARK: - Int Constant Comparison Operators
+
+public func == (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: Int) -> ConstantDimensionExpression {
+	return lhs == CGFloat(rhs)
+}
+
+public func == (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: Int) -> ConstantDimensionExpression {
+	return lhs == CGFloat(rhs)
+}
+
+public func <= (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: Int) -> ConstantDimensionExpression {
+	return lhs <= CGFloat(rhs)
+}
+
+public func <= (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: Int) -> ConstantDimensionExpression {
+	return lhs <= CGFloat(rhs)
+}
+
+public func >= (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: Int) -> ConstantDimensionExpression {
+	return lhs >= CGFloat(rhs)
+}
+
+public func >= (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: Int) -> ConstantDimensionExpression {
+	return lhs >= CGFloat(rhs)
 }
