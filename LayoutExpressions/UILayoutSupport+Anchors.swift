@@ -15,6 +15,11 @@ extension UILayoutSupport {
 	public var lexBottom: AxisAnchor<YAxis, UndefinedConstant> {
 		return AxisAnchor(axis: YAxis(anchor: bottomAnchor), constant: UndefinedConstant())
 	}
+
+	/// A layout expression anchor representing the height of the layout support's frame.
+	public var lexHeight: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
+		return DimensionAnchor(dimension: heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
+	}
 }
 
 // ----------------------------------------------------------------------------
@@ -23,11 +28,11 @@ extension UILayoutSupport {
 extension UIViewController {
 	/// A layout expression anchor representing the bottom edge of the view controller's top layout guide.
 	public var lexTopLayoutGuide: AxisAnchor<YAxis, UndefinedConstant> {
-		return self.topLayoutGuide.lexBottom
+		return topLayoutGuide.lexBottom
 	}
 
 	/// A layout expression anchor representing the top edge of the view controller's bottom layout guide.
 	public var lexBottomLayoutGuide: AxisAnchor<YAxis, UndefinedConstant> {
-		return self.bottomLayoutGuide.lexTop
+		return bottomLayoutGuide.lexTop
 	}
 }
