@@ -30,7 +30,7 @@ public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
 		self.priority = priority
 	}
 
-	public func updatePriority(_ priority: Priority) -> EdgesExpression {
+	public func update(priority: Priority) -> EdgesExpression {
 		assert(priority.isValid)
 		return EdgesExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}

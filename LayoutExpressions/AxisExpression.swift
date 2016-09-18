@@ -40,7 +40,7 @@ public struct AxisExpression<Axis: AxisType, Constant: ConstantType>: DistinctEx
 		self.priority = priority
 	}
 
-	public func updatePriority(_ priority: Priority) -> AxisExpression {
+	public func update(priority: Priority) -> AxisExpression {
 		assert(priority.isValid)
 		return AxisExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}

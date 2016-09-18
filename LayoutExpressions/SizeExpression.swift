@@ -29,7 +29,7 @@ public struct SizeExpression<Size: SizeType>: ExpressionType {
 		self.priority = priority
 	}
 
-	public func updatePriority(_ priority: Priority) -> SizeExpression {
+	public func update(priority: Priority) -> SizeExpression {
 		assert(priority.isValid)
 		return SizeExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
@@ -65,7 +65,7 @@ public struct ConstantSizeExpression: ExpressionType {
 		self.priority = priority
 	}
 
-	public func updatePriority(_ priority: Priority) -> ConstantSizeExpression {
+	public func update(priority: Priority) -> ConstantSizeExpression {
 		assert(priority.isValid)
 		return ConstantSizeExpression(lhs: lhs, relation: relation, size: size, priority: priority)
 	}

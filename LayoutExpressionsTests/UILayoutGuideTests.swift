@@ -123,7 +123,7 @@ class UILayoutGuideTests: XCTestCase {
 	}
 
 	func testAddingMultipleExpressionsToView() {
-		container.addLayoutExpressions(
+		_ = container.addLayoutExpressions(
 			guide.lexTop == container.lexTop,
 			guide.lexLeft == container.lexLeft,
 			guide.lexBottom == container.lexBottom,
@@ -133,7 +133,7 @@ class UILayoutGuideTests: XCTestCase {
 	}
 
 	func testAddingMultipleTypesOfExpressionsToView() {
-		container.addLayoutExpressions(
+		_ = container.addLayoutExpressions(
 			guide.lexTop == container.lexTop + 10,
 			guide.lexWidth == container.lexWidth * 2,
 			guide.lexCenter == container.lexCenter
@@ -142,7 +142,7 @@ class UILayoutGuideTests: XCTestCase {
 	}
 
 	func testAddingMultiplePriorityExpressionsToView() {
-		container.addLayoutExpressions(
+		_ = container.addLayoutExpressions(
 			guide.lexTop == container.lexTop + 10 <<~ .defaultLow,
 			guide.lexWidth == container.lexWidth * 2 <<~ .required,
 			guide.lexCenter == container.lexCenter <<~ .defaultHigh

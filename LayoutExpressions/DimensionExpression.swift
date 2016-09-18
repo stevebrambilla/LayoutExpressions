@@ -18,7 +18,7 @@ public struct DimensionExpression<Multiplier: MultiplierType, Constant: Constant
 		self.priority = priority
 	}
 
-	public func updatePriority(_ priority: Priority) -> DimensionExpression {
+	public func update(priority: Priority) -> DimensionExpression {
 		assert(priority.isValid)
 		return DimensionExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
@@ -59,7 +59,7 @@ public struct ConstantDimensionExpression: DistinctExpressionType {
 		self.priority = priority
 	}
 
-	public func updatePriority(_ priority: Priority) -> ConstantDimensionExpression {
+	public func update(priority: Priority) -> ConstantDimensionExpression {
 		assert(priority.isValid)
 		return ConstantDimensionExpression(lhs: lhs, relation: relation, constant: constant, priority: priority)
 	}

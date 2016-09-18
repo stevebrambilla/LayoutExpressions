@@ -24,13 +24,13 @@ precedencegroup PrioritizationPrecedence {
 infix operator <<~ : PrioritizationPrecedence
 
 public func <<~ <Expression: ExpressionType>(expression: Expression, priority: Float) -> Expression {
-	return expression.updatePriority(priority)
+	return expression.update(priority: priority)
 }
 
 public func <<~ <Expression: ExpressionType>(expression: Expression, priority: Int) -> Expression {
-	return expression.updatePriority(Priority(priority))
+	return expression.update(priority: Priority(priority))
 }
 
 public func <<~ <Expression: ExpressionType>(expression: Expression, priority: SystemPriority) -> Expression {
-	return expression.updatePriority(priority.rawValue)
+	return expression.update(priority: priority.rawValue)
 }
