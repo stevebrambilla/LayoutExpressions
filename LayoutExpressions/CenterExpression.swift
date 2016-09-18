@@ -12,19 +12,19 @@ import UIKit
 // MARK: - Center Expression
 
 public struct CenterExpression<Offset: OffsetType>: ExpressionType {
-	private let lhs: CenterAnchor<NoOffset>
-	private let relation: Relation
-	private let rhs: CenterAnchor<Offset>
-	private let priority: Priority?
+	fileprivate let lhs: CenterAnchor<NoOffset>
+	fileprivate let relation: Relation
+	fileprivate let rhs: CenterAnchor<Offset>
+	fileprivate let priority: Priority?
 
-	private init(lhs: CenterAnchor<NoOffset>, relation: Relation, rhs: CenterAnchor<Offset>, priority: Priority? = nil) {
+	fileprivate init(lhs: CenterAnchor<NoOffset>, relation: Relation, rhs: CenterAnchor<Offset>, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.rhs = rhs
 		self.priority = priority
 	}
 
-	public func updatePriority(priority: Priority) -> CenterExpression {
+	public func updatePriority(_ priority: Priority) -> CenterExpression {
 		assert(priority.isValid)
 		return CenterExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
@@ -48,8 +48,8 @@ public struct CenterExpression<Offset: OffsetType>: ExpressionType {
 // MARK: - Center Anchor
 
 public struct CenterAnchor<Offset: OffsetType> {
-	private let centerXAnchor: NSLayoutXAxisAnchor
-	private let centerYAnchor: NSLayoutYAxisAnchor
+	fileprivate let centerXAnchor: NSLayoutXAxisAnchor
+	fileprivate let centerYAnchor: NSLayoutYAxisAnchor
 	public let offset: Offset
 
 	internal init(centerXAnchor: NSLayoutXAxisAnchor, centerYAnchor: NSLayoutYAxisAnchor, offset: Offset) {
@@ -58,11 +58,11 @@ public struct CenterAnchor<Offset: OffsetType> {
 		self.offset = offset
 	}
 
-	private func updateOffset<NextOffset: OffsetType>(offset: NextOffset) -> CenterAnchor<NextOffset> {
+	fileprivate func updateOffset<NextOffset: OffsetType>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
 		return CenterAnchor<NextOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: offset)
 	}
 
-	private var withoutModifiers: CenterAnchor<NoOffset> {
+	fileprivate var withoutModifiers: CenterAnchor<NoOffset> {
 		return CenterAnchor<NoOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: NoOffset())
 	}
 }
@@ -78,9 +78,9 @@ public func + (lhs: CenterAnchor<UndefinedOffset>, offset: Offset) -> CenterAnch
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: CenterAnchor<NoOffset>, rhs: CenterAnchor<Offset>) -> CenterExpression<Offset> {
-	return CenterExpression(lhs: lhs, relation: .Equal, rhs: rhs)
+	return CenterExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func == <Offset>(lhs: CenterAnchor<UndefinedOffset>, rhs: CenterAnchor<Offset>) -> CenterExpression<Offset> {
-	return CenterExpression(lhs: lhs.withoutModifiers, relation: .Equal, rhs: rhs)
+	return CenterExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }

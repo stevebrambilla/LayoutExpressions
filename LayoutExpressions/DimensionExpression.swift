@@ -6,19 +6,19 @@ import UIKit
 // MARK: - Dimension Expression
 
 public struct DimensionExpression<Multiplier: MultiplierType, Constant: ConstantType>: DistinctExpressionType {
-	private let lhs: DimensionAnchor<NoMultiplier, NoConstant>
-	private let relation: Relation
-	private let rhs: DimensionAnchor<Multiplier, Constant>
-	private let priority: Priority?
+	fileprivate let lhs: DimensionAnchor<NoMultiplier, NoConstant>
+	fileprivate let relation: Relation
+	fileprivate let rhs: DimensionAnchor<Multiplier, Constant>
+	fileprivate let priority: Priority?
 
-	private init(lhs: DimensionAnchor<NoMultiplier, NoConstant>, relation: Relation, rhs: DimensionAnchor<Multiplier, Constant>, priority: Priority? = nil) {
+	fileprivate init(lhs: DimensionAnchor<NoMultiplier, NoConstant>, relation: Relation, rhs: DimensionAnchor<Multiplier, Constant>, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.rhs = rhs
 		self.priority = priority
 	}
 
-	public func updatePriority(priority: Priority) -> DimensionExpression {
+	public func updatePriority(_ priority: Priority) -> DimensionExpression {
 		assert(priority.isValid)
 		return DimensionExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
@@ -47,19 +47,19 @@ public struct DimensionExpression<Multiplier: MultiplierType, Constant: Constant
 // MARK: - Constant Dimension Expression
 
 public struct ConstantDimensionExpression: DistinctExpressionType {
-	private let lhs: DimensionAnchor<NoMultiplier, NoConstant>
-	private let relation: Relation
-	private let constant: ValueConstant
-	private let priority: Priority?
+	fileprivate let lhs: DimensionAnchor<NoMultiplier, NoConstant>
+	fileprivate let relation: Relation
+	fileprivate let constant: ValueConstant
+	fileprivate let priority: Priority?
 
-	private init(lhs: DimensionAnchor<NoMultiplier, NoConstant>, relation: Relation, constant: ValueConstant, priority: Priority? = nil) {
+	fileprivate init(lhs: DimensionAnchor<NoMultiplier, NoConstant>, relation: Relation, constant: ValueConstant, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.constant = constant
 		self.priority = priority
 	}
 
-	public func updatePriority(priority: Priority) -> ConstantDimensionExpression {
+	public func updatePriority(_ priority: Priority) -> ConstantDimensionExpression {
 		assert(priority.isValid)
 		return ConstantDimensionExpression(lhs: lhs, relation: relation, constant: constant, priority: priority)
 	}
@@ -86,7 +86,7 @@ public struct ConstantDimensionExpression: DistinctExpressionType {
 // MARK: - Dimension Anchor
 
 public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType> {
-	private let dimension: NSLayoutDimension
+	fileprivate let dimension: NSLayoutDimension
 	public let multiplier: Multiplier
 	public let constant: Constant
 
@@ -96,15 +96,15 @@ public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType
 		self.constant = constant
 	}
 
-	private func updateMultiplier<NextMultiplier: MultiplierType>(multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
+	fileprivate func updateMultiplier<NextMultiplier: MultiplierType>(_ multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
 		return DimensionAnchor<NextMultiplier, Constant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
-	private func updateConstant<NextConstant: ConstantType>(constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
+	fileprivate func updateConstant<NextConstant: ConstantType>(_ constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
 		return DimensionAnchor<Multiplier, NextConstant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
-	private var withoutModifiers: DimensionAnchor<NoMultiplier, NoConstant> {
+	fileprivate var withoutModifiers: DimensionAnchor<NoMultiplier, NoConstant> {
 		return DimensionAnchor<NoMultiplier, NoConstant>(dimension: dimension, multiplier: NoMultiplier(), constant: NoConstant())
 	}
 }
@@ -152,54 +152,54 @@ public func * <Constant>(multiplier: Int, rhs: DimensionAnchor<UndefinedMultipli
 // MARK: - Comparison Operators
 
 public func == <Multiplier, Constant>(lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
-	return DimensionExpression(lhs: lhs.withoutModifiers, relation: .Equal, rhs: rhs)
+	return DimensionExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
 public func == <Multiplier, Constant>(lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
-	return DimensionExpression(lhs: lhs, relation: .Equal, rhs: rhs)
+	return DimensionExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func <= <Multiplier, Constant>(lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
-	return DimensionExpression(lhs: lhs.withoutModifiers, relation: .LessThanOrEqual, rhs: rhs)
+	return DimensionExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func <= <Multiplier, Constant>(lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
-	return DimensionExpression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
+	return DimensionExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func >= <Multiplier, Constant>(lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
-	return DimensionExpression(lhs: lhs.withoutModifiers, relation: .GreaterThanOrEqual, rhs: rhs)
+	return DimensionExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func >= <Multiplier, Constant>(lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
-	return DimensionExpression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
+	return DimensionExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - CGFloat Constant Comparison Operators
 
 public func == (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
-	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .Equal, constant: ValueConstant(value: rhs))
+	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .equal, constant: ValueConstant(value: rhs))
 }
 
 public func == (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
-	return ConstantDimensionExpression(lhs: lhs, relation: .Equal, constant: ValueConstant(value: rhs))
+	return ConstantDimensionExpression(lhs: lhs, relation: .equal, constant: ValueConstant(value: rhs))
 }
 
 public func <= (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
-	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .LessThanOrEqual, constant: ValueConstant(value: rhs))
+	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, constant: ValueConstant(value: rhs))
 }
 
 public func <= (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
-	return ConstantDimensionExpression(lhs: lhs, relation: .LessThanOrEqual, constant: ValueConstant(value: rhs))
+	return ConstantDimensionExpression(lhs: lhs, relation: .lessThanOrEqual, constant: ValueConstant(value: rhs))
 }
 
 public func >= (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
-	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .GreaterThanOrEqual, constant: ValueConstant(value: rhs))
+	return ConstantDimensionExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, constant: ValueConstant(value: rhs))
 }
 
 public func >= (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
-	return ConstantDimensionExpression(lhs: lhs, relation: .GreaterThanOrEqual, constant: ValueConstant(value: rhs))
+	return ConstantDimensionExpression(lhs: lhs, relation: .greaterThanOrEqual, constant: ValueConstant(value: rhs))
 }
 
 // ----------------------------------------------------------------------------

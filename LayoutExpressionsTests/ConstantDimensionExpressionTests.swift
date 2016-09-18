@@ -22,9 +22,9 @@ class ConstantDimensionExpressionTests: XCTestCase {
 		let constraint = expression.evaluateDistinct()
 		XCTAssert(constraint.firstItem === subview)
 		XCTAssert(constraint.secondItem == nil)
-		XCTAssert(constraint.firstAttribute == .Height)
-		XCTAssert(constraint.secondAttribute == .NotAnAttribute)
-		XCTAssert(constraint.relation == .Equal)
+		XCTAssert(constraint.firstAttribute == .height)
+		XCTAssert(constraint.secondAttribute == .notAnAttribute)
+		XCTAssert(constraint.relation == .equal)
 		XCTAssert(constraint.constant == 200)
 		XCTAssert(constraint.multiplier == 1)
 	}
@@ -34,14 +34,14 @@ class ConstantDimensionExpressionTests: XCTestCase {
 
 		let ltExpression = (subviewAnchor <= 200)
 		let ltConstraint = ltExpression.evaluateDistinct()
-		XCTAssert(ltConstraint.relation == .LessThanOrEqual)
+		XCTAssert(ltConstraint.relation == .lessThanOrEqual)
 
 		let eqExpression = (subviewAnchor == 200)
 		let eqConstraint = eqExpression.evaluateDistinct()
-		XCTAssert(eqConstraint.relation == .Equal)
+		XCTAssert(eqConstraint.relation == .equal)
 
 		let gtExpression = (subviewAnchor >= 200)
 		let gtConstraint = gtExpression.evaluateDistinct()
-		XCTAssert(gtConstraint.relation == .GreaterThanOrEqual)
+		XCTAssert(gtConstraint.relation == .greaterThanOrEqual)
 	}
 }

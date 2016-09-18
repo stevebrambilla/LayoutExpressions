@@ -6,27 +6,27 @@ import UIKit
 // MARK: - Layout Anchors
 
 internal struct AnchorConstraints {
-	internal static func constraintForRelation(relation: Relation, leftAnchor: NSLayoutAnchor, rightAnchor: NSLayoutAnchor, constant: CGFloat) -> NSLayoutConstraint {
+	internal static func constraintForRelation<AnchorType: AnyObject>(_ relation: Relation, leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
 		switch relation {
-		case .LessThanOrEqual:
+		case .lessThanOrEqual:
 			return lessThanOrEqualConstraintForLeftAnchor(leftAnchor, rightAnchor: rightAnchor, constant: constant)
-		case .Equal:
+		case .equal:
 			return equalConstraintForLeftAnchor(leftAnchor, rightAnchor: rightAnchor, constant: constant)
-		case .GreaterThanOrEqual:
+		case .greaterThanOrEqual:
 			return greaterThanOrEqualConstraintForLeftAnchor(leftAnchor, rightAnchor: rightAnchor, constant: constant)
 		}
 	}
 
-	private static func lessThanOrEqualConstraintForLeftAnchor(leftAnchor: NSLayoutAnchor, rightAnchor: NSLayoutAnchor, constant: CGFloat) -> NSLayoutConstraint {
-		return leftAnchor.constraintLessThanOrEqualToAnchor(rightAnchor, constant: constant)
+	fileprivate static func lessThanOrEqualConstraintForLeftAnchor<AnchorType: AnyObject>(_ leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+		return leftAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: constant)
 	}
 
-	private static func equalConstraintForLeftAnchor(leftAnchor: NSLayoutAnchor, rightAnchor: NSLayoutAnchor, constant: CGFloat) -> NSLayoutConstraint {
-		return leftAnchor.constraintEqualToAnchor(rightAnchor, constant: constant)
+	fileprivate static func equalConstraintForLeftAnchor<AnchorType: AnyObject>(_ leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+		return leftAnchor.constraint(equalTo: rightAnchor, constant: constant)
 	}
 
-	private static func greaterThanOrEqualConstraintForLeftAnchor(leftAnchor: NSLayoutAnchor, rightAnchor: NSLayoutAnchor, constant: CGFloat) -> NSLayoutConstraint {
-		return leftAnchor.constraintGreaterThanOrEqualToAnchor(rightAnchor, constant: constant)
+	fileprivate static func greaterThanOrEqualConstraintForLeftAnchor<AnchorType: AnyObject>(_ leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+		return leftAnchor.constraint(greaterThanOrEqualTo: rightAnchor, constant: constant)
 	}
 }
 
@@ -34,37 +34,37 @@ internal struct AnchorConstraints {
 // MARK: - Dimension Anchors
 
 internal struct DimensionConstraints {
-	internal static func constraintForRelation(relation: Relation, leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+	internal static func constraintForRelation(_ relation: Relation, leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
 		switch relation {
-		case .LessThanOrEqual:
+		case .lessThanOrEqual:
 			return lessThanOrEqualConstraintForLeftDimension(leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
-		case .Equal:
+		case .equal:
 			return equalConstraintForLeftDimension(leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
-		case .GreaterThanOrEqual:
+		case .greaterThanOrEqual:
 			return greaterThanOrEqualConstraintForLeftDimension(leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
 		}
 	}
 
-	private static func lessThanOrEqualConstraintForLeftDimension(leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
-		return leftDimension.constraintLessThanOrEqualToAnchor(rightDimension, multiplier: multiplier, constant: constant)
+	fileprivate static func lessThanOrEqualConstraintForLeftDimension(_ leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+		return leftDimension.constraint(lessThanOrEqualTo: rightDimension, multiplier: multiplier, constant: constant)
 	}
 
-	private static func equalConstraintForLeftDimension(leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
-		return leftDimension.constraintEqualToAnchor(rightDimension, multiplier: multiplier, constant: constant)
+	fileprivate static func equalConstraintForLeftDimension(_ leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+		return leftDimension.constraint(equalTo: rightDimension, multiplier: multiplier, constant: constant)
 	}
 
-	private static func greaterThanOrEqualConstraintForLeftDimension(leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
-		return leftDimension.constraintGreaterThanOrEqualToAnchor(rightDimension, multiplier: multiplier, constant: constant)
+	fileprivate static func greaterThanOrEqualConstraintForLeftDimension(_ leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+		return leftDimension.constraint(greaterThanOrEqualTo: rightDimension, multiplier: multiplier, constant: constant)
 	}
 
-	internal static func constraintForRelation(relation: Relation, leftDimension: NSLayoutDimension, constant: CGFloat) -> NSLayoutConstraint {
+	internal static func constraintForRelation(_ relation: Relation, leftDimension: NSLayoutDimension, constant: CGFloat) -> NSLayoutConstraint {
 		switch relation {
-		case .LessThanOrEqual:
-			return leftDimension.constraintLessThanOrEqualToConstant(constant)
-		case .Equal:
-			return leftDimension.constraintEqualToConstant(constant)
-		case .GreaterThanOrEqual:
-			return leftDimension.constraintGreaterThanOrEqualToConstant(constant)
+		case .lessThanOrEqual:
+			return leftDimension.constraint(lessThanOrEqualToConstant: constant)
+		case .equal:
+			return leftDimension.constraint(equalToConstant: constant)
+		case .greaterThanOrEqual:
+			return leftDimension.constraint(greaterThanOrEqualToConstant: constant)
 		}
 	}
 }

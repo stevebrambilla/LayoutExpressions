@@ -3,7 +3,7 @@
 import UIKit
 
 internal enum Relation {
-	case LessThanOrEqual
-	case Equal
-	case GreaterThanOrEqual
+	case lessThanOrEqual
+	case equal
+	case greaterThanOrEqual
 }

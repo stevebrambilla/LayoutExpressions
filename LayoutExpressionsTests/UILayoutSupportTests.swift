@@ -22,23 +22,23 @@ class UILayoutSupportTests: XCTestCase {
 		let top = evaluateLayoutExpression(subview.lexTop == viewController.lexTopLayoutGuide)
 		XCTAssert(top.firstItem === subview)
 		XCTAssert(top.secondItem === viewController.topLayoutGuide)
-		XCTAssert(top.firstAttribute == .Top)
-		XCTAssert(top.secondAttribute == .Bottom)
+		XCTAssert(top.firstAttribute == .top)
+		XCTAssert(top.secondAttribute == .bottom)
 
 		let bottom = evaluateLayoutExpression(subview.lexBottom == viewController.lexBottomLayoutGuide)
-		XCTAssert(bottom.firstAttribute == .Bottom)
-		XCTAssert(bottom.secondAttribute == .Top)
+		XCTAssert(bottom.firstAttribute == .bottom)
+		XCTAssert(bottom.secondAttribute == .top)
 	}
 
 	func testLayoutSupportExtensionLayoutGuides() {
 		let top = evaluateLayoutExpression(subview.lexTop == viewController.topLayoutGuide.lexTop)
 		XCTAssert(top.firstItem === subview)
 		XCTAssert(top.secondItem === viewController.topLayoutGuide)
-		XCTAssert(top.firstAttribute == .Top)
-		XCTAssert(top.secondAttribute == .Top)
+		XCTAssert(top.firstAttribute == .top)
+		XCTAssert(top.secondAttribute == .top)
 
 		let bottom = evaluateLayoutExpression(subview.lexBottom == viewController.bottomLayoutGuide.lexBottom)
-		XCTAssert(bottom.firstAttribute == .Bottom)
-		XCTAssert(bottom.secondAttribute == .Bottom)
+		XCTAssert(bottom.firstAttribute == .bottom)
+		XCTAssert(bottom.secondAttribute == .bottom)
 	}
 }

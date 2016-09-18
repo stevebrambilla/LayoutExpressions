@@ -3,7 +3,7 @@
 import UIKit
 
 public protocol ExpressionType {
-	func updatePriority(priority: Priority) -> Self
+	func updatePriority(_ priority: Priority) -> Self
 	func evaluateAll() -> [NSLayoutConstraint]
 }
 

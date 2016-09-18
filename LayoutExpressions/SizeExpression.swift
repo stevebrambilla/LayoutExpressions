@@ -17,19 +17,19 @@ import UIKit
 // MARK: - Size Expression
 
 public struct SizeExpression<Size: SizeType>: ExpressionType {
-	private let lhs: SizeAnchor<NoSize>
-	private let relation: Relation
-	private let rhs: SizeAnchor<Size>
-	private let priority: Priority?
+	fileprivate let lhs: SizeAnchor<NoSize>
+	fileprivate let relation: Relation
+	fileprivate let rhs: SizeAnchor<Size>
+	fileprivate let priority: Priority?
 
-	private init(lhs: SizeAnchor<NoSize>, relation: Relation, rhs: SizeAnchor<Size>, priority: Priority? = nil) {
+	fileprivate init(lhs: SizeAnchor<NoSize>, relation: Relation, rhs: SizeAnchor<Size>, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.rhs = rhs
 		self.priority = priority
 	}
 
-	public func updatePriority(priority: Priority) -> SizeExpression {
+	public func updatePriority(_ priority: Priority) -> SizeExpression {
 		assert(priority.isValid)
 		return SizeExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
@@ -53,19 +53,19 @@ public struct SizeExpression<Size: SizeType>: ExpressionType {
 // MARK: - Constant Size Expression
 
 public struct ConstantSizeExpression: ExpressionType {
-	private let lhs: SizeAnchor<NoSize>
-	private let relation: Relation
-	private let size: Size
-	private let priority: Priority?
+	fileprivate let lhs: SizeAnchor<NoSize>
+	fileprivate let relation: Relation
+	fileprivate let size: Size
+	fileprivate let priority: Priority?
 
-	private init(lhs: SizeAnchor<NoSize>, relation: Relation, size: Size, priority: Priority? = nil) {
+	fileprivate init(lhs: SizeAnchor<NoSize>, relation: Relation, size: Size, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.size = size
 		self.priority = priority
 	}
 
-	public func updatePriority(priority: Priority) -> ConstantSizeExpression {
+	public func updatePriority(_ priority: Priority) -> ConstantSizeExpression {
 		assert(priority.isValid)
 		return ConstantSizeExpression(lhs: lhs, relation: relation, size: size, priority: priority)
 	}
@@ -87,8 +87,8 @@ public struct ConstantSizeExpression: ExpressionType {
 // MARK: - Size Anchor
 
 public struct SizeAnchor<Size: SizeType> {
-	private let widthAnchor: NSLayoutDimension
-	private let heightAnchor: NSLayoutDimension
+	fileprivate let widthAnchor: NSLayoutDimension
+	fileprivate let heightAnchor: NSLayoutDimension
 	public let size: Size
 
 	internal init(widthAnchor: NSLayoutDimension, heightAnchor: NSLayoutDimension, size: Size) {
@@ -97,11 +97,11 @@ public struct SizeAnchor<Size: SizeType> {
 		self.size = size
 	}
 
-	private func updateSize<NextSize: SizeType>(size: NextSize) -> SizeAnchor<NextSize> {
+	fileprivate func updateSize<NextSize: SizeType>(_ size: NextSize) -> SizeAnchor<NextSize> {
 		return SizeAnchor<NextSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: size)
 	}
 
-	private var withoutModifiers: SizeAnchor<NoSize> {
+	fileprivate var withoutModifiers: SizeAnchor<NoSize> {
 		return SizeAnchor<NoSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: NoSize())
 	}
 }
@@ -117,49 +117,49 @@ public func + (lhs: SizeAnchor<UndefinedSize>, size: Size) -> SizeAnchor<ValueSi
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs, relation: .Equal, rhs: rhs)
+	return SizeExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func == <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs.withoutModifiers, relation: .Equal, rhs: rhs)
+	return SizeExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
 public func <= <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
+	return SizeExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func <= <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs.withoutModifiers, relation: .LessThanOrEqual, rhs: rhs)
+	return SizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func >= <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
+	return SizeExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func >= <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs.withoutModifiers, relation: .GreaterThanOrEqual, rhs: rhs)
+	return SizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func == (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs, relation: .Equal, size: rhs)
+	return ConstantSizeExpression(lhs: lhs, relation: .equal, size: rhs)
 }
 
 public func == (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .Equal, size: rhs)
+	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .equal, size: rhs)
 }
 
 public func <= (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs, relation: .LessThanOrEqual, size: rhs)
+	return ConstantSizeExpression(lhs: lhs, relation: .lessThanOrEqual, size: rhs)
 }
 
 public func <= (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .LessThanOrEqual, size: rhs)
+	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, size: rhs)
 }
 
 public func >= (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs, relation: .GreaterThanOrEqual, size: rhs)
+	return ConstantSizeExpression(lhs: lhs, relation: .greaterThanOrEqual, size: rhs)
 }
 
 public func >= (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .GreaterThanOrEqual, size: rhs)
+	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, size: rhs)
 }

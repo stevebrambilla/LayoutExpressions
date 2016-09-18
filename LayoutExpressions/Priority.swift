@@ -5,10 +5,10 @@ import UIKit
 public typealias Priority = Float
 
 public enum SystemPriority: Priority {
-	case Required = 1000
-	case DefaultHigh = 750
-	case DefaultLow = 250
-	case FittingSizeLevel = 50
+	case required = 1000
+	case defaultHigh = 750
+	case defaultLow = 250
+	case fittingSizeLevel = 50
 }
 
 extension Priority {
@@ -17,10 +17,11 @@ extension Priority {
 	}
 }
 
-infix operator <<~ {
-	associativity left
-	precedence 125 // Less than the Comparative operators (130)
+precedencegroup PrioritizationPrecedence {
+	lowerThan: ComparisonPrecedence
 }
+
+infix operator <<~ : PrioritizationPrecedence
 
 public func <<~ <Expression: ExpressionType>(expression: Expression, priority: Float) -> Expression {
 	return expression.updatePriority(priority)

@@ -29,7 +29,7 @@ class PriorityTests: XCTestCase {
 	}
 
 	func testSystemPriority() {
-		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <<~ .DefaultHigh)
-		XCTAssert(constraint.priority == SystemPriority.DefaultHigh.rawValue, "Wrong priority")
+		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <<~ .defaultHigh)
+		XCTAssert(constraint.priority == SystemPriority.defaultHigh.rawValue, "Wrong priority")
 	}
 }

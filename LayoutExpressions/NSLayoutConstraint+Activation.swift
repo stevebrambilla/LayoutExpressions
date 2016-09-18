@@ -17,7 +17,7 @@ extension Array where Element: NSLayoutConstraint {
 	/// using this method is more efficient than activating each constraint
 	/// individually.
 	public func activateConstraints() {
-		NSLayoutConstraint.activateConstraints(self)
+		NSLayoutConstraint.activate(self)
 	}
 
 	/// Deactivates each constraint in the array.
@@ -28,6 +28,6 @@ extension Array where Element: NSLayoutConstraint {
 	/// using this method is more efficient than deactivating each constraint
 	/// individually.
 	public func deactivateConstraints() {
-		NSLayoutConstraint.deactivateConstraints(self)
+		NSLayoutConstraint.deactivate(self)
 	}
 }

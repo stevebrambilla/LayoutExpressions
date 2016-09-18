@@ -18,19 +18,19 @@ import UIKit
 // MARK: - Edges Expression
 
 public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
-	private let lhs: EdgesAnchor<NoInsets>
-	private let relation: Relation
-	private let rhs: EdgesAnchor<Insets>
-	private let priority: Priority?
+	fileprivate let lhs: EdgesAnchor<NoInsets>
+	fileprivate let relation: Relation
+	fileprivate let rhs: EdgesAnchor<Insets>
+	fileprivate let priority: Priority?
 
-	private init(lhs: EdgesAnchor<NoInsets>, relation: Relation, rhs: EdgesAnchor<Insets>, priority: Priority? = nil) {
+	fileprivate init(lhs: EdgesAnchor<NoInsets>, relation: Relation, rhs: EdgesAnchor<Insets>, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.rhs = rhs
 		self.priority = priority
 	}
 
-	public func updatePriority(priority: Priority) -> EdgesExpression {
+	public func updatePriority(_ priority: Priority) -> EdgesExpression {
 		assert(priority.isValid)
 		return EdgesExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
@@ -58,10 +58,10 @@ public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
 // MARK: - Edges Anchor
 
 public struct EdgesAnchor<Insets: InsetsType> {
-	private let topAnchor: NSLayoutYAxisAnchor
-	private let leftAnchor: NSLayoutXAxisAnchor
-	private let bottomAnchor: NSLayoutYAxisAnchor
-	private let rightAnchor: NSLayoutXAxisAnchor
+	fileprivate let topAnchor: NSLayoutYAxisAnchor
+	fileprivate let leftAnchor: NSLayoutXAxisAnchor
+	fileprivate let bottomAnchor: NSLayoutYAxisAnchor
+	fileprivate let rightAnchor: NSLayoutXAxisAnchor
 	public let insets: Insets
 
 	internal init(topAnchor: NSLayoutYAxisAnchor, leftAnchor: NSLayoutXAxisAnchor, bottomAnchor: NSLayoutYAxisAnchor, rightAnchor: NSLayoutXAxisAnchor, insets: Insets) {
@@ -72,11 +72,11 @@ public struct EdgesAnchor<Insets: InsetsType> {
 		self.insets = insets
 	}
 
-	private func updateInsets<NextInsets: InsetsType>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
+	fileprivate func updateInsets<NextInsets: InsetsType>(_ insets: NextInsets) -> EdgesAnchor<NextInsets> {
 		return EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
 	}
 
-	private var withoutModifiers: EdgesAnchor<NoInsets> {
+	fileprivate var withoutModifiers: EdgesAnchor<NoInsets> {
 		return EdgesAnchor<NoInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: NoInsets())
 	}
 }
@@ -116,25 +116,25 @@ public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: Int) -> EdgesAnchor<Va
 // MARK: - Comparison Operators
 
 public func == <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs, relation: .Equal, rhs: rhs)
+	return EdgesExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func == <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .Equal, rhs: rhs)
+	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
 public func <= <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs, relation: .LessThanOrEqual, rhs: rhs)
+	return EdgesExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func <= <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .LessThanOrEqual, rhs: rhs)
+	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func >= <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs, relation: .GreaterThanOrEqual, rhs: rhs)
+	return EdgesExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func >= <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .GreaterThanOrEqual, rhs: rhs)
+	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }

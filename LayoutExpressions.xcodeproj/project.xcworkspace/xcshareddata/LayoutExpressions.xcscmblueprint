@@ -4,15 +4,15 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "E07D1088-D0FD-43FF-8E69-A21E3D66BBED" : 0,
     "631917BC-017E-46D9-BD87-C512FED3C48A" : 0,
+    "E07D1088-D0FD-43FF-8E69-A21E3D66BBED" : 0,
     "9FF151A8ECDE9F8DF84108064D94B27A85D6EC22" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "10E46468-5B9E-49A2-B7A8-7C9DF860D1CF",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "E07D1088-D0FD-43FF-8E69-A21E3D66BBED" : "layoutexpressions",
     "631917BC-017E-46D9-BD87-C512FED3C48A" : "LayoutExpressions",
-    "9FF151A8ECDE9F8DF84108064D94B27A85D6EC22" : "autolayout-expressions"
+    "E07D1088-D0FD-43FF-8E69-A21E3D66BBED" : "layoutexpressions",
+    "9FF151A8ECDE9F8DF84108064D94B27A85D6EC22" : "autolayout-expressions\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "LayoutExpressions",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

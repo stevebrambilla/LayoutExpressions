@@ -27,9 +27,9 @@ class DimensionExpressionTests: XCTestCase {
 		let constraint = expression.evaluateDistinct()
 		XCTAssert(constraint.firstItem === subview)
 		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .Height)
-		XCTAssert(constraint.secondAttribute == .Width)
-		XCTAssert(constraint.relation == .Equal)
+		XCTAssert(constraint.firstAttribute == .height)
+		XCTAssert(constraint.secondAttribute == .width)
+		XCTAssert(constraint.relation == .equal)
 		XCTAssert(constraint.constant == 0)
 		XCTAssert(constraint.multiplier == 1)
 	}
@@ -42,9 +42,9 @@ class DimensionExpressionTests: XCTestCase {
 		let constraint = expression.evaluateDistinct()
 		XCTAssert(constraint.firstItem === subview)
 		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .Height)
-		XCTAssert(constraint.secondAttribute == .Width)
-		XCTAssert(constraint.relation == .Equal)
+		XCTAssert(constraint.firstAttribute == .height)
+		XCTAssert(constraint.secondAttribute == .width)
+		XCTAssert(constraint.relation == .equal)
 		XCTAssert(constraint.constant == 10)
 		XCTAssert(constraint.multiplier == 1)
 	}
@@ -57,9 +57,9 @@ class DimensionExpressionTests: XCTestCase {
 		let constraint = expression.evaluateDistinct()
 		XCTAssert(constraint.firstItem === subview)
 		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .Height)
-		XCTAssert(constraint.secondAttribute == .Width)
-		XCTAssert(constraint.relation == .Equal)
+		XCTAssert(constraint.firstAttribute == .height)
+		XCTAssert(constraint.secondAttribute == .width)
+		XCTAssert(constraint.relation == .equal)
 		XCTAssert(constraint.constant == 0)
 		XCTAssert(constraint.multiplier == 2)
 	}
@@ -72,9 +72,9 @@ class DimensionExpressionTests: XCTestCase {
 		let constraint = expression.evaluateDistinct()
 		XCTAssert(constraint.firstItem === subview)
 		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .Height)
-		XCTAssert(constraint.secondAttribute == .Width)
-		XCTAssert(constraint.relation == .Equal)
+		XCTAssert(constraint.firstAttribute == .height)
+		XCTAssert(constraint.secondAttribute == .width)
+		XCTAssert(constraint.relation == .equal)
 		XCTAssert(constraint.constant == 10)
 		XCTAssert(constraint.multiplier == 2)
 	}
@@ -85,14 +85,14 @@ class DimensionExpressionTests: XCTestCase {
 
 		let ltExpression = (subviewAnchor <= containerAnchor * 2 + 10)
 		let ltConstraint = ltExpression.evaluateDistinct()
-		XCTAssert(ltConstraint.relation == .LessThanOrEqual)
+		XCTAssert(ltConstraint.relation == .lessThanOrEqual)
 
 		let eqExpression = (subviewAnchor == containerAnchor * 2 + 10)
 		let eqConstraint = eqExpression.evaluateDistinct()
-		XCTAssert(eqConstraint.relation == .Equal)
+		XCTAssert(eqConstraint.relation == .equal)
 
 		let gtExpression = (subviewAnchor >= containerAnchor * 2 + 10)
 		let gtConstraint = gtExpression.evaluateDistinct()
-		XCTAssert(gtConstraint.relation == .GreaterThanOrEqual)
+		XCTAssert(gtConstraint.relation == .greaterThanOrEqual)
 	}
 }

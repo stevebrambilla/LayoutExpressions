@@ -22,46 +22,46 @@ class UILayoutGuideTests: XCTestCase {
 		let topAndBottom = evaluateLayoutExpression(guide.lexTop == container.lexBottom)
 		XCTAssert(topAndBottom.firstItem === guide)
 		XCTAssert(topAndBottom.secondItem === container)
-		XCTAssert(topAndBottom.firstAttribute == .Top)
-		XCTAssert(topAndBottom.secondAttribute == .Bottom)
+		XCTAssert(topAndBottom.firstAttribute == .top)
+		XCTAssert(topAndBottom.secondAttribute == .bottom)
 
 		let centerY = evaluateLayoutExpression(guide.lexCenterY == container.lexCenterY)
-		XCTAssert(centerY.firstAttribute == .CenterY)
-		XCTAssert(centerY.secondAttribute == .CenterY)
+		XCTAssert(centerY.firstAttribute == .centerY)
+		XCTAssert(centerY.secondAttribute == .centerY)
 	}
 
 	func testXAxis() {
 		let leftAndRight = evaluateLayoutExpression(guide.lexLeft == container.lexRight)
-		XCTAssert(leftAndRight.firstAttribute == .Left)
-		XCTAssert(leftAndRight.secondAttribute == .Right)
+		XCTAssert(leftAndRight.firstAttribute == .left)
+		XCTAssert(leftAndRight.secondAttribute == .right)
 
 		let leadingAndTrailing = evaluateLayoutExpression(guide.lexLeading == container.lexTrailing)
-		XCTAssert(leadingAndTrailing.firstAttribute == .Leading)
-		XCTAssert(leadingAndTrailing.secondAttribute == .Trailing)
+		XCTAssert(leadingAndTrailing.firstAttribute == .leading)
+		XCTAssert(leadingAndTrailing.secondAttribute == .trailing)
 
 		let centerX = evaluateLayoutExpression(guide.lexCenterX == container.lexCenterX)
-		XCTAssert(centerX.firstAttribute == .CenterX)
-		XCTAssert(centerX.secondAttribute == .CenterX)
+		XCTAssert(centerX.firstAttribute == .centerX)
+		XCTAssert(centerX.secondAttribute == .centerX)
 	}
 
 	func testDimensions() {
 		let width = evaluateLayoutExpression(guide.lexWidth == container.lexWidth)
-		XCTAssert(width.firstAttribute == .Width)
-		XCTAssert(width.secondAttribute == .Width)
+		XCTAssert(width.firstAttribute == .width)
+		XCTAssert(width.secondAttribute == .width)
 
 		let height = evaluateLayoutExpression(guide.lexHeight == container.lexHeight)
-		XCTAssert(height.firstAttribute == .Height)
-		XCTAssert(height.secondAttribute == .Height)
+		XCTAssert(height.firstAttribute == .height)
+		XCTAssert(height.secondAttribute == .height)
 	}
 
 	func testCenter() {
 		let constraints = evaluateLayoutExpression(guide.lexCenter == container.lexCenter)
 		XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
 
-		let centerXs = constraints.filter { $0.firstAttribute == .CenterX && $0.secondAttribute == .CenterX }
+		let centerXs = constraints.filter { $0.firstAttribute == .centerX && $0.secondAttribute == .centerX }
 		XCTAssert(centerXs.count == 1, "Didn't find exactly one CenterX constraint.")
 
-		let centerYs = constraints.filter { $0.firstAttribute == .CenterY && $0.secondAttribute == .CenterY }
+		let centerYs = constraints.filter { $0.firstAttribute == .centerY && $0.secondAttribute == .centerY }
 		XCTAssert(centerYs.count == 1, "Didn't find exactly one CenterY constraint.")
 	}
 
@@ -69,10 +69,10 @@ class UILayoutGuideTests: XCTestCase {
 		let constraints = evaluateLayoutExpression(guide.lexSize == container.lexSize)
 		XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
 
-		let widths = constraints.filter { $0.firstAttribute == .Width && $0.secondAttribute == .Width }
+		let widths = constraints.filter { $0.firstAttribute == .width && $0.secondAttribute == .width }
 		XCTAssert(widths.count == 1, "Didn't find exactly one Width constraint.")
 
-		let heights = constraints.filter { $0.firstAttribute == .Height && $0.secondAttribute == .Height }
+		let heights = constraints.filter { $0.firstAttribute == .height && $0.secondAttribute == .height }
 		XCTAssert(heights.count == 1, "Didn't find exactly one Height constraint.")
 	}
 
@@ -80,16 +80,16 @@ class UILayoutGuideTests: XCTestCase {
 		let constraints = evaluateLayoutExpression(guide.lexEdges == container.lexEdges)
 		XCTAssert(constraints.count == 4, "Expected exactly 4 constraints")
 
-		let tops = constraints.filter { $0.firstAttribute == .Top && $0.secondAttribute == .Top }
+		let tops = constraints.filter { $0.firstAttribute == .top && $0.secondAttribute == .top }
 		XCTAssert(tops.count == 1, "Didn't find exactly one Top constraint.")
 
-		let lefts = constraints.filter { $0.firstAttribute == .Left && $0.secondAttribute == .Left }
+		let lefts = constraints.filter { $0.firstAttribute == .left && $0.secondAttribute == .left }
 		XCTAssert(lefts.count == 1, "Didn't find exactly one Left constraint.")
 
-		let bottoms = constraints.filter { $0.firstAttribute == .Bottom && $0.secondAttribute == .Bottom }
+		let bottoms = constraints.filter { $0.firstAttribute == .bottom && $0.secondAttribute == .bottom }
 		XCTAssert(bottoms.count == 1, "Didn't find exactly one Bottom constraint.")
 
-		let rights = constraints.filter { $0.firstAttribute == .Right && $0.secondAttribute == .Right }
+		let rights = constraints.filter { $0.firstAttribute == .right && $0.secondAttribute == .right }
 		XCTAssert(rights.count == 1, "Didn't find exactly one Right constraint.")
 	}
 
@@ -143,9 +143,9 @@ class UILayoutGuideTests: XCTestCase {
 
 	func testAddingMultiplePriorityExpressionsToView() {
 		container.addLayoutExpressions(
-			guide.lexTop == container.lexTop + 10 <<~ .DefaultLow,
-			guide.lexWidth == container.lexWidth * 2 <<~ .Required,
-			guide.lexCenter == container.lexCenter <<~ .DefaultHigh
+			guide.lexTop == container.lexTop + 10 <<~ .defaultLow,
+			guide.lexWidth == container.lexWidth * 2 <<~ .required,
+			guide.lexCenter == container.lexCenter <<~ .defaultHigh
 		)
 		XCTAssert(container.constraints.count == 4, "Expected exactly 4 constraints")
 	}
