@@ -29,7 +29,7 @@ public struct DimensionExpression<Multiplier: MultiplierType, Constant: Constant
 		let multiplier = rhs.multiplier.value ?? 1
 		let constant = rhs.constant.value ?? 0
 
-		let constraint = DimensionConstraints.constraintForRelation(relation, leftDimension: leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
+		let constraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
 
 		if let priority = priority {
 			constraint.priority = priority
@@ -68,7 +68,7 @@ public struct ConstantDimensionExpression: DistinctExpressionType {
 		let leftDimension = lhs.dimension
 		let constantValue = constant.value ?? 0
 
-		let constraint = DimensionConstraints.constraintForRelation(relation, leftDimension: leftDimension, constant: constantValue)
+		let constraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: leftDimension, constant: constantValue)
 
 		if let priority = priority {
 			constraint.priority = priority
@@ -96,11 +96,11 @@ public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType
 		self.constant = constant
 	}
 
-	fileprivate func updateMultiplier<NextMultiplier: MultiplierType>(_ multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
+	fileprivate func update<NextMultiplier: MultiplierType>(multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
 		return DimensionAnchor<NextMultiplier, Constant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
-	fileprivate func updateConstant<NextConstant: ConstantType>(_ constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
+	fileprivate func update<NextConstant: ConstantType>(constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
 		return DimensionAnchor<Multiplier, NextConstant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
@@ -115,19 +115,19 @@ public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType
 // CGFloat Constants and Multipliers
 
 public func + <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, constant: CGFloat) -> DimensionAnchor<Multiplier, ValueConstant> {
-	return lhs.updateConstant(ValueConstant(value: constant))
+	return lhs.update(constant: ValueConstant(value: constant))
 }
 
 public func - <Multiplier>(lhs: DimensionAnchor<Multiplier, UndefinedConstant>, constant: CGFloat) -> DimensionAnchor<Multiplier, ValueConstant> {
-	return lhs.updateConstant(ValueConstant(value: -constant))
+	return lhs.update(constant: ValueConstant(value: -constant))
 }
 
 public func * <Constant>(lhs: DimensionAnchor<UndefinedMultiplier, Constant>, multiplier: CGFloat) -> DimensionAnchor<ValueMultiplier, Constant> {
-	return lhs.updateMultiplier(ValueMultiplier(value: multiplier))
+	return lhs.update(multiplier: ValueMultiplier(value: multiplier))
 }
 
 public func * <Constant>(multiplier: CGFloat, rhs: DimensionAnchor<UndefinedMultiplier, Constant>) -> DimensionAnchor<ValueMultiplier, Constant> {
-	return rhs.updateMultiplier(ValueMultiplier(value: multiplier))
+	return rhs.update(multiplier: ValueMultiplier(value: multiplier))
 }
 
 // Int Constants and Multipliers

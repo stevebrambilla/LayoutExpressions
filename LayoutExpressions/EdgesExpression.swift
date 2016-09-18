@@ -38,10 +38,10 @@ public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
 	public func evaluateAll() -> [NSLayoutConstraint] {
 		let insets = rhs.insets.value ?? LayoutExpressions.Insets.zeroInsets
 
-		let topConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.topAnchor, rightAnchor: rhs.topAnchor, constant: insets.top)
-		let leftConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.leftAnchor, rightAnchor: rhs.leftAnchor, constant: insets.left)
-		let bottomConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.bottomAnchor, rightAnchor: rhs.bottomAnchor, constant: -insets.bottom)
-		let rightConstraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: lhs.rightAnchor, rightAnchor: rhs.rightAnchor, constant: -insets.right)
+		let topConstraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: lhs.topAnchor, rightAnchor: rhs.topAnchor, constant: insets.top)
+		let leftConstraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: lhs.leftAnchor, rightAnchor: rhs.leftAnchor, constant: insets.left)
+		let bottomConstraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: lhs.bottomAnchor, rightAnchor: rhs.bottomAnchor, constant: -insets.bottom)
+		let rightConstraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: lhs.rightAnchor, rightAnchor: rhs.rightAnchor, constant: -insets.right)
 
 		if let priority = priority {
 			topConstraint.priority = priority
@@ -72,7 +72,7 @@ public struct EdgesAnchor<Insets: InsetsType> {
 		self.insets = insets
 	}
 
-	fileprivate func updateInsets<NextInsets: InsetsType>(_ insets: NextInsets) -> EdgesAnchor<NextInsets> {
+	fileprivate func update<NextInsets: InsetsType>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
 		return EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
 	}
 
@@ -87,19 +87,19 @@ public struct EdgesAnchor<Insets: InsetsType> {
 // Insets
 
 public func - (lhs: EdgesAnchor<UndefinedInsets>, insets: Insets) -> EdgesAnchor<ValueInsets> {
-	return lhs.updateInsets(ValueInsets(value: insets))
+	return lhs.update(insets: ValueInsets(value: insets))
 }
 
 // CGFloat Insets
 
 public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: CGFloat) -> EdgesAnchor<ValueInsets> {
 	let insets = Insets(top: inset, left: inset, bottom: inset, right: inset)
-	return lhs.updateInsets(ValueInsets(value: insets))
+	return lhs.update(insets: ValueInsets(value: insets))
 }
 
 public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: CGFloat) -> EdgesAnchor<ValueInsets> {
 	let insets = Insets(top: -outset, left: -outset, bottom: -outset, right: -outset)
-	return lhs.updateInsets(ValueInsets(value: insets))
+	return lhs.update(insets: ValueInsets(value: insets))
 }
 
 // Int Insets

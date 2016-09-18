@@ -37,8 +37,8 @@ public struct SizeExpression<Size: SizeType>: ExpressionType {
 	public func evaluateAll() -> [NSLayoutConstraint] {
 		let size = rhs.size.value ?? LayoutExpressions.Size.zeroSize
 
-		let widthConstraint = DimensionConstraints.constraintForRelation(relation, leftDimension: lhs.widthAnchor, rightDimension: rhs.widthAnchor, multiplier: 1.0, constant: size.width)
-		let heightConstraint = DimensionConstraints.constraintForRelation(relation, leftDimension: lhs.heightAnchor, rightDimension: rhs.heightAnchor, multiplier: 1.0, constant: size.height)
+		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.widthAnchor, rightDimension: rhs.widthAnchor, multiplier: 1.0, constant: size.width)
+		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.heightAnchor, rightDimension: rhs.heightAnchor, multiplier: 1.0, constant: size.height)
 
 		if let priority = priority {
 			widthConstraint.priority = priority
@@ -71,8 +71,8 @@ public struct ConstantSizeExpression: ExpressionType {
 	}
 
 	public func evaluateAll() -> [NSLayoutConstraint] {
-		let widthConstraint = DimensionConstraints.constraintForRelation(relation, leftDimension: lhs.widthAnchor, constant: size.width)
-		let heightConstraint = DimensionConstraints.constraintForRelation(relation, leftDimension: lhs.heightAnchor, constant: size.height)
+		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.widthAnchor, constant: size.width)
+		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.heightAnchor, constant: size.height)
 
 		if let priority = priority {
 			widthConstraint.priority = priority
@@ -97,7 +97,7 @@ public struct SizeAnchor<Size: SizeType> {
 		self.size = size
 	}
 
-	fileprivate func updateSize<NextSize: SizeType>(_ size: NextSize) -> SizeAnchor<NextSize> {
+	fileprivate func update<NextSize: SizeType>(size: NextSize) -> SizeAnchor<NextSize> {
 		return SizeAnchor<NextSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: size)
 	}
 
@@ -110,7 +110,7 @@ public struct SizeAnchor<Size: SizeType> {
 // MARK: - Arithmetic Operators
 
 public func + (lhs: SizeAnchor<UndefinedSize>, size: Size) -> SizeAnchor<ValueSize> {
-	return lhs.updateSize(ValueSize(value: size))
+	return lhs.update(size: ValueSize(value: size))
 }
 
 // ----------------------------------------------------------------------------

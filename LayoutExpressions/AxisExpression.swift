@@ -50,7 +50,7 @@ public struct AxisExpression<Axis: AxisType, Constant: ConstantType>: DistinctEx
 		let rightAnchor = rhs.anchor
 		let constant = rhs.constant.value ?? 0
 
-		let constraint = AnchorConstraints.constraintForRelation(relation, leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
+		let constraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
 
 		if let priority = priority {
 			constraint.priority = priority
@@ -80,7 +80,7 @@ public struct AxisAnchor<Axis: AxisType, Constant: ConstantType> {
 		return axis.anchor
 	}
 
-	fileprivate func updateConstant<NextConstant: ConstantType>(_ constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
+	fileprivate func update<NextConstant: ConstantType>(constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
 		return AxisAnchor<Axis, NextConstant>(axis: axis, constant: constant)
 	}
 
@@ -95,11 +95,11 @@ public struct AxisAnchor<Axis: AxisType, Constant: ConstantType> {
 // CGFloat Constants
 
 public func + <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: CGFloat) -> AxisAnchor<Axis, ValueConstant> {
-	return lhs.updateConstant(ValueConstant(value: constant))
+	return lhs.update(constant: ValueConstant(value: constant))
 }
 
 public func - <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: CGFloat) -> AxisAnchor<Axis, ValueConstant> {
-	return lhs.updateConstant(ValueConstant(value: -constant))
+	return lhs.update(constant: ValueConstant(value: -constant))
 }
 
 // Int Constants
