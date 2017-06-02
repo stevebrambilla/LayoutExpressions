@@ -6,6 +6,7 @@ extension UIView {
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.
+	@discardableResult
 	public func addLayoutExpression(_ expression: DistinctExpressionType) -> NSLayoutConstraint {
 		let constraint = evaluateLayoutExpression(expression)
 		addConstraint(constraint)
@@ -15,6 +16,7 @@ extension UIView {
 	/// Evaluates the expression and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
+	@discardableResult
 	public func addLayoutExpression(_ expression: ExpressionType) -> [NSLayoutConstraint] {
 		let constraints = evaluateLayoutExpression(expression)
 		addConstraints(constraints)
@@ -24,6 +26,7 @@ extension UIView {
 	/// Evaluates the expressions and adds the constraints to the view.
 	///
 	/// Returns the layout constraints.
+	@discardableResult
 	public func addLayoutExpressions(_ expressions: ExpressionType...) -> [NSLayoutConstraint] {
 		let constraints = evaluateLayoutExpressions(expressions)
 		addConstraints(constraints)
