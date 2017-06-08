@@ -2,76 +2,81 @@
 
 import UIKit
 
-extension UILayoutGuide {
+extension UILayoutGuide: AnchorsExtensionsProvider {}
+
+extension Anchors where Base: UILayoutGuide {
 	/// A layout expression anchor representing the leading edge of the layout guide's frame.
-	public var lexLeading: AxisAnchor<XAxis, UndefinedConstant> {
-		return AxisAnchor(axis: XAxis(anchor: leadingAnchor), constant: UndefinedConstant())
+	public var leading: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: base.leadingAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the trailing edge of the layout guide's frame.
-	public var lexTrailing: AxisAnchor<XAxis, UndefinedConstant> {
-		return AxisAnchor(axis: XAxis(anchor: trailingAnchor), constant: UndefinedConstant())
+	public var trailing: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: base.trailingAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the top edge of the layout guide's frame.
-	public var lexTop: AxisAnchor<YAxis, UndefinedConstant> {
-		return AxisAnchor(axis: YAxis(anchor: topAnchor), constant: UndefinedConstant())
+	public var top: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: base.topAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the left edge of the layout guide's frame.
-	public var lexLeft: AxisAnchor<XAxis, UndefinedConstant> {
-		return AxisAnchor(axis: XAxis(anchor: leftAnchor), constant: UndefinedConstant())
+	public var left: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: base.leftAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the bottom edge of the layout guide's frame.
-	public var lexBottom: AxisAnchor<YAxis, UndefinedConstant> {
-		return AxisAnchor(axis: YAxis(anchor: bottomAnchor), constant: UndefinedConstant())
+	public var bottom: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: base.bottomAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the right edge of the layout guide's frame.
-	public var lexRight: AxisAnchor<XAxis, UndefinedConstant> {
-		return AxisAnchor(axis: XAxis(anchor: rightAnchor), constant: UndefinedConstant())
+	public var right: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: base.rightAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the horizontal center of the layout guide's frame.
-	public var lexCenterX: AxisAnchor<XAxis, UndefinedConstant> {
-		return AxisAnchor(axis: XAxis(anchor: centerXAnchor), constant: UndefinedConstant())
+	public var centerX: AxisAnchor<XAxis, UndefinedConstant> {
+		return AxisAnchor(axis: XAxis(anchor: base.centerXAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the vertical center of the layout guide's frame.
-	public var lexCenterY: AxisAnchor<YAxis, UndefinedConstant> {
-		return AxisAnchor(axis: YAxis(anchor: centerYAnchor), constant: UndefinedConstant())
+	public var centerY: AxisAnchor<YAxis, UndefinedConstant> {
+		return AxisAnchor(axis: YAxis(anchor: base.centerYAnchor), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the width of the layout guide's frame.
-	public var lexWidth: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
-		return DimensionAnchor(dimension: widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
+	public var width: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
+		return DimensionAnchor(dimension: base.widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
 	}
 
 	/// A layout expression anchor representing the height of the layout guide's frame.
-	public var lexHeight: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
-		return DimensionAnchor(dimension: heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
+	public var height: DimensionAnchor<UndefinedMultiplier, UndefinedConstant> {
+		return DimensionAnchor(dimension: base.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
 	}
 }
 
-extension UILayoutGuide {
+extension Anchors where Base: UILayoutGuide {
 	/// A composite layout expression anchor representing all four edges of the layout guide.
-	public var lexEdges: EdgesAnchor<UndefinedInsets> {
-		return EdgesAnchor(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: UndefinedInsets())
+	public var edges: EdgesAnchor<UndefinedInsets> {
+		return EdgesAnchor(topAnchor: base.topAnchor,
+		                   leftAnchor: base.leftAnchor,
+		                   bottomAnchor: base.bottomAnchor,
+		                   rightAnchor: base.rightAnchor,
+		                   insets: UndefinedInsets())
 	}
-}
 
-
-extension UILayoutGuide {
 	/// A composite layout expression anchor representing the center of the view.
-	public var lexCenter: CenterAnchor<UndefinedOffset> {
-		return CenterAnchor(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: UndefinedOffset())
+	public var center: CenterAnchor<UndefinedOffset> {
+		return CenterAnchor(centerXAnchor: base.centerXAnchor,
+		                    centerYAnchor: base.centerYAnchor,
+		                    offset: UndefinedOffset())
 	}
-}
 
-extension UILayoutGuide {
 	/// A composite layout expression anchor representing the size of the view.
-	public var lexSize: SizeAnchor<UndefinedSize> {
-		return SizeAnchor(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: UndefinedSize())
+	public var size: SizeAnchor<UndefinedSize> {
+		return SizeAnchor(widthAnchor: base.widthAnchor,
+		                  heightAnchor: base.heightAnchor,
+		                  size: UndefinedSize())
 	}
 }

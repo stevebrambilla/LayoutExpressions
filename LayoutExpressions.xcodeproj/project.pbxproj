@@ -16,7 +16,6 @@
 		AA1BCDD31BDD339700AB6D1C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */; };
 		AA1BCDD41BDD339700AB6D1C /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */; };
 		AA1BCDDB1BDD339F00AB6D1C /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */; };
-		AA1BCDDC1BDD339F00AB6D1C /* UILayoutSupport+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17711947CEE100E91E41 /* UILayoutSupport+Anchors.swift */; };
 		AA1BCDEC1BE5502F00AB6D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */; };
 		AA1BCDED1BE5502F00AB6D1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */; };
 		AA1BCDEF1BE663DC00AB6D1C /* AxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */; };
@@ -54,10 +53,13 @@
 		AA1BCE2C1BE6FF6000AB6D1C /* SizeExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D71943948800827E89 /* SizeExpressionTests.swift */; };
 		AA1BCE2F1BE98E6500AB6D1C /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACF91CB194008D400748874 /* UIViewTests.swift */; };
 		AA1BCE301BE98F8B00AB6D1C /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A119450C1500F41FCC /* PriorityTests.swift */; };
-		AA1BCE311BE9911E00AB6D1C /* UILayoutSupportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17731947D15B00E91E41 /* UILayoutSupportTests.swift */; };
+		AA1BCE311BE9911E00AB6D1C /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */; };
 		AA1BCE331BE991AD00AB6D1C /* UILayoutGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE321BE991AD00AB6D1C /* UILayoutGuideTests.swift */; };
 		AA2D55A619451F0800F41FCC /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */; };
-		AA4E17721947CEE100E91E41 /* UILayoutSupport+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17711947CEE100E91E41 /* UILayoutSupport+Anchors.swift */; };
+		AAC2137F1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
+		AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
+		AAC213821EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */; };
+		AAC213831EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */; };
 		AACF91BF194008D300748874 /* LayoutExpressions.h in Headers */ = {isa = PBXBuildFile; fileRef = AACF91BE194008D300748874 /* LayoutExpressions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACF91C5194008D400748874 /* LayoutExpressions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACF91B9194008D300748874 /* LayoutExpressions.framework */; };
 /* End PBXBuildFile section */
@@ -99,10 +101,11 @@
 		AA1BCE321BE991AD00AB6D1C /* UILayoutGuideTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILayoutGuideTests.swift; sourceTree = "<group>"; };
 		AA2D55A119450C1500F41FCC /* PriorityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTests.swift; sourceTree = "<group>"; };
 		AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
-		AA4E17711947CEE100E91E41 /* UILayoutSupport+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutSupport+Anchors.swift"; sourceTree = "<group>"; };
-		AA4E17731947D15B00E91E41 /* UILayoutSupportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILayoutSupportTests.swift; sourceTree = "<group>"; };
+		AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
 		AA84B8D51943868800827E89 /* CenterExpressionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterExpressionsTests.swift; sourceTree = "<group>"; };
 		AA84B8D71943948800827E89 /* SizeExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeExpressionTests.swift; sourceTree = "<group>"; };
+		AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorsExtensionsProvider.swift; sourceTree = "<group>"; };
+		AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Anchors.swift"; sourceTree = "<group>"; };
 		AACF91B9194008D300748874 /* LayoutExpressions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutExpressions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACF91BD194008D300748874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACF91BE194008D300748874 /* LayoutExpressions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutExpressions.h; sourceTree = "<group>"; };
@@ -150,8 +153,9 @@
 		AA1BCDB71BDC8E7A00AB6D1C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */,
 				AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */,
-				AA4E17711947CEE100E91E41 /* UILayoutSupport+Anchors.swift */,
+				AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */,
 				AA1BCE141BE6963000AB6D1C /* UILayoutGuide+Anchors.swift */,
 				AA1BCE1A1BE6971C00AB6D1C /* UIView+Expressions.swift */,
 				AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */,
@@ -254,7 +258,7 @@
 				AA84B8D71943948800827E89 /* SizeExpressionTests.swift */,
 				AA2D55A119450C1500F41FCC /* PriorityTests.swift */,
 				AACF91CB194008D400748874 /* UIViewTests.swift */,
-				AA4E17731947D15B00E91E41 /* UILayoutSupportTests.swift */,
+				AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */,
 				AA1BCE321BE991AD00AB6D1C /* UILayoutGuideTests.swift */,
 				AACF91C9194008D400748874 /* Supporting Files */,
 			);
@@ -417,7 +421,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1BCDDC1BDD339F00AB6D1C /* UILayoutSupport+Anchors.swift in Sources */,
 				AA1BCE271BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
 				AA1BCDF31BE6686600AB6D1C /* Constraints.swift in Sources */,
 				AA13D8CA1BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */,
@@ -429,10 +432,12 @@
 				AA1BCDDB1BDD339F00AB6D1C /* UIView+Anchors.swift in Sources */,
 				AA1BCE0C1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
 				AA1BCE231BE6D75300AB6D1C /* Offset.swift in Sources */,
+				AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
 				AA1BCE1F1BE6A13000AB6D1C /* CenterExpression.swift in Sources */,
 				AA1BCE1C1BE6971C00AB6D1C /* UIView+Expressions.swift in Sources */,
 				AA1BCDFD1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
 				AA1BCDD41BDD339700AB6D1C /* Evaluation.swift in Sources */,
+				AAC213831EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */,
 				AA1BCE2B1BE6FD2F00AB6D1C /* Size.swift in Sources */,
 				AA1BCDF01BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
 				AA1BCE0F1BE68ADA00AB6D1C /* Insets.swift in Sources */,
@@ -446,7 +451,6 @@
 			files = (
 				AA1BCDC31BDCA42600AB6D1C /* Evaluation.swift in Sources */,
 				AA1BCE261BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
-				AA4E17721947CEE100E91E41 /* UILayoutSupport+Anchors.swift in Sources */,
 				AA13D8C91BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */,
 				AA1BCDF21BE6686600AB6D1C /* Constraints.swift in Sources */,
 				AA2D55A619451F0800F41FCC /* UIView+Anchors.swift in Sources */,
@@ -456,10 +460,12 @@
 				AA00F7BC1940ABE000F92B8B /* Expression.swift in Sources */,
 				AA1BCE0B1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
 				AA1BCE221BE6D75300AB6D1C /* Offset.swift in Sources */,
+				AAC2137F1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
 				AA1BCE1E1BE6A13000AB6D1C /* CenterExpression.swift in Sources */,
 				AA1BCE1B1BE6971C00AB6D1C /* UIView+Expressions.swift in Sources */,
 				AA1BCDFC1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
 				AA1BCDEF1BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
+				AAC213821EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */,
 				AA1BCE2A1BE6FD2F00AB6D1C /* Size.swift in Sources */,
 				AA1BCE0E1BE68ADA00AB6D1C /* Insets.swift in Sources */,
 				AA1BCDFF1BE6796200AB6D1C /* Multipliers.swift in Sources */,
@@ -475,7 +481,7 @@
 				AA1BCE241BE6E61600AB6D1C /* CenterExpressionsTests.swift in Sources */,
 				AA1BCE091BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift in Sources */,
 				AA1BCDFA1BE677F900AB6D1C /* YAxisExpressionTests.swift in Sources */,
-				AA1BCE311BE9911E00AB6D1C /* UILayoutSupportTests.swift in Sources */,
+				AA1BCE311BE9911E00AB6D1C /* UIViewControllerTests.swift in Sources */,
 				AA1BCE2F1BE98E6500AB6D1C /* UIViewTests.swift in Sources */,
 				AA1BCDF51BE6725F00AB6D1C /* XAxisExpressionTests.swift in Sources */,
 				AA1BCE101BE68FE100AB6D1C /* EdgesExpressionTests.swift in Sources */,
