@@ -97,7 +97,7 @@ public struct SizeAnchor<Size: SizeProtocol> {
 		self.size = size
 	}
 
-	fileprivate func update<NextSize: SizeProtocol>(size: NextSize) -> SizeAnchor<NextSize> {
+	fileprivate func update<NextSize>(size: NextSize) -> SizeAnchor<NextSize> {
 		return SizeAnchor<NextSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: size)
 	}
 

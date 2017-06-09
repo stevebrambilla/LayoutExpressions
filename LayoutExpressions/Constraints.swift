@@ -6,7 +6,7 @@ import UIKit
 // MARK: - Layout Anchors
 
 internal struct AnchorConstraints {
-	internal static func constraintForRelation<AnchorType: AnyObject>(relation: Relation, leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+	internal static func constraintForRelation<AnchorType>(relation: Relation, leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
 		switch relation {
 		case .lessThanOrEqual:
 			return lessThanOrEqualConstraintForLeftAnchor(leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
@@ -17,15 +17,15 @@ internal struct AnchorConstraints {
 		}
 	}
 
-	fileprivate static func lessThanOrEqualConstraintForLeftAnchor<AnchorType: AnyObject>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+	fileprivate static func lessThanOrEqualConstraintForLeftAnchor<AnchorType>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
 		return leftAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: constant)
 	}
 
-	fileprivate static func equalConstraintForLeftAnchor<AnchorType: AnyObject>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+	fileprivate static func equalConstraintForLeftAnchor<AnchorType>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
 		return leftAnchor.constraint(equalTo: rightAnchor, constant: constant)
 	}
 
-	fileprivate static func greaterThanOrEqualConstraintForLeftAnchor<AnchorType: AnyObject>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
+	fileprivate static func greaterThanOrEqualConstraintForLeftAnchor<AnchorType>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
 		return leftAnchor.constraint(greaterThanOrEqualTo: rightAnchor, constant: constant)
 	}
 }

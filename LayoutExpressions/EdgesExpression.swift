@@ -72,7 +72,7 @@ public struct EdgesAnchor<Insets: InsetsProtocol> {
 		self.insets = insets
 	}
 
-	fileprivate func update<NextInsets: InsetsProtocol>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
+	fileprivate func update<NextInsets>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
 		return EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
 	}
 
