@@ -58,6 +58,9 @@
 		AA1BCE311BE9911E00AB6D1C /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */; };
 		AA1BCE331BE991AD00AB6D1C /* UILayoutGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE321BE991AD00AB6D1C /* UILayoutGuideTests.swift */; };
 		AA2D55A619451F0800F41FCC /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */; };
+		AA5A6FEC1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */; };
+		AA5A6FF01EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */; };
+		AA5A6FF11EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */; };
 		AAC2137F1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
 		AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
 		AAC213821EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */; };
@@ -105,6 +108,8 @@
 		AA2D55A119450C1500F41FCC /* PriorityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTests.swift; sourceTree = "<group>"; };
 		AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
 		AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
+		AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerViewController+Anchors.swift"; sourceTree = "<group>"; };
+		AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Anchors.swift"; sourceTree = "<group>"; };
 		AA84B8D51943868800827E89 /* CenterExpressionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterExpressionsTests.swift; sourceTree = "<group>"; };
 		AA84B8D71943948800827E89 /* SizeExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeExpressionTests.swift; sourceTree = "<group>"; };
 		AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorsExtensionsProvider.swift; sourceTree = "<group>"; };
@@ -156,11 +161,10 @@
 		AA1BCDB71BDC8E7A00AB6D1C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AA5A6FEE1EEA2D9B00B6BB72 /* Common */,
+				AA5A6FED1EEA2D8D00B6BB72 /* tvOS */,
 				AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */,
 				AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */,
-				AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */,
-				AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */,
-				AA1BCE141BE6963000AB6D1C /* UILayoutGuide+Anchors.swift */,
 				AA1BCE1A1BE6971C00AB6D1C /* UIView+Expressions.swift */,
 				AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */,
 			);
@@ -211,6 +215,25 @@
 				AA1BCDF11BE6686600AB6D1C /* Constraints.swift */,
 			);
 			name = Functions;
+			sourceTree = "<group>";
+		};
+		AA5A6FED1EEA2D8D00B6BB72 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
+		AA5A6FEE1EEA2D9B00B6BB72 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */,
+				AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */,
+				AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */,
+				AA1BCE141BE6963000AB6D1C /* UILayoutGuide+Anchors.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		AACF91AF194008D300748874 = {
@@ -437,7 +460,9 @@
 				AA0D4DF61EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */,
 				AA1BCE0C1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
 				AA1BCE231BE6D75300AB6D1C /* Offset.swift in Sources */,
+				AA5A6FEC1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift in Sources */,
 				AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
+				AA5A6FF11EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift in Sources */,
 				AA1BCE1F1BE6A13000AB6D1C /* CenterExpression.swift in Sources */,
 				AA1BCE1C1BE6971C00AB6D1C /* UIView+Expressions.swift in Sources */,
 				AA1BCDFD1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
@@ -465,6 +490,7 @@
 				AA00F7BC1940ABE000F92B8B /* Expression.swift in Sources */,
 				AA0D4DF51EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */,
 				AA1BCE0B1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
+				AA5A6FF01EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift in Sources */,
 				AA1BCE221BE6D75300AB6D1C /* Offset.swift in Sources */,
 				AAC2137F1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
 				AA1BCE1E1BE6A13000AB6D1C /* CenterExpression.swift in Sources */,
