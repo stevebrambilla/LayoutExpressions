@@ -8,14 +8,20 @@
 
 import Foundation
 
+/// Describes a provider of lauout anchors.
+///
+/// Custom types that support layout anchors can adopt this protocol to vend 
+/// custom layout anchors.
 public protocol AnchorsExtensionsProvider: class {}
 
 extension AnchorsExtensionsProvider {
+	/// A proxy which hosts layout anchors for `self`.
 	public var anchors: Anchors<Self> {
 		return Anchors(self)
 	}
 }
 
+/// A proxy which hosts layout anchor extensions for `Base`.
 public struct Anchors<Base> {
 	public let base: Base
 

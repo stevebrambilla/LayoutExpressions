@@ -82,3 +82,17 @@ extension Anchors where Base: UIView {
 		return SizeAnchor(widthAnchor: base.widthAnchor, heightAnchor: base.heightAnchor, size: UndefinedSize())
 	}
 }
+
+extension Anchors where Base: UIView {
+	/// A layout area representing the view's `layoutMarginsGuide`, representing
+	/// the view's margins.
+	public var margins: LayoutAreaAnchors {
+		return LayoutAreaAnchors(guide: base.layoutMarginsGuide)
+	}
+
+	/// A layout area representing the view's `readableContentGuide`, a readable
+	/// width within the view.
+	public var readable: LayoutAreaAnchors {
+		return LayoutAreaAnchors(guide: base.readableContentGuide)
+	}
+}

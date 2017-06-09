@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AA00F7BC1940ABE000F92B8B /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00F7BB1940ABE000F92B8B /* Expression.swift */; };
+		AA0D4DF51EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */; };
+		AA0D4DF61EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */; };
 		AA13D8C91BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */; };
 		AA13D8CA1BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */; };
 		AA1BCDBF1BDCA3C400AB6D1C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */; };
@@ -76,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		AA00F7BB1940ABE000F92B8B /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutAreaAnchors.swift; sourceTree = "<group>"; };
 		AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Activation.swift"; sourceTree = "<group>"; };
 		AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */,
+				AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */,
 				AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */,
 				AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */,
 				AA1BCE141BE6963000AB6D1C /* UILayoutGuide+Anchors.swift */,
@@ -430,6 +434,7 @@
 				AA1BCE161BE6963000AB6D1C /* UILayoutGuide+Anchors.swift in Sources */,
 				AA1BCDD31BDD339700AB6D1C /* Priority.swift in Sources */,
 				AA1BCDDB1BDD339F00AB6D1C /* UIView+Anchors.swift in Sources */,
+				AA0D4DF61EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */,
 				AA1BCE0C1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
 				AA1BCE231BE6D75300AB6D1C /* Offset.swift in Sources */,
 				AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
@@ -458,6 +463,7 @@
 				AA1BCE151BE6963000AB6D1C /* UILayoutGuide+Anchors.swift in Sources */,
 				AA1BCDEC1BE5502F00AB6D1C /* Constants.swift in Sources */,
 				AA00F7BC1940ABE000F92B8B /* Expression.swift in Sources */,
+				AA0D4DF51EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */,
 				AA1BCE0B1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
 				AA1BCE221BE6D75300AB6D1C /* Offset.swift in Sources */,
 				AAC2137F1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
