@@ -66,13 +66,12 @@ UIView Anchors               | UILayoutGuide Anchors    |
 `view.anchors.firstBaseline` |                          |
 `view.anchors.lastBaseline`  |                          |
 
-As well as convenience shorthands for accessing anchors for common layout guides:
+As well as convenience shorthands for accessing the anchors of common layout guides:
 
-**UIView**
-
-------------------------|----------------------------|
- Layout Margins         |  `view.anchors.margins.*`  |
- Readable Content Guide |  `view.anchors.readable.*` |
+UIView                  |                           |
+------------------------|---------------------------|
+Layout Margins          | `view.anchors.margins.*`  |
+Readable Content Guide  | `view.anchors.readable.*` |
 
 These shorthands can further simplify layout expressions that use layout guides, for example: `subview.anchors.left == container.anchors.margins.left`
 
