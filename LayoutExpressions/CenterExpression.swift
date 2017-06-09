@@ -3,15 +3,15 @@
 import UIKit
 
 // Supports pinning the center to another view:
-// 		subview.lexCenter == container.lexCenter
+// 		subview.anchors.center == container.anchors.center
 //
 // With an optional offset:
-// 		subview.center == container.lexCenter + Offset(horizontal: 0.0, vertical: -10.0)
+// 		subview.anchors.center == container.anchors.center + Offset(horizontal: 0.0, vertical: -10.0)
 
 // ----------------------------------------------------------------------------
 // MARK: - Center Expression
 
-public struct CenterExpression<Offset: OffsetType>: ExpressionType {
+public struct CenterExpression<Offset: OffsetProtocol>: ExpressionProtocol {
 	fileprivate let lhs: CenterAnchor<NoOffset>
 	fileprivate let relation: Relation
 	fileprivate let rhs: CenterAnchor<Offset>
@@ -47,7 +47,7 @@ public struct CenterExpression<Offset: OffsetType>: ExpressionType {
 // ----------------------------------------------------------------------------
 // MARK: - Center Anchor
 
-public struct CenterAnchor<Offset: OffsetType> {
+public struct CenterAnchor<Offset: OffsetProtocol> {
 	fileprivate let centerXAnchor: NSLayoutXAxisAnchor
 	fileprivate let centerYAnchor: NSLayoutYAxisAnchor
 	public let offset: Offset
@@ -58,7 +58,7 @@ public struct CenterAnchor<Offset: OffsetType> {
 		self.offset = offset
 	}
 
-	fileprivate func updateOffset<NextOffset: OffsetType>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
+	fileprivate func updateOffset<NextOffset: OffsetProtocol>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
 		return CenterAnchor<NextOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: offset)
 	}
 

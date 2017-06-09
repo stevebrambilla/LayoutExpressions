@@ -2,21 +2,21 @@
 
 import UIKit
 
-public protocol MultiplierType {
+public protocol MultiplierProtocol {
 	var value: CGFloat? { get }
 }
 
-public struct NoMultiplier: MultiplierType {
+public struct NoMultiplier: MultiplierProtocol {
 	public let value: CGFloat? = nil
 	internal init() {}
 }
 
-public struct UndefinedMultiplier: MultiplierType {
+public struct UndefinedMultiplier: MultiplierProtocol {
 	public let value: CGFloat? = nil
 	internal init() {}
 }
 
-public struct ValueMultiplier: MultiplierType {
+public struct ValueMultiplier: MultiplierProtocol {
 	public let value: CGFloat?
 	internal init(value: CGFloat) {
 		self.value = value

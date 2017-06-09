@@ -2,21 +2,21 @@
 
 import UIKit
 
-public protocol ConstantType {
+public protocol ConstantProtocol {
 	var value: CGFloat? { get }
 }
 
-public struct NoConstant: ConstantType {
+public struct NoConstant: ConstantProtocol {
 	public let value: CGFloat? = nil
 	internal init() {}
 }
 
-public struct UndefinedConstant: ConstantType {
+public struct UndefinedConstant: ConstantProtocol {
 	public let value: CGFloat? = nil
 	internal init() {}
 }
 
-public struct ValueConstant: ConstantType {
+public struct ValueConstant: ConstantProtocol {
 	public let value: CGFloat?
 	internal init(value: CGFloat) {
 		self.value = value

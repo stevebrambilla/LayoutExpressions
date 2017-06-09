@@ -3,20 +3,20 @@
 import UIKit
 
 // Supports constraining the size to another view:
-//     subview.lexSize == sibling.lexSize
-//     subview.lexSize >= sibling.lexSize
-//     subview.lexSize <= sibling.lexSize
+//     subview.anchors.size == sibling.anchors.size
+//     subview.anchors.size >= sibling.anchors.size
+//     subview.anchors.size <= sibling.anchors.size
 //
 // With an optional offset:
-//     subview.lexSize == sibling.lexSize + Size(width: 20.0, height: 20.0)
+//     subview.anchors.size == sibling.anchors.size + Size(width: 20.0, height: 20.0)
 //
 // Supports constraining the size to a CGSize:
-//     subview.size == Offset(width: 320.0, height: 480.0)
+//     subview.anchors.size == Offset(width: 320.0, height: 480.0)
 
 // ----------------------------------------------------------------------------
 // MARK: - Size Expression
 
-public struct SizeExpression<Size: SizeType>: ExpressionType {
+public struct SizeExpression<Size: SizeProtocol>: ExpressionProtocol {
 	fileprivate let lhs: SizeAnchor<NoSize>
 	fileprivate let relation: Relation
 	fileprivate let rhs: SizeAnchor<Size>
@@ -52,7 +52,7 @@ public struct SizeExpression<Size: SizeType>: ExpressionType {
 // ----------------------------------------------------------------------------
 // MARK: - Constant Size Expression
 
-public struct ConstantSizeExpression: ExpressionType {
+public struct ConstantSizeExpression: ExpressionProtocol {
 	fileprivate let lhs: SizeAnchor<NoSize>
 	fileprivate let relation: Relation
 	fileprivate let size: Size
@@ -86,7 +86,7 @@ public struct ConstantSizeExpression: ExpressionType {
 // ----------------------------------------------------------------------------
 // MARK: - Size Anchor
 
-public struct SizeAnchor<Size: SizeType> {
+public struct SizeAnchor<Size: SizeProtocol> {
 	fileprivate let widthAnchor: NSLayoutDimension
 	fileprivate let heightAnchor: NSLayoutDimension
 	public let size: Size
@@ -97,7 +97,7 @@ public struct SizeAnchor<Size: SizeType> {
 		self.size = size
 	}
 
-	fileprivate func update<NextSize: SizeType>(size: NextSize) -> SizeAnchor<NextSize> {
+	fileprivate func update<NextSize: SizeProtocol>(size: NextSize) -> SizeAnchor<NextSize> {
 		return SizeAnchor<NextSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: size)
 	}
 

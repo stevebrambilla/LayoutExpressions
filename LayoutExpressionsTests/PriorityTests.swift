@@ -19,17 +19,17 @@ class PriorityTests: XCTestCase {
 	}
 
 	func testCustomFloatPriority() {
-		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <<~ 950)
+		let constraint = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ 950)
 		XCTAssert(constraint.priority == 950.0)
 	}
 
 	func testCustomIntPriority() {
-		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <<~ 950)
+		let constraint = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ 950)
 		XCTAssert(constraint.priority == 950)
 	}
 
 	func testSystemPriority() {
-		let constraint = evaluateLayoutExpression(subview.lexTop == container.lexTop <<~ .defaultHigh)
+		let constraint = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ .defaultHigh)
 		XCTAssert(constraint.priority == SystemPriority.defaultHigh.rawValue, "Wrong priority")
 	}
 }

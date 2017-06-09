@@ -1,20 +1,19 @@
 # Layout Expressions [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Travis CI](https://api.travis-ci.org/stevebrambilla/LayoutExpressions.svg?branch=master)](https://travis-ci.org/stevebrambilla/LayoutExpressions)
 
-LayoutExpressions is a lightweight and easy-to-use library for Auto Layout, designed for Swift.
-It lets you describe Auto Layout constraints expressively and with type safety, so you can add layout constraints like this:
+LayoutExpressions is a lightweight and easy-to-use library for Auto Layout, designed for Swift. It lets you describe Auto Layout constraints expressively and with type safety, so you can add layout constraints like this:
 
 ```swift
-view.addLayoutExpression( subviewB.lexLeft >= subviewA.lexRight + 10 )
+view.addLayoutExpression( subviewB.anchors.left >= subviewA.anchors.right + 10 )
 ```
 
 ...instead of this:
 
 ```swift
 let constraint = NSLayoutConstraint(item: subviewB,
-                               attribute: .Left,
-                               relatedBy: .GreaterThanOrEqual,
+                               attribute: .left,
+                               relatedBy: .greaterThanOrEqual,
                                   toItem: subviewA,
-                               attribute: .Right,
+                               attribute: .right,
                               multiplier: 1.0,
                                 constant: 10.0)
 view.addConstraint(constraint)
@@ -27,102 +26,109 @@ You can use any of `==`, `>=`, or `<=` as relations, and you can omit the multip
 
 ```swift
 // A basic layout expression for the y-axis:
-view.addLayoutExpression( subview.lexTop == container.lexTop )
+view.addLayoutExpression( subview.anchors.top == container.anchors.top )
 
 // With multiplier and constant:
-view.addLayoutExpression( subview2.lexWidth >= subview1.lexWidth * 2 + 10 )
+view.addLayoutExpression( subview2.anchors.width >= subview1.anchors.width * 2 + 10 )
 ```
 
 Multiple expressions can be grouped together in the same function call. The `NSLayoutConstraints` are returned so you can keep a reference to them:
 
 ```swift
 self.constraints = container.addLayoutExpression(
-    subview.lexTop == container.lexTop + 10,
-    subview.lexLeft == container.lexLeft + 15,
-    subview.lexBottom == container.lexBottom - 10,
-    subview.lexRight == container.lexRight - 15
+    subview.anchors.top == container.anchors.top + 10,
+    subview.anchors.left == container.anchors.left + 15,
+    subview.anchors.bottom == container.anchors.bottom - 10,
+    subview.anchors.right == container.anchors.right - 15
 )
 ```
 
-Set priorities for your constraints by using the `<~` operator after your expression. Priorities can be `.Required`, `.DefaultHigh`, `.DefaultLow`, `.FittingSizeLevel`, or any number `0...1000`:
+Set priorities for your constraints by using the `<~` operator after your expression. Priorities can be `.required`, `.defaultHigh`, `.defaultLow`, `.fittingSizeLevel`, or any number `0...1000`:
 
 ```swift
-view.addLayoutExpression( subview1.lexWidth >= subview2.lexWidth <~ .DefaultHigh )
+view.addLayoutExpression( subview1.anchors.width >= subview2.anchors.width <~ .defaultHigh )
 ```
 
 LayoutExpressions provides the following UIKit extensions for layout anchors:
 
-UIView Anchors            | UILayoutGuide   Anchors    | UILayoutSupport   Anchors   |
---------------------------|----------------------------|-----------------------------|
-`view.lexTop`             | `guide.lexTop`             | `view.lexTop`               |
-`view.lexBottom`          | `guide.lexBottom`          | `view.lexBottom`            |
-`view.lexLeading`         | `guide.lexLeading`         |                             |
-`view.lexTrailing`        | `guide.lexTrailing`        |                             |
-`view.lexLeft`            | `guide.lexLeft`            |                             |
-`view.lexRight`           | `guide.lexRight`           |                             |
-`view.lexCenterX`         | `guide.lexCenterX`         |                             |
-`view.lexCenterY`         | `guide.lexCenterY`         |                             |
-`view.lexWidth`           | `guide.lexWidth`           |                             |
-`view.lexHeight`          | `guide.lexHeight`          |                             |
-`view.lexFirstBaseline`   |                            |                             |
-`view.lexLastBaseline`    |                            |                             |
+UIView Anchors               | UILayoutGuide Anchors    |
+-----------------------------|--------------------------|
+`view.anchors.top`           | `guide.anchors.top`      |
+`view.anchors.bottom`        | `guide.anchors.bottom`   |
+`view.anchors.leading`       | `guide.anchors.leading`  |
+`view.anchors.trailing`      | `guide.anchors.trailing` |
+`view.anchors.left`          | `guide.anchors.left`     |
+`view.anchors.right`         | `guide.anchors.right`    |
+`view.anchors.centerX`       | `guide.anchors.centerX`  |
+`view.anchors.centerY`       | `guide.anchors.centerY`  |
+`view.anchors.width`         | `guide.anchors.width`    |
+`view.anchors.height`        | `guide.anchors.height`   |
+`view.anchors.firstBaseline` |                          |
+`view.anchors.lastBaseline`  |                          |
+
+As well as convenience shorthands for accessing the anchors of common layout guides:
+
+UIView                  |                           |
+------------------------|---------------------------|
+Layout Margins          | `view.anchors.margins.*`  |
+Readable Content Guide  | `view.anchors.readable.*` |
+
+These shorthands can further simplify layout expressions that use layout guides, for example: `subview.anchors.left == container.anchors.margins.left`
 
 ### Composite Expressions
 
-LayoutExpressions makes common layout patterns even easier with composite expressions.
-Composite expressions are expressions that evaluate to more than one `NSLayoutConstraint`.
+LayoutExpressions makes common layout patterns even easier with composite expressions. Composite expressions are expressions that evaluate to more than one `NSLayoutConstraint`.
 
-For example, `subview.lexEdges == container.lexEdges` will pin all edges of `subview` to `container`. 
-This expression evaluates to four distinct `NSLayoutConstraints`, one for each edge. Use them to make your code even more concise and clear.
+For example, `subview.anchors.edges == container.anchors.edges` will pin all edges of `subview` to `container`. This expression evaluates to four distinct `NSLayoutConstraints`, one for each edge. Use them to make your code even more concise and clear.
 
 LayoutExpressions provides the following UIKit extensions for _composite_ layout anchors:
 
-UIView Anchors            | UILayoutGuide Anchors      |
---------------------------|----------------------------|
-`view.lexEdges`           | `guide.lexEdges`           |
-`view.lexCenter`          | `guide.lexCenter`          |
-`view.lexSize`            | `guide.lexSize`            |
+UIView Anchors        | UILayoutGuide Anchors  |
+----------------------|------------------------|
+`view.anchors.edges`  | `guide.anchors.edges`  |
+`view.anchors.center` | `guide.anchors.center` |
+`view.anchors.size`   | `guide.anchors.size`   |
 
 #### Edges
 
-`view.lexEdges` evaluates to constraints for `.Top`, `.Left`, `.Bottom`, and `.Right`. All relations are supported: `==`, `>=`, `<=`.
+`view.anchors.edges` evaluates to constraints for `.top`, `.left`, `.bottom`, and `.right`. All relations are supported: `==`, `>=`, `<=`.
 
 ```swift
 // Pin the edges of subview to container.
-subview.lexEdges == container.lexEdges
+subview.anchors.edges == container.anchors.edges
 
 // Use the '-' operator to inset the top and bottom edges of subview by 10 pts, and the right and left edges by 20 pts.
-subview.lexEdges == container.lexEdges - Insets(top: 10, left: 20, bottom: 10, right: 20)
+subview.anchors.edges == container.anchors.edges - Insets(top: 10, left: 20, bottom: 10, right: 20)
 
 // Use the '-' operator to inset all edges of subview by 10 pts.
-subview.lexEdges == container.lexEdges - 10.0
+subview.anchors.edges == container.anchors.edges - 10.0
 ```
 
 #### Size
 
-`view.lexSize` evaluates to constraints for `.Width` and `.Height`. All relations are supported: `==`, `>=`, `<=`.
+`view.anchors.size` evaluates to constraints for `.width` and `.height`. All relations are supported: `==`, `>=`, `<=`.
 
 ```swift
 // Pin the size of subview to the size of container.
-subview.lexSize == container.lexSize
+subview.anchors.size == container.anchors.size
 
 // Pin the size of subview to the size of container, with an offset.
-subview.lexSize == container.lexSize + Size(width: -20, height: -10)
+subview.anchors.size == container.anchors.size + Size(width: -20, height: -10)
 
 // Pin the size of subview to a fixed size.
-subview.lexSize == Size(width: 320, height: 200)
+subview.anchors.size == Size(width: 320, height: 200)
 ```
 
 #### Center
 
-`lexCenter` evaluates to constraints for `.CenterX` and `.CenterY`. Only the `==` relation is supported.
+`anchors.center` evaluates to constraints for `.centerX` and `.centerY`. Only the `==` relation is supported.
 
 ```swift
 // Pin the center of subview to the center of container.
-subview.lexCenter == container.lexCenter
+subview.anchors.center == container.anchors.center
 
 // Pin the center of subview to the center of container, with an offset.
-subview.lexCenter == container.lexCenter + POffset(horizontal: 0, vertical: -10)
+subview.anchors.center == container.anchors.center + Offset(horizontal: 0, vertical: -10)
 ```
 
 ## Installation

@@ -2,11 +2,11 @@
 
 import UIKit
 
-public protocol ExpressionType {
+public protocol ExpressionProtocol {
 	func update(priority: Priority) -> Self
 	func evaluateAll() -> [NSLayoutConstraint]
 }
 
-public protocol DistinctExpressionType: ExpressionType {
+public protocol DistinctExpressionType: ExpressionProtocol {
 	func evaluateDistinct() -> NSLayoutConstraint
 }

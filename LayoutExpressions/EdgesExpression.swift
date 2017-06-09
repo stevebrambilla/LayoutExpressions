@@ -3,21 +3,21 @@
 import UIKit
 
 // Supports pinning all edges:
-// 		subview.lexEdges == container.lexEdges
+// 		subview.anchors.edges == container.anchors.edges
 //
 // Supports insets using the '-' operator with a Insets struct:
-//     	subview.lexEdges == container.lexEdges - Insets(top: 10.0, left: 5.0, bottom: 5.0, right: 10.0)
+//     	subview.anchors.edges == container.anchors.edges - Insets(top: 10.0, left: 5.0, bottom: 5.0, right: 10.0)
 //
 // Or inset all edges equally using '-' with a Double:
-// 		subview.lexEdges == container.lexEdges - 10.0
+// 		subview.anchors.edges == container.anchors.edges - 10.0
 //
 // The '+' operator defines outsets:
-// 		subview.lexEdges == container.lexEdges + 10.0
+// 		subview.anchors.edges == container.anchors.edges + 10.0
 
 // ----------------------------------------------------------------------------
 // MARK: - Edges Expression
 
-public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
+public struct EdgesExpression<Insets: InsetsProtocol>: ExpressionProtocol {
 	fileprivate let lhs: EdgesAnchor<NoInsets>
 	fileprivate let relation: Relation
 	fileprivate let rhs: EdgesAnchor<Insets>
@@ -57,7 +57,7 @@ public struct EdgesExpression<Insets: InsetsType>: ExpressionType {
 // ----------------------------------------------------------------------------
 // MARK: - Edges Anchor
 
-public struct EdgesAnchor<Insets: InsetsType> {
+public struct EdgesAnchor<Insets: InsetsProtocol> {
 	fileprivate let topAnchor: NSLayoutYAxisAnchor
 	fileprivate let leftAnchor: NSLayoutXAxisAnchor
 	fileprivate let bottomAnchor: NSLayoutYAxisAnchor
@@ -72,7 +72,7 @@ public struct EdgesAnchor<Insets: InsetsType> {
 		self.insets = insets
 	}
 
-	fileprivate func update<NextInsets: InsetsType>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
+	fileprivate func update<NextInsets: InsetsProtocol>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
 		return EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
 	}
 

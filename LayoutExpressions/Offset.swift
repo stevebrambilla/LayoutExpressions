@@ -2,21 +2,21 @@
 
 import UIKit
 
-public protocol OffsetType {
+public protocol OffsetProtocol {
 	var value: Offset? { get }
 }
 
-public struct NoOffset: OffsetType {
+public struct NoOffset: OffsetProtocol {
 	public let value: Offset? = nil
 	internal init() {}
 }
 
-public struct UndefinedOffset: OffsetType {
+public struct UndefinedOffset: OffsetProtocol {
 	public let value: Offset? = nil
 	internal init() {}
 }
 
-public struct ValueOffset: OffsetType {
+public struct ValueOffset: OffsetProtocol {
 	public let value: Offset?
 	internal init(value: Offset) {
 		self.value = value
