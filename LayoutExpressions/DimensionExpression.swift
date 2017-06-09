@@ -5,7 +5,7 @@ import UIKit
 // ----------------------------------------------------------------------------
 // MARK: - Dimension Expression
 
-public struct DimensionExpression<Multiplier: MultiplierType, Constant: ConstantType>: DistinctExpressionType {
+public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: ConstantProtocol>: DistinctExpressionType {
 	fileprivate let lhs: DimensionAnchor<NoMultiplier, NoConstant>
 	fileprivate let relation: Relation
 	fileprivate let rhs: DimensionAnchor<Multiplier, Constant>
@@ -85,7 +85,7 @@ public struct ConstantDimensionExpression: DistinctExpressionType {
 // ----------------------------------------------------------------------------
 // MARK: - Dimension Anchor
 
-public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType> {
+public struct DimensionAnchor<Multiplier: MultiplierProtocol, Constant: ConstantProtocol> {
 	fileprivate let dimension: NSLayoutDimension
 	public let multiplier: Multiplier
 	public let constant: Constant
@@ -96,11 +96,11 @@ public struct DimensionAnchor<Multiplier: MultiplierType, Constant: ConstantType
 		self.constant = constant
 	}
 
-	fileprivate func update<NextMultiplier: MultiplierType>(multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
+	fileprivate func update<NextMultiplier: MultiplierProtocol>(multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
 		return DimensionAnchor<NextMultiplier, Constant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
-	fileprivate func update<NextConstant: ConstantType>(constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
+	fileprivate func update<NextConstant: ConstantProtocol>(constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
 		return DimensionAnchor<Multiplier, NextConstant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 

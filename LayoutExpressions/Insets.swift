@@ -2,21 +2,21 @@
 
 import UIKit
 
-public protocol InsetsType {
+public protocol InsetsProtocol {
 	var value: Insets? { get }
 }
 
-public struct NoInsets: InsetsType {
+public struct NoInsets: InsetsProtocol {
 	public let value: Insets? = nil
 	internal init() {}
 }
 
-public struct UndefinedInsets: InsetsType {
+public struct UndefinedInsets: InsetsProtocol {
 	public let value: Insets? = nil
 	internal init() {}
 }
 
-public struct ValueInsets: InsetsType {
+public struct ValueInsets: InsetsProtocol {
 	public let value: Insets?
 	internal init(value: Insets) {
 		self.value = value

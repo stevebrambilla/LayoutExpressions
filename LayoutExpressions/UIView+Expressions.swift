@@ -17,7 +17,7 @@ extension UIView {
 	///
 	/// Returns the layout constraints.
 	@discardableResult
-	public func addLayoutExpression(_ expression: ExpressionType) -> [NSLayoutConstraint] {
+	public func addLayoutExpression(_ expression: ExpressionProtocol) -> [NSLayoutConstraint] {
 		let constraints = evaluateLayoutExpression(expression)
 		addConstraints(constraints)
 		return constraints
@@ -27,7 +27,7 @@ extension UIView {
 	///
 	/// Returns the layout constraints.
 	@discardableResult
-	public func addLayoutExpressions(_ expressions: ExpressionType...) -> [NSLayoutConstraint] {
+	public func addLayoutExpressions(_ expressions: ExpressionProtocol...) -> [NSLayoutConstraint] {
 		let constraints = evaluateLayoutExpressions(expressions)
 		addConstraints(constraints)
 		return constraints

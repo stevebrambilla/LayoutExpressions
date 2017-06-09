@@ -11,7 +11,7 @@ import UIKit
 // ----------------------------------------------------------------------------
 // MARK: - Center Expression
 
-public struct CenterExpression<Offset: OffsetType>: ExpressionType {
+public struct CenterExpression<Offset: OffsetProtocol>: ExpressionProtocol {
 	fileprivate let lhs: CenterAnchor<NoOffset>
 	fileprivate let relation: Relation
 	fileprivate let rhs: CenterAnchor<Offset>
@@ -47,7 +47,7 @@ public struct CenterExpression<Offset: OffsetType>: ExpressionType {
 // ----------------------------------------------------------------------------
 // MARK: - Center Anchor
 
-public struct CenterAnchor<Offset: OffsetType> {
+public struct CenterAnchor<Offset: OffsetProtocol> {
 	fileprivate let centerXAnchor: NSLayoutXAxisAnchor
 	fileprivate let centerYAnchor: NSLayoutYAxisAnchor
 	public let offset: Offset
@@ -58,7 +58,7 @@ public struct CenterAnchor<Offset: OffsetType> {
 		self.offset = offset
 	}
 
-	fileprivate func updateOffset<NextOffset: OffsetType>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
+	fileprivate func updateOffset<NextOffset: OffsetProtocol>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
 		return CenterAnchor<NextOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: offset)
 	}
 

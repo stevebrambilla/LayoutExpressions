@@ -2,21 +2,21 @@
 
 import UIKit
 
-public protocol SizeType {
+public protocol SizeProtocol {
 	var value: Size? { get }
 }
 
-public struct NoSize: SizeType {
+public struct NoSize: SizeProtocol {
 	public let value: Size? = nil
 	internal init() {}
 }
 
-public struct UndefinedSize: SizeType {
+public struct UndefinedSize: SizeProtocol {
 	public let value: Size? = nil
 	internal init() {}
 }
 
-public struct ValueSize: SizeType {
+public struct ValueSize: SizeProtocol {
 	public let value: Size?
 	internal init(value: Size) {
 		self.value = value

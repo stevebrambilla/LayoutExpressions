@@ -5,19 +5,19 @@ import UIKit
 // ----------------------------------------------------------------------------
 // MARK: - Axis
 
-public protocol AxisType {
+public protocol AxisProtocol {
 	associatedtype AnchorType: AnyObject
 	var anchor: NSLayoutAnchor<AnchorType> { get }
 }
 
-public struct XAxis: AxisType {
+public struct XAxis: AxisProtocol {
 	public let anchor: NSLayoutAnchor<NSLayoutXAxisAnchor>
 	internal init(anchor: NSLayoutAnchor<NSLayoutXAxisAnchor>) {
 		self.anchor = anchor
 	}
 }
 
-public struct YAxis: AxisType {
+public struct YAxis: AxisProtocol {
 	public let anchor: NSLayoutAnchor<NSLayoutYAxisAnchor>
 	internal init(anchor: NSLayoutAnchor<NSLayoutYAxisAnchor>) {
 		self.anchor = anchor
@@ -27,7 +27,7 @@ public struct YAxis: AxisType {
 // ----------------------------------------------------------------------------
 // MARK: - Axis Expression
 
-public struct AxisExpression<Axis: AxisType, Constant: ConstantType>: DistinctExpressionType {
+public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: DistinctExpressionType {
 	fileprivate let lhs: AxisAnchor<Axis, NoConstant>
 	fileprivate let relation: Relation
 	fileprivate let rhs: AxisAnchor<Axis, Constant>
@@ -67,7 +67,7 @@ public struct AxisExpression<Axis: AxisType, Constant: ConstantType>: DistinctEx
 // ----------------------------------------------------------------------------
 // MARK: - Axis Anchor
 
-public struct AxisAnchor<Axis: AxisType, Constant: ConstantType> {
+public struct AxisAnchor<Axis: AxisProtocol, Constant: ConstantProtocol> {
 	fileprivate let axis: Axis
 	public let constant: Constant
 
@@ -80,7 +80,7 @@ public struct AxisAnchor<Axis: AxisType, Constant: ConstantType> {
 		return axis.anchor
 	}
 
-	fileprivate func update<NextConstant: ConstantType>(constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
+	fileprivate func update<NextConstant: ConstantProtocol>(constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
 		return AxisAnchor<Axis, NextConstant>(axis: axis, constant: constant)
 	}
 
