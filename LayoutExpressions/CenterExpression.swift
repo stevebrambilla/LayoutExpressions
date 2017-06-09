@@ -3,10 +3,10 @@
 import UIKit
 
 // Supports pinning the center to another view:
-// 		subview.lexCenter == container.lexCenter
+// 		subview.anchors.center == container.anchors.center
 //
 // With an optional offset:
-// 		subview.center == container.lexCenter + Offset(horizontal: 0.0, vertical: -10.0)
+// 		subview.anchors.center == container.anchors.center + Offset(horizontal: 0.0, vertical: -10.0)
 
 // ----------------------------------------------------------------------------
 // MARK: - Center Expression

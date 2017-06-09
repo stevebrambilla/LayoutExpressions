@@ -3,15 +3,15 @@
 import UIKit
 
 // Supports constraining the size to another view:
-//     subview.lexSize == sibling.lexSize
-//     subview.lexSize >= sibling.lexSize
-//     subview.lexSize <= sibling.lexSize
+//     subview.anchors.size == sibling.anchors.size
+//     subview.anchors.size >= sibling.anchors.size
+//     subview.anchors.size <= sibling.anchors.size
 //
 // With an optional offset:
-//     subview.lexSize == sibling.lexSize + Size(width: 20.0, height: 20.0)
+//     subview.anchors.size == sibling.anchors.size + Size(width: 20.0, height: 20.0)
 //
 // Supports constraining the size to a CGSize:
-//     subview.size == Offset(width: 320.0, height: 480.0)
+//     subview.anchors.size == Offset(width: 320.0, height: 480.0)
 
 // ----------------------------------------------------------------------------
 // MARK: - Size Expression

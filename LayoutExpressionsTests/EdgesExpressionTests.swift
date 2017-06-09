@@ -142,15 +142,4 @@ class EdgesExpressionTests: XCTestCase {
 			XCTAssert(right.multiplier == 1.0)
 		}
 	}
-
-	/*
-	func testAddingExpressionToView() {
-		let constraints = container.addLayoutExpression(subview.lexEdges == container.lexEdges - 10.0)
-		XCTAssert(constraints.count == 4, "Didn't return exactly four constraints.")
-		
-		for c in constraints {
-			XCTAssert((container.constraints as NSArray).containsObject(c), "Constraint not added to subview")
-		}
-	}
-*/
 }

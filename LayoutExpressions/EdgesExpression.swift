@@ -3,16 +3,16 @@
 import UIKit
 
 // Supports pinning all edges:
-// 		subview.lexEdges == container.lexEdges
+// 		subview.anchors.edges == container.anchors.edges
 //
 // Supports insets using the '-' operator with a Insets struct:
-//     	subview.lexEdges == container.lexEdges - Insets(top: 10.0, left: 5.0, bottom: 5.0, right: 10.0)
+//     	subview.anchors.edges == container.anchors.edges - Insets(top: 10.0, left: 5.0, bottom: 5.0, right: 10.0)
 //
 // Or inset all edges equally using '-' with a Double:
-// 		subview.lexEdges == container.lexEdges - 10.0
+// 		subview.anchors.edges == container.anchors.edges - 10.0
 //
 // The '+' operator defines outsets:
-// 		subview.lexEdges == container.lexEdges + 10.0
+// 		subview.anchors.edges == container.anchors.edges + 10.0
 
 // ----------------------------------------------------------------------------
 // MARK: - Edges Expression
