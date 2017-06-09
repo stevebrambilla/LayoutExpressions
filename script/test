@@ -8,7 +8,7 @@ set -e
 PROJECT_DISPLAY_NAME="LayoutExpressions"
 XCODE_PROJECT="LayoutExpressions.xcodeproj"
 XCODE_SCHEME="LayoutExpressions-iOS"
-XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.1"
+XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 7,OS=11.0"
 XCODE_SDK="iphonesimulator"
 
 main () {
