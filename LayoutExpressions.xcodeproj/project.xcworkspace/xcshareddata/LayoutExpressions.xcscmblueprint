@@ -12,7 +12,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "631917BC-017E-46D9-BD87-C512FED3C48A" : "LayoutExpressions",
     "E07D1088-D0FD-43FF-8E69-A21E3D66BBED" : "layoutexpressions",
-    "9FF151A8ECDE9F8DF84108064D94B27A85D6EC22" : "autolayout-expressions\/"
+    "9FF151A8ECDE9F8DF84108064D94B27A85D6EC22" : "LayoutExpressions\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "LayoutExpressions",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

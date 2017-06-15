@@ -7,17 +7,30 @@ set -e
 
 PROJECT_DISPLAY_NAME="LayoutExpressions"
 XCODE_PROJECT="LayoutExpressions.xcodeproj"
-XCODE_SCHEME="LayoutExpressions-iOS"
-XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.1"
-XCODE_SDK="iphonesimulator"
 
 main () {
-	echo "--- [$PROJECT_DISPLAY_NAME] Cleaning and building $XCODE_SCHEME"
-	xcaction clean "$XCODE_PROJECT" "$XCODE_SCHEME" "$XCODE_SDK"
-	xcaction build "$XCODE_PROJECT" "$XCODE_SCHEME" "$XCODE_SDK"
+	ios_scheme="LayoutExpressions-iOS"
+	ios_dest="platform=iOS Simulator,name=iPhone 7,OS=10.3.1"
+	ios_sdk="iphonesimulator"
+	build_and_test "$ios_scheme" "$ios_dest" "$ios_sdk"
 
-	echo "--- [$PROJECT_DISPLAY_NAME] Testing $XCODE_SCHEME"
-	xctest "$XCODE_PROJECT" "$XCODE_SCHEME" "$XCODE_DESTINATION" "$XCODE_SDK"
+	tvos_scheme="LayoutExpressions-tvOS"
+	tvos_dest="platform=tvOS Simulator,name=Apple TV 1080p,OS=10.2"
+	tvos_sdk="appletvsimulator"
+	build_and_test "$tvos_scheme" "$tvos_dest" "$tvos_sdk"
+}
+
+build_and_test () {
+	local scheme=$1
+	local destination=$2
+	local sdk=$3
+
+	echo "--- [$PROJECT_DISPLAY_NAME] Cleaning and building $scheme"
+	xcaction clean "$XCODE_PROJECT" "$scheme" "$sdk"
+	xcaction build "$XCODE_PROJECT" "$scheme" "$sdk"
+
+	echo "--- [$PROJECT_DISPLAY_NAME] Testing $scheme"
+	xctest "$XCODE_PROJECT" "$scheme" "$destination" "$sdk"
 }
 
 main

@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AA6E63721EF2DCC0000669CD"
+               BuildableName = "LayoutExpressionsTests-tvOS.xctest"
+               BlueprintName = "LayoutExpressionsTests-tvOS"
+               ReferencedContainer = "container:LayoutExpressions.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AA1BCDC81BDD336400AB6D1C"
+            BuildableName = "LayoutExpressions.framework"
+            BlueprintName = "LayoutExpressions-tvOS"
+            ReferencedContainer = "container:LayoutExpressions.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

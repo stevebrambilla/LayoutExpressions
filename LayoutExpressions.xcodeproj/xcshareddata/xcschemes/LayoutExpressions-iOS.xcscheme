@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AACF91C3194008D400748874"
-               BuildableName = "LayoutExpressionsTests.xctest"
-               BlueprintName = "LayoutExpressionsTests"
+               BuildableName = "LayoutExpressionsTests-iOS.xctest"
+               BlueprintName = "LayoutExpressionsTests-iOS"
                ReferencedContainer = "container:LayoutExpressions.xcodeproj">
             </BuildableReference>
          </TestableReference>

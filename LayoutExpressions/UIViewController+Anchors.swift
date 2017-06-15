@@ -1,6 +1,6 @@
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
 
-import Foundation
+import UIKit
 
 extension UIViewController: AnchorsExtensionsProvider {}
 
