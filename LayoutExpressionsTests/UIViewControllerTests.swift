@@ -18,6 +18,8 @@ class UIViewControllerTests: XCTestCase {
 		viewController.view.addSubview(subview)
 	}
 
+	@available(iOS, deprecated: 11.0)
+	@available(tvOS, deprecated: 11.0)
 	func testViewControllerExtensionLayoutGuides() {
 		let top = evaluateLayoutExpression(subview.anchors.top == viewController.anchors.top)
 		XCTAssert(top.firstItem === subview)
