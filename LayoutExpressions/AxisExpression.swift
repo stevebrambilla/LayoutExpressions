@@ -80,7 +80,7 @@ public struct AxisAnchor<Axis: AxisProtocol, Constant: ConstantProtocol> {
 		return axis.anchor
 	}
 
-	fileprivate func update<NextConstant: ConstantProtocol>(constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
+	fileprivate func update<NextConstant>(constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
 		return AxisAnchor<Axis, NextConstant>(axis: axis, constant: constant)
 	}
 

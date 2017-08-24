@@ -58,7 +58,7 @@ public struct CenterAnchor<Offset: OffsetProtocol> {
 		self.offset = offset
 	}
 
-	fileprivate func updateOffset<NextOffset: OffsetProtocol>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
+	fileprivate func updateOffset<NextOffset>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
 		return CenterAnchor<NextOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: offset)
 	}
 

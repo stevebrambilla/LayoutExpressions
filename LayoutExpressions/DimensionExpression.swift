@@ -96,11 +96,11 @@ public struct DimensionAnchor<Multiplier: MultiplierProtocol, Constant: Constant
 		self.constant = constant
 	}
 
-	fileprivate func update<NextMultiplier: MultiplierProtocol>(multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
+	fileprivate func update<NextMultiplier>(multiplier: NextMultiplier) -> DimensionAnchor<NextMultiplier, Constant> {
 		return DimensionAnchor<NextMultiplier, Constant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
-	fileprivate func update<NextConstant: ConstantProtocol>(constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
+	fileprivate func update<NextConstant>(constant: NextConstant) -> DimensionAnchor<Multiplier, NextConstant> {
 		return DimensionAnchor<Multiplier, NextConstant>(dimension: dimension, multiplier: multiplier, constant: constant)
 	}
 
