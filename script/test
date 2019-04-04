@@ -10,12 +10,12 @@ XCODE_PROJECT="LayoutExpressions.xcodeproj"
 
 main () {
 	ios_scheme="LayoutExpressions-iOS"
-	ios_dest="platform=iOS Simulator,name=iPhone 7,OS=11.0"
+	ios_dest="platform=iOS Simulator,name=iPhone X,OS=12.2"
 	ios_sdk="iphonesimulator"
 	build_and_test "$ios_scheme" "$ios_dest" "$ios_sdk"
 
 	tvos_scheme="LayoutExpressions-tvOS"
-	tvos_dest="platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0"
+	tvos_dest="platform=tvOS Simulator,name=Apple TV 4K,OS=12.2"
 	tvos_sdk="appletvsimulator"
 	build_and_test "$tvos_scheme" "$tvos_dest" "$tvos_sdk"
 }

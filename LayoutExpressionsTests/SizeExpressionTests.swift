@@ -27,8 +27,8 @@ class SizeExpressionTests: XCTestCase {
 		let expression = (subviewAnchor == containerAnchor)
 		let constraints = expression.evaluateAll()
 
-		let widths = constraints.filter { $0.firstAttribute == NSLayoutAttribute.width }
-		XCTAssert(widths.count == 1, "Didn't find exactly one Width constraint.")
+		let widths = constraints.filter { $0.firstAttribute == .width }
+		XCTAssert(widths.count == 1, "Didn't find exactly one .width constraint.")
 		if widths.count == 1 {
 			let width = widths[0]
 			XCTAssert(width.secondAttribute == .width)
@@ -36,8 +36,8 @@ class SizeExpressionTests: XCTestCase {
 			XCTAssert(width.secondItem === container)
 		}
 
-		let heights = constraints.filter { $0.firstAttribute == NSLayoutAttribute.height }
-		XCTAssert(heights.count == 1, "Didn't find exactly one Height constraint.")
+		let heights = constraints.filter { $0.firstAttribute == .height }
+		XCTAssert(heights.count == 1, "Didn't find exactly one .height constraint.")
 		if heights.count == 1 {
 			let height = heights[0]
 			XCTAssert(height.secondAttribute == .height)
@@ -53,16 +53,16 @@ class SizeExpressionTests: XCTestCase {
 		let expression = (subviewAnchor == containerAnchor + Size(width: -20, height: -10))
 		let constraints = expression.evaluateAll()
 
-		let widths = constraints.filter { $0.firstAttribute == NSLayoutAttribute.width }
-		XCTAssert(widths.count == 1, "Didn't find exactly one Width constraint.")
+		let widths = constraints.filter { $0.firstAttribute == .width }
+		XCTAssert(widths.count == 1, "Didn't find exactly one .width constraint.")
 		if widths.count == 1 {
 			let width = widths[0]
 			XCTAssert(width.multiplier == 1)
 			XCTAssert(width.constant == -20)
 		}
 
-		let heights = constraints.filter { $0.firstAttribute == NSLayoutAttribute.height }
-		XCTAssert(heights.count == 1, "Didn't find exactly one Height constraint.")
+		let heights = constraints.filter { $0.firstAttribute == .height }
+		XCTAssert(heights.count == 1, "Didn't find exactly one .height constraint.")
 		if heights.count == 1 {
 			let height = heights[0]
 			XCTAssert(height.multiplier == 1)
@@ -76,16 +76,16 @@ class SizeExpressionTests: XCTestCase {
 		let expression = (subviewAnchor == Size(width: 320, height: 400))
 		let constraints = expression.evaluateAll()
 
-		let widths = constraints.filter { $0.firstAttribute == NSLayoutAttribute.width }
-		XCTAssert(widths.count == 1, "Didn't find exactly one Width constraint.")
+		let widths = constraints.filter { $0.firstAttribute == .width }
+		XCTAssert(widths.count == 1, "Didn't find exactly one .width constraint.")
 		if widths.count == 1 {
 			let width = widths[0]
 			XCTAssert(width.multiplier == 1)
 			XCTAssert(width.constant == 320)
 		}
 
-		let heights = constraints.filter { $0.firstAttribute == NSLayoutAttribute.height }
-		XCTAssert(heights.count == 1, "Didn't find exactly one Height constraint.")
+		let heights = constraints.filter { $0.firstAttribute == .height }
+		XCTAssert(heights.count == 1, "Didn't find exactly one .height constraint.")
 		if heights.count == 1 {
 			let height = heights[0]
 			XCTAssert(height.multiplier == 1)
