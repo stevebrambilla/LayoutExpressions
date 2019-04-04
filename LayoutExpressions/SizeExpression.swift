@@ -41,8 +41,8 @@ public struct SizeExpression<Size: SizeProtocol>: ExpressionProtocol {
 		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.heightAnchor, rightDimension: rhs.heightAnchor, multiplier: 1.0, constant: size.height)
 
 		if let priority = priority {
-			widthConstraint.priority = priority
-			heightConstraint.priority = priority
+			widthConstraint.priority = priority.layoutPriority
+			heightConstraint.priority = priority.layoutPriority
 		}
 
 		return [widthConstraint, heightConstraint]
@@ -75,8 +75,8 @@ public struct ConstantSizeExpression: ExpressionProtocol {
 		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.heightAnchor, constant: size.height)
 
 		if let priority = priority {
-			widthConstraint.priority = priority
-			heightConstraint.priority = priority
+			widthConstraint.priority = priority.layoutPriority
+			heightConstraint.priority = priority.layoutPriority
 		}
 
 		return [widthConstraint, heightConstraint]

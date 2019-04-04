@@ -44,10 +44,10 @@ public struct EdgesExpression<Insets: InsetsProtocol>: ExpressionProtocol {
 		let rightConstraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: lhs.rightAnchor, rightAnchor: rhs.rightAnchor, constant: -insets.right)
 
 		if let priority = priority {
-			topConstraint.priority = priority
-			leftConstraint.priority = priority
-			bottomConstraint.priority = priority
-			rightConstraint.priority = priority
+			topConstraint.priority = priority.layoutPriority
+			leftConstraint.priority = priority.layoutPriority
+			bottomConstraint.priority = priority.layoutPriority
+			rightConstraint.priority = priority.layoutPriority
 		}
 
 		return [topConstraint, leftConstraint, bottomConstraint, rightConstraint]

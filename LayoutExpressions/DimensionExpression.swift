@@ -32,7 +32,7 @@ public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: Cons
 		let constraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
 
 		if let priority = priority {
-			constraint.priority = priority
+			constraint.priority = priority.layoutPriority
 		}
 
 		return constraint
@@ -71,7 +71,7 @@ public struct ConstantDimensionExpression: DistinctExpressionType {
 		let constraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: leftDimension, constant: constantValue)
 
 		if let priority = priority {
-			constraint.priority = priority
+			constraint.priority = priority.layoutPriority
 		}
 
 		return constraint

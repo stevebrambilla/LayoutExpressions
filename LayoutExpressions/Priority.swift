@@ -15,6 +15,10 @@ extension Priority {
 	internal var isValid: Bool {
 		return self >= 0 && self <= 1000
 	}
+
+    internal var layoutPriority: UILayoutPriority {
+        return UILayoutPriority(rawValue: self)
+    }
 }
 
 precedencegroup PrioritizationPrecedence {

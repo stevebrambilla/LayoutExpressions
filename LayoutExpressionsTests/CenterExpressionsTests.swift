@@ -25,8 +25,8 @@ class CenterExpressionsTests: XCTestCase {
 		let expression = (subviewAnchor == containerAnchor)
 		let constraints = expression.evaluateAll()
 
-		let centerXs = constraints.filter { $0.firstAttribute == NSLayoutAttribute.centerX }
-		XCTAssertTrue(centerXs.count == 1, "Didn't find exactly one CenterX constraint.")
+		let centerXs = constraints.filter { $0.firstAttribute == .centerX }
+		XCTAssertTrue(centerXs.count == 1, "Didn't find exactly one .centerX constraint.")
 		if centerXs.count == 1 {
 			let centerX = centerXs[0]
 			XCTAssertTrue(centerX.secondAttribute == .centerX)
@@ -34,8 +34,8 @@ class CenterExpressionsTests: XCTestCase {
 			XCTAssertTrue(centerX.secondItem === container)
 		}
 
-		let centerYs = constraints.filter { $0.firstAttribute == NSLayoutAttribute.centerY }
-		XCTAssertTrue(centerYs.count == 1, "Didn't find exactly one CenterX constraint.")
+		let centerYs = constraints.filter { $0.firstAttribute == .centerY }
+		XCTAssertTrue(centerYs.count == 1, "Didn't find exactly one .centerX constraint.")
 		if centerYs.count == 1 {
 			let centerY = centerYs[0]
 			XCTAssertTrue(centerY.secondAttribute == .centerY)
@@ -67,16 +67,16 @@ class CenterExpressionsTests: XCTestCase {
 	}
 
 	func validateConstraintConstants(_ constraints: [NSLayoutConstraint], x: CGFloat, y: CGFloat) {
-		let centerXs = constraints.filter { $0.firstAttribute == NSLayoutAttribute.centerX }
-		XCTAssertTrue(centerXs.count == 1, "Didn't find exactly one CenterX constraint.")
+		let centerXs = constraints.filter { $0.firstAttribute == .centerX }
+		XCTAssertTrue(centerXs.count == 1, "Didn't find exactly one .centerX constraint.")
 		if centerXs.count == 1 {
 			let centerX = centerXs[0]
 			XCTAssertTrue(centerX.multiplier == 1.0)
 			XCTAssertTrue(centerX.constant == x)
 		}
 
-		let centerYs = constraints.filter { $0.firstAttribute == NSLayoutAttribute.centerY }
-		XCTAssertTrue(centerYs.count == 1, "Didn't find exactly one CenterYconstraint.")
+		let centerYs = constraints.filter { $0.firstAttribute == .centerY }
+		XCTAssertTrue(centerYs.count == 1, "Didn't find exactly one .centerY constraint.")
 		if centerYs.count == 1 {
 			let centerY = centerYs[0]
 			XCTAssertTrue(centerY.multiplier == 1.0)

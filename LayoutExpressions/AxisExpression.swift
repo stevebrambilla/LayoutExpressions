@@ -53,7 +53,7 @@ public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: Di
 		let constraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
 
 		if let priority = priority {
-			constraint.priority = priority
+			constraint.priority = priority.layoutPriority
 		}
 
 		return constraint
