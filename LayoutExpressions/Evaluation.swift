@@ -30,7 +30,7 @@ public func evaluateLayoutExpressions(_ expressions: [ExpressionProtocol]) -> [N
 /// The effect of this function is the same as setting the `isActive` property of the constraint to
 /// `true`.
 public func activateLayoutExpression(_ expression: DistinctExpressionType) {
-    evaluateLayoutExpression(expression).isActive = true
+	evaluateLayoutExpression(expression).isActive = true
 }
 
 /// Evaluates a layout expression and activates its constraints.
@@ -38,7 +38,7 @@ public func activateLayoutExpression(_ expression: DistinctExpressionType) {
 /// The effect of this function is the same as setting the `isActive` property of the constraints to
 /// `true`.
 public func activateLayoutExpression(_ expression: ExpressionProtocol) {
-    evaluateLayoutExpression(expression).activateConstraints()
+	evaluateLayoutExpression(expression).activateConstraints()
 }
 
 /// Evaluates multiple layout expressions and activates their constraints.
@@ -46,5 +46,5 @@ public func activateLayoutExpression(_ expression: ExpressionProtocol) {
 /// The effect of this function is the same as setting the `isActive` property of each constraint
 /// to `true`.
 public func activateLayoutExpressions(_ expressions: [ExpressionProtocol]) {
-    evaluateLayoutExpressions(expressions).activateConstraints()
+	evaluateLayoutExpressions(expressions).activateConstraints()
 }
