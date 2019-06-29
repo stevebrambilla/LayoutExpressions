@@ -27,7 +27,7 @@ public struct YAxis: AxisProtocol {
 // ----------------------------------------------------------------------------
 // MARK: - Axis Expression
 
-public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: DistinctExpressionType {
+public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: DistinctExpressionProtocol {
 	fileprivate let lhs: AxisAnchor<Axis, NoConstant>
 	fileprivate let relation: Relation
 	fileprivate let rhs: AxisAnchor<Axis, Constant>

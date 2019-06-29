@@ -5,7 +5,7 @@ import UIKit
 // ----------------------------------------------------------------------------
 // MARK: - Dimension Expression
 
-public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: ConstantProtocol>: DistinctExpressionType {
+public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: ConstantProtocol>: DistinctExpressionProtocol {
 	fileprivate let lhs: DimensionAnchor<NoMultiplier, NoConstant>
 	fileprivate let relation: Relation
 	fileprivate let rhs: DimensionAnchor<Multiplier, Constant>
@@ -46,7 +46,7 @@ public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: Cons
 // ----------------------------------------------------------------------------
 // MARK: - Constant Dimension Expression
 
-public struct ConstantDimensionExpression: DistinctExpressionType {
+public struct ConstantDimensionExpression: DistinctExpressionProtocol {
 	fileprivate let lhs: DimensionAnchor<NoMultiplier, NoConstant>
 	fileprivate let relation: Relation
 	fileprivate let constant: ValueConstant

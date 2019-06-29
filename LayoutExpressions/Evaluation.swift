@@ -5,7 +5,7 @@ import UIKit
 /// Evaluates a distinct layout expression into a single constraint.
 ///
 /// Returns an evaluated NSLayoutConstraint
-public func evaluateLayoutExpression(_ expression: DistinctExpressionType) -> NSLayoutConstraint {
+public func evaluateLayoutExpression(_ expression: DistinctExpressionProtocol) -> NSLayoutConstraint {
 	return expression.evaluateDistinct()
 }
 
@@ -29,7 +29,7 @@ public func evaluateLayoutExpressions(_ expressions: [ExpressionProtocol]) -> [N
 ///
 /// The effect of this function is the same as setting the `isActive` property of the constraint to
 /// `true`.
-public func activateLayoutExpression(_ expression: DistinctExpressionType) {
+public func activateLayoutExpression(_ expression: DistinctExpressionProtocol) {
 	evaluateLayoutExpression(expression).isActive = true
 }
 

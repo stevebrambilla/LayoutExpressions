@@ -7,7 +7,7 @@ extension UIView {
 	///
 	/// Returns the layout constraint.
 	@discardableResult
-	public func addLayoutExpression(_ expression: DistinctExpressionType) -> NSLayoutConstraint {
+	public func addLayoutExpression(_ expression: DistinctExpressionProtocol) -> NSLayoutConstraint {
 		let constraint = evaluateLayoutExpression(expression)
 		addConstraint(constraint)
 		return constraint

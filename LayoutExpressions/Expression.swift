@@ -7,6 +7,6 @@ public protocol ExpressionProtocol {
 	func evaluateAll() -> [NSLayoutConstraint]
 }
 
-public protocol DistinctExpressionType: ExpressionProtocol {
+public protocol DistinctExpressionProtocol: ExpressionProtocol {
 	func evaluateDistinct() -> NSLayoutConstraint
 }
