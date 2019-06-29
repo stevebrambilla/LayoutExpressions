@@ -89,14 +89,6 @@ extension Anchors where Base: UIView {
 		return LayoutAreaAnchors(guide: base.layoutMarginsGuide)
 	}
 
-	/* Uncomment when UIView.directionalLayoutMarginsGuide is added.
-	/// A layout area representing the view's `directionalLayoutMarginsGuide`.
-	@available(iOS 11.0, tvOS 11.0, *)
-	public var directionalMargins: LayoutAreaAnchors {
-		return LayoutAreaAnchors(guide: base.directionalLayoutMarginsGuide)
-	}
-	*/
-
 	/// A layout area representing the view's `readableContentGuide`.
 	public var readable: LayoutAreaAnchors {
 		return LayoutAreaAnchors(guide: base.readableContentGuide)
