@@ -1,20 +1,24 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+@testable import LayoutExpressions
 import XCTest
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
-@testable import LayoutExpressions
+#endif
 
 class XAxisExpressionTests: XCTestCase {
 
-	var container = UIView()
-	var subview = UIView()
+	var container = View()
+	var subview = View()
 
 	override func setUp() {
 		super.setUp()
 
-		container = UIView()
-		subview = UIView()
+		container = View()
+		subview = View()
 
 		container.addSubview(subview)
 	}

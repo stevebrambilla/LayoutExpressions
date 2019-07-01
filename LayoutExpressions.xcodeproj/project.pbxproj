@@ -65,13 +65,46 @@
 		AA6E63781EF2DCC0000669CD /* ConstantDimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */; };
 		AA6E63791EF2DCC0000669CD /* YAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */; };
 		AA6E637A1EF2DCC0000669CD /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */; };
-		AA6E637B1EF2DCC0000669CD /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACF91CB194008D400748874 /* UIViewTests.swift */; };
 		AA6E637C1EF2DCC0000669CD /* XAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */; };
 		AA6E637D1EF2DCC0000669CD /* EdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */; };
 		AA6E637E1EF2DCC0000669CD /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A119450C1500F41FCC /* PriorityTests.swift */; };
 		AA6E637F1EF2DCC0000669CD /* DimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */; };
 		AA6E63801EF2DCC0000669CD /* SizeExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D71943948800827E89 /* SizeExpressionTests.swift */; };
 		AA6E63821EF2DCC0000669CD /* LayoutExpressions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACF91B9194008D300748874 /* LayoutExpressions.framework */; };
+		AA7597B422CA68570060C5A1 /* SizeExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE251BE6EA0000AB6D1C /* SizeExpression.swift */; };
+		AA7597B522CA68570060C5A1 /* NSLayoutConstraint+Activation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA13D8C81BF4F35F00174DDF /* NSLayoutConstraint+Activation.swift */; };
+		AA7597B622CA68570060C5A1 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF11BE6686600AB6D1C /* Constraints.swift */; };
+		AA7597B822CA68570060C5A1 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE111BE692F800AB6D1C /* Relation.swift */; };
+		AA7597B922CA68570060C5A1 /* UILayoutGuide+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE141BE6963000AB6D1C /* UILayoutGuide+Anchors.swift */; };
+		AA7597BA22CA68570060C5A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */; };
+		AA7597BB22CA68570060C5A1 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00F7BB1940ABE000F92B8B /* Expression.swift */; };
+		AA7597BC22CA68570060C5A1 /* LayoutAreaAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */; };
+		AA7597BD22CA68570060C5A1 /* EdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */; };
+		AA7597BF22CA68570060C5A1 /* Offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE211BE6D75300AB6D1C /* Offset.swift */; };
+		AA7597C022CA68570060C5A1 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
+		AA7597C122CA68570060C5A1 /* CenterExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE1D1BE6A13000AB6D1C /* CenterExpression.swift */; };
+		AA7597C322CA68570060C5A1 /* DimensionExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */; };
+		AA7597C422CA68570060C5A1 /* AxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */; };
+		AA7597C622CA68570060C5A1 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE291BE6FD2F00AB6D1C /* Size.swift */; };
+		AA7597C722CA68570060C5A1 /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */; };
+		AA7597C822CA68570060C5A1 /* Multipliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFE1BE6796200AB6D1C /* Multipliers.swift */; };
+		AA7597C922CA68570060C5A1 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */; };
+		AA7597CC22CA68570060C5A1 /* LayoutExpressions.h in Headers */ = {isa = PBXBuildFile; fileRef = AACF91BE194008D300748874 /* LayoutExpressions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7597D322CA6A920060C5A1 /* UIScrollView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */; };
+		AA7597D822CA6D320060C5A1 /* UILayoutGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE321BE991AD00AB6D1C /* UILayoutGuideTests.swift */; };
+		AA7597D922CA6D320060C5A1 /* CenterExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D51943868800827E89 /* CenterExpressionsTests.swift */; };
+		AA7597DA22CA6D320060C5A1 /* ConstantDimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */; };
+		AA7597DB22CA6D320060C5A1 /* YAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */; };
+		AA7597DE22CA6D320060C5A1 /* XAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */; };
+		AA7597DF22CA6D320060C5A1 /* EdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */; };
+		AA7597E022CA6D320060C5A1 /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A119450C1500F41FCC /* PriorityTests.swift */; };
+		AA7597E122CA6D320060C5A1 /* DimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */; };
+		AA7597E222CA6D320060C5A1 /* SizeExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D71943948800827E89 /* SizeExpressionTests.swift */; };
+		AA7597E422CA6D320060C5A1 /* LayoutExpressions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACF91B9194008D300748874 /* LayoutExpressions.framework */; };
+		AA7597EB22CA6EA90060C5A1 /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACF91CB194008D400748874 /* UIViewTests.swift */; };
+		AA7597EC22CA6F220060C5A1 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */; };
+		AA7597ED22CA700D0060C5A1 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A519451F0800F41FCC /* UIView+Anchors.swift */; };
+		AA7597EE22CA70380060C5A1 /* UIView+Expressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE1A1BE6971C00AB6D1C /* UIView+Expressions.swift */; };
 		AAC2137F1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
 		AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
 		AAC213821EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */; };
@@ -87,6 +120,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AA1BCDC81BDD336400AB6D1C;
 			remoteInfo = "LayoutExpressions-tvOS";
+		};
+		AA7597D622CA6D320060C5A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AACF91B0194008D300748874 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AACF91B8194008D300748874;
+			remoteInfo = LayoutExpressions;
 		};
 		AACF91C6194008D400748874 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -129,6 +169,8 @@
 		AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerViewController+Anchors.swift"; sourceTree = "<group>"; };
 		AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Anchors.swift"; sourceTree = "<group>"; };
 		AA6E63871EF2DCC0000669CD /* LayoutExpressionsTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LayoutExpressionsTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7597D122CA68570060C5A1 /* LayoutExpressions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutExpressions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7597E922CA6D320060C5A1 /* LayoutExpressionsTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LayoutExpressionsTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA84B8D51943868800827E89 /* CenterExpressionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterExpressionsTests.swift; sourceTree = "<group>"; };
 		AA84B8D71943948800827E89 /* SizeExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeExpressionTests.swift; sourceTree = "<group>"; };
 		AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorsExtensionsProvider.swift; sourceTree = "<group>"; };
@@ -155,6 +197,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6E63821EF2DCC0000669CD /* LayoutExpressions.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7597CA22CA68570060C5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7597E322CA6D320060C5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7597E422CA6D320060C5A1 /* LayoutExpressions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +336,8 @@
 				AACF91C4194008D400748874 /* LayoutExpressionsTests-iOS.xctest */,
 				AA1BCDC91BDD336400AB6D1C /* LayoutExpressions.framework */,
 				AA6E63871EF2DCC0000669CD /* LayoutExpressionsTests-tvOS.xctest */,
+				AA7597D122CA68570060C5A1 /* LayoutExpressions.framework */,
+				AA7597E922CA6D320060C5A1 /* LayoutExpressionsTests-macOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -338,6 +397,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA7597CB22CA68570060C5A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7597CC22CA68570060C5A1 /* LayoutExpressions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AACF91B6194008D300748874 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,6 +450,42 @@
 			name = "LayoutExpressionsTests-tvOS";
 			productName = LayoutExpressionsTests;
 			productReference = AA6E63871EF2DCC0000669CD /* LayoutExpressionsTests-tvOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA7597B122CA68570060C5A1 /* LayoutExpressions-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7597CE22CA68570060C5A1 /* Build configuration list for PBXNativeTarget "LayoutExpressions-macOS" */;
+			buildPhases = (
+				AA7597B222CA68570060C5A1 /* Sources */,
+				AA7597CA22CA68570060C5A1 /* Frameworks */,
+				AA7597CB22CA68570060C5A1 /* Headers */,
+				AA7597CD22CA68570060C5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LayoutExpressions-macOS";
+			productName = LayoutExpressions;
+			productReference = AA7597D122CA68570060C5A1 /* LayoutExpressions.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AA7597D422CA6D320060C5A1 /* LayoutExpressionsTests-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7597E622CA6D320060C5A1 /* Build configuration list for PBXNativeTarget "LayoutExpressionsTests-macOS" */;
+			buildPhases = (
+				AA7597D722CA6D320060C5A1 /* Sources */,
+				AA7597E322CA6D320060C5A1 /* Frameworks */,
+				AA7597E522CA6D320060C5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA7597D522CA6D320060C5A1 /* PBXTargetDependency */,
+			);
+			name = "LayoutExpressionsTests-macOS";
+			productName = LayoutExpressionsTests;
+			productReference = AA7597E922CA6D320060C5A1 /* LayoutExpressionsTests-macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AACF91B8194008D300748874 /* LayoutExpressions-iOS */ = {
@@ -461,8 +564,10 @@
 			targets = (
 				AACF91B8194008D300748874 /* LayoutExpressions-iOS */,
 				AA1BCDC81BDD336400AB6D1C /* LayoutExpressions-tvOS */,
+				AA7597B122CA68570060C5A1 /* LayoutExpressions-macOS */,
 				AACF91C3194008D400748874 /* LayoutExpressionsTests-iOS */,
 				AA6E63721EF2DCC0000669CD /* LayoutExpressionsTests-tvOS */,
+				AA7597D422CA6D320060C5A1 /* LayoutExpressionsTests-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -476,6 +581,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA6E63831EF2DCC0000669CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7597CD22CA68570060C5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7597E522CA6D320060C5A1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -517,6 +636,7 @@
 				AA1BCE231BE6D75300AB6D1C /* Offset.swift in Sources */,
 				AA5A6FEC1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift in Sources */,
 				AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
+				AA7597D322CA6A920060C5A1 /* UIScrollView+Anchors.swift in Sources */,
 				AA1BCE1F1BE6A13000AB6D1C /* CenterExpression.swift in Sources */,
 				AA1BCE1C1BE6971C00AB6D1C /* UIView+Expressions.swift in Sources */,
 				AA1BCDFD1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
@@ -538,12 +658,56 @@
 				AA6E63781EF2DCC0000669CD /* ConstantDimensionExpressionTests.swift in Sources */,
 				AA6E63791EF2DCC0000669CD /* YAxisExpressionTests.swift in Sources */,
 				AA6E637A1EF2DCC0000669CD /* UIViewControllerTests.swift in Sources */,
-				AA6E637B1EF2DCC0000669CD /* UIViewTests.swift in Sources */,
+				AA7597EB22CA6EA90060C5A1 /* UIViewTests.swift in Sources */,
 				AA6E637C1EF2DCC0000669CD /* XAxisExpressionTests.swift in Sources */,
 				AA6E637D1EF2DCC0000669CD /* EdgesExpressionTests.swift in Sources */,
 				AA6E637E1EF2DCC0000669CD /* PriorityTests.swift in Sources */,
 				AA6E637F1EF2DCC0000669CD /* DimensionExpressionTests.swift in Sources */,
 				AA6E63801EF2DCC0000669CD /* SizeExpressionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7597B222CA68570060C5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7597B422CA68570060C5A1 /* SizeExpression.swift in Sources */,
+				AA7597B522CA68570060C5A1 /* NSLayoutConstraint+Activation.swift in Sources */,
+				AA7597B622CA68570060C5A1 /* Constraints.swift in Sources */,
+				AA7597B822CA68570060C5A1 /* Relation.swift in Sources */,
+				AA7597EE22CA70380060C5A1 /* UIView+Expressions.swift in Sources */,
+				AA7597B922CA68570060C5A1 /* UILayoutGuide+Anchors.swift in Sources */,
+				AA7597BA22CA68570060C5A1 /* Constants.swift in Sources */,
+				AA7597BB22CA68570060C5A1 /* Expression.swift in Sources */,
+				AA7597BC22CA68570060C5A1 /* LayoutAreaAnchors.swift in Sources */,
+				AA7597BD22CA68570060C5A1 /* EdgesExpression.swift in Sources */,
+				AA7597BF22CA68570060C5A1 /* Offset.swift in Sources */,
+				AA7597C022CA68570060C5A1 /* AnchorsExtensionsProvider.swift in Sources */,
+				AA7597C122CA68570060C5A1 /* CenterExpression.swift in Sources */,
+				AA7597C322CA68570060C5A1 /* DimensionExpression.swift in Sources */,
+				AA7597C422CA68570060C5A1 /* AxisExpression.swift in Sources */,
+				AA7597C622CA68570060C5A1 /* Size.swift in Sources */,
+				AA7597C722CA68570060C5A1 /* Insets.swift in Sources */,
+				AA7597C822CA68570060C5A1 /* Multipliers.swift in Sources */,
+				AA7597ED22CA700D0060C5A1 /* UIView+Anchors.swift in Sources */,
+				AA7597C922CA68570060C5A1 /* Priority.swift in Sources */,
+				AA7597EC22CA6F220060C5A1 /* Evaluation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7597D722CA6D320060C5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7597D822CA6D320060C5A1 /* UILayoutGuideTests.swift in Sources */,
+				AA7597D922CA6D320060C5A1 /* CenterExpressionsTests.swift in Sources */,
+				AA7597DA22CA6D320060C5A1 /* ConstantDimensionExpressionTests.swift in Sources */,
+				AA7597DB22CA6D320060C5A1 /* YAxisExpressionTests.swift in Sources */,
+				AA7597DE22CA6D320060C5A1 /* XAxisExpressionTests.swift in Sources */,
+				AA7597DF22CA6D320060C5A1 /* EdgesExpressionTests.swift in Sources */,
+				AA7597E022CA6D320060C5A1 /* PriorityTests.swift in Sources */,
+				AA7597E122CA6D320060C5A1 /* DimensionExpressionTests.swift in Sources */,
+				AA7597E222CA6D320060C5A1 /* SizeExpressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +766,11 @@
 			isa = PBXTargetDependency;
 			target = AA1BCDC81BDD336400AB6D1C /* LayoutExpressions-tvOS */;
 			targetProxy = AA6E63891EF2DD2D000669CD /* PBXContainerItemProxy */;
+		};
+		AA7597D522CA6D320060C5A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AACF91B8194008D300748874 /* LayoutExpressions-iOS */;
+			targetProxy = AA7597D622CA6D320060C5A1 /* PBXContainerItemProxy */;
 		};
 		AACF91C7194008D400748874 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -697,6 +866,80 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+		AA7597CF22CA68570060C5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LayoutExpressions/Info.plist;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevebrambilla.LayoutExpressions;
+				PRODUCT_NAME = LayoutExpressions;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA7597D022CA68570060C5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LayoutExpressions/Info.plist;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevebrambilla.LayoutExpressions;
+				PRODUCT_NAME = LayoutExpressions;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA7597E722CA6D320060C5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA7597E822CA6D320060C5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -876,6 +1119,24 @@
 			buildConfigurations = (
 				AA6E63851EF2DCC0000669CD /* Debug */,
 				AA6E63861EF2DCC0000669CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7597CE22CA68570060C5A1 /* Build configuration list for PBXNativeTarget "LayoutExpressions-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7597CF22CA68570060C5A1 /* Debug */,
+				AA7597D022CA68570060C5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7597E622CA6D320060C5A1 /* Build configuration list for PBXNativeTarget "LayoutExpressionsTests-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7597E722CA6D320060C5A1 /* Debug */,
+				AA7597E822CA6D320060C5A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

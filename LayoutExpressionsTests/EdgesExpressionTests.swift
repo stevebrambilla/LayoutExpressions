@@ -6,14 +6,14 @@ import XCTest
 
 class EdgesExpressionTests: XCTestCase {
 
-	var container = UIView()
-	var subview = UIView()
+	var container = View()
+	var subview = View()
 
 	override func setUp() {
 		super.setUp()
 
-		container = UIView()
-		subview = UIView()
+		container = View()
+		subview = View()
 
 		container.addSubview(subview)
 	}

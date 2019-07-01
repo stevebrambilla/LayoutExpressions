@@ -1,6 +1,10 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 // Supports constraining the size to another view:
 //     subview.anchors.size == sibling.anchors.size

@@ -1,8 +1,12 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
-extension UIView {
+extension View {
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.

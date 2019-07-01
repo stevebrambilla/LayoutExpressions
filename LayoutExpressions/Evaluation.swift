@@ -1,6 +1,10 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 /// Evaluates a distinct layout expression into a single constraint.
 ///

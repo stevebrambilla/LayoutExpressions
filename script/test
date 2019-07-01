@@ -18,6 +18,11 @@ main () {
 	tvos_dest="platform=tvOS Simulator,name=Apple TV 4K,OS=12.2"
 	tvos_sdk="appletvsimulator"
 	build_and_test "$tvos_scheme" "$tvos_dest" "$tvos_sdk"
+
+	macos_scheme="LayoutExpressions-macOS"
+	macos_dest="platform=macOS,arch=x86_64"
+	macos_sdk="macosx"
+	build_and_test "$macos_scheme" "$macos_dest" "$macos_sdk"
 }
 
 build_and_test () {

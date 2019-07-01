@@ -4,10 +4,12 @@ import XCTest
 
 import LayoutExpressions
 
+// TODO: Should this use the View typealias and work on both platforms?
+
 class UIViewTests: XCTestCase {
 
-	var container = UIView()
-	var subview = UIView()
+	var container = View()
+	var subview = View()
 
 	override func setUp() {
 		super.setUp()

@@ -1,6 +1,12 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+typealias LayoutPriority = NSLayoutConstraint.Priority
+#else
 import UIKit
+typealias LayoutPriority = UILayoutPriority
+#endif
 
 public typealias Priority = Float
 
@@ -11,13 +17,15 @@ public enum SystemPriority: Priority {
 	case fittingSizeLevel = 50
 }
 
+// TODO: Add system priorities for macOS
+
 extension Priority {
 	internal var isValid: Bool {
 		self >= 0 && self <= 1000
 	}
-
-    internal var layoutPriority: UILayoutPriority {
-        UILayoutPriority(rawValue: self)
+    
+    internal var layoutPriority: LayoutPriority {
+        LayoutPriority(rawValue: self)
     }
 }
 

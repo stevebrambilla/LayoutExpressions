@@ -6,7 +6,11 @@
 //  Copyright © 2015 Steve Brambilla. All rights reserved.
 //
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 extension Array where Element: NSLayoutConstraint {
 	/// Activates each constraint in the array.

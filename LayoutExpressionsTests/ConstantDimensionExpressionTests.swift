@@ -1,18 +1,22 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
 import XCTest
-
-import UIKit
 @testable import LayoutExpressions
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
 
 class ConstantDimensionExpressionTests: XCTestCase {
 
-	var subview = UIView()
+	var subview = View()
 
 	override func setUp() {
 		super.setUp()
 
-		subview = UIView()
+		subview = View()
 	}
 
 	func testConstantDimensionExpression() {

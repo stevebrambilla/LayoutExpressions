@@ -6,14 +6,14 @@ import LayoutExpressions
 
 class UILayoutGuideTests: XCTestCase {
 
-	var container = UIView()
-	var guide = UILayoutGuide()
+	var container = View()
+	var guide = LayoutGuide()
 
 	override func setUp() {
 		super.setUp()
 
-		container = UIView()
-		guide = UILayoutGuide()
+		container = View()
+		guide = LayoutGuide()
 
 		container.addLayoutGuide(guide)
 	}

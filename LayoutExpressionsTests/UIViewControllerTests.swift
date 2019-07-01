@@ -1,8 +1,9 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
+import LayoutExpressions
 import XCTest
 
-import LayoutExpressions
+// TODO: Equivalent for macOS?
 
 class UIViewControllerTests: XCTestCase {
 

@@ -1,10 +1,18 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+public typealias View = NSView
+#else
 import UIKit
+public typealias View = UIView
+#endif
 
-extension UIView: AnchorsExtensionsProvider {}
+// TODO: Extract the View typealias somewhere shared
 
-extension Anchors where Base: UIView {
+extension View: AnchorsExtensionsProvider {}
+
+extension Anchors where Base: View {
 	/// A layout expression anchor representing the leading edge of the view's frame.
 	public var leading: AxisAnchor<XAxis, UndefinedConstant> {
 		AxisAnchor(axis: XAxis(anchor: base.leadingAnchor), constant: UndefinedConstant())
@@ -66,7 +74,7 @@ extension Anchors where Base: UIView {
 	}
 }
 
-extension Anchors where Base: UIView {
+extension Anchors where Base: View {
 	/// A composite layout expression anchor representing all four edges of the view.
 	public var edges: EdgesAnchor<UndefinedInsets> {
 		EdgesAnchor(topAnchor: base.topAnchor, leftAnchor: base.leftAnchor, bottomAnchor: base.bottomAnchor, rightAnchor: base.rightAnchor, insets: UndefinedInsets())
@@ -83,6 +91,7 @@ extension Anchors where Base: UIView {
 	}
 }
 
+#if !os(macOS)
 extension Anchors where Base: UIView {
 	/// A layout area representing the view's `layoutMarginsGuide`.
 	public var margins: LayoutAreaAnchors {
@@ -100,3 +109,4 @@ extension Anchors where Base: UIView {
 		LayoutAreaAnchors(guide: base.safeAreaLayoutGuide)
 	}
 }
+#endif
