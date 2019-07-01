@@ -46,11 +46,11 @@ public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: Di
 	}
 
 	public func evaluateDistinct() -> NSLayoutConstraint {
-		let leftAnchor = lhs.anchor
-		let rightAnchor = rhs.anchor
+		let lhsAnchor = lhs.anchor
+		let rhsAnchor = rhs.anchor
 		let constant = rhs.constant.value ?? 0
 
-		let constraint = AnchorConstraints.constraintForRelation(relation: relation, leftAnchor: leftAnchor, rightAnchor: rightAnchor, constant: constant)
+		let constraint = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhsAnchor, rhsAnchor: rhsAnchor, constant: constant)
 
 		if let priority = priority {
 			constraint.priority = priority.layoutPriority

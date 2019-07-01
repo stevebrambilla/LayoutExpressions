@@ -24,12 +24,12 @@ public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: Cons
 	}
 
 	public func evaluateDistinct() -> NSLayoutConstraint {
-		let leftDimension = lhs.dimension
-		let rightDimension = rhs.dimension
+		let lhsDimension = lhs.dimension
+		let rhsDimension = rhs.dimension
 		let multiplier = rhs.multiplier.value ?? 1
 		let constant = rhs.constant.value ?? 0
 
-		let constraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: leftDimension, rightDimension: rightDimension, multiplier: multiplier, constant: constant)
+		let constraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhsDimension, rhsDimension: rhsDimension, multiplier: multiplier, constant: constant)
 
 		if let priority = priority {
 			constraint.priority = priority.layoutPriority
@@ -65,10 +65,10 @@ public struct ConstantDimensionExpression: DistinctExpressionProtocol {
 	}
 
 	public func evaluateDistinct() -> NSLayoutConstraint {
-		let leftDimension = lhs.dimension
+		let lhsDimension = lhs.dimension
 		let constantValue = constant.value ?? 0
 
-		let constraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: leftDimension, constant: constantValue)
+		let constraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhsDimension, constant: constantValue)
 
 		if let priority = priority {
 			constraint.priority = priority.layoutPriority

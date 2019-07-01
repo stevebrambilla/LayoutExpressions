@@ -37,8 +37,8 @@ public struct SizeExpression<Size: SizeProtocol>: ExpressionProtocol {
 	public func evaluateAll() -> [NSLayoutConstraint] {
 		let size = rhs.size.value ?? LayoutExpressions.Size.zeroSize
 
-		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.widthAnchor, rightDimension: rhs.widthAnchor, multiplier: 1.0, constant: size.width)
-		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.heightAnchor, rightDimension: rhs.heightAnchor, multiplier: 1.0, constant: size.height)
+		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.widthAnchor, rhsDimension: rhs.widthAnchor, multiplier: 1.0, constant: size.width)
+		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.heightAnchor, rhsDimension: rhs.heightAnchor, multiplier: 1.0, constant: size.height)
 
 		if let priority = priority {
 			widthConstraint.priority = priority.layoutPriority
@@ -71,8 +71,8 @@ public struct ConstantSizeExpression: ExpressionProtocol {
 	}
 
 	public func evaluateAll() -> [NSLayoutConstraint] {
-		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.widthAnchor, constant: size.width)
-		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, leftDimension: lhs.heightAnchor, constant: size.height)
+		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.widthAnchor, constant: size.width)
+		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.heightAnchor, constant: size.height)
 
 		if let priority = priority {
 			widthConstraint.priority = priority.layoutPriority
