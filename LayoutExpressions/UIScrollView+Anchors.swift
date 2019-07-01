@@ -6,12 +6,12 @@ extension Anchors where Base: UIScrollView {
 	/// A layout area representing the view's `contentLayoutGuide`.
 	@available(iOS 11.0, tvOS 11.0, *)
 	public var content: LayoutAreaAnchors {
-		return LayoutAreaAnchors(guide: base.contentLayoutGuide)
+		LayoutAreaAnchors(guide: base.contentLayoutGuide)
 	}
 
 	/// A layout area representing the view's `frameLayoutGuide`.
 	@available(iOS 11.0, tvOS 11.0, *)
 	public var frame: LayoutAreaAnchors {
-		return LayoutAreaAnchors(guide: base.frameLayoutGuide)
+		LayoutAreaAnchors(guide: base.frameLayoutGuide)
 	}
 }

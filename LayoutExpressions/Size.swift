@@ -38,6 +38,6 @@ public struct Size {
 	}
 
 	public static var zeroSize: Size {
-		return Size(width: 0, height: 0)
+		Size(width: 0, height: 0)
 	}
 }

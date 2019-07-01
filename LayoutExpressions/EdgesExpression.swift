@@ -73,11 +73,11 @@ public struct EdgesAnchor<Insets: InsetsProtocol> {
 	}
 
 	fileprivate func update<NextInsets>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
-		return EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
+		EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
 	}
 
 	fileprivate var withoutModifiers: EdgesAnchor<NoInsets> {
-		return EdgesAnchor<NoInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: NoInsets())
+		EdgesAnchor<NoInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: NoInsets())
 	}
 }
 
@@ -87,7 +87,7 @@ public struct EdgesAnchor<Insets: InsetsProtocol> {
 // Insets
 
 public func - (lhs: EdgesAnchor<UndefinedInsets>, insets: Insets) -> EdgesAnchor<ValueInsets> {
-	return lhs.update(insets: ValueInsets(value: insets))
+	lhs.update(insets: ValueInsets(value: insets))
 }
 
 // CGFloat Insets
@@ -105,36 +105,36 @@ public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: CGFloat) -> EdgesAncho
 // Int Insets
 
 public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: Int) -> EdgesAnchor<ValueInsets> {
-	return lhs - CGFloat(inset)
+	lhs - CGFloat(inset)
 }
 
 public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: Int) -> EdgesAnchor<ValueInsets> {
-	return lhs + CGFloat(outset)
+	lhs + CGFloat(outset)
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs, relation: .equal, rhs: rhs)
+	EdgesExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func == <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
+	EdgesExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
 public func <= <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
+	EdgesExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func <= <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
+	EdgesExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func >= <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
+	EdgesExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func >= <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	return EdgesExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
+	EdgesExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }

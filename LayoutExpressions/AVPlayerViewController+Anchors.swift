@@ -6,6 +6,6 @@ extension Anchors where Base: AVPlayerViewController {
 	/// A layout area representing the view's `unobscuredContentGuide`.
 	@available(tvOS 11.0, *)
 	public var unobscured: LayoutAreaAnchors {
-		return LayoutAreaAnchors(guide: base.unobscuredContentGuide)
+		LayoutAreaAnchors(guide: base.unobscuredContentGuide)
 	}
 }

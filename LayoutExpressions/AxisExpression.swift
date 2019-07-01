@@ -77,15 +77,15 @@ public struct AxisAnchor<Axis: AxisProtocol, Constant: ConstantProtocol> {
 	}
 
 	fileprivate var anchor: NSLayoutAnchor<Axis.AnchorType> {
-		return axis.anchor
+		axis.anchor
 	}
 
 	fileprivate func update<NextConstant>(constant: NextConstant) -> AxisAnchor<Axis, NextConstant> {
-		return AxisAnchor<Axis, NextConstant>(axis: axis, constant: constant)
+		AxisAnchor<Axis, NextConstant>(axis: axis, constant: constant)
 	}
 
 	fileprivate var withoutModifiers: AxisAnchor<Axis, NoConstant> {
-		return AxisAnchor<Axis, NoConstant>(axis: axis, constant: NoConstant())
+		AxisAnchor<Axis, NoConstant>(axis: axis, constant: NoConstant())
 	}
 }
 
@@ -95,46 +95,46 @@ public struct AxisAnchor<Axis: AxisProtocol, Constant: ConstantProtocol> {
 // CGFloat Constants
 
 public func + <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: CGFloat) -> AxisAnchor<Axis, ValueConstant> {
-	return lhs.update(constant: ValueConstant(value: constant))
+	lhs.update(constant: ValueConstant(value: constant))
 }
 
 public func - <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: CGFloat) -> AxisAnchor<Axis, ValueConstant> {
-	return lhs.update(constant: ValueConstant(value: -constant))
+	lhs.update(constant: ValueConstant(value: -constant))
 }
 
 // Int Constants
 
 public func + <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: Int) -> AxisAnchor<Axis, ValueConstant> {
-	return lhs + CGFloat(constant)
+	lhs + CGFloat(constant)
 }
 
 public func - <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: Int) -> AxisAnchor<Axis, ValueConstant> {
-	return lhs - CGFloat(constant)
+	lhs - CGFloat(constant)
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Axis, Constant>(lhs: AxisAnchor<Axis, UndefinedConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
-	return AxisExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
+	AxisExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
 public func == <Axis, Constant>(lhs: AxisAnchor<Axis, NoConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
-	return AxisExpression(lhs: lhs, relation: .equal, rhs: rhs)
+	AxisExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func <= <Axis, Constant>(lhs: AxisAnchor<Axis, UndefinedConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
-	return AxisExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
+	AxisExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func <= <Axis, Constant>(lhs: AxisAnchor<Axis, NoConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
-	return AxisExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
+	AxisExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func >= <Axis, Constant>(lhs: AxisAnchor<Axis, UndefinedConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
-	return AxisExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
+	AxisExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func >= <Axis, Constant>(lhs: AxisAnchor<Axis, NoConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
-	return AxisExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
+	AxisExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }

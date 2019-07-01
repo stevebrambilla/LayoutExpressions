@@ -59,11 +59,11 @@ public struct CenterAnchor<Offset: OffsetProtocol> {
 	}
 
 	fileprivate func updateOffset<NextOffset>(_ offset: NextOffset) -> CenterAnchor<NextOffset> {
-		return CenterAnchor<NextOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: offset)
+		CenterAnchor<NextOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: offset)
 	}
 
 	fileprivate var withoutModifiers: CenterAnchor<NoOffset> {
-		return CenterAnchor<NoOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: NoOffset())
+		CenterAnchor<NoOffset>(centerXAnchor: centerXAnchor, centerYAnchor: centerYAnchor, offset: NoOffset())
 	}
 }
 
@@ -71,16 +71,16 @@ public struct CenterAnchor<Offset: OffsetProtocol> {
 // MARK: - Arithmetic Operators
 
 public func + (lhs: CenterAnchor<UndefinedOffset>, offset: Offset) -> CenterAnchor<ValueOffset> {
-	return lhs.updateOffset(ValueOffset(value: offset))
+	lhs.updateOffset(ValueOffset(value: offset))
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: CenterAnchor<NoOffset>, rhs: CenterAnchor<Offset>) -> CenterExpression<Offset> {
-	return CenterExpression(lhs: lhs, relation: .equal, rhs: rhs)
+	CenterExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func == <Offset>(lhs: CenterAnchor<UndefinedOffset>, rhs: CenterAnchor<Offset>) -> CenterExpression<Offset> {
-	return CenterExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
+	CenterExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }

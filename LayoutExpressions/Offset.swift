@@ -41,6 +41,6 @@ public struct Offset {
 	}
 
 	public static var zeroOffset: Offset {
-		return Offset(horizontal: 0, vertical: 0)
+		Offset(horizontal: 0, vertical: 0)
 	}
 }

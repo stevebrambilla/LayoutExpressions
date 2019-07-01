@@ -13,11 +13,11 @@ public enum SystemPriority: Priority {
 
 extension Priority {
 	internal var isValid: Bool {
-		return self >= 0 && self <= 1000
+		self >= 0 && self <= 1000
 	}
 
     internal var layoutPriority: UILayoutPriority {
-        return UILayoutPriority(rawValue: self)
+        UILayoutPriority(rawValue: self)
     }
 }
 
@@ -28,13 +28,13 @@ precedencegroup PrioritizationPrecedence {
 infix operator <<~ : PrioritizationPrecedence
 
 public func <<~ <Expression: ExpressionProtocol>(expression: Expression, priority: Float) -> Expression {
-	return expression.update(priority: priority)
+	expression.update(priority: priority)
 }
 
 public func <<~ <Expression: ExpressionProtocol>(expression: Expression, priority: Int) -> Expression {
-	return expression.update(priority: Priority(priority))
+	expression.update(priority: Priority(priority))
 }
 
 public func <<~ <Expression: ExpressionProtocol>(expression: Expression, priority: SystemPriority) -> Expression {
-	return expression.update(priority: priority.rawValue)
+	expression.update(priority: priority.rawValue)
 }

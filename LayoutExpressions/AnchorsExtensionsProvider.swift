@@ -17,7 +17,7 @@ public protocol AnchorsExtensionsProvider: class {}
 extension AnchorsExtensionsProvider {
 	/// A proxy which hosts layout anchors for `self`.
 	public var anchors: Anchors<Self> {
-		return Anchors(self)
+		Anchors(self)
 	}
 }
 

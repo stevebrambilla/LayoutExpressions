@@ -98,11 +98,11 @@ public struct SizeAnchor<Size: SizeProtocol> {
 	}
 
 	fileprivate func update<NextSize>(size: NextSize) -> SizeAnchor<NextSize> {
-		return SizeAnchor<NextSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: size)
+		SizeAnchor<NextSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: size)
 	}
 
 	fileprivate var withoutModifiers: SizeAnchor<NoSize> {
-		return SizeAnchor<NoSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: NoSize())
+		SizeAnchor<NoSize>(widthAnchor: widthAnchor, heightAnchor: heightAnchor, size: NoSize())
 	}
 }
 
@@ -110,56 +110,56 @@ public struct SizeAnchor<Size: SizeProtocol> {
 // MARK: - Arithmetic Operators
 
 public func + (lhs: SizeAnchor<UndefinedSize>, size: Size) -> SizeAnchor<ValueSize> {
-	return lhs.update(size: ValueSize(value: size))
+	lhs.update(size: ValueSize(value: size))
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs, relation: .equal, rhs: rhs)
+	SizeExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
 public func == <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
+	SizeExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
 public func <= <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
+	SizeExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func <= <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
+	SizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
 public func >= <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
+	SizeExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func >= <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
-	return SizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
+	SizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
 public func == (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs, relation: .equal, size: rhs)
+	ConstantSizeExpression(lhs: lhs, relation: .equal, size: rhs)
 }
 
 public func == (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .equal, size: rhs)
+	ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .equal, size: rhs)
 }
 
 public func <= (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs, relation: .lessThanOrEqual, size: rhs)
+	ConstantSizeExpression(lhs: lhs, relation: .lessThanOrEqual, size: rhs)
 }
 
 public func <= (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, size: rhs)
+	ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, size: rhs)
 }
 
 public func >= (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs, relation: .greaterThanOrEqual, size: rhs)
+	ConstantSizeExpression(lhs: lhs, relation: .greaterThanOrEqual, size: rhs)
 }
 
 public func >= (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
-	return ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, size: rhs)
+	ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, size: rhs)
 }

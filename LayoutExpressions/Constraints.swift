@@ -18,15 +18,15 @@ internal struct AnchorConstraints {
 	}
 
 	fileprivate static func lessThanOrEqualConstraintForLeftAnchor<AnchorType>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
-		return leftAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: constant)
+		leftAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: constant)
 	}
 
 	fileprivate static func equalConstraintForLeftAnchor<AnchorType>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
-		return leftAnchor.constraint(equalTo: rightAnchor, constant: constant)
+		leftAnchor.constraint(equalTo: rightAnchor, constant: constant)
 	}
 
 	fileprivate static func greaterThanOrEqualConstraintForLeftAnchor<AnchorType>(leftAnchor: NSLayoutAnchor<AnchorType>, rightAnchor: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> NSLayoutConstraint {
-		return leftAnchor.constraint(greaterThanOrEqualTo: rightAnchor, constant: constant)
+		leftAnchor.constraint(greaterThanOrEqualTo: rightAnchor, constant: constant)
 	}
 }
 
@@ -46,15 +46,15 @@ internal struct DimensionConstraints {
 	}
 
 	fileprivate static func lessThanOrEqualConstraintForLeftDimension(leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
-		return leftDimension.constraint(lessThanOrEqualTo: rightDimension, multiplier: multiplier, constant: constant)
+		leftDimension.constraint(lessThanOrEqualTo: rightDimension, multiplier: multiplier, constant: constant)
 	}
 
 	fileprivate static func equalConstraintForLeftDimension(leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
-		return leftDimension.constraint(equalTo: rightDimension, multiplier: multiplier, constant: constant)
+		leftDimension.constraint(equalTo: rightDimension, multiplier: multiplier, constant: constant)
 	}
 
 	fileprivate static func greaterThanOrEqualConstraintForLeftDimension(leftDimension: NSLayoutDimension, rightDimension: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
-		return leftDimension.constraint(greaterThanOrEqualTo: rightDimension, multiplier: multiplier, constant: constant)
+		leftDimension.constraint(greaterThanOrEqualTo: rightDimension, multiplier: multiplier, constant: constant)
 	}
 
 	internal static func constraintForRelation(relation: Relation, leftDimension: NSLayoutDimension, constant: CGFloat) -> NSLayoutConstraint {

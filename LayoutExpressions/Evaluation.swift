@@ -6,21 +6,21 @@ import UIKit
 ///
 /// Returns an evaluated NSLayoutConstraint
 public func evaluateLayoutExpression(_ expression: DistinctExpressionProtocol) -> NSLayoutConstraint {
-	return expression.evaluateDistinct()
+	expression.evaluateDistinct()
 }
 
 /// Evaluates a layout expression into constraints.
 ///
 /// Returns an array of layout constraints.
 public func evaluateLayoutExpression(_ expression: ExpressionProtocol) -> [NSLayoutConstraint] {
-	return expression.evaluateAll()
+	expression.evaluateAll()
 }
 
 /// Evaluates multiple layout expressions into constraints.
 ///
 /// Returns an array of layout constraints.
 public func evaluateLayoutExpressions(_ expressions: [ExpressionProtocol]) -> [NSLayoutConstraint] {
-	return expressions.reduce([]) { acc, expression in
+	expressions.reduce([]) { acc, expression in
 		return acc + expression.evaluateAll()
 	}
 }
