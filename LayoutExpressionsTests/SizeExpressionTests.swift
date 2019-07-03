@@ -1,21 +1,19 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
 import Foundation
-
-import XCTest
-
 @testable import LayoutExpressions
+import XCTest
 
 class SizeExpressionTests: XCTestCase {
 
-	var container = UIView()
-	var subview = UIView()
+	var container = View()
+	var subview = View()
 
 	override func setUp() {
 		super.setUp()
 
-		container = UIView()
-		subview = UIView()
+		container = View()
+		subview = View()
 
 		container.addSubview(subview)
 	}

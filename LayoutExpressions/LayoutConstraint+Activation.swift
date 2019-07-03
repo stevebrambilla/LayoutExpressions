@@ -1,14 +1,6 @@
-//
-//  NSLayoutConstraint+Activation.swift
-//  LayoutExpressions
-//
-//  Created by Steve Brambilla on 2015-11-12.
 //  Copyright © 2015 Steve Brambilla. All rights reserved.
-//
 
-import UIKit
-
-extension Array where Element: NSLayoutConstraint {
+extension Array where Element: Constraint {
 	/// Activates each constraint in the array.
 	///
 	/// This convenience method provides an easy way to activate a set of 
@@ -17,7 +9,7 @@ extension Array where Element: NSLayoutConstraint {
 	/// using this method is more efficient than activating each constraint
 	/// individually.
 	public func activateConstraints() {
-		NSLayoutConstraint.activate(self)
+		Constraint.activate(self)
 	}
 
 	/// Deactivates each constraint in the array.
@@ -28,7 +20,7 @@ extension Array where Element: NSLayoutConstraint {
 	/// using this method is more efficient than deactivating each constraint
 	/// individually.
 	public func deactivateConstraints() {
-		NSLayoutConstraint.deactivate(self)
+		Constraint.deactivate(self)
 	}
 
 	/// Activates or deactivates each constraint in the array depending on the 
@@ -41,9 +33,9 @@ extension Array where Element: NSLayoutConstraint {
 	/// constraint individually.
 	public func setConstraints(active: Bool) {
 		if active {
-			NSLayoutConstraint.activate(self)
+			Constraint.activate(self)
 		} else {
-			NSLayoutConstraint.deactivate(self)
+			Constraint.deactivate(self)
 		}
 	}
 }

@@ -1,6 +1,10 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 public protocol OffsetProtocol {
 	var value: Offset? { get }
@@ -32,9 +36,11 @@ public struct Offset {
 		self.vertical = vertical
 	}
 
+#if !os(macOS)
 	public init(_ offset: UIOffset) {
 		self.init(horizontal: offset.horizontal, vertical: offset.vertical)
 	}
+#endif
 
 	public init(_ point: CGPoint) {
 		self.init(horizontal: point.x, vertical: point.y)

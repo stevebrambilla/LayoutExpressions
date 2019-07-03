@@ -1,19 +1,18 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
 import XCTest
-
 @testable import LayoutExpressions
 
 class CenterExpressionsTests: XCTestCase {
 
-	var container = UIView()
-	var subview = UIView()
+	var container = View()
+	var subview = View()
 
 	override func setUp() {
 		super.setUp()
 
-		container = UIView()
-		subview = UIView()
+		container = View()
+		subview = View()
 
 		container.addSubview(subview)
 	}
@@ -55,6 +54,7 @@ class CenterExpressionsTests: XCTestCase {
 		validateConstraintConstants(constraints, x: 5.0, y: -10.0)
 	}
 
+#if !os(macOS)
 	func testCenterToViewWithOffsetFromUIOffset() {
 		let containerAnchor = CenterAnchor(centerXAnchor: container.centerXAnchor, centerYAnchor: container.centerYAnchor, offset: UndefinedOffset())
 		let subviewAnchor = CenterAnchor(centerXAnchor: subview.centerXAnchor, centerYAnchor: subview.centerYAnchor, offset: UndefinedOffset())
@@ -65,6 +65,7 @@ class CenterExpressionsTests: XCTestCase {
 
 		validateConstraintConstants(constraints, x: 5.0, y: -10.0)
 	}
+#endif
 
 	func validateConstraintConstants(_ constraints: [NSLayoutConstraint], x: CGFloat, y: CGFloat) {
 		let centerXs = constraints.filter { $0.firstAttribute == .centerX }

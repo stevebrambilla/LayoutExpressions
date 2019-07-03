@@ -1,10 +1,8 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-import UIKit
+extension LayoutGuide: AnchorsExtensionsProvider {}
 
-extension UILayoutGuide: AnchorsExtensionsProvider {}
-
-extension Anchors where Base: UILayoutGuide {
+extension Anchors where Base: LayoutGuide {
 	/// A layout expression anchor representing the leading edge of the layout guide's frame.
 	public var leading: AxisAnchor<XAxis, UndefinedConstant> {
 		AxisAnchor(axis: XAxis(anchor: base.leadingAnchor), constant: UndefinedConstant())
@@ -56,7 +54,7 @@ extension Anchors where Base: UILayoutGuide {
 	}
 }
 
-extension Anchors where Base: UILayoutGuide {
+extension Anchors where Base: LayoutGuide {
 	/// A composite layout expression anchor representing all four edges of the layout guide.
 	public var edges: EdgesAnchor<UndefinedInsets> {
 		EdgesAnchor(

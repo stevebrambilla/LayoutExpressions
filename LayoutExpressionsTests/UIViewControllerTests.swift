@@ -1,8 +1,7 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
-import XCTest
-
 import LayoutExpressions
+import XCTest
 
 class UIViewControllerTests: XCTestCase {
 

@@ -1,6 +1,10 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 public protocol InsetsProtocol {
 	var value: Insets? { get }
@@ -36,9 +40,15 @@ public struct Insets {
 		self.right = right
 	}
 
+#if os(macOS)
+    public init(_ insets: NSEdgeInsets) {
+        self.init(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
+    }
+#else
 	public init(_ insets: UIEdgeInsets) {
 		self.init(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
 	}
+#endif
 
 	public static var zeroInsets: Insets {
 		Insets(top: 0, left: 0, bottom: 0, right: 0)

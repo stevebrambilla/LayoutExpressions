@@ -1,6 +1,10 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 // Supports pinning the center to another view:
 // 		subview.anchors.center == container.anchors.center

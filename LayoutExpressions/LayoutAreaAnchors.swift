@@ -1,7 +1,5 @@
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
 
-import UIKit
-
 /// A struct that directly exposes the anchors of a known layout guide.
 ///
 /// This struct is used to simplify typing out expressions that use layout 
@@ -16,9 +14,9 @@ import UIKit
 /// The two preceding expressions are equivalent, but the first, which uses the
 /// LayoutAreaAnchors shorthand is simpler and more legible.
 public struct LayoutAreaAnchors {
-	fileprivate let guide: UILayoutGuide
+	fileprivate let guide: LayoutGuide
 
-	public init(guide: UILayoutGuide) {
+	public init(guide: LayoutGuide) {
 		self.guide = guide
 	}
 }

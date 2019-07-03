@@ -1,6 +1,6 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-import UIKit
+import Foundation
 
 internal enum Relation {
 	case lessThanOrEqual
