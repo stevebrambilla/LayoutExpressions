@@ -129,12 +129,12 @@
 			remoteGlobalIDString = AA1BCDC81BDD336400AB6D1C;
 			remoteInfo = "LayoutExpressions-tvOS";
 		};
-		AA7597D622CA6D320060C5A1 /* PBXContainerItemProxy */ = {
+		AA9D251922CC3CED0098F32F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AACF91B0194008D300748874 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AACF91B8194008D300748874;
-			remoteInfo = LayoutExpressions;
+			remoteGlobalIDString = AA7597B122CA68570060C5A1;
+			remoteInfo = "LayoutExpressions-macOS";
 		};
 		AACF91C6194008D400748874 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -511,7 +511,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				AA7597D522CA6D320060C5A1 /* PBXTargetDependency */,
+				AA9D251A22CC3CED0098F32F /* PBXTargetDependency */,
 			);
 			name = "LayoutExpressionsTests-macOS";
 			productName = LayoutExpressionsTests;
@@ -805,10 +805,10 @@
 			target = AA1BCDC81BDD336400AB6D1C /* LayoutExpressions-tvOS */;
 			targetProxy = AA6E63891EF2DD2D000669CD /* PBXContainerItemProxy */;
 		};
-		AA7597D522CA6D320060C5A1 /* PBXTargetDependency */ = {
+		AA9D251A22CC3CED0098F32F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AACF91B8194008D300748874 /* LayoutExpressions-iOS */;
-			targetProxy = AA7597D622CA6D320060C5A1 /* PBXContainerItemProxy */;
+			target = AA7597B122CA68570060C5A1 /* LayoutExpressions-macOS */;
+			targetProxy = AA9D251922CC3CED0098F32F /* PBXContainerItemProxy */;
 		};
 		AACF91C7194008D400748874 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -883,6 +883,7 @@
 				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.interactivetouch.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -900,6 +901,7 @@
 				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.interactivetouch.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
@@ -960,6 +962,7 @@
 				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.interactivetouch.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -975,6 +978,7 @@
 				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.interactivetouch.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1121,6 +1125,7 @@
 				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.interactivetouch.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1135,6 +1140,7 @@
 				INFOPLIST_FILE = LayoutExpressionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.interactivetouch.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
