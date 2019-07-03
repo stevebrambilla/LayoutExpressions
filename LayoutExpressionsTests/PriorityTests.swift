@@ -18,7 +18,7 @@ class PriorityTests: XCTestCase {
 	}
 
 	func testCustomFloatPriority() {
-		let constraint = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ 950)
+		let constraint = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ 950.0)
 		XCTAssert(constraint.priority.rawValue == 950.0)
 	}
 
@@ -29,6 +29,14 @@ class PriorityTests: XCTestCase {
 
 	func testSystemPriority() {
 		let constraint = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ .defaultHigh)
-		XCTAssert(constraint.priority.rawValue == SystemPriority.defaultHigh.rawValue, "Wrong priority")
+		XCTAssert(constraint.priority.rawValue == 750, "Wrong priority")
 	}
+ 
+    func testOffsetPriority() {
+        let almostRequired = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ .required - 1)
+        XCTAssert(almostRequired.priority.rawValue == 999)
+        
+        let niceToHave = evaluateLayoutExpression(subview.anchors.top == container.anchors.top <<~ 100 - 1)
+        XCTAssert(niceToHave.priority.rawValue == 99)
+    }
 }

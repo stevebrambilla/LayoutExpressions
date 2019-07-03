@@ -1,17 +1,11 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
-
 extension View {
 	/// Evaluates the distinct expression and adds the layout constraint to the view.
 	///
 	/// Returns the layout constraint.
 	@discardableResult
-	public func addLayoutExpression(_ expression: DistinctExpressionProtocol) -> NSLayoutConstraint {
+	public func addLayoutExpression(_ expression: DistinctExpressionProtocol) -> Constraint {
 		let constraint = evaluateLayoutExpression(expression)
 		addConstraint(constraint)
 		return constraint
@@ -21,7 +15,7 @@ extension View {
 	///
 	/// Returns the layout constraints.
 	@discardableResult
-	public func addLayoutExpression(_ expression: ExpressionProtocol) -> [NSLayoutConstraint] {
+	public func addLayoutExpression(_ expression: ExpressionProtocol) -> [Constraint] {
 		let constraints = evaluateLayoutExpression(expression)
 		addConstraints(constraints)
 		return constraints
@@ -31,7 +25,7 @@ extension View {
 	///
 	/// Returns the layout constraints.
 	@discardableResult
-	public func addLayoutExpressions(_ expressions: ExpressionProtocol...) -> [NSLayoutConstraint] {
+	public func addLayoutExpressions(_ expressions: ExpressionProtocol...) -> [Constraint] {
 		let constraints = evaluateLayoutExpressions(expressions)
 		addConstraints(constraints)
 		return constraints

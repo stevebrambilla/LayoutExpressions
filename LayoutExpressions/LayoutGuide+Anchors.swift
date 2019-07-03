@@ -1,11 +1,5 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
-
 extension LayoutGuide: AnchorsExtensionsProvider {}
 
 extension Anchors where Base: LayoutGuide {

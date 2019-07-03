@@ -40,7 +40,11 @@ public struct Insets {
 		self.right = right
 	}
 
-#if !os(macOS)
+#if os(macOS)
+    public init(_ insets: NSEdgeInsets) {
+        self.init(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
+    }
+#else
 	public init(_ insets: UIEdgeInsets) {
 		self.init(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
 	}

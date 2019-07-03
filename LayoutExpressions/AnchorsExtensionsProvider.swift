@@ -1,12 +1,4 @@
-//
-//  AnchorsExtensionsProvider.swift
-//  LayoutExpressions
-//
-//  Created by Steve Brambilla on 2017-06-07.
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
-//
-
-import Foundation
 
 /// Describes a provider of lauout anchors.
 ///

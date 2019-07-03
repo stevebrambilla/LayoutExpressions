@@ -3,8 +3,6 @@
 import LayoutExpressions
 import XCTest
 
-// TODO: Equivalent for macOS?
-
 class UIViewControllerTests: XCTestCase {
 
 	var viewController = UIViewController()

@@ -1,8 +1,7 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
-import XCTest
-
 @testable import LayoutExpressions
+import XCTest
 
 class EdgesExpressionTests: XCTestCase {
 

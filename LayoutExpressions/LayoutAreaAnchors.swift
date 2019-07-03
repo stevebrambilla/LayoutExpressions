@@ -1,15 +1,5 @@
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
-import AppKit
-public typealias LayoutGuide = NSLayoutGuide
-#else
-import UIKit
-public typealias LayoutGuide = UILayoutGuide
-#endif
-
-// TODO: Move the LayoutGuide typealias to a separate class
-
 /// A struct that directly exposes the anchors of a known layout guide.
 ///
 /// This struct is used to simplify typing out expressions that use layout 

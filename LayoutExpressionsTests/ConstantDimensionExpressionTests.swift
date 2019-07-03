@@ -1,13 +1,7 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-import XCTest
 @testable import LayoutExpressions
-
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
+import XCTest
 
 class ConstantDimensionExpressionTests: XCTestCase {
 

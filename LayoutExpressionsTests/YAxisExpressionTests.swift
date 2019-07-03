@@ -3,12 +3,6 @@
 @testable import LayoutExpressions
 import XCTest
 
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
-
 class YAxisExpressionTests: XCTestCase {
 
 	var container = View()

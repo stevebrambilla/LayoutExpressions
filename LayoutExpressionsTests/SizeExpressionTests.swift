@@ -1,10 +1,8 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
 import Foundation
-
-import XCTest
-
 @testable import LayoutExpressions
+import XCTest
 
 class SizeExpressionTests: XCTestCase {
 
