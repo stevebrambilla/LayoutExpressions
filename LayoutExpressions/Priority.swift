@@ -89,6 +89,11 @@ public extension Priority {
     /// computation.
     static let fittingSizeLevel = Priority(priority: .fittingSizeLevel)
 #endif
+
+    /// Priority that keeps the view from being stretched or compressed but still provides an
+    /// emergency pressure valve, just in case your view is displayed in an environment that is
+    /// bigger or smaller than you expected.
+    static let veryHigh: Priority = 999
 }
 
 // MARK: - Arithmetic Operators
