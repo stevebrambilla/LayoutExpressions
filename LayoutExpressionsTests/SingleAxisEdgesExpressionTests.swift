@@ -20,10 +20,10 @@ class SingleAxisEdgesExpressionTests: XCTestCase {
         let expression = (subview.anchors.horizontalEdges == container.anchors.horizontalEdges)
         let constraints = expression.evaluateAll()
 
-        let leading = unwrapSingleConstraint(constraints, withAttribute: .leading)
+        let leading = extractSingleConstraint(constraints, withAttributes: .leading)
         assertConstraint(leading, first: subview, second: container)
         
-        let trailing = unwrapSingleConstraint(constraints, withAttribute: .trailing)
+        let trailing = extractSingleConstraint(constraints, withAttributes: .trailing)
         assertConstraint(trailing, first: subview, second: container)
     }
     
@@ -31,10 +31,10 @@ class SingleAxisEdgesExpressionTests: XCTestCase {
         let expression = (subview.anchors.verticalEdges == container.anchors.verticalEdges)
         let constraints = expression.evaluateAll()
 
-        let top = unwrapSingleConstraint(constraints, withAttribute: .top)
+        let top = extractSingleConstraint(constraints, withAttributes: .top)
         assertConstraint(top, first: subview, second: container)
         
-        let bottom = unwrapSingleConstraint(constraints, withAttribute: .bottom)
+        let bottom = extractSingleConstraint(constraints, withAttributes: .bottom)
         assertConstraint(bottom, first: subview, second: container)
     }
     
@@ -42,10 +42,10 @@ class SingleAxisEdgesExpressionTests: XCTestCase {
         let expression = (subview.anchors.horizontalEdges == container.anchors.horizontalEdges - 10)
         let constraints = expression.evaluateAll()
 
-        let leading = unwrapSingleConstraint(constraints, withAttribute: .leading)
+        let leading = extractSingleConstraint(constraints, withAttributes: .leading)
         assertConstraint(leading, first: subview, second: container, constant: +10)
         
-        let trailing = unwrapSingleConstraint(constraints, withAttribute: .trailing)
+        let trailing = extractSingleConstraint(constraints, withAttributes: .trailing)
         assertConstraint(trailing, first: subview, second: container, constant: -10)
     }
     
@@ -53,10 +53,10 @@ class SingleAxisEdgesExpressionTests: XCTestCase {
         let expression = (subview.anchors.horizontalEdges == container.anchors.horizontalEdges + 10)
         let constraints = expression.evaluateAll()
         
-        let leading = unwrapSingleConstraint(constraints, withAttribute: .leading)
+        let leading = extractSingleConstraint(constraints, withAttributes: .leading)
         assertConstraint(leading, first: subview, second: container, constant: -10)
         
-        let trailing = unwrapSingleConstraint(constraints, withAttribute: .trailing)
+        let trailing = extractSingleConstraint(constraints, withAttributes: .trailing)
         assertConstraint(trailing, first: subview, second: container, constant: +10)
     }
     
@@ -64,10 +64,10 @@ class SingleAxisEdgesExpressionTests: XCTestCase {
         let expression = (subview.anchors.verticalEdges == container.anchors.verticalEdges - 10)
         let constraints = expression.evaluateAll()
 
-        let top = unwrapSingleConstraint(constraints, withAttribute: .top)
+        let top = extractSingleConstraint(constraints, withAttributes: .top)
         assertConstraint(top, first: subview, second: container, constant: +10)
         
-        let bottom = unwrapSingleConstraint(constraints, withAttribute: .bottom)
+        let bottom = extractSingleConstraint(constraints, withAttributes: .bottom)
         assertConstraint(bottom, first: subview, second: container, constant: -10)
     }
     
@@ -75,10 +75,10 @@ class SingleAxisEdgesExpressionTests: XCTestCase {
         let expression = (subview.anchors.verticalEdges == container.anchors.verticalEdges + 10)
         let constraints = expression.evaluateAll()
 
-        let top = unwrapSingleConstraint(constraints, withAttribute: .top)
+        let top = extractSingleConstraint(constraints, withAttributes: .top)
         assertConstraint(top, first: subview, second: container, constant: -10)
         
-        let bottom = unwrapSingleConstraint(constraints, withAttribute: .bottom)
+        let bottom = extractSingleConstraint(constraints, withAttributes: .bottom)
         assertConstraint(bottom, first: subview, second: container, constant: +10)
     }
 }

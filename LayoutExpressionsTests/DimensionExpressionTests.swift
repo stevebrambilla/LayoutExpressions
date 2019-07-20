@@ -18,79 +18,44 @@ class DimensionExpressionTests: XCTestCase {
 	}
 
 	func testDimensionExpressionWithoutMultiplierOrConstant() {
-		let containerAnchor = DimensionAnchor(dimension: container.widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == containerAnchor)
+		let expression = (subview.anchors.height == container.anchors.width)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .height)
-		XCTAssert(constraint.secondAttribute == .width)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 0)
-		XCTAssert(constraint.multiplier == 1)
+  
+        assertConstraint(constraint, first: subview, .height, relation: .equal, second: container, .width, multiplier: 1, constant: 0)
 	}
 
 	func testDimensionExpressionWithConstant() {
-		let containerAnchor = DimensionAnchor(dimension: container.widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == containerAnchor + 10)
+        let expression = (subview.anchors.height == container.anchors.width + 10)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .height)
-		XCTAssert(constraint.secondAttribute == .width)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 10)
-		XCTAssert(constraint.multiplier == 1)
+		
+        assertConstraint(constraint, first: subview, .height, relation: .equal, second: container, .width, multiplier: 1, constant: 10)
 	}
 
 	func testDimensionExpressionWithMultiplier() {
-		let containerAnchor = DimensionAnchor(dimension: container.widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == containerAnchor * 2)
+        let expression = (subview.anchors.height == container.anchors.width * 2)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .height)
-		XCTAssert(constraint.secondAttribute == .width)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 0)
-		XCTAssert(constraint.multiplier == 2)
+		
+        assertConstraint(constraint, first: subview, .height, relation: .equal, second: container, .width, multiplier: 2, constant: 0)
 	}
 
 	func testDimensionExpressionWithMultiplierAndConstant() {
-		let containerAnchor = DimensionAnchor(dimension: container.widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == containerAnchor * 2 + 10)
+        let expression = (subview.anchors.height == container.anchors.width * 2 + 10)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .height)
-		XCTAssert(constraint.secondAttribute == .width)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 10)
-		XCTAssert(constraint.multiplier == 2)
+		
+        assertConstraint(constraint, first: subview, .height, relation: .equal, second: container, .width, multiplier: 2, constant: 10)
 	}
 
 	func testDimensionRelations() {
-		let containerAnchor = DimensionAnchor(dimension: container.widthAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let ltExpression = (subviewAnchor <= containerAnchor * 2 + 10)
+        let ltExpression = (subview.anchors.height <= container.anchors.width * 2 + 10)
 		let ltConstraint = ltExpression.evaluateDistinct()
-		XCTAssert(ltConstraint.relation == .lessThanOrEqual)
+        assertConstraint(ltConstraint, first: subview, .height, relation: .lessThanOrEqual, second: container, .width, multiplier: 2, constant: 10)
 
-		let eqExpression = (subviewAnchor == containerAnchor * 2 + 10)
+        let eqExpression = (subview.anchors.height == container.anchors.width * 2 + 10)
 		let eqConstraint = eqExpression.evaluateDistinct()
-		XCTAssert(eqConstraint.relation == .equal)
+        assertConstraint(eqConstraint, first: subview, .height, relation: .equal, second: container, .width, multiplier: 2, constant: 10)
 
-		let gtExpression = (subviewAnchor >= containerAnchor * 2 + 10)
+        let gtExpression = (subview.anchors.height >= container.anchors.width * 2 + 10)
 		let gtConstraint = gtExpression.evaluateDistinct()
-		XCTAssert(gtConstraint.relation == .greaterThanOrEqual)
+        assertConstraint(gtConstraint, first: subview, .height, relation: .greaterThanOrEqual, second: container, .width, multiplier: 2, constant: 10)
 	}
 }

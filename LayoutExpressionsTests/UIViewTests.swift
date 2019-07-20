@@ -25,53 +25,43 @@ class UIViewTests: XCTestCase {
 
     func testLayoutMarginsLayoutArea() {
         let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.margins.top)
-        XCTAssert(top.firstItem === subview)
-        XCTAssert(top.secondItem === container.layoutMarginsGuide)
-        XCTAssert(top.firstAttribute == .top)
-        XCTAssert(top.secondAttribute == .top)
+        assertConstraint(top, first: subview, .top, relation: .equal, second: container.layoutMarginsGuide, .top)
 
         let left = evaluateLayoutExpression(subview.anchors.left == container.anchors.margins.left)
-        XCTAssert(left.firstItem === subview)
-        XCTAssert(left.secondItem === container.layoutMarginsGuide)
-        XCTAssert(left.firstAttribute == .left)
-        XCTAssert(left.secondAttribute == .left)
+        assertConstraint(left, first: subview, .left, relation: .equal, second: container.layoutMarginsGuide, .left)
 
         let bottom = evaluateLayoutExpression(subview.anchors.bottom == container.anchors.margins.bottom)
-        XCTAssert(bottom.firstItem === subview)
-        XCTAssert(bottom.secondItem === container.layoutMarginsGuide)
-        XCTAssert(bottom.firstAttribute == .bottom)
-        XCTAssert(bottom.secondAttribute == .bottom)
+        assertConstraint(bottom, first: subview, .bottom, relation: .equal, second: container.layoutMarginsGuide, .bottom)
 
         let right = evaluateLayoutExpression(subview.anchors.right == container.anchors.margins.right)
-        XCTAssert(right.firstItem === subview)
-        XCTAssert(right.secondItem === container.layoutMarginsGuide)
-        XCTAssert(right.firstAttribute == .right)
-        XCTAssert(right.secondAttribute == .right)
+        assertConstraint(right, first: subview, .right, relation: .equal, second: container.layoutMarginsGuide, .right)
     }
 
     func testReadableContentLayoutArea() {
         let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.readable.top)
-        XCTAssert(top.firstItem === subview)
-        XCTAssert(top.secondItem === container.readableContentGuide)
-        XCTAssert(top.firstAttribute == .top)
-        XCTAssert(top.secondAttribute == .top)
+        assertConstraint(top, first: subview, .top, relation: .equal, second: container.readableContentGuide, .top)
 
         let left = evaluateLayoutExpression(subview.anchors.left == container.anchors.readable.left)
-        XCTAssert(left.firstItem === subview)
-        XCTAssert(left.secondItem === container.readableContentGuide)
-        XCTAssert(left.firstAttribute == .left)
-        XCTAssert(left.secondAttribute == .left)
+        assertConstraint(left, first: subview, .left, relation: .equal, second: container.readableContentGuide, .left)
 
         let bottom = evaluateLayoutExpression(subview.anchors.bottom == container.anchors.readable.bottom)
-        XCTAssert(bottom.firstItem === subview)
-        XCTAssert(bottom.secondItem === container.readableContentGuide)
-        XCTAssert(bottom.firstAttribute == .bottom)
-        XCTAssert(bottom.secondAttribute == .bottom)
+        assertConstraint(bottom, first: subview, .bottom, relation: .equal, second: container.readableContentGuide, .bottom)
 
         let right = evaluateLayoutExpression(subview.anchors.right == container.anchors.readable.right)
-        XCTAssert(right.firstItem === subview)
-        XCTAssert(right.secondItem === container.readableContentGuide)
-        XCTAssert(right.firstAttribute == .right)
-        XCTAssert(right.secondAttribute == .right)
+        assertConstraint(right, first: subview, .right, relation: .equal, second: container.readableContentGuide, .right)
+    }
+    
+    func testSafeAreaLayoutArea() {
+        let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.safeArea.top)
+        assertConstraint(top, first: subview, .top, relation: .equal, second: container.safeAreaLayoutGuide, .top)
+        
+        let left = evaluateLayoutExpression(subview.anchors.left == container.anchors.safeArea.left)
+        assertConstraint(left, first: subview, .left, relation: .equal, second: container.safeAreaLayoutGuide, .left)
+        
+        let bottom = evaluateLayoutExpression(subview.anchors.bottom == container.anchors.safeArea.bottom)
+        assertConstraint(bottom, first: subview, .bottom, relation: .equal, second: container.safeAreaLayoutGuide, .bottom)
+        
+        let right = evaluateLayoutExpression(subview.anchors.right == container.anchors.safeArea.right)
+        assertConstraint(right, first: subview, .right, relation: .equal, second: container.safeAreaLayoutGuide, .right)
     }
 }

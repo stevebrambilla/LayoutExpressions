@@ -14,32 +14,23 @@ class ConstantDimensionExpressionTests: XCTestCase {
 	}
 
 	func testConstantDimensionExpression() {
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == 200)
+		let expression = (subview.anchors.height == 200)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem == nil)
-		XCTAssert(constraint.firstAttribute == .height)
-		XCTAssert(constraint.secondAttribute == .notAnAttribute)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 200)
-		XCTAssert(constraint.multiplier == 1)
+        
+        assertConstraint(constraint, first: subview, .height, relation: .equal, second: nil, .notAnAttribute, multiplier: 1, constant: 200)
 	}
 
 	func testConstantDimensionRelations() {
-		let subviewAnchor = DimensionAnchor(dimension: subview.heightAnchor, multiplier: UndefinedMultiplier(), constant: UndefinedConstant())
-
-		let ltExpression = (subviewAnchor <= 200)
+		let ltExpression = (subview.anchors.height <= 200)
 		let ltConstraint = ltExpression.evaluateDistinct()
-		XCTAssert(ltConstraint.relation == .lessThanOrEqual)
+        assertConstraint(ltConstraint, first: subview, .height, relation: .lessThanOrEqual, second: nil, constant: 200)
 
-		let eqExpression = (subviewAnchor == 200)
+		let eqExpression = (subview.anchors.height == 200)
 		let eqConstraint = eqExpression.evaluateDistinct()
-		XCTAssert(eqConstraint.relation == .equal)
+        assertConstraint(eqConstraint, first: subview, .height, relation: .equal, second: nil, constant: 200)
 
-		let gtExpression = (subviewAnchor >= 200)
+		let gtExpression = (subview.anchors.height >= 200)
 		let gtConstraint = gtExpression.evaluateDistinct()
-		XCTAssert(gtConstraint.relation == .greaterThanOrEqual)
+        assertConstraint(gtConstraint, first: subview, .height, relation: .greaterThanOrEqual, second: nil, constant: 200)
 	}
 }

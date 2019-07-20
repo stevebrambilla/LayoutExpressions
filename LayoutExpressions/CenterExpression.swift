@@ -75,6 +75,12 @@ public func + (lhs: CenterAnchor<UndefinedOffset>, offset: Offset) -> CenterAnch
 	lhs.updateOffset(ValueOffset(value: offset))
 }
 
+#if !os(macOS)
+public func + (lhs: CenterAnchor<UndefinedOffset>, offset: UIOffset) -> CenterAnchor<ValueOffset> {
+    lhs.updateOffset(ValueOffset(value: Offset(offset)))
+}
+#endif
+
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: CenterAnchor<NoOffset>, rhs: CenterAnchor<Offset>) -> CenterExpression<Offset> {

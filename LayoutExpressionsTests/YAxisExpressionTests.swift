@@ -18,49 +18,30 @@ class YAxisExpressionTests: XCTestCase {
 	}
 
 	func testYAxisExpressionWithoutConstant() {
-		let containerAnchor = AxisAnchor(axis: YAxis(anchor: container.centerYAnchor), constant: UndefinedConstant())
-		let subviewAnchor = AxisAnchor(axis: YAxis(anchor: subview.topAnchor), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == containerAnchor)
+		let expression = (subview.anchors.top == container.anchors.centerY)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .top)
-		XCTAssert(constraint.secondAttribute == .centerY)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 0)
-		XCTAssert(constraint.multiplier == 1)
+  
+        assertConstraint(constraint, first: subview, .top, relation: .equal, second: container, .centerY, multiplier: 1, constant: 0)
 	}
 
 	func testYAxisExpressionWithConstant() {
-		let containerAnchor = AxisAnchor(axis: YAxis(anchor: container.centerYAnchor), constant: UndefinedConstant())
-		let subviewAnchor = AxisAnchor(axis: YAxis(anchor: subview.topAnchor), constant: UndefinedConstant())
-
-		let expression = (subviewAnchor == containerAnchor + 10)
+		let expression = (subview.anchors.top == container.anchors.centerY + 10)
 		let constraint = expression.evaluateDistinct()
-		XCTAssert(constraint.firstItem === subview)
-		XCTAssert(constraint.secondItem === container)
-		XCTAssert(constraint.firstAttribute == .top)
-		XCTAssert(constraint.secondAttribute == .centerY)
-		XCTAssert(constraint.relation == .equal)
-		XCTAssert(constraint.constant == 10)
-		XCTAssert(constraint.multiplier == 1)
+  
+        assertConstraint(constraint, first: subview, .top, relation: .equal, second: container, .centerY, multiplier: 1, constant: 10)
 	}
 
 	func testYAxisRelations() {
-		let containerAnchor = AxisAnchor(axis: YAxis(anchor: container.centerYAnchor), constant: UndefinedConstant())
-		let subviewAnchor = AxisAnchor(axis: YAxis(anchor: subview.topAnchor), constant: UndefinedConstant())
-
-		let ltExpression = (subviewAnchor <= containerAnchor + 10)
+		let ltExpression = (subview.anchors.top <= container.anchors.centerY + 10)
 		let ltConstraint = ltExpression.evaluateDistinct()
-		XCTAssert(ltConstraint.relation == .lessThanOrEqual)
+        assertConstraint(ltConstraint, first: subview, .top, relation: .lessThanOrEqual, second: container, .centerY, constant: 10)
 
-		let eqExpression = (subviewAnchor == containerAnchor + 10)
+		let eqExpression = (subview.anchors.top == container.anchors.centerY + 10)
 		let eqConstraint = eqExpression.evaluateDistinct()
-		XCTAssert(eqConstraint.relation == .equal)
+        assertConstraint(eqConstraint, first: subview, .top, relation: .equal, second: container, .centerY, constant: 10)
 
-		let gtExpression = (subviewAnchor >= containerAnchor + 10)
+		let gtExpression = (subview.anchors.top >= container.anchors.centerY + 10)
 		let gtConstraint = gtExpression.evaluateDistinct()
-		XCTAssert(gtConstraint.relation == .greaterThanOrEqual)
+        assertConstraint(gtConstraint, first: subview, .top, relation: .greaterThanOrEqual, second: container, .centerY, constant: 10)
 	}
 }

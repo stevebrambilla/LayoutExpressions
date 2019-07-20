@@ -113,6 +113,10 @@ public func + (lhs: SizeAnchor<UndefinedSize>, size: Size) -> SizeAnchor<ValueSi
 	lhs.update(size: ValueSize(value: size))
 }
 
+public func + (lhs: SizeAnchor<UndefinedSize>, size: CGSize) -> SizeAnchor<ValueSize> {
+    lhs.update(size: ValueSize(value: Size(size)))
+}
+
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {
@@ -139,6 +143,8 @@ public func >= <Offset>(lhs: SizeAnchor<UndefinedSize>, rhs: SizeAnchor<Offset>)
 	SizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
+// MARK: - Fixed Size Comparison Operators
+
 public func == (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
 	ConstantSizeExpression(lhs: lhs, relation: .equal, size: rhs)
 }
@@ -161,4 +167,30 @@ public func >= (lhs: SizeAnchor<NoSize>, rhs: Size) -> ConstantSizeExpression {
 
 public func >= (lhs: SizeAnchor<UndefinedSize>, rhs: Size) -> ConstantSizeExpression {
 	ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, size: rhs)
+}
+
+// MARK: - Fixed CGSize Comparison Operators
+
+public func == (lhs: SizeAnchor<NoSize>, rhs: CGSize) -> ConstantSizeExpression {
+    ConstantSizeExpression(lhs: lhs, relation: .equal, size: Size(rhs))
+}
+
+public func == (lhs: SizeAnchor<UndefinedSize>, rhs: CGSize) -> ConstantSizeExpression {
+    ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .equal, size: Size(rhs))
+}
+
+public func <= (lhs: SizeAnchor<NoSize>, rhs: CGSize) -> ConstantSizeExpression {
+    ConstantSizeExpression(lhs: lhs, relation: .lessThanOrEqual, size: Size(rhs))
+}
+
+public func <= (lhs: SizeAnchor<UndefinedSize>, rhs: CGSize) -> ConstantSizeExpression {
+    ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, size: Size(rhs))
+}
+
+public func >= (lhs: SizeAnchor<NoSize>, rhs: CGSize) -> ConstantSizeExpression {
+    ConstantSizeExpression(lhs: lhs, relation: .greaterThanOrEqual, size: Size(rhs))
+}
+
+public func >= (lhs: SizeAnchor<UndefinedSize>, rhs: CGSize) -> ConstantSizeExpression {
+    ConstantSizeExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, size: Size(rhs))
 }

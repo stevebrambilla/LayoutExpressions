@@ -36,7 +36,7 @@ public struct Size {
 		self.height = height
 	}
 
-	public init(size: CGSize) {
+	public init(_ size: CGSize) {
 		self.width = size.width
 		self.height = size.height
 	}
