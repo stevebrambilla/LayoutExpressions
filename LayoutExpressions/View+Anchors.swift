@@ -67,16 +67,46 @@ extension Anchors where Base: View {
 extension Anchors where Base: View {
 	/// A composite layout expression anchor representing all four edges of the view.
 	public var edges: EdgesAnchor<UndefinedInsets> {
-		EdgesAnchor(topAnchor: base.topAnchor, leftAnchor: base.leftAnchor, bottomAnchor: base.bottomAnchor, rightAnchor: base.rightAnchor, insets: UndefinedInsets())
+		EdgesAnchor(
+            topAnchor: base.topAnchor,
+            leftAnchor: base.leftAnchor,
+            bottomAnchor: base.bottomAnchor,
+            rightAnchor: base.rightAnchor,
+            insets: UndefinedInsets()
+        )
 	}
+ 
+    /// A composite layout expression anchor representing the horizontal edges (leading and trailing) of the view.
+    public var horizontalEdges: SingleAxisEdgesAnchor<XAxisEdges, UndefinedConstant> {
+        SingleAxisEdgesAnchor(
+            axis: XAxisEdges(leading: base.leadingAnchor, trailing: base.trailingAnchor),
+            inset: UndefinedConstant()
+        )
+    }
+    
+    /// A composite layout expression anchor representing the vertical edges (top and bottom) of the view.
+    public var verticalEdges: SingleAxisEdgesAnchor<YAxisEdges, UndefinedConstant> {
+        SingleAxisEdgesAnchor(
+            axis: YAxisEdges(top: base.topAnchor, bottom: base.bottomAnchor),
+            inset: UndefinedConstant()
+        )
+    }
 
 	/// A composite layout expression anchor representing the center of the view.
 	public var center: CenterAnchor<UndefinedOffset> {
-		CenterAnchor(centerXAnchor: base.centerXAnchor, centerYAnchor: base.centerYAnchor, offset: UndefinedOffset())
+		CenterAnchor(
+            centerXAnchor: base.centerXAnchor,
+            centerYAnchor: base.centerYAnchor,
+            offset: UndefinedOffset()
+        )
 	}
 
 	/// A composite layout expression anchor representing the size of the view.
 	public var size: SizeAnchor<UndefinedSize> {
-		SizeAnchor(widthAnchor: base.widthAnchor, heightAnchor: base.heightAnchor, size: UndefinedSize())
+		SizeAnchor(
+            widthAnchor: base.widthAnchor,
+            heightAnchor: base.heightAnchor,
+            size: UndefinedSize()
+        )
 	}
 }

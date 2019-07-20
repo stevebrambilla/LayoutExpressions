@@ -32,11 +32,11 @@
 		AA1BCE001BE6796200AB6D1C /* Multipliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFE1BE6796200AB6D1C /* Multipliers.swift */; };
 		AA1BCE041BE6807E00AB6D1C /* DimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */; };
 		AA1BCE091BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */; };
-		AA1BCE0B1BE6885100AB6D1C /* EdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */; };
-		AA1BCE0C1BE6885100AB6D1C /* EdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */; };
+		AA1BCE0B1BE6885100AB6D1C /* BothAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */; };
+		AA1BCE0C1BE6885100AB6D1C /* BothAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */; };
 		AA1BCE0E1BE68ADA00AB6D1C /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */; };
 		AA1BCE0F1BE68ADA00AB6D1C /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */; };
-		AA1BCE101BE68FE100AB6D1C /* EdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */; };
+		AA1BCE101BE68FE100AB6D1C /* BothAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */; };
 		AA1BCE121BE692F800AB6D1C /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE111BE692F800AB6D1C /* Relation.swift */; };
 		AA1BCE131BE692F800AB6D1C /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE111BE692F800AB6D1C /* Relation.swift */; };
 		AA1BCE151BE6963000AB6D1C /* LayoutGuide+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE141BE6963000AB6D1C /* LayoutGuide+Anchors.swift */; };
@@ -66,7 +66,7 @@
 		AA6E63791EF2DCC0000669CD /* YAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */; };
 		AA6E637A1EF2DCC0000669CD /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */; };
 		AA6E637C1EF2DCC0000669CD /* XAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */; };
-		AA6E637D1EF2DCC0000669CD /* EdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */; };
+		AA6E637D1EF2DCC0000669CD /* BothAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */; };
 		AA6E637E1EF2DCC0000669CD /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A119450C1500F41FCC /* PriorityTests.swift */; };
 		AA6E637F1EF2DCC0000669CD /* DimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */; };
 		AA6E63801EF2DCC0000669CD /* SizeExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D71943948800827E89 /* SizeExpressionTests.swift */; };
@@ -79,7 +79,7 @@
 		AA7597BA22CA68570060C5A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */; };
 		AA7597BB22CA68570060C5A1 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00F7BB1940ABE000F92B8B /* Expression.swift */; };
 		AA7597BC22CA68570060C5A1 /* LayoutAreaAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D4DF41EE90FDE00A97F6E /* LayoutAreaAnchors.swift */; };
-		AA7597BD22CA68570060C5A1 /* EdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */; };
+		AA7597BD22CA68570060C5A1 /* BothAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */; };
 		AA7597BF22CA68570060C5A1 /* Offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE211BE6D75300AB6D1C /* Offset.swift */; };
 		AA7597C022CA68570060C5A1 /* AnchorsExtensionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC2137E1EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift */; };
 		AA7597C122CA68570060C5A1 /* CenterExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE1D1BE6A13000AB6D1C /* CenterExpression.swift */; };
@@ -96,7 +96,7 @@
 		AA7597DA22CA6D320060C5A1 /* ConstantDimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */; };
 		AA7597DB22CA6D320060C5A1 /* YAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */; };
 		AA7597DE22CA6D320060C5A1 /* XAxisExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */; };
-		AA7597DF22CA6D320060C5A1 /* EdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */; };
+		AA7597DF22CA6D320060C5A1 /* BothAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */; };
 		AA7597E022CA6D320060C5A1 /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A119450C1500F41FCC /* PriorityTests.swift */; };
 		AA7597E122CA6D320060C5A1 /* DimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */; };
 		AA7597E222CA6D320060C5A1 /* SizeExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D71943948800827E89 /* SizeExpressionTests.swift */; };
@@ -119,6 +119,15 @@
 		AAC213831EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC213811EE9025B00999C65 /* UIViewController+Anchors.swift */; };
 		AACF91BF194008D300748874 /* LayoutExpressions.h in Headers */ = {isa = PBXBuildFile; fileRef = AACF91BE194008D300748874 /* LayoutExpressions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACF91C5194008D400748874 /* LayoutExpressions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACF91B9194008D300748874 /* LayoutExpressions.framework */; };
+		AAD3DD0022E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DCFF22E271BD003A7F55 /* SingleAxisEdgesExpression.swift */; };
+		AAD3DD0122E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DCFF22E271BD003A7F55 /* SingleAxisEdgesExpression.swift */; };
+		AAD3DD0222E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DCFF22E271BD003A7F55 /* SingleAxisEdgesExpression.swift */; };
+		AAD3DD0422E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0322E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift */; };
+		AAD3DD0522E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0322E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift */; };
+		AAD3DD0622E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0322E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift */; };
+		AAD3DD0822E345D9003A7F55 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0722E345D9003A7F55 /* Assertions.swift */; };
+		AAD3DD0922E345D9003A7F55 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0722E345D9003A7F55 /* Assertions.swift */; };
+		AAD3DD0A22E345D9003A7F55 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0722E345D9003A7F55 /* Assertions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,7 +170,7 @@
 		AA1BCDFE1BE6796200AB6D1C /* Multipliers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multipliers.swift; sourceTree = "<group>"; };
 		AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionExpressionTests.swift; sourceTree = "<group>"; };
 		AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantDimensionExpressionTests.swift; sourceTree = "<group>"; };
-		AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgesExpression.swift; sourceTree = "<group>"; };
+		AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothAxisEdgesExpression.swift; sourceTree = "<group>"; };
 		AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Insets.swift; sourceTree = "<group>"; };
 		AA1BCE111BE692F800AB6D1C /* Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		AA1BCE141BE6963000AB6D1C /* LayoutGuide+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LayoutGuide+Anchors.swift"; sourceTree = "<group>"; };
@@ -192,7 +201,10 @@
 		AACF91C4194008D400748874 /* LayoutExpressionsTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LayoutExpressionsTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACF91CA194008D400748874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACF91CB194008D400748874 /* ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewTests.swift; path = LayoutExpressionsTests/ViewTests.swift; sourceTree = SOURCE_ROOT; };
-		AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgesExpressionTests.swift; sourceTree = "<group>"; };
+		AAD3DCFF22E271BD003A7F55 /* SingleAxisEdgesExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleAxisEdgesExpression.swift; sourceTree = "<group>"; };
+		AAD3DD0322E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAxisEdgesExpressionTests.swift; sourceTree = "<group>"; };
+		AAD3DD0722E345D9003A7F55 /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
+		AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothAxisEdgesExpressionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +291,8 @@
 			children = (
 				AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */,
 				AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */,
-				AA1BCE0A1BE6885100AB6D1C /* EdgesExpression.swift */,
+				AAD3DCFF22E271BD003A7F55 /* SingleAxisEdgesExpression.swift */,
+				AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */,
 				AA1BCE1D1BE6A13000AB6D1C /* CenterExpression.swift */,
 				AA1BCE251BE6EA0000AB6D1C /* SizeExpression.swift */,
 			);
@@ -393,11 +406,13 @@
 		AACF91C8194008D400748874 /* LayoutExpressionsTests */ = {
 			isa = PBXGroup;
 			children = (
+				AAD3DD0722E345D9003A7F55 /* Assertions.swift */,
 				AA1BCDF41BE6725F00AB6D1C /* XAxisExpressionTests.swift */,
 				AA1BCDF91BE677F900AB6D1C /* YAxisExpressionTests.swift */,
 				AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */,
 				AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */,
-				AAFBA92F19416E0E0077DE9A /* EdgesExpressionTests.swift */,
+				AAD3DD0322E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift */,
+				AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */,
 				AA84B8D51943868800827E89 /* CenterExpressionsTests.swift */,
 				AA84B8D71943948800827E89 /* SizeExpressionTests.swift */,
 				AA2D55A119450C1500F41FCC /* PriorityTests.swift */,
@@ -663,7 +678,8 @@
 				AA1BCDD31BDD339700AB6D1C /* Priority.swift in Sources */,
 				AA1BCDDB1BDD339F00AB6D1C /* View+Anchors.swift in Sources */,
 				AA0D4DF61EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */,
-				AA1BCE0C1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
+				AAD3DD0122E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */,
+				AA1BCE0C1BE6885100AB6D1C /* BothAxisEdgesExpression.swift in Sources */,
 				AA1BCE231BE6D75300AB6D1C /* Offset.swift in Sources */,
 				AA5A6FEC1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift in Sources */,
 				AAC213801EE8E2AC00999C65 /* AnchorsExtensionsProvider.swift in Sources */,
@@ -687,12 +703,14 @@
 			files = (
 				AA6E63761EF2DCC0000669CD /* LayoutGuideTests.swift in Sources */,
 				AA6E63771EF2DCC0000669CD /* CenterExpressionsTests.swift in Sources */,
+				AAD3DD0522E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift in Sources */,
 				AA6E63781EF2DCC0000669CD /* ConstantDimensionExpressionTests.swift in Sources */,
+				AAD3DD0922E345D9003A7F55 /* Assertions.swift in Sources */,
 				AA6E63791EF2DCC0000669CD /* YAxisExpressionTests.swift in Sources */,
 				AA6E637A1EF2DCC0000669CD /* UIViewControllerTests.swift in Sources */,
 				AA7597EB22CA6EA90060C5A1 /* ViewTests.swift in Sources */,
 				AA6E637C1EF2DCC0000669CD /* XAxisExpressionTests.swift in Sources */,
-				AA6E637D1EF2DCC0000669CD /* EdgesExpressionTests.swift in Sources */,
+				AA6E637D1EF2DCC0000669CD /* BothAxisEdgesExpressionTests.swift in Sources */,
 				AA7597FE22CB91EE0060C5A1 /* UIViewTests.swift in Sources */,
 				AA6E637E1EF2DCC0000669CD /* PriorityTests.swift in Sources */,
 				AA6E637F1EF2DCC0000669CD /* DimensionExpressionTests.swift in Sources */,
@@ -713,7 +731,7 @@
 				AA7597BA22CA68570060C5A1 /* Constants.swift in Sources */,
 				AA7597BB22CA68570060C5A1 /* Expression.swift in Sources */,
 				AA7597BC22CA68570060C5A1 /* LayoutAreaAnchors.swift in Sources */,
-				AA7597BD22CA68570060C5A1 /* EdgesExpression.swift in Sources */,
+				AA7597BD22CA68570060C5A1 /* BothAxisEdgesExpression.swift in Sources */,
 				AA7597F622CB8F290060C5A1 /* PlatformSupport.swift in Sources */,
 				AA7597BF22CA68570060C5A1 /* Offset.swift in Sources */,
 				AA7597C022CA68570060C5A1 /* AnchorsExtensionsProvider.swift in Sources */,
@@ -724,6 +742,7 @@
 				AA7597C722CA68570060C5A1 /* Insets.swift in Sources */,
 				AA7597C822CA68570060C5A1 /* Multipliers.swift in Sources */,
 				AA7597ED22CA700D0060C5A1 /* View+Anchors.swift in Sources */,
+				AAD3DD0222E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */,
 				AA7597C922CA68570060C5A1 /* Priority.swift in Sources */,
 				AA7597EC22CA6F220060C5A1 /* Evaluation.swift in Sources */,
 			);
@@ -735,10 +754,12 @@
 			files = (
 				AA7597D822CA6D320060C5A1 /* LayoutGuideTests.swift in Sources */,
 				AA7597D922CA6D320060C5A1 /* CenterExpressionsTests.swift in Sources */,
+				AAD3DD0622E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift in Sources */,
 				AA7597DA22CA6D320060C5A1 /* ConstantDimensionExpressionTests.swift in Sources */,
 				AA7597DB22CA6D320060C5A1 /* YAxisExpressionTests.swift in Sources */,
 				AA7597DE22CA6D320060C5A1 /* XAxisExpressionTests.swift in Sources */,
-				AA7597DF22CA6D320060C5A1 /* EdgesExpressionTests.swift in Sources */,
+				AAD3DD0A22E345D9003A7F55 /* Assertions.swift in Sources */,
+				AA7597DF22CA6D320060C5A1 /* BothAxisEdgesExpressionTests.swift in Sources */,
 				AA7597E022CA6D320060C5A1 /* PriorityTests.swift in Sources */,
 				AA7597E122CA6D320060C5A1 /* DimensionExpressionTests.swift in Sources */,
 				AA7597FA22CB91BA0060C5A1 /* ViewTests.swift in Sources */,
@@ -761,7 +782,7 @@
 				AA1BCDEC1BE5502F00AB6D1C /* Constants.swift in Sources */,
 				AA00F7BC1940ABE000F92B8B /* Expression.swift in Sources */,
 				AA0D4DF51EE90FDE00A97F6E /* LayoutAreaAnchors.swift in Sources */,
-				AA1BCE0B1BE6885100AB6D1C /* EdgesExpression.swift in Sources */,
+				AA1BCE0B1BE6885100AB6D1C /* BothAxisEdgesExpression.swift in Sources */,
 				AA7597F822CB8FE20060C5A1 /* UIView+Anchors.swift in Sources */,
 				AA5A6FF01EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift in Sources */,
 				AA1BCE221BE6D75300AB6D1C /* Offset.swift in Sources */,
@@ -775,6 +796,7 @@
 				AA1BCE0E1BE68ADA00AB6D1C /* Insets.swift in Sources */,
 				AA1BCDFF1BE6796200AB6D1C /* Multipliers.swift in Sources */,
 				AA1BCDBF1BDCA3C400AB6D1C /* Priority.swift in Sources */,
+				AAD3DD0022E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,12 +806,14 @@
 			files = (
 				AA1BCE331BE991AD00AB6D1C /* LayoutGuideTests.swift in Sources */,
 				AA1BCE241BE6E61600AB6D1C /* CenterExpressionsTests.swift in Sources */,
+				AAD3DD0422E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift in Sources */,
 				AA1BCE091BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift in Sources */,
+				AAD3DD0822E345D9003A7F55 /* Assertions.swift in Sources */,
 				AA1BCDFA1BE677F900AB6D1C /* YAxisExpressionTests.swift in Sources */,
 				AA1BCE311BE9911E00AB6D1C /* UIViewControllerTests.swift in Sources */,
 				AA1BCE2F1BE98E6500AB6D1C /* ViewTests.swift in Sources */,
 				AA1BCDF51BE6725F00AB6D1C /* XAxisExpressionTests.swift in Sources */,
-				AA1BCE101BE68FE100AB6D1C /* EdgesExpressionTests.swift in Sources */,
+				AA1BCE101BE68FE100AB6D1C /* BothAxisEdgesExpressionTests.swift in Sources */,
 				AA7597FD22CB91EE0060C5A1 /* UIViewTests.swift in Sources */,
 				AA1BCE301BE98F8B00AB6D1C /* PriorityTests.swift in Sources */,
 				AA1BCE041BE6807E00AB6D1C /* DimensionExpressionTests.swift in Sources */,
