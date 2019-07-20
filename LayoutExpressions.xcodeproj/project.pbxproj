@@ -125,6 +125,7 @@
 		AAD3DD0822E345D9003A7F55 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0722E345D9003A7F55 /* Assertions.swift */; };
 		AAD3DD0922E345D9003A7F55 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0722E345D9003A7F55 /* Assertions.swift */; };
 		AAD3DD0A22E345D9003A7F55 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0722E345D9003A7F55 /* Assertions.swift */; };
+		AAD3DD0F22E37C7F003A7F55 /* AVContentProposalViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3DD0E22E37C7F003A7F55 /* AVContentProposalViewController+Anchors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,7 @@
 		AAD3DCFF22E271BD003A7F55 /* SingleAxisEdgesExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleAxisEdgesExpression.swift; sourceTree = "<group>"; };
 		AAD3DD0322E27CF8003A7F55 /* SingleAxisEdgesExpressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAxisEdgesExpressionTests.swift; sourceTree = "<group>"; };
 		AAD3DD0722E345D9003A7F55 /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
+		AAD3DD0E22E37C7F003A7F55 /* AVContentProposalViewController+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVContentProposalViewController+Anchors.swift"; sourceTree = "<group>"; };
 		AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothAxisEdgesExpressionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */,
+				AAD3DD0E22E37C7F003A7F55 /* AVContentProposalViewController+Anchors.swift */,
 			);
 			name = tvOS;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				AA1BCDFD1BE6787D00AB6D1C /* DimensionExpression.swift in Sources */,
 				AA1BCDD41BDD339700AB6D1C /* Evaluation.swift in Sources */,
 				AAC213831EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */,
+				AAD3DD0F22E37C7F003A7F55 /* AVContentProposalViewController+Anchors.swift in Sources */,
 				AA1BCE2B1BE6FD2F00AB6D1C /* Size.swift in Sources */,
 				AA1BCDF01BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
 				AA1BCE001BE6796200AB6D1C /* Multipliers.swift in Sources */,
