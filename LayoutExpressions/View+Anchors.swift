@@ -66,13 +66,13 @@ extension Anchors where Base: View {
 
 extension Anchors where Base: View {
 	/// A composite layout expression anchor representing all four edges of the view.
-	public var edges: EdgesAnchor<UndefinedInsets> {
-		EdgesAnchor(
-            topAnchor: base.topAnchor,
-            leftAnchor: base.leftAnchor,
-            bottomAnchor: base.bottomAnchor,
-            rightAnchor: base.rightAnchor,
-            insets: UndefinedInsets()
+	public var allEdges: BothAxisEdgesAnchor<UndefinedConstant> {
+		BothAxisEdgesAnchor(
+            top: base.topAnchor,
+            bottom: base.bottomAnchor,
+            leading: base.leadingAnchor,
+            trailing: base.trailingAnchor,
+            inset: UndefinedConstant()
         )
 	}
  

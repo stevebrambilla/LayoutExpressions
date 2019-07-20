@@ -22,8 +22,8 @@ extension Anchors where Base: UIView {
 
 extension Anchors where Base: UIView {
     /// A composite layout expression anchor representing all four edges of the view's margins.
-    public var allMargins: EdgesAnchor<UndefinedInsets> {
-        return margins.edges
+    public var allMargins: BothAxisEdgesAnchor<UndefinedConstant> {
+        return margins.allEdges
     }
  
     /// A composite layout expression anchor representing the horizontal edges (leading and trailing) of the view's layout margin.

@@ -76,20 +76,20 @@ class LayoutGuideTests: XCTestCase {
 	}
 
 	func testEdges() {
-		let constraints = evaluateLayoutExpression(guide.anchors.edges == container.anchors.edges)
+		let constraints = evaluateLayoutExpression(guide.anchors.allEdges == container.anchors.allEdges)
 		XCTAssert(constraints.count == 4, "Expected exactly 4 constraints")
 
 		let tops = constraints.filter { $0.firstAttribute == .top && $0.secondAttribute == .top }
 		XCTAssert(tops.count == 1, "Didn't find exactly one Top constraint.")
 
-		let lefts = constraints.filter { $0.firstAttribute == .left && $0.secondAttribute == .left }
-		XCTAssert(lefts.count == 1, "Didn't find exactly one Left constraint.")
+		let lefts = constraints.filter { $0.firstAttribute == .leading && $0.secondAttribute == .leading }
+		XCTAssert(lefts.count == 1, "Didn't find exactly one .leading constraint.")
 
 		let bottoms = constraints.filter { $0.firstAttribute == .bottom && $0.secondAttribute == .bottom }
 		XCTAssert(bottoms.count == 1, "Didn't find exactly one Bottom constraint.")
 
-		let rights = constraints.filter { $0.firstAttribute == .right && $0.secondAttribute == .right }
-		XCTAssert(rights.count == 1, "Didn't find exactly one Right constraint.")
+		let rights = constraints.filter { $0.firstAttribute == .trailing && $0.secondAttribute == .trailing }
+		XCTAssert(rights.count == 1, "Didn't find exactly one .trailing constraint.")
 	}
 
 	func testConstant() {

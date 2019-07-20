@@ -34,8 +34,6 @@
 		AA1BCE091BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */; };
 		AA1BCE0B1BE6885100AB6D1C /* BothAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */; };
 		AA1BCE0C1BE6885100AB6D1C /* BothAxisEdgesExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */; };
-		AA1BCE0E1BE68ADA00AB6D1C /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */; };
-		AA1BCE0F1BE68ADA00AB6D1C /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */; };
 		AA1BCE101BE68FE100AB6D1C /* BothAxisEdgesExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFBA92F19416E0E0077DE9A /* BothAxisEdgesExpressionTests.swift */; };
 		AA1BCE121BE692F800AB6D1C /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE111BE692F800AB6D1C /* Relation.swift */; };
 		AA1BCE131BE692F800AB6D1C /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE111BE692F800AB6D1C /* Relation.swift */; };
@@ -86,7 +84,6 @@
 		AA7597C322CA68570060C5A1 /* DimensionExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFB1BE6787D00AB6D1C /* DimensionExpression.swift */; };
 		AA7597C422CA68570060C5A1 /* AxisExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDEE1BE663DC00AB6D1C /* AxisExpression.swift */; };
 		AA7597C622CA68570060C5A1 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE291BE6FD2F00AB6D1C /* Size.swift */; };
-		AA7597C722CA68570060C5A1 /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */; };
 		AA7597C822CA68570060C5A1 /* Multipliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDFE1BE6796200AB6D1C /* Multipliers.swift */; };
 		AA7597C922CA68570060C5A1 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCDBE1BDCA3C400AB6D1C /* Priority.swift */; };
 		AA7597CC22CA68570060C5A1 /* LayoutExpressions.h in Headers */ = {isa = PBXBuildFile; fileRef = AACF91BE194008D300748874 /* LayoutExpressions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,7 +168,6 @@
 		AA1BCE031BE6807E00AB6D1C /* DimensionExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionExpressionTests.swift; sourceTree = "<group>"; };
 		AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantDimensionExpressionTests.swift; sourceTree = "<group>"; };
 		AA1BCE0A1BE6885100AB6D1C /* BothAxisEdgesExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothAxisEdgesExpression.swift; sourceTree = "<group>"; };
-		AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Insets.swift; sourceTree = "<group>"; };
 		AA1BCE111BE692F800AB6D1C /* Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		AA1BCE141BE6963000AB6D1C /* LayoutGuide+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LayoutGuide+Anchors.swift"; sourceTree = "<group>"; };
 		AA1BCE1A1BE6971C00AB6D1C /* View+Expressions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Expressions.swift"; sourceTree = "<group>"; };
@@ -307,7 +303,6 @@
 				AA1BCE111BE692F800AB6D1C /* Relation.swift */,
 				AA1BCDEB1BE5502F00AB6D1C /* Constants.swift */,
 				AA1BCDFE1BE6796200AB6D1C /* Multipliers.swift */,
-				AA1BCE0D1BE68ADA00AB6D1C /* Insets.swift */,
 				AA1BCE211BE6D75300AB6D1C /* Offset.swift */,
 				AA1BCE291BE6FD2F00AB6D1C /* Size.swift */,
 			);
@@ -692,7 +687,6 @@
 				AAC213831EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */,
 				AA1BCE2B1BE6FD2F00AB6D1C /* Size.swift in Sources */,
 				AA1BCDF01BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
-				AA1BCE0F1BE68ADA00AB6D1C /* Insets.swift in Sources */,
 				AA1BCE001BE6796200AB6D1C /* Multipliers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,7 +733,6 @@
 				AA7597C322CA68570060C5A1 /* DimensionExpression.swift in Sources */,
 				AA7597C422CA68570060C5A1 /* AxisExpression.swift in Sources */,
 				AA7597C622CA68570060C5A1 /* Size.swift in Sources */,
-				AA7597C722CA68570060C5A1 /* Insets.swift in Sources */,
 				AA7597C822CA68570060C5A1 /* Multipliers.swift in Sources */,
 				AA7597ED22CA700D0060C5A1 /* View+Anchors.swift in Sources */,
 				AAD3DD0222E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */,
@@ -793,7 +786,6 @@
 				AA1BCDEF1BE663DC00AB6D1C /* AxisExpression.swift in Sources */,
 				AAC213821EE9025B00999C65 /* UIViewController+Anchors.swift in Sources */,
 				AA1BCE2A1BE6FD2F00AB6D1C /* Size.swift in Sources */,
-				AA1BCE0E1BE68ADA00AB6D1C /* Insets.swift in Sources */,
 				AA1BCDFF1BE6796200AB6D1C /* Multipliers.swift in Sources */,
 				AA1BCDBF1BDCA3C400AB6D1C /* Priority.swift in Sources */,
 				AAD3DD0022E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */,

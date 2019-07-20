@@ -56,13 +56,13 @@ extension Anchors where Base: LayoutGuide {
 
 extension Anchors where Base: LayoutGuide {
 	/// A composite layout expression anchor representing all four edges of the layout guide.
-	public var edges: EdgesAnchor<UndefinedInsets> {
-		EdgesAnchor(
-            topAnchor: base.topAnchor,
-            leftAnchor: base.leftAnchor,
-            bottomAnchor: base.bottomAnchor,
-            rightAnchor: base.rightAnchor,
-            insets: UndefinedInsets()
+	public var allEdges: BothAxisEdgesAnchor<UndefinedConstant> {
+		BothAxisEdgesAnchor(
+            top: base.topAnchor,
+            bottom: base.bottomAnchor,
+            leading: base.leadingAnchor,
+            trailing: base.trailingAnchor,
+            inset: UndefinedConstant()
         )
 	}
  

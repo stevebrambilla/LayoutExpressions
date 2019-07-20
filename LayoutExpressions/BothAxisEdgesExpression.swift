@@ -7,138 +7,128 @@ import UIKit
 #endif
 
 // Supports pinning all edges:
-// 		subview.anchors.edges == container.anchors.edges
+// 		subview.anchors.allEdges == container.anchors.allEdges
 //
-// Supports insets using the '-' operator with a Insets struct:
-//     	subview.anchors.edges == container.anchors.edges - Insets(top: 10.0, left: 5.0, bottom: 5.0, right: 10.0)
-//
-// Or inset all edges equally using '-' with a Double:
-// 		subview.anchors.edges == container.anchors.edges - 10.0
+// Supports insets using the '-' operator:
+//     	subview.anchors.allEdges == container.anchors.allEdges - 10
 //
 // The '+' operator defines outsets:
-// 		subview.anchors.edges == container.anchors.edges + 10.0
+// 		subview.anchors.allEdges == container.anchors.allEdges + 10
 
 // ----------------------------------------------------------------------------
-// MARK: - Edges Expression
+// MARK: - Both Axis Edges Expression
 
-public struct EdgesExpression<Insets: InsetsProtocol>: ExpressionProtocol {
-	fileprivate let lhs: EdgesAnchor<NoInsets>
+public struct BothAxisEdgesExpression<Inset: ConstantProtocol>: ExpressionProtocol {
+	fileprivate let lhs: BothAxisEdgesAnchor<NoConstant>
 	fileprivate let relation: Relation
-	fileprivate let rhs: EdgesAnchor<Insets>
+	fileprivate let rhs: BothAxisEdgesAnchor<Inset>
 	fileprivate let priority: Priority?
 
-	fileprivate init(lhs: EdgesAnchor<NoInsets>, relation: Relation, rhs: EdgesAnchor<Insets>, priority: Priority? = nil) {
+	fileprivate init(lhs: BothAxisEdgesAnchor<NoConstant>, relation: Relation, rhs: BothAxisEdgesAnchor<Inset>, priority: Priority? = nil) {
 		self.lhs = lhs
 		self.relation = relation
 		self.rhs = rhs
 		self.priority = priority
 	}
 
-	public func update(priority: Priority) -> EdgesExpression {
+	public func update(priority: Priority) -> BothAxisEdgesExpression {
 		assert(priority.isValid)
-		return EdgesExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
+		return BothAxisEdgesExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
 	public func evaluateAll() -> [NSLayoutConstraint] {
-		let insets = rhs.insets.value ?? LayoutExpressions.Insets.zeroInsets
+		let inset = rhs.inset.value ?? 0
 
-		let topConstraint = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.topAnchor, rhsAnchor: rhs.topAnchor, constant: insets.top)
-		let leftConstraint = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.leftAnchor, rhsAnchor: rhs.leftAnchor, constant: insets.left)
-		let bottomConstraint = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.bottomAnchor, rhsAnchor: rhs.bottomAnchor, constant: -insets.bottom)
-		let rightConstraint = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.rightAnchor, rhsAnchor: rhs.rightAnchor, constant: -insets.right)
+		let top = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.topAnchor, rhsAnchor: rhs.topAnchor, constant: -inset)
+        let bottom = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.bottomAnchor, rhsAnchor: rhs.bottomAnchor, constant: inset)
+		
+        let leading = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.leadingAnchor, rhsAnchor: rhs.leadingAnchor, constant: -inset)
+		let trailing = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.trailingAnchor, rhsAnchor: rhs.trailingAnchor, constant: inset)
 
 		if let priority = priority {
-			topConstraint.priority = priority.layoutPriority
-			leftConstraint.priority = priority.layoutPriority
-			bottomConstraint.priority = priority.layoutPriority
-			rightConstraint.priority = priority.layoutPriority
+			top.priority = priority.layoutPriority
+            bottom.priority = priority.layoutPriority
+			leading.priority = priority.layoutPriority
+			trailing.priority = priority.layoutPriority
 		}
 
-		return [topConstraint, leftConstraint, bottomConstraint, rightConstraint]
+		return [top, bottom, leading, trailing]
 	}
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Edges Anchor
 
-public struct EdgesAnchor<Insets: InsetsProtocol> {
+public struct BothAxisEdgesAnchor<Inset: ConstantProtocol> {
 	fileprivate let topAnchor: NSLayoutYAxisAnchor
-	fileprivate let leftAnchor: NSLayoutXAxisAnchor
 	fileprivate let bottomAnchor: NSLayoutYAxisAnchor
-	fileprivate let rightAnchor: NSLayoutXAxisAnchor
-	public let insets: Insets
+    fileprivate let leadingAnchor: NSLayoutXAxisAnchor
+	fileprivate let trailingAnchor: NSLayoutXAxisAnchor
+	public let inset: Inset
 
-	internal init(topAnchor: NSLayoutYAxisAnchor, leftAnchor: NSLayoutXAxisAnchor, bottomAnchor: NSLayoutYAxisAnchor, rightAnchor: NSLayoutXAxisAnchor, insets: Insets) {
-		self.topAnchor = topAnchor
-		self.leftAnchor = leftAnchor
-		self.bottomAnchor = bottomAnchor
-		self.rightAnchor = rightAnchor
-		self.insets = insets
+	internal init(top: NSLayoutYAxisAnchor, bottom: NSLayoutYAxisAnchor, leading: NSLayoutXAxisAnchor, trailing: NSLayoutXAxisAnchor, inset: Inset) {
+		self.topAnchor = top
+		self.bottomAnchor = bottom
+        self.leadingAnchor = leading
+		self.trailingAnchor = trailing
+		self.inset = inset
 	}
 
-	fileprivate func update<NextInsets>(insets: NextInsets) -> EdgesAnchor<NextInsets> {
-		EdgesAnchor<NextInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: insets)
+	fileprivate func update<NextInset>(inset: NextInset) -> BothAxisEdgesAnchor<NextInset> {
+		BothAxisEdgesAnchor<NextInset>(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, inset: inset)
 	}
 
-	fileprivate var withoutModifiers: EdgesAnchor<NoInsets> {
-		EdgesAnchor<NoInsets>(topAnchor: topAnchor, leftAnchor: leftAnchor, bottomAnchor: bottomAnchor, rightAnchor: rightAnchor, insets: NoInsets())
+	fileprivate var withoutModifiers: BothAxisEdgesAnchor<NoConstant> {
+        BothAxisEdgesAnchor<NoConstant>(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, inset: NoConstant())
 	}
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
-// Insets
+// CGFloat Insets / Outsets
 
-public func - (lhs: EdgesAnchor<UndefinedInsets>, insets: Insets) -> EdgesAnchor<ValueInsets> {
-	lhs.update(insets: ValueInsets(value: insets))
+public func - (lhs: BothAxisEdgesAnchor<UndefinedConstant>, inset: CGFloat) -> BothAxisEdgesAnchor<ValueConstant> {
+	return lhs.update(inset: ValueConstant(value: -inset))
 }
 
-// CGFloat Insets
-
-public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: CGFloat) -> EdgesAnchor<ValueInsets> {
-	let insets = Insets(top: inset, left: inset, bottom: inset, right: inset)
-	return lhs.update(insets: ValueInsets(value: insets))
+public func + (lhs: BothAxisEdgesAnchor<UndefinedConstant>, outset: CGFloat) -> BothAxisEdgesAnchor<ValueConstant> {
+	return lhs.update(inset: ValueConstant(value: outset))
 }
 
-public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: CGFloat) -> EdgesAnchor<ValueInsets> {
-	let insets = Insets(top: -outset, left: -outset, bottom: -outset, right: -outset)
-	return lhs.update(insets: ValueInsets(value: insets))
-}
+// Int Insets / Outsets
 
-// Int Insets
-
-public func - (lhs: EdgesAnchor<UndefinedInsets>, inset: Int) -> EdgesAnchor<ValueInsets> {
+public func - (lhs: BothAxisEdgesAnchor<UndefinedConstant>, inset: Int) -> BothAxisEdgesAnchor<ValueConstant> {
 	lhs - CGFloat(inset)
 }
 
-public func + (lhs: EdgesAnchor<UndefinedInsets>, outset: Int) -> EdgesAnchor<ValueInsets> {
+public func + (lhs: BothAxisEdgesAnchor<UndefinedConstant>, outset: Int) -> BothAxisEdgesAnchor<ValueConstant> {
 	lhs + CGFloat(outset)
 }
 
 // ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
-public func == <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	EdgesExpression(lhs: lhs, relation: .equal, rhs: rhs)
+public func == <Inset>(lhs: BothAxisEdgesAnchor<NoConstant>, rhs: BothAxisEdgesAnchor<Inset>) -> BothAxisEdgesExpression<Inset> {
+	BothAxisEdgesExpression(lhs: lhs, relation: .equal, rhs: rhs)
 }
 
-public func == <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	EdgesExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
+public func == <Inset>(lhs: BothAxisEdgesAnchor<UndefinedConstant>, rhs: BothAxisEdgesAnchor<Inset>) -> BothAxisEdgesExpression<Inset> {
+	BothAxisEdgesExpression(lhs: lhs.withoutModifiers, relation: .equal, rhs: rhs)
 }
 
-public func <= <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	EdgesExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
+public func <= <Inset>(lhs: BothAxisEdgesAnchor<NoConstant>, rhs: BothAxisEdgesAnchor<Inset>) -> BothAxisEdgesExpression<Inset> {
+	BothAxisEdgesExpression(lhs: lhs, relation: .lessThanOrEqual, rhs: rhs)
 }
 
-public func <= <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	EdgesExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
+public func <= <Inset>(lhs: BothAxisEdgesAnchor<UndefinedConstant>, rhs: BothAxisEdgesAnchor<Inset>) -> BothAxisEdgesExpression<Inset> {
+	BothAxisEdgesExpression(lhs: lhs.withoutModifiers, relation: .lessThanOrEqual, rhs: rhs)
 }
 
-public func >= <Insets>(lhs: EdgesAnchor<NoInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	EdgesExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
+public func >= <Inset>(lhs: BothAxisEdgesAnchor<NoConstant>, rhs: BothAxisEdgesAnchor<Inset>) -> BothAxisEdgesExpression<Inset> {
+	BothAxisEdgesExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
-public func >= <Insets>(lhs: EdgesAnchor<UndefinedInsets>, rhs: EdgesAnchor<Insets>) -> EdgesExpression<Insets> {
-	EdgesExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
+public func >= <Inset>(lhs: BothAxisEdgesAnchor<UndefinedConstant>, rhs: BothAxisEdgesAnchor<Inset>) -> BothAxisEdgesExpression<Inset> {
+	BothAxisEdgesExpression(lhs: lhs.withoutModifiers, relation: .greaterThanOrEqual, rhs: rhs)
 }

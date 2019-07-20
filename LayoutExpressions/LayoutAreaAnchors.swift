@@ -75,8 +75,8 @@ extension LayoutAreaAnchors {
 
 extension LayoutAreaAnchors {
 	/// A composite layout expression anchor representing all four edges of the layout area.
-	public var edges: EdgesAnchor<UndefinedInsets> {
-		guide.anchors.edges
+	public var allEdges: BothAxisEdgesAnchor<UndefinedConstant> {
+		guide.anchors.allEdges
 	}
  
     /// A composite layout expression anchor representing the vertical edges (top and bottom) of the layout area.
