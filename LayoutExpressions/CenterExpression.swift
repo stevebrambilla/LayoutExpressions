@@ -1,6 +1,6 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
+#if os(macOS) && !targetEnvironment(macCatalyst)
 import AppKit
 #else
 import UIKit
@@ -75,7 +75,7 @@ public func + (lhs: CenterAnchor<UndefinedOffset>, offset: Offset) -> CenterAnch
 	lhs.updateOffset(ValueOffset(value: offset))
 }
 
-#if !os(macOS)
+#if !(os(macOS) && !targetEnvironment(macCatalyst))
 public func + (lhs: CenterAnchor<UndefinedOffset>, offset: UIOffset) -> CenterAnchor<ValueOffset> {
     lhs.updateOffset(ValueOffset(value: Offset(offset)))
 }

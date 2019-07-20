@@ -1,6 +1,6 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
+#if os(macOS) && !targetEnvironment(macCatalyst)
 import AppKit
 #else
 import UIKit
@@ -36,7 +36,7 @@ public struct Offset {
 		self.vertical = vertical
 	}
 
-#if !os(macOS)
+#if !(os(macOS) && !targetEnvironment(macCatalyst))
 	public init(_ offset: UIOffset) {
 		self.init(horizontal: offset.horizontal, vertical: offset.vertical)
 	}

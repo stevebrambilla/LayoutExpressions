@@ -1,6 +1,6 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
+#if os(macOS) && !targetEnvironment(macCatalyst)
 import AppKit
 #else
 import UIKit
@@ -33,7 +33,7 @@ public struct Priority: RawRepresentable, Comparable, ExpressibleByIntegerLitera
 // MARK: - System Priorities
 
 public extension Priority {
-#if os(macOS)
+#if os(macOS) && !targetEnvironment(macCatalyst)
     // AppKit
     
     internal init(priority: NSLayoutConstraint.Priority) {

@@ -1,6 +1,6 @@
 //  Copyright © 2019 Steve Brambilla. All rights reserved.
 
-#if os(macOS)
+#if os(macOS) && !targetEnvironment(macCatalyst)
 
 import AppKit
 
