@@ -6,7 +6,6 @@ import AppKit
 import UIKit
 #endif
 
-// ----------------------------------------------------------------------------
 // MARK: - Dimension Expression
 
 public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: ConstantProtocol>: DistinctExpressionProtocol {
@@ -47,7 +46,6 @@ public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: Cons
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Constant Dimension Expression
 
 public struct ConstantDimensionExpression: DistinctExpressionProtocol {
@@ -86,7 +84,6 @@ public struct ConstantDimensionExpression: DistinctExpressionProtocol {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Dimension Anchor
 
 public struct DimensionAnchor<Multiplier: MultiplierProtocol, Constant: ConstantProtocol> {
@@ -113,7 +110,6 @@ public struct DimensionAnchor<Multiplier: MultiplierProtocol, Constant: Constant
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 // CGFloat Constants and Multipliers
@@ -152,7 +148,6 @@ public func * <Constant>(multiplier: Int, rhs: DimensionAnchor<UndefinedMultipli
 	CGFloat(multiplier) * rhs
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Multiplier, Constant>(lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: DimensionAnchor<Multiplier, Constant>) -> DimensionExpression<Multiplier, Constant> {
@@ -179,7 +174,6 @@ public func >= <Multiplier, Constant>(lhs: DimensionAnchor<NoMultiplier, NoConst
 	DimensionExpression(lhs: lhs, relation: .greaterThanOrEqual, rhs: rhs)
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - CGFloat Constant Comparison Operators
 
 public func == (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: CGFloat) -> ConstantDimensionExpression {
@@ -206,7 +200,6 @@ public func >= (lhs: DimensionAnchor<NoMultiplier, NoConstant>, rhs: CGFloat) ->
 	ConstantDimensionExpression(lhs: lhs, relation: .greaterThanOrEqual, constant: ValueConstant(value: rhs))
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Int Constant Comparison Operators
 
 public func == (lhs: DimensionAnchor<UndefinedMultiplier, UndefinedConstant>, rhs: Int) -> ConstantDimensionExpression {

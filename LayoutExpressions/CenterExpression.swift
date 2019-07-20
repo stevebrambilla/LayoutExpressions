@@ -12,7 +12,6 @@ import UIKit
 // With an optional offset:
 // 		subview.anchors.center == container.anchors.center + Offset(horizontal: 0.0, vertical: -10.0)
 
-// ----------------------------------------------------------------------------
 // MARK: - Center Expression
 
 public struct CenterExpression<Offset: OffsetProtocol>: ExpressionProtocol {
@@ -48,7 +47,6 @@ public struct CenterExpression<Offset: OffsetProtocol>: ExpressionProtocol {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Center Anchor
 
 public struct CenterAnchor<Offset: OffsetProtocol> {
@@ -71,14 +69,12 @@ public struct CenterAnchor<Offset: OffsetProtocol> {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func + (lhs: CenterAnchor<UndefinedOffset>, offset: Offset) -> CenterAnchor<ValueOffset> {
 	lhs.updateOffset(ValueOffset(value: offset))
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: CenterAnchor<NoOffset>, rhs: CenterAnchor<Offset>) -> CenterExpression<Offset> {

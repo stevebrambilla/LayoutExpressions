@@ -15,7 +15,6 @@ import UIKit
 // The '+' operator defines outsets:
 // 		subview.anchors.verticalEdges == container.anchors.verticalEdges + 10
 
-// ----------------------------------------------------------------------------
 // MARK: - Axis Edge
 
 public protocol AxisEdgesProtocol {
@@ -42,7 +41,6 @@ public struct YAxisEdges: AxisEdgesProtocol {
     }
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Single Axis Edges Expression
 
 public struct SingleAxisEdgesExpression<Axis: AxisEdgesProtocol, Inset: ConstantProtocol>: ExpressionProtocol {
@@ -81,7 +79,6 @@ public struct SingleAxisEdgesExpression<Axis: AxisEdgesProtocol, Inset: Constant
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Single Axis Edges Anchor
 
 public struct SingleAxisEdgesAnchor<Axis: AxisEdgesProtocol, Inset: ConstantProtocol> {
@@ -110,7 +107,6 @@ public struct SingleAxisEdgesAnchor<Axis: AxisEdgesProtocol, Inset: ConstantProt
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 // CGFloat Insets / Outsets
@@ -133,7 +129,6 @@ public func + <Axis>(lhs: SingleAxisEdgesAnchor<Axis, UndefinedConstant>, outset
 	lhs + CGFloat(outset)
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Axis, Inset>(lhs: SingleAxisEdgesAnchor<Axis, NoConstant>, rhs: SingleAxisEdgesAnchor<Axis, Inset>) -> SingleAxisEdgesExpression<Axis, Inset> {

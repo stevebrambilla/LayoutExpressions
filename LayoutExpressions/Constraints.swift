@@ -6,7 +6,6 @@ import AppKit
 import UIKit
 #endif
 
-// ----------------------------------------------------------------------------
 // MARK: - Layout Anchors
 
 internal struct AnchorConstraints {
@@ -34,7 +33,6 @@ internal struct AnchorConstraints {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Dimension Anchors
 
 internal struct DimensionConstraints {

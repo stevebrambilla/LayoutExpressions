@@ -17,7 +17,6 @@ import UIKit
 // Supports constraining the size to a CGSize:
 //     subview.anchors.size == Offset(width: 320.0, height: 480.0)
 
-// ----------------------------------------------------------------------------
 // MARK: - Size Expression
 
 public struct SizeExpression<Size: SizeProtocol>: ExpressionProtocol {
@@ -53,7 +52,6 @@ public struct SizeExpression<Size: SizeProtocol>: ExpressionProtocol {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Constant Size Expression
 
 public struct ConstantSizeExpression: ExpressionProtocol {
@@ -87,7 +85,6 @@ public struct ConstantSizeExpression: ExpressionProtocol {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Size Anchor
 
 public struct SizeAnchor<Size: SizeProtocol> {
@@ -110,14 +107,12 @@ public struct SizeAnchor<Size: SizeProtocol> {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 public func + (lhs: SizeAnchor<UndefinedSize>, size: Size) -> SizeAnchor<ValueSize> {
 	lhs.update(size: ValueSize(value: size))
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Offset>(lhs: SizeAnchor<NoSize>, rhs: SizeAnchor<Offset>) -> SizeExpression<Offset> {

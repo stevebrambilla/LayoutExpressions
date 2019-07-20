@@ -6,7 +6,6 @@ import AppKit
 import UIKit
 #endif
 
-// ----------------------------------------------------------------------------
 // MARK: - Axis
 
 public protocol AxisProtocol {
@@ -28,7 +27,6 @@ public struct YAxis: AxisProtocol {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Axis Expression
 
 public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: DistinctExpressionProtocol {
@@ -68,7 +66,6 @@ public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: Di
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Axis Anchor
 
 public struct AxisAnchor<Axis: AxisProtocol, Constant: ConstantProtocol> {
@@ -93,7 +90,6 @@ public struct AxisAnchor<Axis: AxisProtocol, Constant: ConstantProtocol> {
 	}
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Arithmetic Operators
 
 // CGFloat Constants
@@ -116,7 +112,6 @@ public func - <Axis>(lhs: AxisAnchor<Axis, UndefinedConstant>, constant: Int) ->
 	lhs - CGFloat(constant)
 }
 
-// ----------------------------------------------------------------------------
 // MARK: - Comparison Operators
 
 public func == <Axis, Constant>(lhs: AxisAnchor<Axis, UndefinedConstant>, rhs: AxisAnchor<Axis, Constant>) -> AxisExpression<Axis, Constant> {
