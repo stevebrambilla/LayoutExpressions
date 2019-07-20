@@ -19,3 +19,20 @@ extension Anchors where Base: UIView {
         LayoutAreaAnchors(guide: base.safeAreaLayoutGuide)
     }
 }
+
+extension Anchors where Base: UIView {
+    /// A composite layout expression anchor representing all four edges of the view's margins.
+    public var allMargins: BothAxisEdgesAnchor<UndefinedConstant> {
+        return margins.allEdges
+    }
+ 
+    /// A composite layout expression anchor representing the horizontal edges (leading and trailing) of the view's layout margin.
+    public var horizontalMargins: SingleAxisEdgesAnchor<XAxisEdges, UndefinedConstant> {
+        return margins.horizontalEdges
+    }
+    
+    /// A composite layout expression anchor representing the vertical edges (top and bottom) of the view's layout margin.
+    public var verticalMargins: SingleAxisEdgesAnchor<YAxisEdges, UndefinedConstant> {
+        return margins.verticalEdges
+    }
+}

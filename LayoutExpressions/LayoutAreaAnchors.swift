@@ -75,9 +75,19 @@ extension LayoutAreaAnchors {
 
 extension LayoutAreaAnchors {
 	/// A composite layout expression anchor representing all four edges of the layout area.
-	public var edges: EdgesAnchor<UndefinedInsets> {
-		guide.anchors.edges
+	public var allEdges: BothAxisEdgesAnchor<UndefinedConstant> {
+		guide.anchors.allEdges
 	}
+ 
+    /// A composite layout expression anchor representing the vertical edges (top and bottom) of the layout area.
+    public var horizontalEdges: SingleAxisEdgesAnchor<XAxisEdges, UndefinedConstant> {
+        guide.anchors.horizontalEdges
+    }
+     
+    /// A composite layout expression anchor representing the vertical edges (top and bottom) of the layout area.
+    public var verticalEdges: SingleAxisEdgesAnchor<YAxisEdges, UndefinedConstant> {
+        guide.anchors.verticalEdges
+    }
 
 	/// A composite layout expression anchor representing the center of the area.
 	public var center: CenterAnchor<UndefinedOffset> {
