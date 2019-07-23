@@ -58,6 +58,12 @@
 		AA2D55A619451F0800F41FCC /* View+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D55A519451F0800F41FCC /* View+Anchors.swift */; };
 		AA5A6FEC1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */; };
 		AA5A6FF01EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */; };
+		AA6D373922E7B9FC0066741A /* LayoutBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D373822E7B9FC0066741A /* LayoutBuilderTests.swift */; };
+		AA6D373A22E7B9FC0066741A /* LayoutBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D373822E7B9FC0066741A /* LayoutBuilderTests.swift */; };
+		AA6D373B22E7B9FC0066741A /* LayoutBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D373822E7B9FC0066741A /* LayoutBuilderTests.swift */; };
+		AA6D373D22E7C9650066741A /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D373C22E7C9650066741A /* LayoutBuilder.swift */; };
+		AA6D373E22E7C9650066741A /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D373C22E7C9650066741A /* LayoutBuilder.swift */; };
+		AA6D373F22E7C9650066741A /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D373C22E7C9650066741A /* LayoutBuilder.swift */; };
 		AA6E63761EF2DCC0000669CD /* LayoutGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE321BE991AD00AB6D1C /* LayoutGuideTests.swift */; };
 		AA6E63771EF2DCC0000669CD /* CenterExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84B8D51943868800827E89 /* CenterExpressionsTests.swift */; };
 		AA6E63781EF2DCC0000669CD /* ConstantDimensionExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCE081BE6865C00AB6D1C /* ConstantDimensionExpressionTests.swift */; };
@@ -182,6 +188,8 @@
 		AA4E17731947D15B00E91E41 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
 		AA5A6FEB1EEA2D8800B6BB72 /* AVPlayerViewController+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerViewController+Anchors.swift"; sourceTree = "<group>"; };
 		AA5A6FEF1EEA2E1E00B6BB72 /* UIScrollView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Anchors.swift"; sourceTree = "<group>"; };
+		AA6D373822E7B9FC0066741A /* LayoutBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilderTests.swift; sourceTree = "<group>"; };
+		AA6D373C22E7C9650066741A /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
 		AA6E63871EF2DCC0000669CD /* LayoutExpressionsTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LayoutExpressionsTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7597D122CA68570060C5A1 /* LayoutExpressions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LayoutExpressions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7597E922CA6D320060C5A1 /* LayoutExpressionsTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LayoutExpressionsTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +324,7 @@
 			children = (
 				AA1BCDC21BDCA42600AB6D1C /* Evaluation.swift */,
 				AA1BCDF11BE6686600AB6D1C /* Constraints.swift */,
+				AA6D373C22E7C9650066741A /* LayoutBuilder.swift */,
 			);
 			name = Functions;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 				AA2D55A119450C1500F41FCC /* PriorityTests.swift */,
 				AACF91CB194008D400748874 /* ViewTests.swift */,
 				AA1BCE321BE991AD00AB6D1C /* LayoutGuideTests.swift */,
+				AA6D373822E7B9FC0066741A /* LayoutBuilderTests.swift */,
 				AA7597FB22CB91D40060C5A1 /* UIKit */,
 				AACF91C9194008D400748874 /* Supporting Files */,
 			);
@@ -668,6 +678,7 @@
 				AA1BCE271BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
 				AA7597F522CB8F290060C5A1 /* PlatformSupport.swift in Sources */,
 				AA1BCDF31BE6686600AB6D1C /* Constraints.swift in Sources */,
+				AA6D373E22E7C9650066741A /* LayoutBuilder.swift in Sources */,
 				AA13D8CA1BF4F35F00174DDF /* LayoutConstraint+Activation.swift in Sources */,
 				AA1BCE131BE692F800AB6D1C /* Relation.swift in Sources */,
 				AA1BCDED1BE5502F00AB6D1C /* Constants.swift in Sources */,
@@ -712,6 +723,7 @@
 				AA7597FE22CB91EE0060C5A1 /* UIViewTests.swift in Sources */,
 				AA6E637E1EF2DCC0000669CD /* PriorityTests.swift in Sources */,
 				AA6E637F1EF2DCC0000669CD /* DimensionExpressionTests.swift in Sources */,
+				AA6D373A22E7B9FC0066741A /* LayoutBuilderTests.swift in Sources */,
 				AA6E63801EF2DCC0000669CD /* SizeExpressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +754,7 @@
 				AAD3DD0222E271BD003A7F55 /* SingleAxisEdgesExpression.swift in Sources */,
 				AA7597C922CA68570060C5A1 /* Priority.swift in Sources */,
 				AA7597EC22CA6F220060C5A1 /* Evaluation.swift in Sources */,
+				AA6D373F22E7C9650066741A /* LayoutBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +774,7 @@
 				AA7597E122CA6D320060C5A1 /* DimensionExpressionTests.swift in Sources */,
 				AA7597FA22CB91BA0060C5A1 /* ViewTests.swift in Sources */,
 				AA7597E222CA6D320060C5A1 /* SizeExpressionTests.swift in Sources */,
+				AA6D373B22E7B9FC0066741A /* LayoutBuilderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1BCDC31BDCA42600AB6D1C /* Evaluation.swift in Sources */,
+				AA6D373D22E7C9650066741A /* LayoutBuilder.swift in Sources */,
 				AA1BCE261BE6EA0000AB6D1C /* SizeExpression.swift in Sources */,
 				AA7597F422CB8F290060C5A1 /* PlatformSupport.swift in Sources */,
 				AA13D8C91BF4F35F00174DDF /* LayoutConstraint+Activation.swift in Sources */,
@@ -813,6 +828,7 @@
 				AA7597FD22CB91EE0060C5A1 /* UIViewTests.swift in Sources */,
 				AA1BCE301BE98F8B00AB6D1C /* PriorityTests.swift in Sources */,
 				AA1BCE041BE6807E00AB6D1C /* DimensionExpressionTests.swift in Sources */,
+				AA6D373922E7B9FC0066741A /* LayoutBuilderTests.swift in Sources */,
 				AA1BCE2C1BE6FF6000AB6D1C /* SizeExpressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
