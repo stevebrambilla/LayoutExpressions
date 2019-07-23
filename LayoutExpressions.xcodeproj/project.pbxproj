@@ -285,6 +285,7 @@
 		AA1BCDC01BDCA3F800AB6D1C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				AA7597F322CB8F290060C5A1 /* PlatformSupport.swift */,
 				AA1BCE2D1BE7037F00AB6D1C /* Types */,
 				AA1BCE201BE6A14100AB6D1C /* Expressions */,
 				AA1BCE2E1BE7039400AB6D1C /* Functions */,
@@ -341,7 +342,6 @@
 		AA5A6FEE1EEA2D9B00B6BB72 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				AA7597F322CB8F290060C5A1 /* PlatformSupport.swift */,
 				AA2D55A519451F0800F41FCC /* View+Anchors.swift */,
 				AA1BCE1A1BE6971C00AB6D1C /* View+Expressions.swift */,
 				AA1BCE141BE6963000AB6D1C /* LayoutGuide+Anchors.swift */,

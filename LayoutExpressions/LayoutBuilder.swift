@@ -46,7 +46,7 @@ public struct LayoutBuilder {
 ///
 /// This is an implementation detail. Don't use on its own.
 public struct LayoutExpression: ExpressionProtocol {
-    private let constraints: [NSLayoutConstraint]
+    private let constraints: [Constraint]
     
     fileprivate init(expression: ExpressionProtocol?) {
         constraints = expression?.evaluateAll() ?? []
@@ -60,7 +60,7 @@ public struct LayoutExpression: ExpressionProtocol {
         return self // Do nothing
     }
     
-    public func evaluateAll() -> [NSLayoutConstraint] {
+    public func evaluateAll() -> [Constraint] {
         return constraints
     }
 }
@@ -68,7 +68,7 @@ public struct LayoutExpression: ExpressionProtocol {
 /// Builds a set of layout expressions and evaluates them into constraints.
 ///
 /// Returns an array of layout constraints.
-public func evaluateLayout(@LayoutBuilder makeLayout: () -> ExpressionProtocol) -> [NSLayoutConstraint] {
+public func evaluateLayout(@LayoutBuilder makeLayout: () -> ExpressionProtocol) -> [Constraint] {
     makeLayout().evaluateAll()
 }
 

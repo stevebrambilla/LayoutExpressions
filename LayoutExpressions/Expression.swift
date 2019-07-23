@@ -8,9 +8,9 @@ import UIKit
 
 public protocol ExpressionProtocol {
 	func update(priority: Priority) -> Self
-	func evaluateAll() -> [NSLayoutConstraint]
+	func evaluateAll() -> [Constraint]
 }
 
 public protocol DistinctExpressionProtocol: ExpressionProtocol {
-	func evaluateDistinct() -> NSLayoutConstraint
+	func evaluateDistinct() -> Constraint
 }

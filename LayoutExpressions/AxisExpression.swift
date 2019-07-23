@@ -47,7 +47,7 @@ public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: Di
 		return AxisExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	public func evaluateDistinct() -> NSLayoutConstraint {
+	public func evaluateDistinct() -> Constraint {
 		let lhsAnchor = lhs.anchor
 		let rhsAnchor = rhs.anchor
 		let constant = rhs.constant.value ?? 0
@@ -61,7 +61,7 @@ public struct AxisExpression<Axis: AxisProtocol, Constant: ConstantProtocol>: Di
 		return constraint
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		return [evaluateDistinct()]
 	}
 }

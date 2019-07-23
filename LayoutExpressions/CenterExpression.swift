@@ -32,7 +32,7 @@ public struct CenterExpression<Offset: OffsetProtocol>: ExpressionProtocol {
 		return CenterExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		let offset = rhs.offset.value ?? LayoutExpressions.Offset.zeroOffset
 
 		let xConstraint = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.centerXAnchor, rhsAnchor: rhs.centerXAnchor, constant: offset.horizontal)

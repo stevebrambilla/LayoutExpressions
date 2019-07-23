@@ -26,7 +26,7 @@ public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: Cons
 		return DimensionExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	public func evaluateDistinct() -> NSLayoutConstraint {
+	public func evaluateDistinct() -> Constraint {
 		let lhsDimension = lhs.dimension
 		let rhsDimension = rhs.dimension
 		let multiplier = rhs.multiplier.value ?? 1
@@ -41,7 +41,7 @@ public struct DimensionExpression<Multiplier: MultiplierProtocol, Constant: Cons
 		return constraint
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		[evaluateDistinct()]
 	}
 }
@@ -66,7 +66,7 @@ public struct ConstantDimensionExpression: DistinctExpressionProtocol {
 		return ConstantDimensionExpression(lhs: lhs, relation: relation, constant: constant, priority: priority)
 	}
 
-	public func evaluateDistinct() -> NSLayoutConstraint {
+	public func evaluateDistinct() -> Constraint {
 		let lhsDimension = lhs.dimension
 		let constantValue = constant.value ?? 0
 
@@ -79,7 +79,7 @@ public struct ConstantDimensionExpression: DistinctExpressionProtocol {
 		return constraint
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		[evaluateDistinct()]
 	}
 }

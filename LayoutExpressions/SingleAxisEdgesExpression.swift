@@ -61,7 +61,7 @@ public struct SingleAxisEdgesExpression<Axis: AxisEdgesProtocol, Inset: Constant
 		return SingleAxisEdgesExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		let inset = rhs.inset.value ?? 0
         
         // top, leading

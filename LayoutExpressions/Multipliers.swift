@@ -1,10 +1,6 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
-import AppKit
-#else
-import UIKit
-#endif
+import CoreGraphics
 
 public protocol MultiplierProtocol {
 	var value: CGFloat? { get }

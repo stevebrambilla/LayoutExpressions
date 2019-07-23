@@ -35,7 +35,7 @@ public struct BothAxisEdgesExpression<Inset: ConstantProtocol>: ExpressionProtoc
 		return BothAxisEdgesExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		let inset = rhs.inset.value ?? 0
 
 		let top = AnchorConstraints.constraintForRelation(relation: relation, lhsAnchor: lhs.topAnchor, rhsAnchor: rhs.topAnchor, constant: -inset)

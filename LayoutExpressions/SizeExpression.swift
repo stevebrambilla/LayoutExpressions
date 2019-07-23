@@ -37,7 +37,7 @@ public struct SizeExpression<Size: SizeProtocol>: ExpressionProtocol {
 		return SizeExpression(lhs: lhs, relation: relation, rhs: rhs, priority: priority)
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		let size = rhs.size.value ?? LayoutExpressions.Size.zeroSize
 
 		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.widthAnchor, rhsDimension: rhs.widthAnchor, multiplier: 1.0, constant: size.width)
@@ -72,7 +72,7 @@ public struct ConstantSizeExpression: ExpressionProtocol {
 		return ConstantSizeExpression(lhs: lhs, relation: relation, size: size, priority: priority)
 	}
 
-	public func evaluateAll() -> [NSLayoutConstraint] {
+	public func evaluateAll() -> [Constraint] {
 		let widthConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.widthAnchor, constant: size.width)
 		let heightConstraint = DimensionConstraints.constraintForRelation(relation: relation, lhsDimension: lhs.heightAnchor, constant: size.height)
 
