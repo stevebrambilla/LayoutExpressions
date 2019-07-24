@@ -1,9 +1,11 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
 import AppKit
 #else
-import UIKit
+#error("Requires either UIKit or AppKit")
 #endif
 
 public protocol ExpressionProtocol {
