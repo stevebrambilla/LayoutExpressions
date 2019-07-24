@@ -18,34 +18,34 @@ class ViewTests: XCTestCase {
 	}
 
 	func testYAxis() {
-		let topAndBottom = evaluateLayoutExpression(subview.anchors.top == container.anchors.bottom)
+		let topAndBottom = Constraint.evaluate(subview.anchors.top == container.anchors.bottom)
         assertConstraint(topAndBottom, first: subview, .top, relation: .equal, second: container, .bottom)
 		
-		let centerY = evaluateLayoutExpression(subview.anchors.centerY == container.anchors.centerY)
+		let centerY = Constraint.evaluate(subview.anchors.centerY == container.anchors.centerY)
         assertConstraint(centerY, first: subview, .centerY, relation: .equal, second: container, .centerY)
 	}
 
 	func testXAxis() {
-		let leftAndRight = evaluateLayoutExpression(subview.anchors.left == container.anchors.right)
+		let leftAndRight = Constraint.evaluate(subview.anchors.left == container.anchors.right)
         assertConstraint(leftAndRight, first: subview, .left, relation: .equal, second: container, .right)
 
-		let leadingAndTrailing = evaluateLayoutExpression(subview.anchors.leading == container.anchors.trailing)
+		let leadingAndTrailing = Constraint.evaluate(subview.anchors.leading == container.anchors.trailing)
         assertConstraint(leadingAndTrailing, first: subview, .leading, relation: .equal, second: container, .trailing)
 
-		let centerX = evaluateLayoutExpression(subview.anchors.centerX == container.anchors.centerX)
+		let centerX = Constraint.evaluate(subview.anchors.centerX == container.anchors.centerX)
         assertConstraint(centerX, first: subview, .centerX, relation: .equal, second: container, .centerX)
 	}
 
 	func testDimensions() {
-		let width = evaluateLayoutExpression(subview.anchors.width == container.anchors.width)
+		let width = Constraint.evaluate(subview.anchors.width == container.anchors.width)
         assertConstraint(width, first: subview, .width, relation: .equal, second: container, .width)
 
-		let height = evaluateLayoutExpression(subview.anchors.height == container.anchors.height)
+		let height = Constraint.evaluate(subview.anchors.height == container.anchors.height)
 		assertConstraint(height, first: subview, .height, relation: .equal, second: container, .height)
 	}
 
 	func testCenter() {
-		let constraints = evaluateLayoutExpression(subview.anchors.center == container.anchors.center)
+		let constraints = Constraint.evaluate(subview.anchors.center == container.anchors.center)
 		XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let centerX = extractSingleConstraint(constraints, withAttributes: .centerX)
@@ -56,7 +56,7 @@ class ViewTests: XCTestCase {
 	}
 
 	func testSize() {
-		let constraints = evaluateLayoutExpression(subview.anchors.size == container.anchors.size)
+		let constraints = Constraint.evaluate(subview.anchors.size == container.anchors.size)
 		XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let width = extractSingleConstraint(constraints, withAttributes: .width)
@@ -67,7 +67,7 @@ class ViewTests: XCTestCase {
 	}
 
 	func testAllEdges() {
-		let constraints = evaluateLayoutExpression(subview.anchors.allEdges == container.anchors.allEdges)
+		let constraints = Constraint.evaluate(subview.anchors.allEdges == container.anchors.allEdges)
 		XCTAssert(constraints.count == 4, "Expected exactly 4 constraints")
 
         let top = extractSingleConstraint(constraints, withAttributes: .top)
@@ -84,7 +84,7 @@ class ViewTests: XCTestCase {
 	}
     
     func testVerticalEdges() {
-        let constraints = evaluateLayoutExpression(subview.anchors.verticalEdges == container.anchors.verticalEdges)
+        let constraints = Constraint.evaluate(subview.anchors.verticalEdges == container.anchors.verticalEdges)
         XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let top = extractSingleConstraint(constraints, withAttributes: .top)
@@ -95,7 +95,7 @@ class ViewTests: XCTestCase {
     }
     
     func testHorizontalEdges() {
-        let constraints = evaluateLayoutExpression(subview.anchors.horizontalEdges == container.anchors.horizontalEdges)
+        let constraints = Constraint.evaluate(subview.anchors.horizontalEdges == container.anchors.horizontalEdges)
         XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let leading = extractSingleConstraint(constraints, withAttributes: .leading)
@@ -106,23 +106,23 @@ class ViewTests: XCTestCase {
     }
 
 	func testConstant() {
-		let positive = evaluateLayoutExpression(subview.anchors.top == container.anchors.top + 15.0)
+		let positive = Constraint.evaluate(subview.anchors.top == container.anchors.top + 15.0)
         assertConstraint(positive, first: subview, .top, relation: .equal, second: container, .top, constant: 15.0)
 
-		let negative = evaluateLayoutExpression(subview.anchors.top == container.anchors.top - 15.0)
+		let negative = Constraint.evaluate(subview.anchors.top == container.anchors.top - 15.0)
         assertConstraint(negative, first: subview, .top, relation: .equal, second: container, .top, constant: -15.0)
 	}
 
 	func testMultiplier() {
-		let onRightSide = evaluateLayoutExpression(subview.anchors.width == container.anchors.width * 2)
+		let onRightSide = Constraint.evaluate(subview.anchors.width == container.anchors.width * 2)
         assertConstraint(onRightSide, first: subview, .width, relation: .equal, second: container, .width, multiplier: 2)
 
-		let onLeftSide = evaluateLayoutExpression(subview.anchors.width == 2 * container.anchors.width)
+		let onLeftSide = Constraint.evaluate(subview.anchors.width == 2 * container.anchors.width)
         assertConstraint(onLeftSide, first: subview, .width, relation: .equal, second: container, .width, multiplier: 2)
 	}
 
 	func testConstantAndMultiplier() {
-		let constraint = evaluateLayoutExpression(subview.anchors.width == container.anchors.width * 2 + 15.0)
+		let constraint = Constraint.evaluate(subview.anchors.width == container.anchors.width * 2 + 15.0)
         assertConstraint(constraint, first: subview, .width, relation: .equal, second: container, .width, multiplier: 2, constant: 15.0)
 	}
 

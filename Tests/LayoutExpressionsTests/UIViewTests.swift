@@ -21,46 +21,46 @@ class UIViewTests: XCTestCase {
     }
 
     func testLayoutMarginsLayoutArea() {
-        let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.margins.top)
+        let top = Constraint.evaluate(subview.anchors.top == container.anchors.margins.top)
         assertConstraint(top, first: subview, .top, relation: .equal, second: container.layoutMarginsGuide, .top)
 
-        let left = evaluateLayoutExpression(subview.anchors.left == container.anchors.margins.left)
+        let left = Constraint.evaluate(subview.anchors.left == container.anchors.margins.left)
         assertConstraint(left, first: subview, .left, relation: .equal, second: container.layoutMarginsGuide, .left)
 
-        let bottom = evaluateLayoutExpression(subview.anchors.bottom == container.anchors.margins.bottom)
+        let bottom = Constraint.evaluate(subview.anchors.bottom == container.anchors.margins.bottom)
         assertConstraint(bottom, first: subview, .bottom, relation: .equal, second: container.layoutMarginsGuide, .bottom)
 
-        let right = evaluateLayoutExpression(subview.anchors.right == container.anchors.margins.right)
+        let right = Constraint.evaluate(subview.anchors.right == container.anchors.margins.right)
         assertConstraint(right, first: subview, .right, relation: .equal, second: container.layoutMarginsGuide, .right)
     }
 
     func testReadableContentLayoutArea() {
-        let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.readable.top)
+        let top = Constraint.evaluate(subview.anchors.top == container.anchors.readable.top)
         assertConstraint(top, first: subview, .top, relation: .equal, second: container.readableContentGuide, .top)
 
-        let left = evaluateLayoutExpression(subview.anchors.left == container.anchors.readable.left)
+        let left = Constraint.evaluate(subview.anchors.left == container.anchors.readable.left)
         assertConstraint(left, first: subview, .left, relation: .equal, second: container.readableContentGuide, .left)
 
-        let bottom = evaluateLayoutExpression(subview.anchors.bottom == container.anchors.readable.bottom)
+        let bottom = Constraint.evaluate(subview.anchors.bottom == container.anchors.readable.bottom)
         assertConstraint(bottom, first: subview, .bottom, relation: .equal, second: container.readableContentGuide, .bottom)
 
-        let right = evaluateLayoutExpression(subview.anchors.right == container.anchors.readable.right)
+        let right = Constraint.evaluate(subview.anchors.right == container.anchors.readable.right)
         assertConstraint(right, first: subview, .right, relation: .equal, second: container.readableContentGuide, .right)
     }
     
     func testSafeAreaLayoutArea() {
         guard #available(iOS 11.0, tvOS 11.0, *) else { return }
     
-        let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.safeArea.top)
+        let top = Constraint.evaluate(subview.anchors.top == container.anchors.safeArea.top)
         assertConstraint(top, first: subview, .top, relation: .equal, second: container.safeAreaLayoutGuide, .top)
         
-        let left = evaluateLayoutExpression(subview.anchors.left == container.anchors.safeArea.left)
+        let left = Constraint.evaluate(subview.anchors.left == container.anchors.safeArea.left)
         assertConstraint(left, first: subview, .left, relation: .equal, second: container.safeAreaLayoutGuide, .left)
         
-        let bottom = evaluateLayoutExpression(subview.anchors.bottom == container.anchors.safeArea.bottom)
+        let bottom = Constraint.evaluate(subview.anchors.bottom == container.anchors.safeArea.bottom)
         assertConstraint(bottom, first: subview, .bottom, relation: .equal, second: container.safeAreaLayoutGuide, .bottom)
         
-        let right = evaluateLayoutExpression(subview.anchors.right == container.anchors.safeArea.right)
+        let right = Constraint.evaluate(subview.anchors.right == container.anchors.safeArea.right)
         assertConstraint(right, first: subview, .right, relation: .equal, second: container.safeAreaLayoutGuide, .right)
     }
 }

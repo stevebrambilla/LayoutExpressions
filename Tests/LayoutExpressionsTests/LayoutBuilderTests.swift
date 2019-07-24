@@ -17,7 +17,7 @@ class LayoutBuilderTests: XCTestCase {
     }
     
     func testSingleExpression() {
-        let constraints = evaluateLayout {
+        let constraints = Constraint.evaluateLayout {
             subview.anchors.top == container.anchors.top
         }
         
@@ -26,7 +26,7 @@ class LayoutBuilderTests: XCTestCase {
     }
     
     func testMultipleExpressions() {
-        let constraints = evaluateLayout {
+        let constraints = Constraint.evaluateLayout {
             subview.anchors.top == container.anchors.top
             subview.anchors.bottom == container.anchors.bottom
         }
@@ -41,7 +41,7 @@ class LayoutBuilderTests: XCTestCase {
     func testIfConditionTrue() {
         let pinToTop = true
         
-        let constraints = evaluateLayout {
+        let constraints = Constraint.evaluateLayout {
             if pinToTop {
                 subview.anchors.top == container.anchors.top
             } else {
@@ -58,7 +58,7 @@ class LayoutBuilderTests: XCTestCase {
     func testIfConditionFalse() {
         let pinToTop = false
         
-        let constraints = evaluateLayout {
+        let constraints = Constraint.evaluateLayout {
             if pinToTop {
                 subview.anchors.top == container.anchors.top
             } else {
@@ -75,7 +75,7 @@ class LayoutBuilderTests: XCTestCase {
     func testIfWithoutElse() {
         var pinToTop = true
         
-        let constraintsShouldHaveOne = evaluateLayout {
+        let constraintsShouldHaveOne = Constraint.evaluateLayout {
             if pinToTop {
                 subview.anchors.top == container.anchors.top
             }
@@ -84,7 +84,7 @@ class LayoutBuilderTests: XCTestCase {
         
         pinToTop = false
         
-        let constraintsShouldBeEmpty = evaluateLayout {
+        let constraintsShouldBeEmpty = Constraint.evaluateLayout {
             if pinToTop {
                 subview.anchors.top == container.anchors.top
             }
@@ -95,7 +95,7 @@ class LayoutBuilderTests: XCTestCase {
     func testMultiConditionIf() {
         let stringAttribute = "leading"
         
-        let constraints = evaluateLayout {
+        let constraints = Constraint.evaluateLayout {
             if stringAttribute == "top" {
                 subview.anchors.top == container.anchors.top
             } else if stringAttribute == "leading" {

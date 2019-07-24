@@ -41,39 +41,39 @@ class SizeExpressionTests: XCTestCase {
 	}
 
 	func testSizeOperators() {
-		let eqConstraints = evaluateLayoutExpression(subview.anchors.size == container.anchors.size)
+		let eqConstraints = Constraint.evaluate(subview.anchors.size == container.anchors.size)
         assertSizeConstraints(eqConstraints, first: subview, relation: .equal, second: container)
 
-		let ltConstraints = evaluateLayoutExpression(subview.anchors.size <= container.anchors.size)
+		let ltConstraints = Constraint.evaluate(subview.anchors.size <= container.anchors.size)
         assertSizeConstraints(ltConstraints, first: subview, relation: .lessThanOrEqual, second: container)
 
-		let gtConstraints = evaluateLayoutExpression(subview.anchors.size >= container.anchors.size)
+		let gtConstraints = Constraint.evaluate(subview.anchors.size >= container.anchors.size)
         assertSizeConstraints(gtConstraints, first: subview, relation: .greaterThanOrEqual, second: container)
 	}
 
 	func testFixedSizeOperators() {
 		let fixedSize = Size(width: 320.0, height: 400.0)
 
-		let equalsConstraints = evaluateLayoutExpression(subview.anchors.size == fixedSize)
+		let equalsConstraints = Constraint.evaluate(subview.anchors.size == fixedSize)
         assertFixedSizeConstraints(equalsConstraints, item: subview, relation: .equal, width: 320, height: 400)
 
-		let ltConstraints = evaluateLayoutExpression(subview.anchors.size <= fixedSize)
+		let ltConstraints = Constraint.evaluate(subview.anchors.size <= fixedSize)
         assertFixedSizeConstraints(ltConstraints, item: subview, relation: .lessThanOrEqual, width: 320, height: 400)
 
-		let gtConstraints = evaluateLayoutExpression(subview.anchors.size >= fixedSize)
+		let gtConstraints = Constraint.evaluate(subview.anchors.size >= fixedSize)
         assertFixedSizeConstraints(gtConstraints, item: subview, relation: .greaterThanOrEqual, width: 320, height: 400)
 	}
     
     func testFixedCGSizeOperators() {
         let fixedCGSize = CGSize(width: 320.0, height: 400.0)
         
-        let equalsConstraints = evaluateLayoutExpression(subview.anchors.size == fixedCGSize)
+        let equalsConstraints = Constraint.evaluate(subview.anchors.size == fixedCGSize)
         assertFixedSizeConstraints(equalsConstraints, item: subview, relation: .equal, width: 320, height: 400)
         
-        let ltConstraints = evaluateLayoutExpression(subview.anchors.size <= fixedCGSize)
+        let ltConstraints = Constraint.evaluate(subview.anchors.size <= fixedCGSize)
         assertFixedSizeConstraints(ltConstraints, item: subview, relation: .lessThanOrEqual, width: 320, height: 400)
         
-        let gtConstraints = evaluateLayoutExpression(subview.anchors.size >= fixedCGSize)
+        let gtConstraints = Constraint.evaluate(subview.anchors.size >= fixedCGSize)
         assertFixedSizeConstraints(gtConstraints, item: subview, relation: .greaterThanOrEqual, width: 320, height: 400)
     }
 }

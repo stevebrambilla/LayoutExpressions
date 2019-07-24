@@ -23,13 +23,13 @@ class UIViewControllerTests: XCTestCase {
 	@available(iOS, deprecated: 11.0)
 	@available(tvOS, deprecated: 11.0)
 	func testViewControllerExtensionLayoutGuides() {
-		let top = evaluateLayoutExpression(subview.anchors.top == viewController.anchors.top)
+		let top = Constraint.evaluate(subview.anchors.top == viewController.anchors.top)
 		XCTAssert(top.firstItem === subview)
 		XCTAssert(top.secondItem === viewController.topLayoutGuide)
 		XCTAssert(top.firstAttribute == .top)
 		XCTAssert(top.secondAttribute == .bottom)
 
-		let bottom = evaluateLayoutExpression(subview.anchors.bottom == viewController.anchors.bottom)
+		let bottom = Constraint.evaluate(subview.anchors.bottom == viewController.anchors.bottom)
 		XCTAssert(bottom.firstAttribute == .bottom)
 		XCTAssert(bottom.secondAttribute == .top)
 	}

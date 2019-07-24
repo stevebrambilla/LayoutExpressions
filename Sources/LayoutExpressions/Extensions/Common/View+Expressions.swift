@@ -6,7 +6,7 @@ extension View {
 	/// Returns the layout constraint.
 	@discardableResult
 	public func addLayoutExpression(_ expression: DistinctExpressionProtocol) -> Constraint {
-		let constraint = evaluateLayoutExpression(expression)
+		let constraint = Constraint.evaluate(expression)
 		addConstraint(constraint)
 		return constraint
 	}
@@ -16,7 +16,7 @@ extension View {
 	/// Returns the layout constraints.
 	@discardableResult
 	public func addLayoutExpression(_ expression: ExpressionProtocol) -> [Constraint] {
-		let constraints = evaluateLayoutExpression(expression)
+		let constraints = Constraint.evaluate(expression)
 		addConstraints(constraints)
 		return constraints
 	}
@@ -26,7 +26,7 @@ extension View {
 	/// Returns the layout constraints.
 	@discardableResult
 	public func addLayoutExpressions(_ expressions: ExpressionProtocol...) -> [Constraint] {
-		let constraints = evaluateLayoutExpressions(expressions)
+		let constraints = Constraint.evaluate(expressions)
 		addConstraints(constraints)
 		return constraints
 	}

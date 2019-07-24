@@ -18,34 +18,34 @@ class LayoutGuideTests: XCTestCase {
 	}
     
     func testYAxis() {
-        let topAndBottom = evaluateLayoutExpression(guide.anchors.top == container.anchors.bottom)
+        let topAndBottom = Constraint.evaluate(guide.anchors.top == container.anchors.bottom)
         assertConstraint(topAndBottom, first: guide, .top, relation: .equal, second: container, .bottom)
         
-        let centerY = evaluateLayoutExpression(guide.anchors.centerY == container.anchors.centerY)
+        let centerY = Constraint.evaluate(guide.anchors.centerY == container.anchors.centerY)
         assertConstraint(centerY, first: guide, .centerY, relation: .equal, second: container, .centerY)
     }
     
     func testXAxis() {
-        let leftAndRight = evaluateLayoutExpression(guide.anchors.left == container.anchors.right)
+        let leftAndRight = Constraint.evaluate(guide.anchors.left == container.anchors.right)
         assertConstraint(leftAndRight, first: guide, .left, relation: .equal, second: container, .right)
         
-        let leadingAndTrailing = evaluateLayoutExpression(guide.anchors.leading == container.anchors.trailing)
+        let leadingAndTrailing = Constraint.evaluate(guide.anchors.leading == container.anchors.trailing)
         assertConstraint(leadingAndTrailing, first: guide, .leading, relation: .equal, second: container, .trailing)
         
-        let centerX = evaluateLayoutExpression(guide.anchors.centerX == container.anchors.centerX)
+        let centerX = Constraint.evaluate(guide.anchors.centerX == container.anchors.centerX)
         assertConstraint(centerX, first: guide, .centerX, relation: .equal, second: container, .centerX)
     }
     
     func testDimensions() {
-        let width = evaluateLayoutExpression(guide.anchors.width == container.anchors.width)
+        let width = Constraint.evaluate(guide.anchors.width == container.anchors.width)
         assertConstraint(width, first: guide, .width, relation: .equal, second: container, .width)
         
-        let height = evaluateLayoutExpression(guide.anchors.height == container.anchors.height)
+        let height = Constraint.evaluate(guide.anchors.height == container.anchors.height)
         assertConstraint(height, first: guide, .height, relation: .equal, second: container, .height)
     }
     
     func testCenter() {
-        let constraints = evaluateLayoutExpression(guide.anchors.center == container.anchors.center)
+        let constraints = Constraint.evaluate(guide.anchors.center == container.anchors.center)
         XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let centerX = extractSingleConstraint(constraints, withAttributes: .centerX)
@@ -56,7 +56,7 @@ class LayoutGuideTests: XCTestCase {
     }
     
     func testSize() {
-        let constraints = evaluateLayoutExpression(guide.anchors.size == container.anchors.size)
+        let constraints = Constraint.evaluate(guide.anchors.size == container.anchors.size)
         XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let width = extractSingleConstraint(constraints, withAttributes: .width)
@@ -67,7 +67,7 @@ class LayoutGuideTests: XCTestCase {
     }
     
     func testAllEdges() {
-        let constraints = evaluateLayoutExpression(guide.anchors.allEdges == container.anchors.allEdges)
+        let constraints = Constraint.evaluate(guide.anchors.allEdges == container.anchors.allEdges)
         XCTAssert(constraints.count == 4, "Expected exactly 4 constraints")
         
         let top = extractSingleConstraint(constraints, withAttributes: .top)
@@ -84,7 +84,7 @@ class LayoutGuideTests: XCTestCase {
     }
     
     func testVerticalEdges() {
-        let constraints = evaluateLayoutExpression(guide.anchors.verticalEdges == container.anchors.verticalEdges)
+        let constraints = Constraint.evaluate(guide.anchors.verticalEdges == container.anchors.verticalEdges)
         XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let top = extractSingleConstraint(constraints, withAttributes: .top)
@@ -95,7 +95,7 @@ class LayoutGuideTests: XCTestCase {
     }
     
     func testHorizontalEdges() {
-        let constraints = evaluateLayoutExpression(guide.anchors.horizontalEdges == container.anchors.horizontalEdges)
+        let constraints = Constraint.evaluate(guide.anchors.horizontalEdges == container.anchors.horizontalEdges)
         XCTAssert(constraints.count == 2, "Expected exactly 2 constraints")
         
         let leading = extractSingleConstraint(constraints, withAttributes: .leading)
@@ -106,23 +106,23 @@ class LayoutGuideTests: XCTestCase {
     }
     
     func testConstant() {
-        let positive = evaluateLayoutExpression(guide.anchors.top == container.anchors.top + 15.0)
+        let positive = Constraint.evaluate(guide.anchors.top == container.anchors.top + 15.0)
         assertConstraint(positive, first: guide, .top, relation: .equal, second: container, .top, constant: 15.0)
         
-        let negative = evaluateLayoutExpression(guide.anchors.top == container.anchors.top - 15.0)
+        let negative = Constraint.evaluate(guide.anchors.top == container.anchors.top - 15.0)
         assertConstraint(negative, first: guide, .top, relation: .equal, second: container, .top, constant: -15.0)
     }
     
     func testMultiplier() {
-        let onRightSide = evaluateLayoutExpression(guide.anchors.width == container.anchors.width * 2)
+        let onRightSide = Constraint.evaluate(guide.anchors.width == container.anchors.width * 2)
         assertConstraint(onRightSide, first: guide, .width, relation: .equal, second: container, .width, multiplier: 2)
         
-        let onLeftSide = evaluateLayoutExpression(guide.anchors.width == 2 * container.anchors.width)
+        let onLeftSide = Constraint.evaluate(guide.anchors.width == 2 * container.anchors.width)
         assertConstraint(onLeftSide, first: guide, .width, relation: .equal, second: container, .width, multiplier: 2)
     }
     
     func testConstantAndMultiplier() {
-        let constraint = evaluateLayoutExpression(guide.anchors.width == container.anchors.width * 2 + 15.0)
+        let constraint = Constraint.evaluate(guide.anchors.width == container.anchors.width * 2 + 15.0)
         assertConstraint(constraint, first: guide, .width, relation: .equal, second: container, .width, multiplier: 2, constant: 15.0)
     }
     

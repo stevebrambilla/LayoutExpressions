@@ -59,19 +59,21 @@ public struct LayoutExpression: ExpressionProtocol {
     }
 }
 
-/// Builds a set of layout expressions and evaluates them into constraints.
-///
-/// Returns an array of layout constraints.
-public func evaluateLayout(@LayoutBuilder makeLayout: () -> ExpressionProtocol) -> [Constraint] {
-    makeLayout().evaluateAll()
-}
+extension Constraint {
+    /// Builds a set of layout expressions and evaluates them into constraints.
+    ///
+    /// Returns an array of layout constraints.
+    public static func evaluateLayout(@LayoutBuilder makeLayout: () -> ExpressionProtocol) -> [Constraint] {
+        makeLayout().evaluateAll()
+    }
 
-/// Builds and activates a set of layout expressions.
-///
-/// The effect of this function is the same as setting the `isActive` property of the constraints to
-/// `true`.
-public func activateLayout(@LayoutBuilder makeLayout: () -> ExpressionProtocol) {
-    makeLayout().evaluateAll().activateConstraints()
+    /// Builds and activates a set of layout expressions.
+    ///
+    /// The effect of this function is the same as setting the `isActive` property of the constraints to
+    /// `true`.
+    public static func activateLayout(@LayoutBuilder makeLayout: () -> ExpressionProtocol) {
+        makeLayout().evaluateAll().activateConstraints()
+    }
 }
 
 #endif
