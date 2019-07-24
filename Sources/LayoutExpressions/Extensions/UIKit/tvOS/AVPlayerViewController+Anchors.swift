@@ -1,5 +1,7 @@
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
 
+#if os(tvOS)
+
 import AVKit
 
 extension Anchors where Base: AVPlayerViewController {
@@ -9,3 +11,5 @@ extension Anchors where Base: AVPlayerViewController {
 		LayoutAreaAnchors(guide: base.unobscuredContentGuide)
 	}
 }
+
+#endif

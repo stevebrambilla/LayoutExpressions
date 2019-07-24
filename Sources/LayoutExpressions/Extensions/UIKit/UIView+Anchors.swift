@@ -1,5 +1,7 @@
 //  Copyright © 2019 Steve Brambilla. All rights reserved.
 
+#if canImport(UIKit)
+
 import UIKit
 
 extension Anchors where Base: UIView {
@@ -36,3 +38,5 @@ extension Anchors where Base: UIView {
         return margins.verticalEdges
     }
 }
+
+#endif

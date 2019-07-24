@@ -1,6 +1,9 @@
 //  Copyright (c) 2014 Steve Brambilla. All rights reserved.
 
+#if canImport(UIKit)
+
 import LayoutExpressions
+import UIKit
 import XCTest
 
 class UIViewControllerTests: XCTestCase {
@@ -31,3 +34,5 @@ class UIViewControllerTests: XCTestCase {
 		XCTAssert(bottom.secondAttribute == .top)
 	}
 }
+
+#endif

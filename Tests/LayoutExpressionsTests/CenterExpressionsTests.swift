@@ -40,7 +40,7 @@ class CenterExpressionsTests: XCTestCase {
         assertConstraint(centerY, first: subview, relation: .equal, second: container, constant: -10)
 	}
 
-#if !(os(macOS) && !targetEnvironment(macCatalyst))
+#if canImport(UIKit)
 	func testCenterToViewWithOffsetFromUIOffset() {
 		let offset = UIOffset(horizontal: 5.0, vertical: -10.0)
 		let expression = (subview.anchors.center == container.anchors.center + offset)

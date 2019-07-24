@@ -1,5 +1,7 @@
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
 
+#if canImport(UIKit)
+
 import UIKit
 
 extension UIViewController: AnchorsExtensionsProvider {}
@@ -21,3 +23,5 @@ extension Anchors where Base: UIViewController {
 		AxisAnchor(axis: YAxis(anchor: base.bottomLayoutGuide.topAnchor), constant: UndefinedConstant())
 	}
 }
+
+#endif

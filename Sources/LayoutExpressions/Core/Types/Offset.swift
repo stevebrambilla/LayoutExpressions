@@ -1,9 +1,11 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
 import AppKit
 #else
-import UIKit
+#error("Requires either UIKit or AppKit")
 #endif
 
 public protocol OffsetProtocol {
@@ -36,7 +38,7 @@ public struct Offset {
 		self.vertical = vertical
 	}
 
-#if !(os(macOS) && !targetEnvironment(macCatalyst))
+#if canImport(UIKit)
 	public init(_ offset: UIOffset) {
 		self.init(horizontal: offset.horizontal, vertical: offset.vertical)
 	}

@@ -1,9 +1,11 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
 import AppKit
 #else
-import UIKit
+#error("Requires either UIKit or AppKit")
 #endif
 
 public struct Priority: RawRepresentable, Comparable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
@@ -32,10 +34,36 @@ public struct Priority: RawRepresentable, Comparable, ExpressibleByIntegerLitera
 
 // MARK: - System Priorities
 
+#if canImport(UIKit)
+
+/// UIKit
 public extension Priority {
-#if os(macOS) && !targetEnvironment(macCatalyst)
-    // AppKit
+    internal init(priority: UILayoutPriority) {
+        self.rawValue = priority.rawValue
+    }
     
+    internal var layoutPriority: UILayoutPriority {
+        UILayoutPriority(rawValue: self.rawValue)
+    }
+    
+    /// A required constraint.
+    static let required = Priority(priority: .required)
+    
+    /// The priority level with which a button resists compressing its content.
+    static let defaultHigh = Priority(priority: .defaultHigh)
+    
+    /// The priority level at which a button hugs its contents horizontally.
+    static let defaultLow = Priority(priority: .defaultLow)
+    
+    /// The priority level with which the view wants to conform to the target size in that
+    /// computation.
+    static let fittingSizeLevel = Priority(priority: .fittingSizeLevel)
+}
+    
+#elseif canImport(AppKit)
+    
+/// AppKit
+public extension Priority {
     internal init(priority: NSLayoutConstraint.Priority) {
         self.rawValue = priority.rawValue
     }
@@ -65,31 +93,11 @@ public extension Priority {
     /// When you send a `fittingSize` message to a view, the smallest size that is large enough for
     /// the view's contents is computed.
     static let fittingSizeCompression = Priority(priority: .fittingSizeCompression)
-#else
-    // UIKit
-    
-    internal init(priority: UILayoutPriority) {
-        self.rawValue = priority.rawValue
-    }
-    
-    internal var layoutPriority: UILayoutPriority {
-        UILayoutPriority(rawValue: self.rawValue)
-    }
-    
-    /// A required constraint.
-    static let required = Priority(priority: .required)
-    
-    /// The priority level with which a button resists compressing its content.
-    static let defaultHigh = Priority(priority: .defaultHigh)
-    
-    /// The priority level at which a button hugs its contents horizontally.
-    static let defaultLow = Priority(priority: .defaultLow)
-    
-    /// The priority level with which the view wants to conform to the target size in that
-    /// computation.
-    static let fittingSizeLevel = Priority(priority: .fittingSizeLevel)
+}
+
 #endif
 
+public extension Priority {
     /// Priority that keeps the view from being stretched or compressed but still provides an
     /// emergency pressure valve, just in case your view is displayed in an environment that is
     /// bigger or smaller than you expected.

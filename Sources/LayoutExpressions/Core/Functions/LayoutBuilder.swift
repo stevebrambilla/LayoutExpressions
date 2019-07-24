@@ -1,11 +1,5 @@
 //  Copyright © 2019 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
-import AppKit
-#else
-import UIKit
-#endif
-
 // MARK: - ***Experimental***
 
 #if swift(>=5.1)

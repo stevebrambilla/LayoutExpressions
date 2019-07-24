@@ -1,12 +1,9 @@
-//
-//  UIViewTests.swift
-//  LayoutExpressions
-//
-//  Created by Steve Brambilla on 2019-07-02.
 //  Copyright © 2019 Steve Brambilla. All rights reserved.
-//
+
+#if canImport(UIKit)
 
 import LayoutExpressions
+import UIKit
 import XCTest
 
 class UIViewTests: XCTestCase {
@@ -52,6 +49,8 @@ class UIViewTests: XCTestCase {
     }
     
     func testSafeAreaLayoutArea() {
+        guard #available(iOS 11.0, tvOS 11.0, *) else { return }
+    
         let top = evaluateLayoutExpression(subview.anchors.top == container.anchors.safeArea.top)
         assertConstraint(top, first: subview, .top, relation: .equal, second: container.safeAreaLayoutGuide, .top)
         
@@ -65,3 +64,6 @@ class UIViewTests: XCTestCase {
         assertConstraint(right, first: subview, .right, relation: .equal, second: container.safeAreaLayoutGuide, .right)
     }
 }
+
+#endif
+

@@ -1,9 +1,11 @@
 //  Copyright (c) 2015 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
 import AppKit
 #else
-import UIKit
+#error("Requires either UIKit or AppKit")
 #endif
 
 // Supports pinning the center to another view:
@@ -75,7 +77,7 @@ public func + (lhs: CenterAnchor<UndefinedOffset>, offset: Offset) -> CenterAnch
 	lhs.updateOffset(ValueOffset(value: offset))
 }
 
-#if !(os(macOS) && !targetEnvironment(macCatalyst))
+#if canImport(UIKit)
 public func + (lhs: CenterAnchor<UndefinedOffset>, offset: UIOffset) -> CenterAnchor<ValueOffset> {
     lhs.updateOffset(ValueOffset(value: Offset(offset)))
 }

@@ -1,9 +1,11 @@
 //  Copyright (c) 2019 Steve Brambilla. All rights reserved.
 
-#if os(macOS) && !targetEnvironment(macCatalyst)
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
 import AppKit
 #else
-import UIKit
+#error("Requires either UIKit or AppKit")
 #endif
 
 // Supports pinning edges in a single dimension:

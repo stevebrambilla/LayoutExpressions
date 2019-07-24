@@ -35,3 +35,4 @@ xcuserdata/
 # Package.pins
 # Package.resolved
 .build/
+.swiftpm

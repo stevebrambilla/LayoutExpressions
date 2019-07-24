@@ -1,5 +1,7 @@
 //  Copyright © 2017 Steve Brambilla. All rights reserved.
 
+#if canImport(UIKit)
+
 import UIKit
 
 extension Anchors where Base: UIScrollView {
@@ -15,3 +17,5 @@ extension Anchors where Base: UIScrollView {
 		LayoutAreaAnchors(guide: base.frameLayoutGuide)
 	}
 }
+
+#endif

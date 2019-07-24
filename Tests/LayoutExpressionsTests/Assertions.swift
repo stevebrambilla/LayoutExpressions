@@ -99,7 +99,7 @@ fileprivate func debugString(attribute: Constraint.Attribute?) -> String {
     case .lastBaseline: return ".lastBaseline"
     case .firstBaseline: return ".firstBaseline"
     
-    #if !(os(macOS) && !targetEnvironment(macCatalyst))
+    #if canImport(UIKit)
     case .leftMargin: return ".leftMargin"
     case .rightMargin: return ".rightMargin"
     case .topMargin: return ".topMargin"
