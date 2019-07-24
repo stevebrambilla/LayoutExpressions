@@ -9,6 +9,11 @@ PROJECT_DISPLAY_NAME="LayoutExpressions"
 XCODE_PROJECT="LayoutExpressions.xcodeproj"
 
 main () {
+	# Test the current macOS version of the package.
+	swift test
+
+	# Test each platform's .framework:
+
 	ios_scheme="LayoutExpressions-iOS"
 	ios_dest="platform=iOS Simulator,name=iPhone Xs,OS=13.0"
 	ios_sdk="iphonesimulator"
