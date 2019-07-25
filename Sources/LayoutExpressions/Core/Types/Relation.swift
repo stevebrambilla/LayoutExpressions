@@ -3,7 +3,7 @@
 import Foundation
 
 internal enum Relation {
-	case lessThanOrEqual
-	case equal
-	case greaterThanOrEqual
+    case lessThanOrEqual
+    case equal
+    case greaterThanOrEqual
 }

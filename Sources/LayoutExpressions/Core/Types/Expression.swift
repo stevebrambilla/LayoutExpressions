@@ -9,10 +9,10 @@ import AppKit
 #endif
 
 public protocol ExpressionProtocol {
-	func update(priority: Priority) -> Self
-	func evaluateAll() -> [Constraint]
+    func update(priority: Priority) -> Self
+    func evaluateAll() -> [Constraint]
 }
 
 public protocol DistinctExpressionProtocol: ExpressionProtocol {
-	func evaluateDistinct() -> Constraint
+    func evaluateDistinct() -> Constraint
 }

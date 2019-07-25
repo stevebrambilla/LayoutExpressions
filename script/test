@@ -9,38 +9,38 @@ PROJECT_DISPLAY_NAME="LayoutExpressions"
 XCODE_PROJECT="LayoutExpressions.xcodeproj"
 
 main () {
-	# Test the current macOS version of the package.
-	swift test
+    # Test the current macOS version of the package.
+    swift test
 
-	# Test each platform's .framework:
+    # Test each platform's .framework:
 
-	ios_scheme="LayoutExpressions-iOS"
-	ios_dest="platform=iOS Simulator,name=iPhone Xs,OS=13.0"
-	ios_sdk="iphonesimulator"
-	build_and_test "$ios_scheme" "$ios_dest" "$ios_sdk"
+    ios_scheme="LayoutExpressions-iOS"
+    ios_dest="platform=iOS Simulator,name=iPhone Xs,OS=13.0"
+    ios_sdk="iphonesimulator"
+    build_and_test "$ios_scheme" "$ios_dest" "$ios_sdk"
 
-	tvos_scheme="LayoutExpressions-tvOS"
-	tvos_dest="platform=tvOS Simulator,name=Apple TV 4K,OS=13.0"
-	tvos_sdk="appletvsimulator"
-	build_and_test "$tvos_scheme" "$tvos_dest" "$tvos_sdk"
+    tvos_scheme="LayoutExpressions-tvOS"
+    tvos_dest="platform=tvOS Simulator,name=Apple TV 4K,OS=13.0"
+    tvos_sdk="appletvsimulator"
+    build_and_test "$tvos_scheme" "$tvos_dest" "$tvos_sdk"
 
-	macos_scheme="LayoutExpressions-macOS"
-	macos_dest="platform=macOS,arch=x86_64"
-	macos_sdk="macosx"
-	build_and_test "$macos_scheme" "$macos_dest" "$macos_sdk"
+    macos_scheme="LayoutExpressions-macOS"
+    macos_dest="platform=macOS,arch=x86_64"
+    macos_sdk="macosx"
+    build_and_test "$macos_scheme" "$macos_dest" "$macos_sdk"
 }
 
 build_and_test () {
-	local scheme=$1
-	local destination=$2
-	local sdk=$3
+    local scheme=$1
+    local destination=$2
+    local sdk=$3
 
-	echo "--- [$PROJECT_DISPLAY_NAME] Cleaning and building $scheme"
-	xcaction clean "$XCODE_PROJECT" "$scheme" "$sdk"
-	xcaction build "$XCODE_PROJECT" "$scheme" "$sdk"
+    echo "--- [$PROJECT_DISPLAY_NAME] Cleaning and building $scheme"
+    xcaction clean "$XCODE_PROJECT" "$scheme" "$sdk"
+    xcaction build "$XCODE_PROJECT" "$scheme" "$sdk"
 
-	echo "--- [$PROJECT_DISPLAY_NAME] Testing $scheme"
-	xctest "$XCODE_PROJECT" "$scheme" "$destination" "$sdk"
+    echo "--- [$PROJECT_DISPLAY_NAME] Testing $scheme"
+    xctest "$XCODE_PROJECT" "$scheme" "$destination" "$sdk"
 }
 
 main
