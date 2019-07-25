@@ -45,7 +45,7 @@ NSLayoutConstraint.activateLayout {
         subview.anchors.verticalEdges == container.anchors.verticalEdges
     }
     subview.anchors.horizontalEdges == container.anchors.horizontalEdges
-)
+}
 ```
 
 To access the constraints without activating them you can use `evaluateLayout()` instead of `activateLayout()`:
