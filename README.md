@@ -65,7 +65,7 @@ subview1.anchors.width >= subview2.anchors.width <~ .defaultHigh
 
 LayoutExpressions provides the following extensions for layout anchors:
 
-(UI|NS)View Anchors          | (UI|NS)LayoutGuide Anchors |
+View Anchors                 |  Layout Guide Anchors      |
 -----------------------------|----------------------------|
 `view.anchors.top`           | `guide.anchors.top`        |
 `view.anchors.bottom`        | `guide.anchors.bottom`     |
@@ -98,7 +98,7 @@ For example, `subview.anchors.allEdges == container.anchors.allEdges` will pin a
 
 LayoutExpressions provides the following extensions for _composite_ layout anchors:
 
-(UI|NS)View Anchors.            | (UI|NS)LayoutGuide Anchors       |
+View Anchors                    | LayoutGuide Anchors              |
 --------------------------------|----------------------------------|
 `view.anchors.allEdges`         | `guide.anchors.allEdges`         |
 `view.anchors.verticalEdges`    | `guide.anchors.verticalEdges`    |
